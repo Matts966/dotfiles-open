@@ -1,5 +1,5 @@
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*" 2> /dev/null'
-export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim {} < /dev/tty > /dev/tty)" --bind "ctrl-l:execute:less {} > /dev/tty" --height 100% --reverse --border --preview "bat --color=always --style=header,grid --line-range :100 {}"'
+export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --height 100% --reverse --border --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function peco-history-selection() {
@@ -39,7 +39,7 @@ bindkey '^E' fcd
 
 function agg() {
     openvim='{system("vim " $1 " +" $2 " < /dev/tty > /dev/tty")}'
-    result=`ag . 2> /dev/null | fzf --reverse --border --bind "ctrl-v:execute(echo {} | awk -F ':' '$openvim')"`
+    result=`ag . 2> /dev/null | fzf --reverse --border --bind "ctrl-v:execute(printf %q {} | awk -F ':' '$openvim')"`
     if [ -z $result ]
     then
         return
@@ -76,7 +76,6 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
-
 
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
