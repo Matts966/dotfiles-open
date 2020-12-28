@@ -56,6 +56,7 @@ set autoread
 set hidden
 set showcmd
 set clipboard=unnamedplus,autoselect
+set backspace=indent,eol,start
 
 set number
 set cursorline
