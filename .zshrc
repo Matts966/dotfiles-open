@@ -59,7 +59,7 @@ function agg() {
     echo $result | awk -F ':' $openvim 
 }
 zle -N agg
-bindkey '^f' agg
+bindkey '^x^f' agg
 
 alias fgg='_fgg'
 function _fgg() {
