@@ -10,6 +10,8 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
+# Git functions
+bindkey -r '^g'
 fbr() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
@@ -18,7 +20,7 @@ fbr() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 zle -N fbr
-bindkey '^B' fbr
+bindkey '^g^b' fbr
 
 gcd() {
   repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
@@ -26,7 +28,11 @@ gcd() {
   zle clear-screen
 }
 zle -N gcd
-bindkey '^G' gcd
+bindkey '^g^r' gcd
+
+_lazygit() { lazygit }
+zle -N _lazygit
+bindkey '^g^g' _lazygit
 
 fd() {
   local dir
@@ -74,17 +80,6 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
-
-fshow() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
-                (grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                {}
-FZF-EOF"
-}
 
 
 autoload -U promptinit; promptinit
