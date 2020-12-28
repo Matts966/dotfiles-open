@@ -55,7 +55,7 @@ bindkey '^f' agg
 
 alias fgg='_fgg'
 function _fgg() {
-    wc=$(jobs | wc -l | tr -d ' ')
+    wc=$(jobs | grep '\[[0-9]\+\]' | wc -l | tr -d ' ')
     if [ $wc -eq 1 ]; then
       fg
       return
