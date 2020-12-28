@@ -1,11 +1,8 @@
-DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*)
 EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .ssh
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help
-
-all:
 
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
@@ -18,7 +15,7 @@ update: ## Fetch changes for this repo
 	git pull origin main 
 
 install: update deploy ## Run make update, deploy, init
-	brew bundle
+	brew bundle || true
 	npm install --global filthy-prompt
 	mkdir -p ~/.zsh/completion
 	curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
@@ -28,7 +25,6 @@ install: update deploy ## Run make update, deploy, init
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
-	-rm -rf $(DOTPATH)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
