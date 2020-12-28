@@ -10,7 +10,7 @@ list: ## Show dot files in this repo
 
 deploy: ## Create symlink to home directory
 	@echo 'Symlink dot files in your home directory...'
-	@$(foreach val, $(DOTFILES), ln -sfFnv $(abspath $(val)) $(HOME);)
+	@$(foreach val, $(DOTFILES), ln -sFnv $(abspath $(val)) $(HOME);)
 .PHONY: deploy
 
 update: ## Fetch changes for this repo
@@ -20,7 +20,7 @@ update: ## Fetch changes for this repo
 install: update deploy init ## Run make update, deploy and init
 .PHONY: install
 
-init: zsh brew ## Initialize instalation
+init: zsh brew ## Initialize installation
 .PHONY: init
 
 brew:
