@@ -14,7 +14,10 @@
         "revision": "2e21c6f98ef429689f90ecf8600387819df260d0"
       },
       "homebrew/core": {
-        "revision": "1df4742ee32d69c8047b9c4346da699430f30b3a"
+        "revision": "ace0a965e647afba3ca0f2d52bb293cfc250a7cd"
+      },
+      "sachaos/todoist": {
+        "revision": "1d63a18bf7b2b764df65bacf4350998428c0bb9f"
       }
     },
     "brew": {
@@ -386,6 +389,114 @@
       "zplug": {
         "version": "2.4.2",
         "bottle": false
+      },
+      "dos2unix": {
+        "version": "7.4.2",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/opt/homebrew",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/dos2unix-7.4.2.big_sur.bottle.tar.gz",
+              "sha256": "7a4b0e40724b8721ff76a36cb74fd6c9816ce0e9b518c3abf0e2ec5bab5b0cce"
+            },
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/dos2unix-7.4.2.arm64_big_sur.bottle.tar.gz",
+              "sha256": "54cb2c42f9f016e03ccf712d0927963fc629d8419de3bfdf324dc51088f87157"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/dos2unix-7.4.2.catalina.bottle.tar.gz",
+              "sha256": "eb14b6db2fbf8fa0f52b69aa33101e1eb04bf3d4ef5dae7234754046e4cd54a6"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/dos2unix-7.4.2.mojave.bottle.tar.gz",
+              "sha256": "7a23d283d81cad13690d788c61117cbfe091282503077ad56bde83f026dd5097"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/dos2unix-7.4.2.high_sierra.bottle.tar.gz",
+              "sha256": "98858938fe95e2453056d80c03c35396913a5c6902b2df00b618c884a4b51521"
+            }
+          }
+        }
+      },
+      "gh": {
+        "version": "1.4.0",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/opt/homebrew",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/gh-1.4.0.big_sur.bottle.tar.gz",
+              "sha256": "daf4c5b566b1a1b9f00ac73aeffcc72792479da9ddebfdb3a91ce5d19fbba309"
+            },
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/gh-1.4.0.arm64_big_sur.bottle.tar.gz",
+              "sha256": "b039ae32ed849b635eb7b3e1c7528d9934537c4dac76f170a2d195eab2148466"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/gh-1.4.0.catalina.bottle.tar.gz",
+              "sha256": "70c9d617f18341ab35bebc17b1916ec79cc053dbed5782eb34656babdb6908a8"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/gh-1.4.0.mojave.bottle.tar.gz",
+              "sha256": "930dd87d86bcc1b6ac220cc488766df4fc00472d49221b37f51281970015cabe"
+            }
+          }
+        }
+      },
+      "graphviz": {
+        "version": "2.44.1",
+        "bottle": {
+          "cellar": "/opt/homebrew/Cellar",
+          "prefix": "/opt/homebrew",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/graphviz-2.44.1.big_sur.bottle.1.tar.gz",
+              "sha256": "b38583d700c03638f21f0e71c53ae61231353aa31fa207cc048063981fab412f"
+            },
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/graphviz-2.44.1.arm64_big_sur.bottle.1.tar.gz",
+              "sha256": "a7197b21212f9f379306da1acc85f5b2e6764c3575c70f13dfb8cf6dfbd9ccc3"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/graphviz-2.44.1.catalina.bottle.1.tar.gz",
+              "sha256": "3ffa8ff77c3017ebcc9998216a2df08ff461fa3c6866e233c189b9d53cd01b18"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/graphviz-2.44.1.mojave.bottle.1.tar.gz",
+              "sha256": "ab61b971ce56a1caae7aeff6a4957b1141b4267e232caaf42124378c5708caa8"
+            }
+          }
+        }
+      },
+      "grip": {
+        "version": "4.5.2_3",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/opt/homebrew",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/grip-4.5.2_3.big_sur.bottle.tar.gz",
+              "sha256": "030e8c707b32fddf61e3d5d566fc0c5e6e89d34e92aaecbb33fa3f60abf63b64"
+            },
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/grip-4.5.2_3.arm64_big_sur.bottle.tar.gz",
+              "sha256": "4dad17672896ca2ca357ba82c4779b9def18535b3a14ba460724d3a764329b13"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/grip-4.5.2_3.catalina.bottle.tar.gz",
+              "sha256": "373f8ccd90c2cb8d753f1ceab1b50ff568be4a782761402e0db137dfd5a946f3"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/grip-4.5.2_3.mojave.bottle.tar.gz",
+              "sha256": "d8aa30db0652b18890baa83a7ae4c529a346f068e799ddadada6dae8771c46fc"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/grip-4.5.2_3.high_sierra.bottle.tar.gz",
+              "sha256": "3c5e3c5e4e928803ec821c7624014bf3740566dd2741a02cfdac541d4162860a"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -424,15 +535,27 @@
         "options": {
           "full_name": "docker"
         }
+      },
+      "alt-tab": {
+        "version": "6.12.0",
+        "options": {
+          "full_name": "alt-tab"
+        }
+      },
+      "typora": {
+        "version": "0.9.9.36.2,4901",
+        "options": {
+          "full_name": "typora"
+        }
       }
     }
   },
   "system": {
     "macos": {
       "big_sur": {
-        "HOMEBREW_VERSION": "2.7.0",
+        "HOMEBREW_VERSION": "2.7.1",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "1df4742ee32d69c8047b9c4346da699430f30b3a",
+        "Homebrew/homebrew-core": "ace0a965e647afba3ca0f2d52bb293cfc250a7cd",
         "CLT": "12.3.0.0.1.1607026830",
         "Xcode": "12.3",
         "macOS": "11.1"
