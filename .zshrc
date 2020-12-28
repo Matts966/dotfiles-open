@@ -34,12 +34,20 @@ _lazygit() { lazygit }
 zle -N _lazygit
 bindkey '^g^g' _lazygit
 
-fd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
+# cd with fzf without buffer, otherwise delete-char-or-list
+setopt ignore_eof
+cdr() {
+  if [[ -z $BUFFER ]]; then
+    local dir
+    dir=$(find ${1:-.} -path '*/\.*' -prune \
+                    -o -type d -print 2> /dev/null | fzf +m) &&
+    cd "$dir"
+    return
+  fi
+  zle delete-char-or-list
 }
+zle -N cdr
+bindkey '^D' cdr
 
 function agg() {
     openvim='{system("vim " $1 " +" $2 " < /dev/tty > /dev/tty")}'
