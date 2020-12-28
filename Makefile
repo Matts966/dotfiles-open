@@ -15,7 +15,7 @@ deploy: ## Create symlink to home directory
 	@$(foreach val, $(DOTFILES), ln -sfFnv $(abspath $(val)) $(HOME);)
 
 update: ## Fetch changes for this repo
-	git pull origin master
+	git pull origin main 
 
 install: update deploy ## Run make update, deploy, init
 	brew bundle
