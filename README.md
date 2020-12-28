@@ -1,3 +1,3 @@
 # dotfiles-open
 
-`make help`
+`make`
