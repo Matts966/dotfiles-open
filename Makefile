@@ -20,7 +20,7 @@ update: ## Fetch changes for this repo
 install: update deploy init ## Run make update, deploy and init
 .PHONY: install
 
-init: zsh brew
+init: zsh brew ## Initialize instalation
 .PHONY: init
 
 brew:
