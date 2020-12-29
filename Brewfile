@@ -37,9 +37,13 @@ brew "vim"
 # Internet file retriever
 brew "wget"
 # Next-generation plugin manager for zsh
+brew "zplug"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Cross-platform ncurses Spotify client written in Rust
 brew "ncspot"
+# Send macOS User Notifications from the command-line
+brew "terminal-notifier"
 cask "alt-tab"
 cask "appcleaner"
 cask "clipy"
