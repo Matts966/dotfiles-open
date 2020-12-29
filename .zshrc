@@ -96,15 +96,19 @@ unsetopt PROMPT_SP # Remove this line after the fix of hyper issue https://githu
 PROMPT=$'\n'"%(?.%F{green}.%F{red})❯%f "
 
 
-zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
 # ZPlug
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "t413/zsh-background-notify"
 bgnotify_threshold=2
+zplug "docker/compose", use:contrib/completion/zsh
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-completions"
+zplug "greymd/docker-zsh-completion"
+zplug "b4b4r07/zsh-gomi", as:command, use:bin
+
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
@@ -112,6 +116,7 @@ if ! zplug check --verbose; then
     fi
 fi
 zplug load
+
 
 HISTSIZE=5000               #How many lines of history to keep in memory
 HISTFILE=~/.zsh_history     #Where to save history to disk
