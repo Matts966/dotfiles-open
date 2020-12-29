@@ -37,6 +37,8 @@ brew "vim"
 # Internet file retriever
 brew "wget"
 # Next-generation plugin manager for zsh
+brew "git-delta"
+# Cross-platform ncurses Spotify client written in Rust
 cask "alt-tab"
 cask "appcleaner"
 cask "clipy"
