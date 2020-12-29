@@ -20,6 +20,7 @@ fbr() {
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  zle reset-prompt
 }
 zle -N fbr
 bindkey '^g^b' fbr
@@ -45,7 +46,10 @@ bindkey '^g^g' _lazygit
 # Spotify
 stty stop undef
 stty start undef
-_ncspot() { ncspot < /dev/tty }
+_ncspot() {
+  ncspot < /dev/tty
+  zle reset-prompt
+}
 zle -N _ncspot
 bindkey '^s' _ncspot
 
