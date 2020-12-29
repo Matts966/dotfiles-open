@@ -37,6 +37,8 @@ Plug 'hrsh7th/vim-vsnip-integ'
 
 Plug 'gabrielelana/vim-markdown'
 
+Plug 'dansomething/vim-hackernews'
+
 autocmd ColorScheme * highlight Normal ctermbg=none
 autocmd ColorScheme * highlight LineNr ctermbg=none
 colorscheme SerialExperimentsLain
