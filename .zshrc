@@ -27,7 +27,7 @@ bindkey '^g^b' fbr
 gcd() {
   repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
   cd $(ghq root)/$repo
-  zle clear-screen
+  zle reset-prompt
 }
 zle -N gcd
 bindkey '^g^r' gcd
@@ -85,7 +85,7 @@ fancy-ctrl-z () {
     fgg
   else
     zle push-input
-    zle clear-screen
+    zle reset-prompt
   fi
 }
 zle -N fancy-ctrl-z
