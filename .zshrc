@@ -92,8 +92,9 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 
-autoload -U promptinit; promptinit
-prompt filthy 
+unsetopt PROMPT_SP # Remove this line after the fix of hyper issue https://github.com/vercel/hyper/issues/3586
+PROMPT=$'\n'"%(?.%F{green}.%F{red})❯%f "
+
 
 zstyle ':completion:*:*:git:*' script ~/.zsh/completion/git-completion.bash
 fpath=(~/.zsh/completion $fpath)
