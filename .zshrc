@@ -114,7 +114,7 @@ zplug "b4b4r07/enhancd", use:init.sh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
-zplug "b4b4r07/zsh-gomi", as:command, use:bin
+zplug "b4b4r07/zsh-gomi", if:"which fzf"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
