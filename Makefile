@@ -21,8 +21,16 @@ update: ## Fetch changes for this repo
 install: update deploy init ## Run make update, deploy and init
 .PHONY: install
 
-init: zsh brew ## Initialize installation
+init: zsh brew hyper ## Initialize installation
 .PHONY: init
+
+hyper:
+	hyper i hyper-search
+	hyper i hypercwd
+	hyper i hyper-opacity
+	hyper i hyper-tab-icons-plus
+	hyper i hyper-statusline
+.PHONY: hyper
 
 brew:
 	brew bundle || true
