@@ -36,6 +36,13 @@ _lazygit() { lazygit }
 zle -N _lazygit
 bindkey '^g^g' _lazygit
 
+# Spotify
+stty stop undef
+stty start undef
+_ncspot() { ncspot }
+zle -N _ncspot
+bindkey '^s' _ncspot
+
 # cd with fzf without buffer, otherwise delete-char-or-list
 setopt ignore_eof
 cdr() {
