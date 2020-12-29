@@ -71,7 +71,7 @@ function agg() {
     then
         return
     fi
-    echo $result | awk -F ':' $openvim 
+    echo $result | awk -F ':' $openvim
 }
 zle -N agg
 bindkey '^x^f' agg
@@ -116,7 +116,6 @@ source $ZPLUG_HOME/init.zsh
 zplug "t413/zsh-background-notify"
 bgnotify_threshold=2
 zplug "docker/compose", use:contrib/completion/zsh
-zplug "b4b4r07/enhancd", use:init.sh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
