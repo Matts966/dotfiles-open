@@ -4,6 +4,8 @@ tap "homebrew/core"
 tap "sachaos/todoist"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# User-friendly launcher for Bazel
+brew "bazelisk"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
 # Command-line fuzzy finder written in Go
@@ -12,6 +14,8 @@ brew "fzf"
 brew "gh"
 # Remote repository management made easy
 brew "ghq"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # GitHub Markdown previewer
@@ -38,6 +42,8 @@ brew "wget"
 brew "zplug"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# NCurses Disk Usage
+brew "ncdu"
 # Cross-platform ncurses Spotify client written in Rust
 brew "ncspot"
 # Send macOS User Notifications from the command-line
