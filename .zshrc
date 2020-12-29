@@ -25,7 +25,7 @@ zle -N fbr
 bindkey '^g^b' fbr
 
 gcd() {
-  repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
+  repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") &&
   cd $(ghq root)/$repo
   zle reset-prompt
 }
@@ -54,7 +54,7 @@ setopt ignore_eof
 cdr() {
   if [[ -z $BUFFER ]]; then
     local dir
-    dir=$(find ${1:-.} -path '*/\.*' -prune \
+    dir=$(find . -path '*/\.*' -prune \
                     -o -type d -print 2> /dev/null | fzf +m) &&
     cd "$dir"
     return
