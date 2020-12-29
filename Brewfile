@@ -39,6 +39,7 @@ brew "wget"
 # Next-generation plugin manager for zsh
 brew "git-delta"
 # Cross-platform ncurses Spotify client written in Rust
+brew "ncspot"
 cask "alt-tab"
 cask "appcleaner"
 cask "clipy"
