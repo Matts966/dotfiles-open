@@ -32,7 +32,13 @@ gcd() {
 zle -N gcd
 bindkey '^g^r' gcd
 
-_lazygit() { lazygit }
+_lazygit() {
+  if [[ -d .git ]]; then
+    lazygit
+    return
+  fi
+  zle gcd && zle _lazygit
+}
 zle -N _lazygit
 bindkey '^g^g' _lazygit
 
