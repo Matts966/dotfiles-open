@@ -39,6 +39,8 @@ Plug 'gabrielelana/vim-markdown'
 
 Plug 'dansomething/vim-hackernews'
 
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 autocmd ColorScheme * highlight Normal ctermbg=none
 autocmd ColorScheme * highlight LineNr ctermbg=none
 colorscheme SerialExperimentsLain
