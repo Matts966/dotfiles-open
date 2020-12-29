@@ -45,7 +45,7 @@ bindkey '^g^g' _lazygit
 # Spotify
 stty stop undef
 stty start undef
-_ncspot() { ncspot }
+_ncspot() { ncspot < /dev/tty }
 zle -N _ncspot
 bindkey '^s' _ncspot
 
