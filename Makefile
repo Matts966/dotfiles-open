@@ -15,13 +15,13 @@ deploy: ## Create symlink to home directory
 .PHONY: deploy
 
 update: ## Fetch changes for this repo
-	git pull origin main 
+	git pull origin main
 .PHONY: update
 
 install: update deploy init ## Run make update, deploy and init
 .PHONY: install
 
-init: zsh brew hyper ## Initialize installation
+init: zsh brew hyper glances ## Initialize installation
 .PHONY: init
 
 hyper:
@@ -30,6 +30,7 @@ hyper:
 	hyper i hyper-opacity
 	hyper i hyper-tab-icons-plus
 	hyper i hyper-statusline
+	hyper i hyper-drop-file
 .PHONY: hyper
 
 brew:
@@ -46,6 +47,11 @@ zsh: _zsh
 	curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 	curl -o ~/.zsh/completion/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
 .PHONY: zsh
+
+# glances installed via brew is broken.
+# TODO: Use brew after the fix.
+glances:
+	pip3 install glances
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
