@@ -71,8 +71,11 @@ nnoremap j gj
 nnoremap k gk
 " Tab
 set list listchars=tab:\▸\-
+set tabstop=4
 set list
-set listchars=tab:>-,extends:<,trail:-,eol:<
+set listchars=tab:>-
+autocmd BufWritePre * :%s/\s\+$//e
+
 set ignorecase
 set smartcase " Case Sensitive only with upper case
 set incsearch
