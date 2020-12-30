@@ -138,3 +138,9 @@ augroup restore_t_Co
   endif
   autocmd VimLeave * let &t_Co = s:saved_t_Co
 augroup END
+
+" Create dir if not exists when writing new file.
+augroup Mkdir
+  autocmd!
+  autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+augroup END
