@@ -34,7 +34,7 @@ zle -N gcd
 bindkey '^g^r' gcd
 
 _lazygit() {
-  if [[ -d .git ]]; then
+  if [[ -d .git || -f .git ]]; then
     lazygit
     return
   fi
