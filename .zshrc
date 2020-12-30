@@ -7,7 +7,6 @@ export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > 
 function peco-history-selection() {
     BUFFER=`history -E 1 | sort -r | awk '{c="";for(i=4;i<=NF;i++) c=c $i" "; print c}' | peco`
     CURSOR=$#BUFFER
-    zle reset-prompt
 }
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
@@ -20,7 +19,6 @@ fbr() {
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-  zle reset-prompt
 }
 zle -N fbr
 bindkey '^g^b' fbr
@@ -28,7 +26,7 @@ bindkey '^g^b' fbr
 gcd() {
   repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") &&
   cd $(ghq root)/$repo
-  zle clear-screen
+  zle reset-prompt
 }
 zle -N gcd
 bindkey '^g^r' gcd
@@ -50,7 +48,7 @@ stty start undef
 spotify-tui() {
   BUFFER=spt
   zle accept-line
-  zle clear-screen
+  zle reset-prompt
 }
 zle -N spotify-tui
 bindkey '^s' spotify-tui
@@ -63,6 +61,7 @@ cdr() {
     dir=$(find . -path '*/\.*' -prune \
                     -o -type d -print 2> /dev/null | fzf +m) &&
     cd "$dir"
+    zle reset-prompt
     return
   fi
   zle delete-char-or-list
@@ -104,7 +103,6 @@ fancy-ctrl-z () {
     fgg
   else
     zle push-input
-    zle reset-prompt
   fi
 }
 zle -N fancy-ctrl-z
