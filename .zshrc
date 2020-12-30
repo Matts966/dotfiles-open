@@ -28,6 +28,7 @@ bindkey '^g^b' fbr
 gcd() {
   repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") &&
   cd $(ghq root)/$repo
+  zle clear-screen
 }
 zle -N gcd
 bindkey '^g^r' gcd
@@ -49,6 +50,7 @@ stty start undef
 spotify-tui() {
   BUFFER=spt
   zle accept-line
+  zle clear-screen
 }
 zle -N spotify-tui
 bindkey '^s' spotify-tui
