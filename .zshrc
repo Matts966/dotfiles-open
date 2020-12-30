@@ -28,7 +28,6 @@ bindkey '^g^b' fbr
 gcd() {
   repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") &&
   cd $(ghq root)/$repo
-  zle reset-prompt
 }
 zle -N gcd
 bindkey '^g^r' gcd
@@ -38,7 +37,8 @@ _lazygit() {
     lazygit
     return
   fi
-  zle gcd && zle _lazygit
+  # zle's returns code is always 0...
+  repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") && cd $(ghq root)/$repo && lazygit
 }
 zle -N _lazygit
 bindkey '^g^g' _lazygit
