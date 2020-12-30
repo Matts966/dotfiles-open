@@ -104,6 +104,10 @@ nnoremap k gk
 
 " <Space> w as :w
 nnoremap <Leader>w :w<CR>
+" <Space> q as :q
+nnoremap <Leader>q :q<CR>
+" <Space> wq as :wq
+nnoremap <Leader>wq :wq<CR>
 
 " Tab
 set list listchars=tab:\▸\-
