@@ -101,6 +101,10 @@ set showmatch
 set wildmode=list:longest " Auto completion on vim command line
 nnoremap j gj
 nnoremap k gk
+
+" <Space> w as :w
+nnoremap <Leader>w :w<CR>
+
 " Tab
 set list listchars=tab:\▸\-
 set tabstop=4
