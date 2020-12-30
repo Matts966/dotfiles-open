@@ -46,12 +46,12 @@ bindkey '^g^g' _lazygit
 # Spotify
 stty stop undef
 stty start undef
-_ncspot() {
-  ncspot < /dev/tty
-  zle reset-prompt
+spotify-tui() {
+  BUFFER=spt
+  zle accept-line
 }
-zle -N _ncspot
-bindkey '^s' _ncspot
+zle -N spotify-tui
+bindkey '^s' spotify-tui
 
 # cd with fzf without buffer, otherwise delete-char-or-list
 setopt ignore_eof
