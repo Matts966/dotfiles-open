@@ -1,7 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "sachaos/todoist"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # User-friendly launcher for Bazel
@@ -46,6 +45,8 @@ brew "git-delta"
 brew "ncdu"
 # Cross-platform ncurses Spotify client written in Rust
 brew "ncspot"
+# Terminal-based client for Spotify
+brew "spotify-tui"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
 cask "alt-tab"
