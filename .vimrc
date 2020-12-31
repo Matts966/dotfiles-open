@@ -13,8 +13,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_OPTS = '--reverse'
 
-" Comment out with leader keys
-Plug 'preservim/nerdcommenter'
+
+" Toggle comment out with gcc and gc with selection.
+Plug 'tpope/vim-commentary'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
