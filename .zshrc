@@ -126,6 +126,8 @@ zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
 zplug "b4b4r07/zsh-gomi", if:"which fzf"
 
+bindkey '^i' expand-or-complete-prefix
+
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
