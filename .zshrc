@@ -69,6 +69,7 @@ cdr() {
 zle -N cdr
 bindkey '^D' cdr
 
+alias ag='ag --hidden'
 function agg() {
     openvim='{system("vim " $1 " +" $2 " < /dev/tty > /dev/tty")}'
     result=`ag . 2> /dev/null | fzf --reverse --border --bind "ctrl-v:execute(printf %q {} | awk -F ':' '$openvim')"`
