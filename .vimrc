@@ -89,7 +89,12 @@ set noswapfile
 set autoread
 set hidden
 set showcmd
-set clipboard=unnamedplus,autoselect
+" Yank to clipboard
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 set backspace=indent,eol,start
 
 set number
