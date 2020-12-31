@@ -21,7 +21,7 @@ update: ## Fetch changes for this repo
 install: update deploy init ## Run make update, deploy and init
 .PHONY: install
 
-init: zsh brew hyper glances ## Initialize installation
+init: zsh brew hyper pip ## Initialize installation
 .PHONY: init
 
 hyper:
@@ -50,8 +50,10 @@ zsh: _zsh
 
 # glances installed via brew is broken.
 # TODO: Use brew after the fix.
-glances:
+pip:
 	pip3 install glances
+	pip3 install termdown
+.PHONY: pip
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
