@@ -127,6 +127,7 @@ zplug "greymd/docker-zsh-completion"
 zplug "b4b4r07/zsh-gomi", if:"which fzf"
 
 bindkey '^i' expand-or-complete-prefix
+setopt no_auto_remove_slash
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
