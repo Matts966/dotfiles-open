@@ -1,5 +1,9 @@
 scriptencoding utf-8
 set encoding=utf-8
+
+" Keys are mapped with the mapping with the time so
+" important settings should be written earlier.
+let mapleader = "\<Space>" " Remap <leader> key to space
 "--------------------------------------------------------------------------
 
 " Specify a directory for plugins
@@ -79,7 +83,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'rafi/vim-venom', { 'for': 'python' }
 
-let mapleader = "\<Space>" " Remap <leader> key to space
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
