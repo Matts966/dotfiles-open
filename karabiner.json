@@ -100,7 +100,7 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+[を押したときに、英数キーも送信する（vim用） (rev 2)",
+                        "description": "Ctrl+[を押したときに、escキーと英数キーを送信する",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -122,10 +122,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "open_bracket",
-                                        "modifiers": [
-                                            "control"
-                                        ]
+                                        "key_code": "escape"
                                     },
                                     {
                                         "key_code": "japanese_eisuu"
@@ -152,10 +149,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "close_bracket",
-                                        "modifiers": [
-                                            "control"
-                                        ]
+                                        "key_code": "escape"
                                     },
                                     {
                                         "key_code": "japanese_eisuu"
