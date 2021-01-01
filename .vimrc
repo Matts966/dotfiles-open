@@ -12,6 +12,8 @@ let mapleader = "\<Space>" " Remap <leader> key to space
 call plug#begin('~/.vim/plugged')
 
 
+Plug 'psliwka/vim-smoothie'
+
 " Make sure you use single quotes
 set rtp+=/opt/homebrew/opt/fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
