@@ -14,6 +14,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'psliwka/vim-smoothie'
 
+Plug 'thinca/vim-qfreplace'
+
 " Make sure you use single quotes
 set rtp+=/opt/homebrew/opt/fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
