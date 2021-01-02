@@ -160,8 +160,9 @@ nnoremap k gk
 " Tab
 set list listchars=tab:\▸\-
 set tabstop=4
+set shiftwidth=4
 set list
-set listchars=tab:>-
+" Remove trailing spaces.
 autocmd BufWritePre * :%s/\s\+$//e
 
 set ignorecase
