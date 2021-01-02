@@ -34,21 +34,21 @@ function! s:build_quickfix_list(lines)
     cc
 endfunction
 let g:fzf_action = {
-    \ 'ctrl-q': function('s:build_quickfix_list'),
-    \ 'ctrl-t': 'tab split',
-    \ 'ctrl-x': 'split',
-    \ 'ctrl-v': 'vsplit' }
+            \ 'ctrl-q': function('s:build_quickfix_list'),
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--reverse --bind ctrl-a:select-all'
 " Git Grep with fzf by :GGrep
 command! -bang -nargs=* GGrep
-    \ call fzf#vim#grep(
-    \   'git grep --line-number -- '.shellescape(<q-args>), 0,
-    \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+            \ call fzf#vim#grep(
+            \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 " Add hidden files in :Rg
 command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview(), <bang>0)
+            \ call fzf#vim#grep(
+            \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+            \   fzf#vim#with_preview(), <bang>0)
 " Without fuzzy search with :RG
 function! RipgrepFzf(query, fullscreen)
     let command_fmt = 'rg --hidden --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -186,9 +186,9 @@ endif
 augroup restore_t_Co
     autocmd!
     if s:saved_t_Co == 8
-    autocmd VimLeave * let &t_Co = 256
+        autocmd VimLeave * let &t_Co = 256
     else
-    autocmd VimLeave * let &t_Co = 8
+        autocmd VimLeave * let &t_Co = 8
     endif
     autocmd VimLeave * let &t_Co = s:saved_t_Co
 augroup END
