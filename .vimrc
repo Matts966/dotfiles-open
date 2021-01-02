@@ -29,33 +29,33 @@ let $FZF_DEFAULT_OPTS = '--reverse'
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*" 2> /dev/null'
 " CTRL-A CTRL-Q to select all and build quickfix list
 function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
+    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+    copen
+    cc
 endfunction
 let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+    \ 'ctrl-q': function('s:build_quickfix_list'),
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-x': 'split',
+    \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--reverse --bind ctrl-a:select-all'
 " Git Grep with fzf by :GGrep
 command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+    \ call fzf#vim#grep(
+    \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+    \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 " Add hidden files in :Rg
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+    \ call fzf#vim#grep(
+    \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+    \   fzf#vim#with_preview(), <bang>0)
 " Without fuzzy search with :RG
 function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --hidden --column --line-number --no-heading --color=always --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+    let command_fmt = 'rg --hidden --column --line-number --no-heading --color=always --smart-case -- %s || true'
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " Find with ripgrep
@@ -144,16 +144,16 @@ set hidden
 set showcmd
 " Yank to clipboard
 if system('uname -s') == "Darwin\n"
-  set clipboard=unnamed "OSX
+    set clipboard=unnamed "OSX
 else
-  set clipboard=unnamedplus "Linux
+    set clipboard=unnamedplus "Linux
 endif
 set backspace=indent,eol,start
 
 set number
 set cursorline
 set cursorcolumn
-set smartindent
+set autoindent
 set visualbell
 set showmatch
 set wildmode=list:longest " Auto completion on vim command line
@@ -161,9 +161,11 @@ nnoremap j gj
 nnoremap k gk
 
 " Tab
-set list listchars=tab:\▸\-
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
+set expandtab
+set list listchars=tab:\▸\-
 set list
 " Remove trailing spaces.
 autocmd BufWritePre * :%s/\s\+$//e
@@ -177,24 +179,24 @@ syntax on
 " Set 256 colors
 let s:saved_t_Co=&t_Co
 if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
+    set t_Co=256
 endif
 
 " Restore t_Co for less command after vim quit
 augroup restore_t_Co
-  autocmd!
-  if s:saved_t_Co == 8
+    autocmd!
+    if s:saved_t_Co == 8
     autocmd VimLeave * let &t_Co = 256
-  else
+    else
     autocmd VimLeave * let &t_Co = 8
-  endif
-  autocmd VimLeave * let &t_Co = s:saved_t_Co
+    endif
+    autocmd VimLeave * let &t_Co = s:saved_t_Co
 augroup END
 
 " Create dir if not exists when writing new file.
 augroup Mkdir
-  autocmd!
-  autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+    autocmd!
+    autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
 
 " Mimic Emacs Line Editing in Insert Mode Only
