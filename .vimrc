@@ -1,6 +1,9 @@
 scriptencoding utf-8
 set encoding=utf-8
 
+filetype off
+filetype plugin indent off
+
 " Keys are mapped with the mapping with the time so
 " important settings should be written earlier.
 let mapleader = "\<Space>" " Remap <leader> key to space
@@ -199,3 +202,5 @@ inoremap <C-A> <Home>
 inoremap <C-B> <Left>
 inoremap <C-E> <End>
 inoremap <C-F> <Right>
+
+filetype plugin indent on
