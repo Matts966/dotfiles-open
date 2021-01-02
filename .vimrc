@@ -157,9 +157,6 @@ set wildmode=list:longest " Auto completion on vim command line
 nnoremap j gj
 nnoremap k gk
 
-" q as :q
-nnoremap <Leader> :
-
 " Tab
 set list listchars=tab:\▸\-
 set tabstop=4
