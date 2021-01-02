@@ -55,6 +55,10 @@ pip: brew
 	pip3 install termdown
 .PHONY: pip
 
+fzf: brew
+	$(shell brew --prefix)/opt/fzf/install --all
+.PHONY: fzf
+
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
