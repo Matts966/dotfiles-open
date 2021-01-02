@@ -11,6 +11,8 @@ let mapleader = "\<Space>" " Remap <leader> key to space
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+let g:auto_save = 1  " enable AutoSave on Vim startup
+Plug '907th/vim-auto-save'
 
 Plug 'psliwka/vim-smoothie'
 
@@ -155,10 +157,8 @@ set wildmode=list:longest " Auto completion on vim command line
 nnoremap j gj
 nnoremap k gk
 
-" <Space> w as :w
-nnoremap <Leader>w :w<CR>
 " q as :q
-nnoremap q :q<CR>
+nnoremap <Leader> :
 
 " Tab
 set list listchars=tab:\▸\-
