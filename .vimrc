@@ -15,6 +15,7 @@ let mapleader = "\<Space>" " Remap <leader> key to space
 call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
+
 let g:auto_save = 1  " enable AutoSave on Vim startup
 Plug '907th/vim-auto-save'
 
