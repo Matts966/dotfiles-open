@@ -21,7 +21,7 @@ update: ## Fetch changes for this repo
 install: update deploy init ## Run make update, deploy and init
 .PHONY: install
 
-init: zsh brew hyper pip ## Initialize installation
+init: zsh hyper pip fzf ## Initialize installation
 .PHONY: init
 
 hyper:
@@ -41,7 +41,7 @@ _zsh:
 	mkdir -p ~/.zsh/completion
 .PHONY: _zsh
 
-zsh: _zsh
+zsh: _zsh brew
 	npm install --global filthy-prompt
 	curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 	curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
@@ -50,10 +50,14 @@ zsh: _zsh
 
 # glances installed via brew is broken.
 # TODO: Use brew after the fix.
-pip:
+pip: brew
 	pip3 install glances
 	pip3 install termdown
 .PHONY: pip
+
+fzf: brew
+	$(shell brew --prefix)/opt/fzf/install --all
+.PHONY: fzf
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'

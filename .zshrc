@@ -5,8 +5,8 @@ export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function peco-history-selection() {
-    BUFFER=`history -E 1 | sort -r | awk '{c="";for(i=4;i<=NF;i++) c=c $i" "; print c}' | peco`
-    CURSOR=$#BUFFER
+BUFFER=`history -E 1 | sort -r | awk '{c="";for(i=4;i<=NF;i++) c=c $i" "; print c}' | peco`
+CURSOR=$#BUFFER
 }
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
@@ -14,31 +14,31 @@ bindkey '^R' peco-history-selection
 # Git functions
 bindkey -r '^g'
 fbr() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
+    local branches branch
+    branches=$(git branch --all | grep -v HEAD) &&
+        branch=$(echo "$branches" |
+        fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+        git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    }
 zle -N fbr
 bindkey '^g^b' fbr
 
 gcd() {
-  repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") &&
-  cd $(ghq root)/$repo
-  zle reset-prompt
-}
-zle -N gcd
-bindkey '^g^r' gcd
+    repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") &&
+        cd $(ghq root)/$repo
+            zle reset-prompt
+        }
+    zle -N gcd
+    bindkey '^g^r' gcd
 
-_lazygit() {
-  if [[ -d .git || -f .git ]]; then
-    lazygit
-    return
-  fi
-  # zle's returns code is always 0...
-  repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") && cd $(ghq root)/$repo && lazygit
-}
+    _lazygit() {
+        if [[ -d .git || -f .git ]]; then
+            lazygit
+            return
+        fi
+        # zle's returns code is always 0...
+        repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") && cd $(ghq root)/$repo && lazygit
+    }
 zle -N _lazygit
 bindkey '^g^g' _lazygit
 
@@ -46,9 +46,9 @@ bindkey '^g^g' _lazygit
 stty stop undef
 stty start undef
 spotify-tui() {
-  BUFFER=spt
-  zle accept-line
-  zle reset-prompt
+BUFFER=spt
+zle accept-line
+zle reset-prompt
 }
 zle -N spotify-tui
 bindkey '^s' spotify-tui
@@ -56,15 +56,15 @@ bindkey '^s' spotify-tui
 # cd with fzf without buffer, otherwise delete-char-or-list
 setopt ignore_eof
 cdr() {
-  if [[ -z $BUFFER ]]; then
-    local dir
-    dir=$(find . -path '*/\.*' -prune \
-                    -o -type d -print 2> /dev/null | fzf +m) &&
-    cd "$dir"
-    zle reset-prompt
-    return
-  fi
-  zle delete-char-or-list
+    if [[ -z $BUFFER ]]; then
+        local dir
+        dir=$(find . -path '*/\.*' -prune \
+            -o -type d -print 2> /dev/null | fzf +m) &&
+            cd "$dir"
+                    zle reset-prompt
+                    return
+    fi
+    zle delete-char-or-list
 }
 zle -N cdr
 bindkey '^D' cdr
@@ -86,8 +86,8 @@ alias fgg='_fgg'
 function _fgg() {
     wc=$(jobs | grep '\[[0-9]\+\]' | wc -l | tr -d ' ')
     if [ $wc -eq 1 ]; then
-      fg
-      return
+        fg
+        return
     fi
     if [ $wc -ne 0 ]; then
         job=$(jobs | awk -F "suspended" "{print $1 $2}"|sed -e "s/\-//g" -e "s/\+//g" -e "s/\[//g" -e "s/\]//g" | grep -v pwd | fzf | awk "{print $1}")
@@ -100,11 +100,11 @@ function _fgg() {
     echo "\nNo job found"
 }
 fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
+if [[ $#BUFFER -eq 0 ]]; then
     fgg
-  else
+else
     zle push-input
-  fi
+fi
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
