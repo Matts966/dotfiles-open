@@ -11,6 +11,7 @@ let mapleader = "\<Space>" " Remap <leader> key to space
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'psliwka/vim-smoothie'
 
