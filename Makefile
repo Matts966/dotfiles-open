@@ -21,7 +21,7 @@ update: ## Fetch changes for this repo
 install: update deploy init ## Run make update, deploy and init
 .PHONY: install
 
-init: zsh hyper pip fzf ## Initialize installation
+init: zsh hyper pip ## Initialize installation
 .PHONY: init
 
 hyper:
@@ -54,10 +54,6 @@ pip: brew
 	pip3 install glances
 	pip3 install termdown
 .PHONY: pip
-
-fzf: brew
-	$(shell brew --prefix)/opt/fzf/install --all
-.PHONY: fzf
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
