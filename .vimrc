@@ -72,7 +72,9 @@ Plug 'tpope/vim-commentary'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Close nerdtree when all windows are closed.
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup nerdtree_close
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
 map <C-e> :NERDTreeToggle<CR>
 
 Plug 'thinca/vim-quickrun'
@@ -125,8 +127,11 @@ Plug 'dansomething/vim-hackernews'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-autocmd ColorScheme * highlight Normal ctermbg=none
-autocmd ColorScheme * highlight LineNr ctermbg=none
+augroup colorschema
+    autocmd!
+    autocmd ColorScheme * highlight Normal ctermbg=none
+    autocmd ColorScheme * highlight LineNr ctermbg=none
+augroup END
 colorscheme SerialExperimentsLain
 
 " Initialize plugin system
@@ -169,7 +174,10 @@ set expandtab
 set list listchars=tab:\▸\-
 set list
 " Remove trailing spaces.
-autocmd BufWritePre * :%s/\s\+$//e
+augroup remove_spaces
+    autocmd!
+    autocmd BufWritePre * :%s/\s\+$//e
+augroup END
 
 set ignorecase
 set smartcase " Case Sensitive only with upper case
