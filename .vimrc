@@ -49,11 +49,11 @@ command! -bang -nargs=* GGrep
 " Add hidden files in :Rg
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+            \   'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git/*" -- '.shellescape(<q-args>), 1,
             \   fzf#vim#with_preview(), <bang>0)
 " Without fuzzy search with :RG
 function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --hidden --column --line-number --no-heading --color=always --smart-case -- %s || true'
+    let command_fmt = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git/*" -- %s || true'
     let initial_command = printf(command_fmt, shellescape(a:query))
     let reload_command = printf(command_fmt, '{q}')
     let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
