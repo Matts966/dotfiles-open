@@ -226,4 +226,8 @@ function! Cldo(command)
 endfunction
 command! -nargs=1 Cldo :call Cldo(<q-args>)
 
+" Open .vimrc with <leader>,
+map <leader>, :tabedit $MYVIMRC<cr>
+map <leader>r :source $MYVIMRC<cr>
+
 filetype plugin indent on
