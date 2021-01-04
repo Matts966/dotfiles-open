@@ -99,7 +99,6 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gd <plug>(lsp-definition)
     nmap <buffer> gr <plug>(lsp-references)
     nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
     nmap <buffer> <leader>rn <plug>(lsp-rename)
     nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
@@ -204,5 +203,17 @@ inoremap <C-A> <Home>
 inoremap <C-B> <Left>
 inoremap <C-E> <End>
 inoremap <C-F> <Right>
+
+function! Cldo(command)
+    try
+        silent crewind
+        while 1
+            execute a:command
+            silent cnext
+        endwhile
+    catch /^Vim\%((\a\+)\)\=:E\%(553\|42\):/
+    endtry
+endfunction
+command! -nargs=1 Cldo :call Cldo(<q-args>)
 
 filetype plugin indent on
