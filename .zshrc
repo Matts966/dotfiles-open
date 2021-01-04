@@ -1,5 +1,29 @@
 export LANG=ja_JP.UTF-8
 
+# ZPlug
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "t413/zsh-background-notify"
+bgnotify_threshold=2
+zplug "docker/compose", use:contrib/completion/zsh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-completions"
+zplug "greymd/docker-zsh-completion"
+zplug "b4b4r07/zsh-gomi", if:"which fzf"
+zplug "junegunn/fzf", use:"shell/*.zsh"
+
+bindkey '^i' expand-or-complete-prefix
+setopt no_auto_remove_slash
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load
+
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*" 2> /dev/null'
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --height 100% --reverse --border --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -112,31 +136,6 @@ bindkey '^Z' fancy-ctrl-z
 
 unsetopt PROMPT_SP # Remove this line after the fix of hyper issue https://github.com/vercel/hyper/issues/3586
 PROMPT=$'\n'"%(?.%F{green}.%F{red})❯%f "
-
-
-# ZPlug
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
-zplug "t413/zsh-background-notify"
-bgnotify_threshold=2
-zplug "docker/compose", use:contrib/completion/zsh
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-completions"
-zplug "greymd/docker-zsh-completion"
-zplug "b4b4r07/zsh-gomi", if:"which fzf"
-zplug "junegunn/fzf", use:"shell/*.zsh"
-
-bindkey '^i' expand-or-complete-prefix
-setopt no_auto_remove_slash
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-zplug load
 
 
 HISTSIZE=5000               #How many lines of history to keep in memory
