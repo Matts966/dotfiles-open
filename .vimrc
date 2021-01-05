@@ -25,8 +25,8 @@ nnoremap <silent> [fugitive]c :Gcommit-v<CR>
 nnoremap <silent> [fugitive]b :Gblame<CR>
 nnoremap <silent> [fugitive]d :Gdiff<CR>
 nnoremap <silent> [fugitive]m :Gmerge<CR>
-nnoremap [fugitive]p :Git pull<CR>
-nnoremap [fugitive]P :Git push -v<CR>
+nnoremap [fugitive]p :Gpull<CR>
+nnoremap [fugitive]P :Git --no-pager push<CR>
 " Enable spell check only in git commit
 autocmd FileType gitcommit setlocal spell
 
