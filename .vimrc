@@ -14,6 +14,9 @@ let mapleader = "\<Space>" " Remap <leader> key to space
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
 Plug 'jiangmiao/auto-pairs'
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
