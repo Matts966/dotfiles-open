@@ -18,7 +18,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 nnoremap [fugitive]  <Nop>
-nmap <space>g [fugitive]
+nmap <leader>g [fugitive]
 nnoremap <silent> [fugitive]s :Gstatus<CR><C-w>T
 nnoremap <silent> [fugitive]a :Gwrite<CR>
 nnoremap <silent> [fugitive]c :Gcommit-v<CR>
@@ -26,7 +26,7 @@ nnoremap <silent> [fugitive]b :Gblame<CR>
 nnoremap <silent> [fugitive]d :Gdiff<CR>
 nnoremap <silent> [fugitive]m :Gmerge<CR>
 nnoremap <silent> [fugitive]p :Git pull<CR>
-nnoremap <silent> [fugitive]P :Git push<CR>
+nnoremap <silent> [fugitive]P :Git push -v<CR>
 
 Plug 'jiangmiao/auto-pairs'
 
