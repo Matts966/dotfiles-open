@@ -27,6 +27,8 @@ nnoremap <silent> [fugitive]d :Gdiff<CR>
 nnoremap <silent> [fugitive]m :Gmerge<CR>
 nnoremap [fugitive]p :Git pull<CR>
 nnoremap [fugitive]P :Git push -v<CR>
+" Enable spell check only in git commit
+autocmd FileType gitcommit setlocal spell
 
 Plug 'jiangmiao/auto-pairs'
 
