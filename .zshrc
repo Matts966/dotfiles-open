@@ -30,7 +30,7 @@ export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 function peco-history-selection() {
-    BUFFER=`history -f 1 | peco | awk '{c="";for(i=4;i<=NF;i++) c=c $i" "; print c}'`
+    BUFFER=`history -r -f 1 | peco | awk '{c="";for(i=4;i<=NF;i++) c=c $i" "; print c}'`
     CURSOR=$#BUFFER
 }
 zle -N peco-history-selection
