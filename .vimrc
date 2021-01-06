@@ -84,14 +84,6 @@ nnoremap <C-t> :GFiles<CR>
 " Toggle comment out with gcc and gc with selection.
 Plug 'tpope/vim-commentary'
 
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Close nerdtree when all windows are closed.
-augroup nerdtree_close
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup END
-map <C-e> :NERDTreeToggle<CR>
-
 Plug 'thinca/vim-quickrun'
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
