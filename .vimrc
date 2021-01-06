@@ -3,7 +3,6 @@ set encoding=utf-8
 
 filetype off
 filetype plugin indent off
-
 " Keys are mapped with the mapping with the time so
 " important settings should be written earlier.
 let mapleader = "\<Space>" " Remap <leader> key to space
@@ -101,6 +100,7 @@ set laststatus=2
 
 Plug 'lu-ren/SerialExperimentsLain', {'do': 'mkdir -p ~/.vim/colors && cp colors/* ~/.vim/colors/'}
 
+Plug 'tpope/vim-surround'
 
 " LSP
 Plug 'prabirshrestha/asyncomplete.vim'
