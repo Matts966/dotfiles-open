@@ -57,7 +57,8 @@ gcd() {
     bindkey '^g^r' gcd
 
     _lazygit() {
-        if [[ -d .git || -f .git ]]; then
+        git status &> /dev/null
+        if [[ $? -eq 0 ]]; then
             lazygit
             return
         fi
