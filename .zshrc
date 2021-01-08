@@ -54,7 +54,7 @@ fi
 zplug load
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
-export FZF_CTRL_T_COMMAND='rg --color=auto --files 2> /dev/null'
+export FZF_CTRL_T_COMMAND='rg --files 2> /dev/null'
 export BAT_THEME="Monokai Extended Bright"
 _gen_fzf_default_opts() {
     local color00='#272822'
@@ -78,6 +78,7 @@ _gen_fzf_default_opts() {
 " --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D"\
 " --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C"\
 " --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
+" --ansi"
 }
 _gen_fzf_default_opts
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --height 100% --reverse --border --preview "bat --color=always --style=header,grid --line-range :100 {}"'
