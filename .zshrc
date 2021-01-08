@@ -161,26 +161,10 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 
-autoload -Uz colors
+PROMPT="%F{yellow}%~%f"$'\n'"%(?.%F{blue}.%F{red})❯%f "
+autoload colors
 colors
-function prompt_dir() {
-    parent=$(basename $(dirname $(pwd)))
-    present=$(basename $(pwd))
-    prompt_dirname=""
-    if [[ $present = "/" ]]; then
-        prompt_dirname="/"
-    elif [[ $present = $parent ]]; then
-        prompt_dirname="${parent}/${present}"
-    else
-        prompt_dirname=$present
-    fi
-    echo "${fg[green]}Now on ${prompt_dirname}.${reset_color}"
-}
-prompt_dir
-add-zsh-hook chpwd prompt_dir
-
-unsetopt PROMPT_SP # Remove this line after the fix of hyper issue https://github.com/vercel/hyper/issues/3586
-PROMPT=$'\n'"%(?.%F{green}.%F{red})❯%f "
+PROMPT="%{$fg[yellow]%}%~"$'\n'"%(?.%F{blue}.%F{red})❯%f "" %{$reset_color%}"
 
 
 HISTSIZE=5000               #How many lines of history to keep in memory
