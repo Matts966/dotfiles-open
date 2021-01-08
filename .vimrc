@@ -33,6 +33,7 @@ nnoremap [gina]P :Gina push<CR>
 set nospell
 autocmd FileType gitcommit setlocal spell
 
+
 Plug 'jiangmiao/auto-pairs'
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -165,11 +166,11 @@ augroup lsp_install
 augroup END
 
 
-Plug 'gabrielelana/vim-markdown'
-
 Plug 'dansomething/vim-hackernews'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+Plug 'tpope/vim-markdown'
 
 augroup colorschema
     autocmd!
@@ -273,5 +274,6 @@ command! -nargs=1 Cldo :call Cldo(<q-args>)
 " Open .vimrc with <leader>,
 map <leader>, :tabedit $MYVIMRC<cr>
 map <leader>r :source $MYVIMRC<cr>
+
 
 filetype plugin indent on
