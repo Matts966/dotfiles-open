@@ -118,6 +118,7 @@ gcd() {
         fi
         # zle's returns code is always 0...
         repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") && cd $(ghq root)/$repo && lazygit
+        zle reset-prompt
     }
 zle -N _lazygit
 bindkey '^g^g' _lazygit
