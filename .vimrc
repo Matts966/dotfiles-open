@@ -30,7 +30,7 @@ nnoremap <silent> [gina]c :Gina commit<CR>
 nnoremap [gina]p :Gina pull<CR>
 nnoremap [gina]P :Gina push<CR>
 " Enable spell check only in git commit
-set nospell
+set spelllang+=cjk
 autocmd FileType gitcommit setlocal spell
 
 
