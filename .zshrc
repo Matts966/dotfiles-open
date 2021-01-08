@@ -191,10 +191,7 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 
-PROMPT="%F{yellow}%~%f"$'\n'"%(?.%F{blue}.%F{red})❯%f "
-autoload colors
-colors
-PROMPT="%{$fg[yellow]%}%~"$'\n'"%(?.%F{blue}.%F{red})❯%f "" %{$reset_color%}"
+PROMPT="%F{blue}%~%f"$'\n'"%F{yellow}❯❯❯%f""%(?.%F{blue}.%F{red})❯❯%f "
 
 
 HISTSIZE=5000               #How many lines of history to keep in memory
