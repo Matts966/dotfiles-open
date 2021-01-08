@@ -73,11 +73,12 @@ _gen_fzf_default_opts() {
     local color0D='#66d9ef'
     local color0E='#ae81ff'
     local color0F='#cc6633'
+    local colored='#f92672'
 
     export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D"\
-" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C"\
-" --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
+" --color=spinner:$color0C,hl:$color0D"\
+" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$colored"\
+" --color=marker:$colored,fg+:$color06,prompt:$colored,hl+:$color0D"\
 " --ansi"
 }
 _gen_fzf_default_opts
