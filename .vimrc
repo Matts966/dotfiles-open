@@ -46,8 +46,19 @@ Plug 'thinca/vim-qfreplace'
 set rtp+=/opt/homebrew/opt/fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_OPTS = '--reverse'
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*" 2> /dev/null'
+" CTRL-A CTRL-Q to select all and build quickfix list
+function! s:build_quickfix_list(lines)
+    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+    copen
+    cc
+endfunction
+let g:fzf_action = {
+            \ 'ctrl-q': function('s:build_quickfix_list'),
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit' }
+let $FZF_DEFAULT_OPTS = '--reverse --bind ctrl-a:select-all'
 " Respect vim colorscheme.
 function! s:update_fzf_colors()
   let rules =
@@ -74,26 +85,13 @@ function! s:update_fzf_colors()
     endfor
   endfor
   let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts', $FZF_DEFAULT_OPTS)
-  let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts .
-        \ empty(cols) ? '' : (' --color='.join(cols, ','))
+  let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts . (empty(cols) ? '' : (' --color='.join(cols, ',')))
 endfunction
 augroup _fzf
   autocmd!
   autocmd ColorScheme * call <sid>update_fzf_colors()
 augroup END
 
-" CTRL-A CTRL-Q to select all and build quickfix list
-function! s:build_quickfix_list(lines)
-    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-    copen
-    cc
-endfunction
-let g:fzf_action = {
-            \ 'ctrl-q': function('s:build_quickfix_list'),
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-x': 'split',
-            \ 'ctrl-v': 'vsplit' }
-let $FZF_DEFAULT_OPTS = '--reverse --bind ctrl-a:select-all'
 " Git Grep with fzf by :GGrep
 command! -bang -nargs=* GGrep
             \ call fzf#vim#grep(
