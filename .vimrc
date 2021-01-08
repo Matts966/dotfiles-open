@@ -128,7 +128,7 @@ let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 Plug 'itchyny/lightline.vim'
 set laststatus=2
 
-Plug 'lu-ren/SerialExperimentsLain', {'do': 'mkdir -p ~/.vim/colors && cp colors/* ~/.vim/colors/'}
+Plug 'sickill/vim-monokai', {'do': 'mkdir -p ~/.vim/colors && cp colors/* ~/.vim/colors/'}
 
 Plug 'tpope/vim-surround'
 
