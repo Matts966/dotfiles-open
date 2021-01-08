@@ -21,18 +21,14 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 
 " Git related settings
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-nnoremap [fugitive]  <Nop>
-nmap <leader>g [fugitive]
-nnoremap <silent> [fugitive]s :Gstatus<CR><C-w>T
-nnoremap <silent> [fugitive]a :Gwrite<CR>
-nnoremap <silent> [fugitive]c :Gcommit-v<CR>
-nnoremap <silent> [fugitive]b :Gblame<CR>
-nnoremap <silent> [fugitive]d :Gdiff<CR>
-nnoremap <silent> [fugitive]m :Gmerge<CR>
-nnoremap [fugitive]p :Gpull<CR>
-nnoremap [fugitive]P :Git --no-pager push<CR>
+Plug 'lambdalisue/gina.vim'
+nnoremap [gina]  <Nop>
+nmap <leader>g [gina]
+nnoremap <silent> [gina]s :Gina status<CR>
+nnoremap <silent> [gina]a :Gina add %<CR>
+nnoremap <silent> [gina]c :Gina commit<CR>
+nnoremap [gina]p :Gina pull<CR>
+nnoremap [gina]P :Gina push<CR>
 " Enable spell check only in git commit
 autocmd FileType gitcommit setlocal spell
 
