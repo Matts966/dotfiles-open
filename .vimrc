@@ -13,6 +13,10 @@ let mapleader = "\<Space>" " Remap <leader> key to space
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+Plug 'preservim/nerdtree'
+nnoremap <C-e> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
 " Git related settings
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
