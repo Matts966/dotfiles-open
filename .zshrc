@@ -25,6 +25,7 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
+export BAT_THEME="Monokai Extended Bright"
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*" 2> /dev/null'
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --height 100% --reverse --border --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
