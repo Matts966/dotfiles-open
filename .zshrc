@@ -7,7 +7,35 @@ source $ZPLUG_HOME/init.zsh
 zplug "t413/zsh-background-notify"
 bgnotify_threshold=2
 zplug "docker/compose", use:contrib/completion/zsh
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zplug "zsh-users/zsh-syntax-highlighting"
+if zplug check "zsh-users/zsh-syntax-highlighting"; then
+    typeset -gA ZSH_HIGHLIGHT_STYLES ZSH_HIGHLIGHT_PATTERNS
+
+    ZSH_HIGHLIGHT_STYLES[cursor]=fg=yellow,bold
+    ZSH_HIGHLIGHT_STYLES[default]=none
+    ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=green,bold
+    ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=green,bold
+    ZSH_HIGHLIGHT_STYLES[alias]=fg=cyan,bold
+    ZSH_HIGHLIGHT_STYLES[builtin]=fg=cyan,bold
+    ZSH_HIGHLIGHT_STYLES[function]=fg=cyan,bold
+    ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
+    ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
+    ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+    ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=green,bold
+    ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
+    ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
+    ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
+    ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=070
+    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=070
+    ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=063
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
+    ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
+    ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
+    ZSH_HIGHLIGHT_STYLES[assign]=none
+fi
+
 zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
 zplug "b4b4r07/zsh-gomi", if:"which fzf"
