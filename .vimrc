@@ -17,6 +17,9 @@ Plug 'preservim/nerdtree'
 nnoremap <C-e> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+
 " Git related settings
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
