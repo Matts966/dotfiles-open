@@ -13,20 +13,24 @@ let mapleader = "\<Space>" " Remap <leader> key to space
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+Plug 'preservim/nerdtree'
+nnoremap <C-e> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+
 " Git related settings
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-nnoremap [fugitive]  <Nop>
-nmap <leader>g [fugitive]
-nnoremap <silent> [fugitive]s :Gstatus<CR><C-w>T
-nnoremap <silent> [fugitive]a :Gwrite<CR>
-nnoremap <silent> [fugitive]c :Gcommit-v<CR>
-nnoremap <silent> [fugitive]b :Gblame<CR>
-nnoremap <silent> [fugitive]d :Gdiff<CR>
-nnoremap <silent> [fugitive]m :Gmerge<CR>
-nnoremap [fugitive]p :Gpull<CR>
-nnoremap [fugitive]P :Git --no-pager push<CR>
+Plug 'lambdalisue/gina.vim'
+nnoremap [gina]  <Nop>
+nmap <leader>g [gina]
+nnoremap <silent> [gina]s :Gina status<CR>
+nnoremap <silent> [gina]a :Gina add %<CR>
+nnoremap <silent> [gina]c :Gina commit<CR>
+nnoremap [gina]p :Gina pull<CR>
+nnoremap [gina]P :Gina push<CR>
 " Enable spell check only in git commit
+set nospell
 autocmd FileType gitcommit setlocal spell
 
 Plug 'jiangmiao/auto-pairs'
@@ -42,7 +46,6 @@ Plug 'thinca/vim-qfreplace'
 set rtp+=/opt/homebrew/opt/fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_OPTS = '--reverse'
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*" 2> /dev/null'
 " CTRL-A CTRL-Q to select all and build quickfix list
 function! s:build_quickfix_list(lines)
@@ -56,6 +59,39 @@ let g:fzf_action = {
             \ 'ctrl-x': 'split',
             \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--reverse --bind ctrl-a:select-all'
+" Respect vim colorscheme.
+function! s:update_fzf_colors()
+  let rules =
+  \ { 'fg':      [['Normal',       'fg']],
+    \ 'bg':      [['Normal',       'bg']],
+    \ 'hl':      [['Comment',      'fg']],
+    \ 'fg+':     [['CursorColumn', 'fg'], ['Normal', 'fg']],
+    \ 'bg+':     [['CursorColumn', 'bg']],
+    \ 'hl+':     [['Statement',    'fg']],
+    \ 'info':    [['PreProc',      'fg']],
+    \ 'prompt':  [['Conditional',  'fg']],
+    \ 'pointer': [['Exception',    'fg']],
+    \ 'marker':  [['Keyword',      'fg']],
+    \ 'spinner': [['Label',        'fg']],
+    \ 'header':  [['Comment',      'fg']] }
+  let cols = []
+  for [name, pairs] in items(rules)
+    for pair in pairs
+      let code = synIDattr(synIDtrans(hlID(pair[0])), pair[1])
+      if !empty(name) && code > 0
+        call add(cols, name.':'.code)
+        break
+      endif
+    endfor
+  endfor
+  let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts', $FZF_DEFAULT_OPTS)
+  let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts . (empty(cols) ? '' : (' --color='.join(cols, ',')))
+endfunction
+augroup _fzf
+  autocmd!
+  autocmd ColorScheme * call <sid>update_fzf_colors()
+augroup END
+
 " Git Grep with fzf by :GGrep
 command! -bang -nargs=* GGrep
             \ call fzf#vim#grep(
@@ -90,7 +126,7 @@ let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 Plug 'itchyny/lightline.vim'
 set laststatus=2
 
-Plug 'lu-ren/SerialExperimentsLain', {'do': 'mkdir -p ~/.vim/colors && cp colors/* ~/.vim/colors/'}
+Plug 'sickill/vim-monokai', {'do': 'mkdir -p ~/.vim/colors && cp colors/* ~/.vim/colors/'}
 
 Plug 'tpope/vim-surround'
 
@@ -140,7 +176,7 @@ augroup colorschema
     autocmd ColorScheme * highlight Normal ctermbg=none
     autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END
-colorscheme SerialExperimentsLain
+colorscheme monokai
 
 " Initialize plugin system
 call plug#end()

@@ -25,7 +25,32 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
+export BAT_THEME="Monokai Extended Bright"
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*" 2> /dev/null'
+_gen_fzf_default_opts() {
+    local color00='#272822'
+    local color01='#383830'
+    local color02='#49483e'
+    local color03='#75715e'
+    local color04='#a59f85'
+    local color05='#f8f8f2'
+    local color06='#f5f4f1'
+    local color07='#f9f8f5'
+    local color08='#f92672'
+    local color09='#fd971f'
+    local color0A='#f4bf75'
+    local color0B='#a6e22e'
+    local color0C='#a1efe4'
+    local color0D='#66d9ef'
+    local color0E='#ae81ff'
+    local color0F='#cc6633'
+
+    export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+" --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D"\
+" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C"\
+" --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
+}
+_gen_fzf_default_opts
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --height 100% --reverse --border --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -136,26 +161,10 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 
-autoload -Uz colors
+PROMPT="%F{yellow}%~%f"$'\n'"%(?.%F{blue}.%F{red})❯%f "
+autoload colors
 colors
-function prompt_dir() {
-    parent=$(basename $(dirname $(pwd)))
-    present=$(basename $(pwd))
-    prompt_dirname=""
-    if [[ $present = "/" ]]; then
-        prompt_dirname="/"
-    elif [[ $present = $parent ]]; then
-        prompt_dirname="${parent}/${present}"
-    else
-        prompt_dirname=$present
-    fi
-    echo "${fg[green]}Now on ${prompt_dirname}.${reset_color}"
-}
-prompt_dir
-add-zsh-hook chpwd prompt_dir
-
-unsetopt PROMPT_SP # Remove this line after the fix of hyper issue https://github.com/vercel/hyper/issues/3586
-PROMPT=$'\n'"%(?.%F{green}.%F{red})❯%f "
+PROMPT="%{$fg[yellow]%}%~"$'\n'"%(?.%F{blue}.%F{red})❯%f "" %{$reset_color%}"
 
 
 HISTSIZE=5000               #How many lines of history to keep in memory
