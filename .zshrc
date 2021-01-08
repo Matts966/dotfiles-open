@@ -194,12 +194,12 @@ bindkey '^Z' fancy-ctrl-z
 PROMPT="%F{blue}%~%f"$'\n'"%F{yellow}❯❯❯%f""%(?.%F{blue}.%F{red})❯❯%f "
 
 
-HISTSIZE=5000               #How many lines of history to keep in memory
-HISTFILE=~/.zsh_history     #Where to save history to disk
-SAVEHIST=5000               #Number of history entries to save to disk
-HISTDUP=erase               #Erase duplicates in the history file
-setopt    appendhistory     #Append history to the history file (no overwriting)
-setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
+HISTSIZE=50000              # How many lines of history to keep in memory
+HISTFILE=~/.zsh_history     # Where to save history to disk
+SAVEHIST=50000              # Number of history entries to save to disk
+HISTDUP=erase               # Erase duplicates in the history file
+setopt    appendhistory     # Append history to the history file (no overwriting)
+setopt    incappendhistory  # Immediately append to the history file, not just when a term is killed
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
