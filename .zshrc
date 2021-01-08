@@ -54,7 +54,7 @@ fi
 zplug load
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
-export FZF_CTRL_T_COMMAND='rg --files 2> /dev/null'
+export FZF_CTRL_T_COMMAND='rg --color=auto --files 2> /dev/null'
 export BAT_THEME="Monokai Extended Bright"
 _gen_fzf_default_opts() {
     local color00='#272822'
