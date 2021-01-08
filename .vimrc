@@ -47,7 +47,7 @@ Plug 'thinca/vim-qfreplace'
 set rtp+=/opt/homebrew/opt/fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*" 2> /dev/null'
+let $FZF_DEFAULT_COMMAND = 'rg --files 2> /dev/null'
 " CTRL-A CTRL-Q to select all and build quickfix list
 function! s:build_quickfix_list(lines)
     call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -101,11 +101,11 @@ command! -bang -nargs=* GGrep
 " Add hidden files in :Rg
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git/*" -- '.shellescape(<q-args>), 1,
+            \   'rg --column --line-number --no-heading" -- '.shellescape(<q-args>), 1,
             \   fzf#vim#with_preview(), <bang>0)
 " Without fuzzy search with :RG
 function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git/*" -- %s || true'
+    let command_fmt = 'rg --column --line-number --no-heading -- %s || true'
     let initial_command = printf(command_fmt, shellescape(a:query))
     let reload_command = printf(command_fmt, '{q}')
     let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
