@@ -178,7 +178,6 @@ augroup colorschema
     autocmd ColorScheme * highlight Normal ctermbg=none
     autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END
-colorscheme SerialExperimentsLain
 colorscheme monokai
 
 " Initialize plugin system
