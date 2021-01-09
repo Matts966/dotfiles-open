@@ -193,7 +193,7 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 
-PROMPT="%F{blue}%~%f"$'\n'"%F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
+PROMPT="%F{cyan}%~%f"$'\n'"%F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
 
 
 HISTSIZE=50000              # How many lines of history to keep in memory
