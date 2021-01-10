@@ -7,7 +7,35 @@ source $ZPLUG_HOME/init.zsh
 zplug "t413/zsh-background-notify"
 bgnotify_threshold=2
 zplug "docker/compose", use:contrib/completion/zsh
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zplug "zsh-users/zsh-syntax-highlighting"
+if zplug check "zsh-users/zsh-syntax-highlighting"; then
+    typeset -gA ZSH_HIGHLIGHT_STYLES ZSH_HIGHLIGHT_PATTERNS
+
+    ZSH_HIGHLIGHT_STYLES[cursor]=fg=yellow,bold
+    ZSH_HIGHLIGHT_STYLES[default]=none
+    ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=green,bold
+    ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=green,bold
+    ZSH_HIGHLIGHT_STYLES[alias]=fg=cyan,bold
+    ZSH_HIGHLIGHT_STYLES[builtin]=fg=cyan,bold
+    ZSH_HIGHLIGHT_STYLES[function]=fg=cyan,bold
+    ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
+    ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
+    ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+    ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=green,bold
+    ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
+    ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
+    ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
+    ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=070
+    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=070
+    ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=063
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
+    ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
+    ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
+    ZSH_HIGHLIGHT_STYLES[assign]=none
+fi
+
 zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
 zplug "b4b4r07/zsh-gomi", if:"which fzf"
@@ -25,8 +53,9 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
+export FZF_CTRL_T_COMMAND='rg --files 2> /dev/null'
 export BAT_THEME="Monokai Extended Bright"
-export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*" 2> /dev/null'
 _gen_fzf_default_opts() {
     local color00='#272822'
     local color01='#383830'
@@ -44,11 +73,13 @@ _gen_fzf_default_opts() {
     local color0D='#66d9ef'
     local color0E='#ae81ff'
     local color0F='#cc6633'
+    local colored='#f92672'
 
     export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D"\
-" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C"\
-" --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
+" --color=spinner:$color0C,hl:$color0D"\
+" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$colored"\
+" --color=marker:$colored,fg+:$color06,prompt:$colored,hl+:$color0D"\
+" --ansi"
 }
 _gen_fzf_default_opts
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --height 100% --reverse --border --preview "bat --color=always --style=header,grid --line-range :100 {}"'
@@ -82,6 +113,7 @@ gcd() {
         fi
         # zle's returns code is always 0...
         repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") && cd $(ghq root)/$repo && lazygit
+        zle reset-prompt
     }
 zle -N _lazygit
 bindkey '^g^g' _lazygit
@@ -168,18 +200,15 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 
-PROMPT="%F{yellow}%~%f"$'\n'"%(?.%F{blue}.%F{red})❯%f "
-autoload colors
-colors
-PROMPT="%{$fg[yellow]%}%~"$'\n'"%(?.%F{blue}.%F{red})❯%f "" %{$reset_color%}"
+PROMPT="%F{cyan}%~%f"$'\n'"%F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
 
 
-HISTSIZE=5000               #How many lines of history to keep in memory
-HISTFILE=~/.zsh_history     #Where to save history to disk
-SAVEHIST=5000               #Number of history entries to save to disk
-HISTDUP=erase               #Erase duplicates in the history file
-setopt    appendhistory     #Append history to the history file (no overwriting)
-setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
+HISTSIZE=50000              # How many lines of history to keep in memory
+HISTFILE=~/.zsh_history     # Where to save history to disk
+SAVEHIST=50000              # Number of history entries to save to disk
+HISTDUP=erase               # Erase duplicates in the history file
+setopt    appendhistory     # Append history to the history file (no overwriting)
+setopt    incappendhistory  # Immediately append to the history file, not just when a term is killed
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

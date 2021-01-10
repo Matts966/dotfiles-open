@@ -1,0 +1,32 @@
+# Search hidden files and directories.
+--hidden
+
+# Follow symbolic links.
+--follow
+
+# Don't respect ignore files (.gitignore, .ignore, etc.).
+--no-ignore
+
+# Exclude directories.
+--glob=!{.git,.svn,.tldr,node_modules,venv,.Trash,vendor}
+
+# Exclude file types.
+--glob=!*.{lock}
+
+# Exclude files.
+--glob=!{package-lock.json}
+
+# Searches case insensitively.
+--smart-case
+
+# Sort by file path.
+--sort=path
+
+# Configure color settings and styles.
+# Monokai
+--color=always
+--colors=path:fg:white
+--colors=line:fg:0xe6,0xdb,0x74
+--colors=column:fg:0xf8,0x26,0x72
+--colors=match:fg:0xe5,0xdb,0x74
+--colors=match:style:nobold
