@@ -55,7 +55,9 @@ zplug load
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export FZF_CTRL_T_COMMAND='rg --files 2> /dev/null'
+export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 export BAT_THEME="Monokai Extended Bright"
+export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
 _gen_fzf_default_opts() {
     local color00='#272822'
     local color01='#383830'
@@ -82,7 +84,6 @@ _gen_fzf_default_opts() {
 " --ansi"
 }
 _gen_fzf_default_opts
-export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --height 100% --reverse --border --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Git functions
@@ -121,7 +122,7 @@ bindkey '^g^g' _lazygit
 fshow() {
     git log --graph --all --color=always \
         --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-        fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+        fzf --no-sort --tiebreak=index --bind=ctrl-s:toggle-sort \
         --bind "ctrl-m:execute:
             (grep -o '[a-f0-9]\{7\}' | head -1 |
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
