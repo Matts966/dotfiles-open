@@ -25,8 +25,6 @@ brew "jq"
 brew "lazygit"
 # Platform built on V8 to build network applications
 brew "node"
-# Simplistic interactive filtering tool
-brew "peco"
 # Python version management
 brew "pyenv"
 # Search tool like grep and The Silver Searcher
