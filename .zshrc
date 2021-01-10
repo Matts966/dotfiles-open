@@ -159,15 +159,16 @@ cdr() {
 zle -N cdr
 bindkey '^D' cdr
 
-alias ag='ag --hidden'
 function agg() {
     openvim='{system("vim " $1 " +" $2 " < /dev/tty > /dev/tty")}'
-    result=`ag . 2> /dev/null | fzf --reverse --border --bind "ctrl-v:execute(printf %q {} | awk -F ':' '$openvim')"`
+    result=`rg --column --line-number --no-heading -- . 2> /dev/null | fzf --bind "ctrl-v:execute(printf %q {} | awk -F ':' '$openvim')"`
     if [ -z $result ]
     then
+        zle reset-prompt
         return
     fi
     echo $result | awk -F ':' $openvim
+    zle reset-prompt
 }
 zle -N agg
 bindkey '^x^f' agg
