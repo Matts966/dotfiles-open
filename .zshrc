@@ -4,8 +4,9 @@ export LANG=ja_JP.UTF-8
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-zplug "t413/zsh-background-notify"
-bgnotify_threshold=2
+_notify_timeout() { zstyle ':notify:*' command-complete-timeout 3 }
+zplug "marzocchi/zsh-notify", hook-load: '_notify_timeout'
+
 zplug "docker/compose", use:contrib/completion/zsh
 
 zplug "zsh-users/zsh-syntax-highlighting"
