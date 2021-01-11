@@ -62,7 +62,7 @@ let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
             \ 'ctrl-x': 'split',
             \ 'ctrl-v': 'vsplit' }
-let $FZF_DEFAULT_OPTS = '--reverse --bind ctrl-a:select-all'
+let $FZF_DEFAULT_OPTS = '--reverse --ansi --bind ctrl-a:select-all'
 " Respect vim colorscheme.
 function! s:update_fzf_colors()
   let rules =
