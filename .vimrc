@@ -128,9 +128,6 @@ Plug 'tpope/vim-commentary'
 Plug 'thinca/vim-quickrun'
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
-Plug 'itchyny/lightline.vim'
-set laststatus=2
-
 Plug 'sickill/vim-monokai', {'do': 'mkdir -p ~/.vim/colors && cp colors/* ~/.vim/colors/'}
 
 Plug 'tpope/vim-surround'
@@ -169,6 +166,9 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='minimalist'
 
 
 Plug 'dansomething/vim-hackernews'
