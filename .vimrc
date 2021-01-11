@@ -117,6 +117,10 @@ nnoremap <C-f> :RG<CR>
 " Compatible with fzf default binding but ignore tag stack.
 nnoremap <C-t> :GFiles<CR>
 
+" Redirect any shell commands to fzf.vim.
+command! -bang -complete=shellcmd -nargs=* F
+    \ call fzf#run(fzf#wrap(<q-args>, {'source': <q-args> . " 2>&1"}, <bang>0))
+
 
 " Toggle comment out with gcc and gc with selection.
 Plug 'tpope/vim-commentary'
