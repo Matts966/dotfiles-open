@@ -13,8 +13,8 @@ let mapleader = "\<Space>" " Remap <leader> key to space
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-Plug 'tamuhey/vim-jupyter', { 'do': 'gh -R tamuhey/j2p2j release download' .
-    \ ' --pattern *j2p2j_darwin_amd64* && mv j2p2j_darwin_amd64' .
+Plug 'tamuhey/vim-jupyter', { 'do': 'gh -R tamuhey/j2p2j release download'.
+    \ ' --pattern *j2p2j_darwin_amd64* && mv j2p2j_darwin_amd64'.
     \ ' /usr/local/bin/j2p2j && chmod +x /usr/local/bin/j2p2j' }
 
 Plug 'preservim/nerdtree'
