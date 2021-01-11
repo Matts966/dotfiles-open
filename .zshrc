@@ -138,9 +138,9 @@ bindkey '^g^s' fshow
 stty stop undef
 stty start undef
 spotify-tui() {
-BUFFER=spt
-zle accept-line
-zle reset-prompt
+    BUFFER=spt
+    zle accept-line
+    zle reset-prompt
 }
 zle -N spotify-tui
 bindkey '^s' spotify-tui
