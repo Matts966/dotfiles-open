@@ -96,6 +96,8 @@ augroup _fzf
   autocmd ColorScheme * call <sid>update_fzf_colors()
 augroup END
 
+nnoremap <leader><C-r> :History:<CR>
+
 " Git Grep with fzf by :GGrep
 command! -bang -nargs=* GGrep
             \ call fzf#vim#grep(
