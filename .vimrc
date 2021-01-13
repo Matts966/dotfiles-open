@@ -1,8 +1,8 @@
+source $VIMRUNTIME/defaults.vim
+
 scriptencoding utf-8
 set encoding=utf-8
 
-filetype off
-filetype plugin indent off
 " Keys are mapped with the mapping with the time so
 " important settings should be written earlier.
 let mapleader = "\<Space>" " Remap <leader> key to space
@@ -214,20 +214,17 @@ call plug#end()
 set background=dark
 set t_Co=256
 
-set mouse=a
 set fenc=utf-8
 set nobackup
 set noswapfile
 set autoread
 set hidden
-set showcmd
 " Yank to clipboard
 if system('uname -s') == "Darwin\n"
     set clipboard=unnamed "OSX
 else
     set clipboard=unnamedplus "Linux
 endif
-set backspace=indent,eol,start
 
 set number
 set cursorline
@@ -254,9 +251,7 @@ augroup END
 
 set ignorecase
 set smartcase " Case Sensitive only with upper case
-set incsearch
 set wrapscan
-syntax on
 
 " Set 256 colors
 let s:saved_t_Co=&t_Co
@@ -302,6 +297,3 @@ command! -nargs=1 Cldo :call Cldo(<q-args>)
 " Open .vimrc with <leader>,
 map <leader>, :tabedit $MYVIMRC<cr>
 map <leader>r :source $MYVIMRC<cr>
-
-
-filetype plugin indent on
