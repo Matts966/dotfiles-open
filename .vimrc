@@ -182,8 +182,8 @@ let g:airline_theme='minimalist'
 Plug 'dansomething/vim-hackernews'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
-Plug 'tpope/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 augroup colorschema
     autocmd!
