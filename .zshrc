@@ -107,16 +107,16 @@ gcd() {
     zle -N gcd
     bindkey '^g^r' gcd
 
-    _lazygit() {
-        git status &> /dev/null
-        if [[ $? -eq 0 ]]; then
-            lazygit
-            return
-        fi
-        # zle's returns code is always 0...
-        repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") && cd $(ghq root)/$repo && lazygit
-        zle reset-prompt
-    }
+_lazygit() {
+    git status &> /dev/null
+    if [[ $? -eq 0 ]]; then
+        lazygit
+        return
+    fi
+    # zle's returns code is always 0...
+    repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") && cd $(ghq root)/$repo && lazygit
+    zle reset-prompt
+}
 zle -N _lazygit
 bindkey '^g^g' _lazygit
 
