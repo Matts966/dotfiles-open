@@ -102,6 +102,7 @@ augroup _fzf
 augroup END
 
 nnoremap <leader><C-r> :History:<CR>
+nnoremap <leader><leader> :History<CR>
 
 " Git Grep with fzf by :GGrep
 command! -bang -nargs=* GGrep
