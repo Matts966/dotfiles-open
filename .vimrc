@@ -282,3 +282,7 @@ command! -nargs=1 Cldo :call Cldo(<q-args>)
 " Open .vimrc with <leader>,
 map <leader>, :tabedit $MYVIMRC<cr>
 map <leader>r :source $MYVIMRC<cr>
+
+if &history < 1000
+    set history=1000
+endif
