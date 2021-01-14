@@ -22,6 +22,7 @@ install: update deploy init ## Run make update, deploy and init
 .PHONY: install
 
 init: zsh pip ## Initialize installation
+	git config --global core.editor $(which vim)
 .PHONY: init
 
 brew:
