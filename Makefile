@@ -11,18 +11,20 @@ list: ## Show dot files in this repo
 deploy: ## Create symlink to home directory
 	@echo 'Symlink dot files in your home directory...'
 	@$(foreach val, $(DOTFILES), ln -sFnv $(abspath $(val)) $(HOME);)
-	cp -nv karabiner.json ~/.config/karabiner/karabiner.json
+	cp -iv karabiner.json ~/.config/karabiner/karabiner.json
 .PHONY: deploy
 
 update: ## Fetch changes for this repo
 	git pull origin main
 .PHONY: update
 
-install: update deploy init ## Run make update, deploy and init
+install: update ## Run make update, deploy and init
+	make deploy
+	make init
 .PHONY: install
 
 init: zsh pip ## Initialize installation
-	git config --global core.editor $(which vim)
+	git config --global core.editor $(shell which vim)
 .PHONY: init
 
 brew:
