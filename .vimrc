@@ -150,6 +150,24 @@ Plug 'mattn/vim-lsp-icons'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
+let g:lsp_settings = {
+\   'pyls-all': {
+\       'workspace_config': {
+\           'pyls': {
+\             'configurationSources': ['flake8'],
+\             'plugins': {
+\                 'flake8': {
+\                     'enabled': v:true,
+\                     "ignore": ["#262", "E402", "E712"],
+\                     "max-line-length": 120,
+\                 },
+\                 'black': {'enabled': v:true},
+\             },
+\         },
+\     },
+\   },
+\ }
+
 let g:lsp_diagnostics_echo_cursor = 1
 
 function! s:on_lsp_buffer_enabled() abort
