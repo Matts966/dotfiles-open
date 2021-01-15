@@ -18,6 +18,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 
+Plug 'junegunn/goyo.vim'
+nnoremap <silent> <leader>go :Goyo<CR>
+
 Plug 'tamuhey/vim-jupyter', { 'do': 'gh -R tamuhey/j2p2j release download'.
     \ ' --pattern *j2p2j_darwin_amd64* && mv j2p2j_darwin_amd64'.
     \ ' /usr/local/bin/j2p2j && chmod +x /usr/local/bin/j2p2j' }
