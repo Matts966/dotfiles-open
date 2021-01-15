@@ -140,8 +140,6 @@ Plug 'tpope/vim-commentary'
 Plug 'thinca/vim-quickrun'
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
-Plug 'sickill/vim-monokai', {'do': 'mkdir -p ~/.vim/colors && cp colors/* ~/.vim/colors/'}
-
 Plug 'tpope/vim-surround'
 
 " LSP
@@ -210,19 +208,18 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+
+Plug 'crusoexia/vim-monokai'
 augroup colorschema
     autocmd!
     autocmd ColorScheme * highlight Normal ctermbg=none
     autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END
+set termguicolors
 colorscheme monokai
 
 " Initialize plugin system
 call plug#end()
-
-
-set background=dark
-set t_Co=256
 
 set fenc=utf-8
 set nobackup
@@ -264,23 +261,6 @@ augroup END
 set ignorecase
 set smartcase " Case Sensitive only with upper case
 set wrapscan
-
-" Set 256 colors
-let s:saved_t_Co=&t_Co
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
-
-" Restore t_Co for less command after vim quit
-augroup restore_t_Co
-    autocmd!
-    if s:saved_t_Co == 8
-        autocmd VimLeave * let &t_Co = 256
-    else
-        autocmd VimLeave * let &t_Co = 8
-    endif
-    autocmd VimLeave * let &t_Co = s:saved_t_Co
-augroup END
 
 " Create dir if not exists when writing new file.
 augroup Mkdir
