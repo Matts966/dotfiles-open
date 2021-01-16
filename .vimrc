@@ -307,8 +307,11 @@ command! -nargs=1 Cldo :call Cldo(<q-args>)
 
 " Open .vimrc with <leader>,
 function! s:OpenVimrc()
-    echo 'a'
-    exe 'tabedit ' . resolve(expand($MYVIMRC))
+    if line('$') == 1 && getline(1) == ''
+        exe 'e' resolve(expand($MYVIMRC))
+    else
+        exe 'tabedit ' . resolve(expand($MYVIMRC))
+    endif
     exe 'lcd %:h'
 endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
