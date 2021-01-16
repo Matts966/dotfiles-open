@@ -40,6 +40,7 @@ zplug "b4b4r07/zsh-gomi", if:"which fzf"
 zplug "junegunn/fzf", use:"shell/*.zsh"
 zplug "trystan2k/zsh-tab-title"
 
+bindkey -e
 bindkey '^i' expand-or-complete-prefix
 setopt no_auto_remove_slash
 
