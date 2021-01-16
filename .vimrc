@@ -240,7 +240,6 @@ set showmatch
 set wildmode=list:longest " Auto completion on vim command line
 nnoremap j gj
 nnoremap k gk
-set termwinkey=<C-L> " Use <C-W> as delete word"
 
 " Tab
 set tabstop=4
