@@ -223,7 +223,10 @@ set fenc=utf-8
 set nobackup
 set noswapfile
 set autoread
-autocmd InsertEnter,WinEnter * checktime
+augroup vimrc-checktime
+    autocmd!
+    autocmd InsertEnter,WinEnter * checktime
+augroup END
 set hidden
 " Yank to clipboard
 if system('uname -s') == "Darwin\n"
