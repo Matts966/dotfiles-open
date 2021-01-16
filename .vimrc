@@ -49,6 +49,18 @@ set spelllang+=cjk
 autocmd FileType gitcommit setlocal spell
 nnoremap <leader>gg :tab term ++close lazygit<CR>
 
+function! s:cd_repo(repo) abort
+    let l:repo = trim(system('ghq root')) . '/' . a:repo
+    exe 'tabedit ' . repo
+    exe 'lcd ' . repo
+    bo terminal
+    15 wincmd -
+    wincmd k
+endfunction
+command! -bang -nargs=0 Repo
+    \ call fzf#run(fzf#wrap({'source': systemlist('ghq list'), 'sink': function('s:cd_repo')}, <bang>0))
+nnoremap <leader>gr :Repo<CR>
+
 
 Plug 'jiangmiao/auto-pairs'
 
