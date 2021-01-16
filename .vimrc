@@ -52,8 +52,8 @@ function! s:cd_repo(repo) abort
         exe 'tabedit ' . repo
     endif
     exe 'lcd ' . repo
-    bo terminal
-    15 wincmd -
+    botright terminal
+    10 wincmd -
     wincmd k
 endfunction
 command! -bang -nargs=0 Repo
