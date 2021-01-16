@@ -1,0 +1,17 @@
+font:
+  size: 12
+  normal:
+    family: 'Source Code Pro'
+    style: Regular
+  bold:
+    family: 'Source Code Pro'
+    style: Bold
+  italic:
+    family: 'Source Code Pro'
+    style: Italic
+  bold_italic:
+    family: 'Source Code Pro'
+    style: Bold Italic
+window:
+  startup_mode: Maximized
+background_opacity: 0.95
