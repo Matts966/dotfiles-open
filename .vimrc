@@ -27,10 +27,6 @@ Plug 'tamuhey/vim-jupyter'
 
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 
-Plug 'preservim/nerdtree'
-nnoremap <C-e> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 
@@ -229,6 +225,12 @@ colorscheme monokai
 
 " Initialize plugin system
 call plug#end()
+
+" netrw
+let g:netrw_winsize=20
+let g:netrw_liststyle=3
+let g:netrw_localrmdir='rm -r'
+nnoremap <C-E> :Lexplore<CR>
 
 set fenc=utf-8
 set nobackup
