@@ -36,13 +36,17 @@ fi
 
 zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
-zplug "b4b4r07/zsh-gomi", if:"which fzf"
-zplug "junegunn/fzf", use:"shell/*.zsh"
 zplug "trystan2k/zsh-tab-title"
 
-bindkey -e
+# Vim mode that is compatible bindkey -e
+zplug "softmoth/zsh-vim-mode"
+
+# bash like auto completion
 bindkey '^i' expand-or-complete-prefix
 setopt no_auto_remove_slash
+
+zplug "junegunn/fzf", use:"shell/*.zsh"
+zplug "b4b4r07/zsh-gomi", if:"which fzf"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
