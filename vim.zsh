@@ -18,5 +18,5 @@ if [[ ! -z "$VIM_TERMINAL" ]]; then
         readlink-f $@ | xargs printf '\033]51;["call", "Tapi_vit", ["%s"]]\007'
     fi
 else
-    /usr/local/bin/vim $@
+    command vim $@
 fi
