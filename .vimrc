@@ -46,7 +46,11 @@ nnoremap <leader>gg :tab term ++close lazygit<CR>
 
 function! s:cd_repo(repo) abort
     let l:repo = trim(system('ghq root')) . '/' . a:repo
-    exe 'tabedit ' . repo
+    if line('$') == 1 && getline(1) == ''
+        exe 'e' repo
+    else
+        exe 'tabedit ' . repo
+    endif
     exe 'lcd ' . repo
     bo terminal
     15 wincmd -
