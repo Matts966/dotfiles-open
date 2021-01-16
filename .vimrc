@@ -257,6 +257,7 @@ augroup END
 set ignorecase
 set smartcase " Case Sensitive only with upper case
 set wrapscan
+set hlsearch
 
 " Create dir if not exists when writing new file.
 augroup Mkdir
