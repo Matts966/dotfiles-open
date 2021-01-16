@@ -301,8 +301,14 @@ endfunction
 command! -nargs=1 Cldo :call Cldo(<q-args>)
 
 " Open .vimrc with <leader>,
-map <leader>, :tabedit $MYVIMRC<cr>
-map <leader>r :source $MYVIMRC<cr>
+function! s:OpenVimrc()
+    echo 'a'
+    exe 'tabedit ' . resolve(expand($MYVIMRC))
+    exe 'lcd %:h'
+endfunction
+command! -nargs=0 OpenVimrc call s:OpenVimrc()
+map <leader>, :OpenVimrc<CR>
+map <leader>r :source $MYVIMRC<CR>
 
 if &history < 1000
     set history=1000
