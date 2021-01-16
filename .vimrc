@@ -313,3 +313,13 @@ map <leader>r :source $MYVIMRC<CR>
 if &history < 1000
     set history=1000
 endif
+
+" To open vim from terminal on vim
+function! Tapi_vit(bufnum, arglist)
+    let currfile = get(a:arglist, 0, '')
+    if empty(currfile)
+        return
+    endif
+    wincmd k
+    execute 'e' currfile
+endfunction

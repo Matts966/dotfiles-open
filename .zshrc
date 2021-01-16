@@ -51,6 +51,10 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
+# To open vim from terminal on vim
+export EDITOR=vim.zsh
+alias vim='vim.zsh'
+
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export FZF_CTRL_T_COMMAND='rg --files 2> /dev/null'
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --preview "bat --color=always --style=header,grid --line-range :100 {}"'

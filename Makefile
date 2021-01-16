@@ -12,6 +12,7 @@ deploy: ## Create symlink to home directory
 	@echo 'Symlink dot files in your home directory...'
 	@$(foreach val, $(DOTFILES), ln -sFnv $(abspath $(val)) $(HOME);)
 	cp -iv karabiner.json ~/.config/karabiner/karabiner.json
+	cp -iv vim.zsh /usr/local/bin/vim.zsh
 .PHONY: deploy
 
 update: ## Fetch changes for this repo
