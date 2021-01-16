@@ -47,7 +47,7 @@ nnoremap [gina]P :Gina push<CR>
 " Enable spell check only in git commit
 set spelllang+=cjk
 autocmd FileType gitcommit setlocal spell
-nnoremap <leader>gg :vert term ++close lazygit<CR><C-W>|
+nnoremap <leader>gg :tab term ++close lazygit<CR>
 
 
 Plug 'jiangmiao/auto-pairs'
