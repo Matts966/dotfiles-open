@@ -324,3 +324,6 @@ function! Tapi_vit(bufnum, arglist)
     wincmd k
     execute 'e' currfile
 endfunction
+
+" Automatic install
+PlugClean | PlugInstall
