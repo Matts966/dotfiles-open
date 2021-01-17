@@ -172,17 +172,6 @@ zle -N fshow
 bindkey '^g^s' fshow
 
 
-# Spotify
-stty stop undef
-stty start undef
-spotify-tui() {
-    BUFFER=spt
-    zle accept-line
-    zle reset-prompt
-}
-zle -N spotify-tui
-bindkey '^s' spotify-tui
-
 # cd with fzf without buffer, otherwise delete-char-or-list
 setopt ignore_eof
 cdr() {
