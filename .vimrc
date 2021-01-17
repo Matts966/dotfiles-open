@@ -20,7 +20,18 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/goyo.vim'
 nnoremap <silent> <leader>go :Goyo<CR>
-let g:goyo_width = 120
+function! s:auto_goyo_length()
+    if &ft == 'python'
+        " Python standard
+        let g:goyo_width = 120
+    else
+        let g:goyo_width = 80
+    endif
+endfunction
+augroup goyo_python
+    autocmd!
+    autocmd WinEnter * call s:auto_goyo_length()
+augroup END
 
 if ! executable('j2p2j')
     !go install github.com/tamuhey/j2p2j
