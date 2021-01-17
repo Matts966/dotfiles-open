@@ -40,10 +40,6 @@ zplug "greymd/docker-zsh-completion"
 # Vim mode that is compatible bindkey -e
 zplug "softmoth/zsh-vim-mode", defer:1
 
-# bash like auto completion
-bindkey '^i' expand-or-complete-prefix
-setopt no_auto_remove_slash
-
 zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
 zplug "b4b4r07/zsh-gomi", if:"which fzf", defer:3
 
@@ -86,6 +82,10 @@ update-prompt() {
 update-prompt
 zle -N update-prompt
 vim_mode_keymap_funcs=update-prompt
+
+# bash like auto completion
+bindkey '^i' expand-or-complete-prefix
+setopt no_auto_remove_slash
 
 
 # To open vim from terminal on vim
