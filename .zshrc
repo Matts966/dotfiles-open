@@ -69,10 +69,10 @@ update-prompt() {
     local keymap="$1"
     case $keymap in
         vicmd)
-            PROMPT_2="$fg[white]-- NORMAL --$reset_color"
+            PROMPT_2="$fg[yellow]-- NORMAL --$reset_color"
             ;;
         visual|vline)
-            PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
+            PROMPT_2="$fg[red]-- VISUAL --$reset_color"
             ;;
         main|viins|*)
             PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
