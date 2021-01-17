@@ -351,6 +351,6 @@ function! Tapi_vit(bufnum, arglist)
     if empty(currfile)
         return
     endif
-    wincmd k
+    wincmd w
     execute 'e' currfile
 endfunction
