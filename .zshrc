@@ -38,14 +38,14 @@ zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
 
 # Vim mode that is compatible bindkey -e
-zplug "softmoth/zsh-vim-mode"
+zplug "softmoth/zsh-vim-mode", defer:1
 
 # bash like auto completion
 bindkey '^i' expand-or-complete-prefix
 setopt no_auto_remove_slash
 
-zplug "junegunn/fzf", use:"shell/*.zsh"
-zplug "b4b4r07/zsh-gomi", if:"which fzf"
+zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
+zplug "b4b4r07/zsh-gomi", if:"which fzf", defer:3
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -54,6 +54,38 @@ if ! zplug check --verbose; then
     fi
 fi
 zplug load
+
+
+# Prompt using zsh-vim-mode
+autoload -Uz colors; colors
+autoload -Uz add-zsh-hook
+autoload -Uz terminfo
+terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
+left_down_prompt_preexec() {
+    print -rn -- $terminfo[el]
+}
+add-zsh-hook preexec left_down_prompt_preexec
+update-prompt() {
+    local keymap="$1"
+    case $keymap in
+        vicmd)
+            PROMPT_2="$fg[white]-- NORMAL --$reset_color"
+            ;;
+        visual|vline)
+            PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
+            ;;
+        main|viins|*)
+            PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
+            ;;
+    esac
+    PROMPT="%F{cyan}%~%f
+%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}%F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
+    zle || return
+    zle reset-prompt
+}
+zle -N update-prompt
+vim_mode_keymap_funcs=update-prompt
+
 
 # To open vim from terminal on vim
 export EDITOR=vim.zsh
@@ -206,9 +238,6 @@ fi
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
-
-
-PROMPT="%F{cyan}%~%f"$'\n'"%F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
 
 
 HISTSIZE=50000              # How many lines of history to keep in memory
