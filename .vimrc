@@ -239,6 +239,8 @@ augroup colorschema
 augroup END
 set termguicolors
 colorscheme monokai
+" Prevent red fg and bg
+hi SpellBad cterm=underline,bold ctermbg=none
 
 " Initialize plugin system
 call plug#end()
