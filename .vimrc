@@ -336,6 +336,15 @@ if &history < 1000
     set history=1000
 endif
 
+" Close terminals when quitting
+autocmd ExitPre * call <sid>TermForceCloseAll()
+function! s:TermForceCloseAll() abort
+    let term_bufs = filter(range(1, bufnr('$')), 'getbufvar(v:val, "&buftype") == "terminal"')
+    for t in term_bufs
+            execute "bd! " t
+    endfor
+endfunction
+
 " To open vim from terminal on vim
 function! Tapi_vit(bufnum, arglist)
     let currfile = get(a:arglist, 0, '')
