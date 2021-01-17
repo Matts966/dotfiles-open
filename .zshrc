@@ -83,6 +83,7 @@ update-prompt() {
     zle || return
     zle reset-prompt
 }
+update-prompt
 zle -N update-prompt
 vim_mode_keymap_funcs=update-prompt
 
