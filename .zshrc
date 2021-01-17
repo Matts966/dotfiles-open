@@ -36,7 +36,6 @@ fi
 
 zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
-zplug "trystan2k/zsh-tab-title"
 
 # Vim mode that is compatible bindkey -e
 zplug "softmoth/zsh-vim-mode"
