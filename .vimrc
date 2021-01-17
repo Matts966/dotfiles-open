@@ -22,7 +22,11 @@ Plug 'junegunn/goyo.vim'
 nnoremap <silent> <leader>go :Goyo<CR>
 let g:goyo_width = 120
 
-
+if ! executable('/usr/local/bin/j2p2j')
+    !gh -R tamuhey/j2p2j release download -p \*darwin_amd64
+        \ && mv j2p2j_dar in_amd64 /usr/local/bin/j2p2j
+        \ && chmod +x /usr/local/bin/j2p2j
+endif
 Plug 'tamuhey/vim-jupyter'
 
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
