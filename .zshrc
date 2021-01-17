@@ -86,6 +86,8 @@ vim_mode_keymap_funcs=update-prompt
 # bash like auto completion
 bindkey '^i' expand-or-complete-prefix
 setopt no_auto_remove_slash
+# Not ignore directory delimiters
+WORDCHARS=${WORDCHARS/\/}
 
 
 # To open vim from terminal on vim
