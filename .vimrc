@@ -65,9 +65,6 @@ function! s:cd_repo(repo) abort
         exe 'tabedit ' . repo
     endif
     exe 'lcd ' . repo
-    botright terminal
-    10 wincmd -
-    wincmd k
 endfunction
 command! -bang -nargs=0 Repo
     \ call fzf#run(fzf#wrap({'source': systemlist('ghq list'), 'sink': function('s:cd_repo')}, <bang>0))
@@ -133,7 +130,9 @@ augroup _fzf
 augroup END
 
 nnoremap <leader><C-r> :History:<CR>
-nnoremap <leader><leader> :History<CR>
+nnoremap <leader><C-h> :History<CR>
+nnoremap <leader><C-p> :Commands<CR>
+nnoremap <leader><leader> :botright terminal<CR>
 
 " Git Grep with fzf by :GGrep
 command! -bang -nargs=* GGrep
