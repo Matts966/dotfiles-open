@@ -43,6 +43,7 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 
+
 " Git related settings
 Plug 'lambdalisue/gina.vim'
 nnoremap [gina]  <Nop>
@@ -229,6 +230,8 @@ augroup END
 
 
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='minimalist'
 
 Plug 'dansomething/vim-hackernews'
 
