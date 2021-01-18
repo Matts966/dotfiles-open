@@ -244,8 +244,12 @@ Plug 'plasticboy/vim-markdown'
 Plug 'crusoexia/vim-monokai'
 augroup colorschema
     autocmd!
-    autocmd ColorScheme * highlight Normal ctermbg=none
-    autocmd ColorScheme * highlight LineNr ctermbg=none
+    " Transparent Vim
+    " autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
+
+    " Delete ~ char in the empty line
+    autocmd ColorScheme * highlight NonText ctermfg=236 ctermbg=236
+        \ guifg=#31322c guibg=#31322c
 augroup END
 set termguicolors
 colorscheme monokai
