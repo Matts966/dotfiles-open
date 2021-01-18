@@ -305,11 +305,15 @@ augroup Mkdir
     autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
 
-" Mimic Emacs Line Editing in Insert Mode Only
+" Mimic Emacs Line Editing in Insert and Ex Mode Only
 inoremap <C-A> <Home>
+inoremap <C-F> <Right>
 inoremap <C-B> <Left>
 inoremap <C-E> <End>
-inoremap <C-F> <Right>
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+
 
 function! Cldo(command)
     try
