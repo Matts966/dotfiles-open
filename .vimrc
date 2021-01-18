@@ -347,7 +347,8 @@ endif
 " Close terminals when quitting
 autocmd ExitPre * call <sid>TermForceCloseAll()
 function! s:TermForceCloseAll() abort
-    let term_bufs = filter(range(1, bufnr('$')), 'getbufvar(v:val, "&buftype") == "terminal"')
+    let term_bufs = filter(range(1, bufnr('$')),
+        \ 'getbufvar(v:val, "&buftype") == "terminal"')
     for t in term_bufs
             execute "bd! " t
     endfor
