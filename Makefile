@@ -13,7 +13,7 @@ deploy: ## Create symlink to home directory
 	@$(foreach val, $(DOTFILES), ln -sFnv $(abspath $(val)) $(HOME);)
 	ln -sFnv $(abspath karabiner.json) ~/.config/karabiner/
 	ln -sFnv $(abspath vim.zsh) /usr/local/bin/
-	mkdir -p ~/.config/kitty && ln -sFnv $(abspath kitty) ~/.config/kitty
+	mkdir -p ~/.config/kitty && ln -sFnv $(abspath kitty) ~/.config
 .PHONY: deploy
 
 update: ## Fetch changes for this repo
