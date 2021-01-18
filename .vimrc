@@ -67,7 +67,10 @@ function! s:cd_repo(repo) abort
     exe 'lcd ' . repo
 endfunction
 command! -bang -nargs=0 Repo
-    \ call fzf#run(fzf#wrap({'source': systemlist('ghq list'), 'sink': function('s:cd_repo')}, <bang>0))
+    \ call fzf#run(fzf#wrap({
+        \ 'source': systemlist('ghq list'),
+        \ 'sink': function('s:cd_repo')
+    \ }, <bang>0))
 nnoremap <leader>gr :Repo<CR>
 
 
