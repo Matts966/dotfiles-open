@@ -101,35 +101,36 @@ let g:fzf_action = {
 let $FZF_DEFAULT_OPTS = '--reverse --ansi --bind ctrl-a:select-all'
 " Respect vim colorscheme.
 function! s:update_fzf_colors()
-  let rules =
-  \ { 'fg':      [['Normal',       'fg']],
-    \ 'bg':      [['Normal',       'bg']],
-    \ 'hl':      [['Comment',      'fg']],
-    \ 'fg+':     [['CursorColumn', 'fg'], ['Normal', 'fg']],
-    \ 'bg+':     [['CursorColumn', 'bg']],
-    \ 'hl+':     [['Statement',    'fg']],
-    \ 'info':    [['PreProc',      'fg']],
-    \ 'prompt':  [['Conditional',  'fg']],
-    \ 'pointer': [['Exception',    'fg']],
-    \ 'marker':  [['Keyword',      'fg']],
-    \ 'spinner': [['Label',        'fg']],
-    \ 'header':  [['Comment',      'fg']] }
-  let cols = []
-  for [name, pairs] in items(rules)
-    for pair in pairs
-      let code = synIDattr(synIDtrans(hlID(pair[0])), pair[1])
-      if !empty(name) && code > 0
-        call add(cols, name.':'.code)
-        break
-      endif
+    let rules = { 'fg':      [['Normal',       'fg']],
+                \ 'bg':      [['Normal',       'bg']],
+                \ 'hl':      [['Comment',      'fg']],
+                \ 'fg+':     [['CursorColumn', 'fg'], ['Normal', 'fg']],
+                \ 'bg+':     [['CursorColumn', 'bg']],
+                \ 'hl+':     [['Statement',    'fg']],
+                \ 'info':    [['PreProc',      'fg']],
+                \ 'prompt':  [['Conditional',  'fg']],
+                \ 'pointer': [['Exception',    'fg']],
+                \ 'marker':  [['Keyword',      'fg']],
+                \ 'spinner': [['Label',        'fg']],
+                \ 'header':  [['Comment',      'fg']] }
+    let cols = []
+    for [name, pairs] in items(rules)
+        for pair in pairs
+            let code = synIDattr(synIDtrans(hlID(pair[0])), pair[1])
+            if !empty(name) && code > 0
+                call add(cols, name.':'.code)
+                break
+            endif
+        endfor
     endfor
-  endfor
-  let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts', $FZF_DEFAULT_OPTS)
-  let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts . (empty(cols) ? '' : (' --color='.join(cols, ',')))
+    let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts',
+        \ $FZF_DEFAULT_OPTS)
+    let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts .
+        \ (empty(cols) ? '' : (' --color='.join(cols, ',')))
 endfunction
 augroup _fzf
-  autocmd!
-  autocmd ColorScheme * call <sid>update_fzf_colors()
+    autocmd!
+    autocmd ColorScheme * call <sid>update_fzf_colors()
 augroup END
 
 nnoremap <leader><C-r> :History:<CR>
@@ -139,16 +140,19 @@ nnoremap <leader><leader> :botright terminal<CR>
 
 " Git Grep with fzf by :GGrep
 command! -bang -nargs=* GGrep
-            \ call fzf#vim#grep(
-            \   'git grep --line-number -- '.shellescape(<q-args>), 0,
-            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+    \ call fzf#vim#grep(
+        \ 'git grep --line-number -- '.shellescape(<q-args>), 0,
+        \ fzf#vim#with_preview({'dir': systemlist(
+            \ 'git rev-parse --show-toplevel')[0]}), <bang>0)
 " Without fuzzy search with :RG
 function! RipgrepFzf(query, fullscreen)
     let command_fmt = 'rg --column --line-number --no-heading -- %s || true'
     let initial_command = printf(command_fmt, shellescape(a:query))
     let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+    let spec = {'options': ['--phony', '--query', a:query,
+        \ '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec),
+        \ a:fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " Find with ripgrep
@@ -228,7 +232,8 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'dansomething/vim-hackernews'
 
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
+    \ 'for': ['markdown', 'vim-plug']}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
