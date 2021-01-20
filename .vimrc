@@ -303,7 +303,7 @@ set list
 " Remove trailing spaces.
 augroup remove_spaces
     autocmd!
-    autocmd BufWritePre * :%s/\s\+$//e
+    autocmd BufWritePre * :%s/!(^-)\s\+$//e
 augroup END
 
 set ignorecase
