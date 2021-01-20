@@ -242,6 +242,10 @@ Plug 'plasticboy/vim-markdown'
 
 
 Plug 'ErichDonGubler/vim-sublime-monokai'
+
+" Initialize plugin system
+call plug#end()
+
 augroup colorschema
     autocmd!
     " Transparent Vim
@@ -255,9 +259,6 @@ set termguicolors
 colorscheme sublimemonokai
 " Prevent red fg and bg
 hi SpellBad cterm=underline,bold ctermbg=none
-
-" Initialize plugin system
-call plug#end()
 
 " netrw
 let g:netrw_winsize=20
