@@ -241,7 +241,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 
-Plug 'crusoexia/vim-monokai'
+Plug 'ErichDonGubler/vim-sublime-monokai'
 augroup colorschema
     autocmd!
     " Transparent Vim
@@ -252,7 +252,7 @@ augroup colorschema
         \ guifg=#31322c guibg=#31322c
 augroup END
 set termguicolors
-colorscheme monokai
+colorscheme sublimemonokai
 " Prevent red fg and bg
 hi SpellBad cterm=underline,bold ctermbg=none
 
