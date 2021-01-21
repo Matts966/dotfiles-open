@@ -18,6 +18,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 
+" Make sure you use single quotes
+
 Plug 'junegunn/goyo.vim'
 nnoremap <silent> <leader>go :Goyo<CR>
 function! s:auto_goyo_length()
@@ -58,6 +60,21 @@ set spelllang+=cjk
 autocmd FileType gitcommit setlocal spell
 nnoremap <leader>gg :tab term ++close lazygit<CR>
 
+Plug 'jiangmiao/auto-pairs'
+
+let g:auto_save = 1  " enable AutoSave on Vim startup
+Plug '907th/vim-auto-save'
+
+Plug 'psliwka/vim-smoothie'
+
+Plug 'thinca/vim-qfreplace'
+
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
+let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
+
 function! s:cd_repo(repo) abort
     let l:repo = trim(system('ghq root')) . '/' . a:repo
     if line('$') == 1 && getline(1) == ''
@@ -72,98 +89,6 @@ command! -bang -nargs=0 Repo
         \ 'source': systemlist('ghq list'),
         \ 'sink': function('s:cd_repo')
     \ }, <bang>0))
-nnoremap <leader>gr :Repo<CR>
-
-
-Plug 'jiangmiao/auto-pairs'
-
-let g:auto_save = 1  " enable AutoSave on Vim startup
-Plug '907th/vim-auto-save'
-
-Plug 'psliwka/vim-smoothie'
-
-Plug 'thinca/vim-qfreplace'
-
-" Make sure you use single quotes
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND = 'rg --files 2> /dev/null'
-" CTRL-A CTRL-Q to select all and build quickfix list
-function! s:build_quickfix_list(lines)
-    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-    copen
-    cc
-endfunction
-let g:fzf_action = {
-            \ 'ctrl-q': function('s:build_quickfix_list'),
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-x': 'split',
-            \ 'ctrl-v': 'vsplit' }
-let $FZF_DEFAULT_OPTS = '--reverse --ansi --bind ctrl-a:select-all'
-" Respect vim colorscheme.
-function! s:update_fzf_colors()
-    let rules = { 'fg':      [['Normal',       'fg']],
-                \ 'bg':      [['Normal',       'bg']],
-                \ 'hl':      [['Comment',      'fg']],
-                \ 'fg+':     [['CursorColumn', 'fg'], ['Normal', 'fg']],
-                \ 'bg+':     [['CursorColumn', 'bg']],
-                \ 'hl+':     [['Statement',    'fg']],
-                \ 'info':    [['PreProc',      'fg']],
-                \ 'prompt':  [['Conditional',  'fg']],
-                \ 'pointer': [['Exception',    'fg']],
-                \ 'marker':  [['Keyword',      'fg']],
-                \ 'spinner': [['Label',        'fg']],
-                \ 'header':  [['Comment',      'fg']] }
-    let cols = []
-    for [name, pairs] in items(rules)
-        for pair in pairs
-            let code = synIDattr(synIDtrans(hlID(pair[0])), pair[1])
-            if !empty(name) && code > 0
-                call add(cols, name.':'.code)
-                break
-            endif
-        endfor
-    endfor
-    let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts',
-        \ $FZF_DEFAULT_OPTS)
-    let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts .
-        \ (empty(cols) ? '' : (' --color='.join(cols, ',')))
-endfunction
-augroup _fzf
-    autocmd!
-    autocmd ColorScheme * call <sid>update_fzf_colors()
-augroup END
-
-nnoremap <leader><C-r> :History:<CR>
-nnoremap <leader><C-h> :History<CR>
-nnoremap <leader><C-p> :Commands<CR>
-nnoremap <leader><leader> :botright terminal<CR>
-
-" Git Grep with fzf by :GGrep
-command! -bang -nargs=* GGrep
-    \ call fzf#vim#grep(
-        \ 'git grep --line-number -- '.shellescape(<q-args>), 0,
-        \ fzf#vim#with_preview({'dir': systemlist(
-            \ 'git rev-parse --show-toplevel')[0]}), <bang>0)
-" Without fuzzy search with :RG
-function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --column --line-number --no-heading -- %s || true'
-    let initial_command = printf(command_fmt, shellescape(a:query))
-    let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query,
-        \ '--bind', 'change:reload:'.reload_command]}
-    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec),
-        \ a:fullscreen)
-endfunction
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-" Find with ripgrep
-nnoremap <C-f> :RG<CR>
-" Compatible with fzf default binding but ignore tag stack.
-nnoremap <C-t> :GFiles<CR>
-
-" Redirect any shell commands to fzf.vim.
-command! -bang -complete=shellcmd -nargs=* F
-    \ call fzf#run(fzf#wrap(<q-args>, {'source': <q-args>." 2>&1"}, <bang>0))
 
 
 " Toggle comment out with gcc and gc with selection.
@@ -266,6 +191,7 @@ let g:netrw_liststyle=3
 let g:netrw_localrmdir='rm -r'
 let g:netrw_keepj=""
 nnoremap <C-E> :Lexplore<CR>
+nnoremap <leader>` :botright terminal<CR>
 
 set fenc=utf-8
 set nobackup
