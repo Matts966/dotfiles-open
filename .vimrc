@@ -132,6 +132,8 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'dense-analysis/ale'
+let g:ale_sign_column_always = 1
 
 let g:lsp_settings = {
 \   'pyls-all': {
