@@ -72,6 +72,7 @@ Plug 'thinca/vim-qfreplace'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+Plug 'LeafCage/yankround.vim'
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
