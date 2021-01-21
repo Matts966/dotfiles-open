@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "homebrew/cask-fonts"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # User-friendly launcher for Bazel
@@ -55,3 +56,4 @@ cask "slack"
 cask "typora"
 cask "kitty"
 cask "spotify"
+cask "font-hack-nerd-font"
