@@ -78,12 +78,11 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
 function! s:cd_repo(repo) abort
     let l:repo = trim(system('ghq root')) . '/' . a:repo
-    if line('$') == 1 && getline(1) == ''
-        exe 'e' repo
-    else
-        exe 'tabedit ' . repo
-    endif
     exe 'lcd ' . repo
+    if line('$') != 1 || getline(1) != ''
+        tabnew
+    endif
+    Lexplore
 endfunction
 command! -bang -nargs=0 Repo
     \ call fzf#run(fzf#wrap({
