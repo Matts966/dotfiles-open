@@ -251,7 +251,6 @@ inoremap <C-F> <Right>
 inoremap <C-B> <Left>
 inoremap <C-E> <End>
 cnoremap <C-A> <Home>
-cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
 
 " Clear search result on <C-l>
