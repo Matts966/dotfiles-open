@@ -1,7 +1,8 @@
 source $VIMRUNTIME/defaults.vim
 
 scriptencoding utf-8
-set encoding=utf-8
+set encoding=UTF-8
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
 
 " Keys are mapped with the mapping with the time so
 " important settings should be written earlier.
@@ -69,10 +70,17 @@ Plug 'psliwka/vim-smoothie'
 
 Plug 'thinca/vim-qfreplace'
 
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+let g:fern#renderer = "nerdfont"
+let g:fern#default_hidden = 1
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'LeafCage/yankround.vim'
+Plug 'ryanoasis/vim-devicons'
+let g:fzf_preview_use_dev_icons = 1
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
