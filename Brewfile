@@ -35,8 +35,6 @@ brew "rust"
 brew "the_silver_searcher"
 # Internet file retriever
 brew "wget"
-# Next-generation plugin manager for zsh
-brew "zplug"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # NCurses Disk Usage

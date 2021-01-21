@@ -34,6 +34,8 @@ brew:
 .PHONY: brew
 
 _zsh:
+	# Install zplug
+	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 	mkdir -p ~/.zsh/completion
 .PHONY: _zsh
 

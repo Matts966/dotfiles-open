@@ -1,8 +1,7 @@
 export LANG=ja_JP.UTF-8
 
 # ZPlug
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
+source ~/.zplug/init.zsh
 
 zplug "docker/compose", use:contrib/completion/zsh
 
