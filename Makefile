@@ -10,10 +10,10 @@ list: ## Show dot files in this repo
 
 deploy: ## Create symlink to home directory
 	@echo 'Symlink dot files in your home directory...'
-	@$(foreach val, $(DOTFILES), ln -sFnv $(abspath $(val)) $(HOME);)
-	mkdir -p ~/.config/karabiner && ln -sFnv $(abspath karabiner.json) ~/.config/karabiner
-	ln -sFnv $(abspath vim.zsh) /usr/local/bin
-	mkdir -p ~/.config/kitty && ln -sFnv $(abspath kitty)/* ~/.config/kitty
+	@$(foreach val, $(DOTFILES), ln -sfFnv $(abspath $(val)) $(HOME);)
+	mkdir -p ~/.config/karabiner && ln -sfFnv $(abspath karabiner.json) ~/.config/karabiner
+	ln -sfFnv $(abspath vim.zsh) /usr/local/bin
+	mkdir -p ~/.config/kitty && ln -sfFnv $(abspath kitty)/* ~/.config/kitty
 .PHONY: deploy
 
 update: ## Fetch changes for this repo
