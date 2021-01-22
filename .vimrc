@@ -165,6 +165,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+Plug airblade/vim-gitgutter
+
 Plug 'cocopon/iceberg.vim'
 
 " Initialize plugin system
