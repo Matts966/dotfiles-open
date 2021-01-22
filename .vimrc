@@ -102,6 +102,19 @@ let g:fzf_action = {
             \ 'ctrl-x': 'split',
             \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--reverse --ansi --bind ctrl-a:select-all'
+nnoremap <leader>gr :Repo<CR>
+Plug 'junegunn/fzf.vim'
+let $FZF_DEFAULT_COMMAND = 'rg --files 2> /dev/null'
+nnoremap <leader><C-r> :History:<CR>
+nnoremap <leader><C-h> :History<CR>
+nnoremap <leader><C-p> :Commands<CR>
+
+" Git Grep with fzf by :GGrep
+command! -bang -nargs=* GGrep
+    \ call fzf#vim#grep(
+        \ 'git grep --line-number -- '.shellescape(<q-args>), 0,
+        \ fzf#vim#with_preview({'dir': systemlist(
+            \ 'git rev-parse --show-toplevel')[0]}), <bang>0)
 " Without fuzzy search with :RG
 function! RipgrepFzf(query, fullscreen)
     let command_fmt = 'rg --column --line-number --no-heading -- %s || true'
@@ -115,6 +128,12 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " Find with ripgrep
 nnoremap <C-f> :RG<CR>
+" Compatible with fzf default binding but ignore tag stack.
+nnoremap <C-t> :GFiles<CR>
+
+" Redirect any shell commands to fzf.vim.
+command! -bang -complete=shellcmd -nargs=* F
+    \ call fzf#run(fzf#wrap(<q-args>, {'source': <q-args>." 2>&1"}, <bang>0))
 
 
 " Toggle comment out with gcc and gc with selection.
