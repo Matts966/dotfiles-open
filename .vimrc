@@ -73,6 +73,7 @@ Plug 'thinca/vim-qfreplace'
 
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'LeafCage/yankround.vim'
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
@@ -103,11 +104,7 @@ let g:fzf_action = {
             \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--reverse --ansi --bind ctrl-a:select-all'
 nnoremap <leader>gr :Repo<CR>
-Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND = 'rg --files 2> /dev/null'
-nnoremap <leader><C-r> :History:<CR>
-nnoremap <leader><C-h> :History<CR>
-nnoremap <leader><C-p> :Commands<CR>
+nnoremap <leader>c :Commands<CR>
 
 " Git Grep with fzf by :GGrep
 command! -bang -nargs=* GGrep
