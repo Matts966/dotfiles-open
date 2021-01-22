@@ -6,32 +6,6 @@ source ~/.zplug/init.zsh
 zplug "docker/compose", use:contrib/completion/zsh
 
 zplug "zsh-users/zsh-syntax-highlighting"
-if zplug check "zsh-users/zsh-syntax-highlighting"; then
-    typeset -gA ZSH_HIGHLIGHT_STYLES ZSH_HIGHLIGHT_PATTERNS
-
-    ZSH_HIGHLIGHT_STYLES[cursor]=fg=yellow,bold
-    ZSH_HIGHLIGHT_STYLES[default]=none
-    ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=green,bold
-    ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=green,bold
-    ZSH_HIGHLIGHT_STYLES[alias]=fg=cyan,bold
-    ZSH_HIGHLIGHT_STYLES[builtin]=fg=cyan,bold
-    ZSH_HIGHLIGHT_STYLES[function]=fg=cyan,bold
-    ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
-    ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
-    ZSH_HIGHLIGHT_STYLES[commandseparator]=none
-    ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=green,bold
-    ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
-    ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
-    ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
-    ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=070
-    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=070
-    ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
-    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=063
-    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
-    ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
-    ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
-    ZSH_HIGHLIGHT_STYLES[assign]=none
-fi
 
 zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
@@ -96,34 +70,10 @@ alias vim='vim.zsh'
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export FZF_CTRL_T_COMMAND='rg --files 2> /dev/null'
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --preview "bat --color=always --style=header,grid --line-range :100 {}"'
-export BAT_THEME="Monokai Extended Bright"
+export BAT_THEME="iceberg"
 export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
-_gen_fzf_default_opts() {
-    local color00='#272822'
-    local color01='#383830'
-    local color02='#49483e'
-    local color03='#75715e'
-    local color04='#a59f85'
-    local color05='#f8f8f2'
-    local color06='#f5f4f1'
-    local color07='#f9f8f5'
-    local color08='#f92672'
-    local color09='#fd971f'
-    local color0A='#f4bf75'
-    local color0B='#a6e22e'
-    local color0C='#a1efe4'
-    local color0D='#66d9ef'
-    local color0E='#ae81ff'
-    local color0F='#cc6633'
-    local colored='#f92672'
-
-    export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=spinner:$color0C,hl:$color0D"\
-" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$colored"\
-" --color=marker:$colored,fg+:$color06,prompt:$colored,hl+:$color0D"\
-" --ansi"
-}
-_gen_fzf_default_opts
+# Iceberg
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=bg+:#1e2132,bg:#161821,spinner:#84a0c6,hl:#6b7089,fg:#c6c8d1,header:#6b7089,info:#b4be82,pointer:#84a0c6,marker:#84a0c6,fg+:#c6c8d1,prompt:#84a0c6,hl+:#84a0c6"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Git functions
