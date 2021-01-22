@@ -20,6 +20,8 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
+Plug 'szw/vim-g'
+
 Plug 'junegunn/goyo.vim'
 nnoremap <silent> <leader>go :Goyo<CR>
 function! s:auto_goyo_length()
