@@ -157,8 +157,6 @@ augroup END
 
 
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='minimalist'
 
 Plug 'dansomething/vim-hackernews'
 
@@ -167,25 +165,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-
-Plug 'ErichDonGubler/vim-sublime-monokai'
+Plug 'cocopon/iceberg.vim'
 
 " Initialize plugin system
 call plug#end()
 
-augroup colorschema
-    autocmd!
-    " Transparent Vim
-    " autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
-
-    " Delete ~ char in the empty line
-    autocmd ColorScheme * highlight NonText ctermfg=236 ctermbg=236
-        \ guifg=#31322c guibg=#31322c
-augroup END
 set termguicolors
-colorscheme sublimemonokai
-" Prevent red fg and bg
-hi SpellBad cterm=underline,bold ctermbg=none
+colorscheme iceberg
 
 " netrw
 let g:netrw_winsize=20
