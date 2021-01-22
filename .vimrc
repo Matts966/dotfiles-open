@@ -243,7 +243,7 @@ cnoremap <C-A> <Home>
 cnoremap <C-B> <Left>
 
 " Clear search result on <C-l>
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> <C-l> :<Cmd>nohlsearch<CR>GitGutter<CR><C-l>
 
 
 function! Cldo(command)
