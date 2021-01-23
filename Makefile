@@ -33,7 +33,7 @@ init: zsh pip ## Initialize installation
 brew:
 	brew bundle || true && \
 		mkdir -p $(shell bat --config-dir)/themes && \
-		ln -sfFnv $(abspath iceberg.tmTheme) $(shell bat --config-dir) && \
+		ln -sfFnv $(abspath iceberg.tmTheme) $(shell bat --config-dir)/themes && \
 		bat cache --build
 .PHONY: brew
 
