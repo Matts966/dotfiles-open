@@ -26,6 +26,8 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
+Plug 'vim-jp/vimdoc-ja'
+
 Plug 'szw/vim-g'
 
 Plug 'junegunn/goyo.vim'
