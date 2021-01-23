@@ -83,7 +83,7 @@ fbr() {
         branch=$(echo "$branches" |
         fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
         git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-    }
+}
 zle -N fbr
 bindkey '^g^b' fbr
 
@@ -91,9 +91,9 @@ gcd() {
     repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") &&
         cd $(ghq root)/$repo
             zle reset-prompt
-        }
-    zle -N gcd
-    bindkey '^g^r' gcd
+}
+zle -N gcd
+bindkey '^g^r' gcd
 
 _lazygit() {
     git status &> /dev/null
