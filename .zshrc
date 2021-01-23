@@ -67,14 +67,11 @@ WORDCHARS=${WORDCHARS/\/}
 export EDITOR=vim.zsh
 alias vim='vim.zsh'
 
-export RIPGREP_CONFIG_PATH=~/.ripgreprc
-export FZF_CTRL_T_COMMAND='rg --files 2> /dev/null'
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 export BAT_THEME="iceberg"
 export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
 # Iceberg
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=bg+:#1e2132,bg:#161821,spinner:#84a0c6,hl:#6b7089,fg:#c6c8d1,header:#6b7089,info:#b4be82,pointer:#84a0c6,marker:#84a0c6,fg+:#c6c8d1,prompt:#84a0c6,hl+:#84a0c6"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Git functions
 bindkey -r '^g'
