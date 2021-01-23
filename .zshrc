@@ -189,7 +189,7 @@ setopt    incappendhistory  # Immediately append to the history file, not just w
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+eval "$(pyenv init - --no-rehash)"
 
 if [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]]; then
     echo ".zshrc updated, compiling..."
