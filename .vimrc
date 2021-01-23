@@ -190,7 +190,9 @@ Plug 'dansomething/vim-hackernews'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
     \ 'for': ['markdown', 'vim-plug']}
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+if !exists('g:vscode')
+    Plug 'plasticboy/vim-markdown'
+endif
 
 Plug 'airblade/vim-gitgutter'
 

@@ -14,6 +14,7 @@ deploy: ## Create symlink to home directory
 	mkdir -p ~/.config/karabiner && ln -sfFnv $(abspath karabiner.json) ~/.config/karabiner
 	ln -sfFnv $(abspath vim.zsh) /usr/local/bin
 	mkdir -p ~/.config/kitty && ln -sfFnv $(abspath kitty)/* ~/.config/kitty
+	mkdir -p ~/.config/nvim && ln -sfFnv $(abspath init.vim) ~/.config/nvim
 .PHONY: deploy
 
 update: ## Fetch changes for this repo
