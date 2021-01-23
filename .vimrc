@@ -2,6 +2,10 @@ source $VIMRUNTIME/defaults.vim
 
 scriptencoding utf-8
 set encoding=utf-8
+set langmenu=en_US
+let $LANG = 'en_US'
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
 
 " Keys are mapped with the mapping with the time so
 " important settings should be written earlier.
