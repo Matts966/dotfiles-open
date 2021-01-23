@@ -1,4 +1,6 @@
-source $VIMRUNTIME/defaults.vim
+if ! has('nvim')
+    source $VIMRUNTIME/defaults.vim
+endif
 
 scriptencoding utf-8
 set encoding=utf-8
