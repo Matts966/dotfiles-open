@@ -21,6 +21,8 @@ if ! zplug check --verbose; then
     if read -q; then
         echo; zplug install
     fi
+    echo "compiling..."
+    for f in $(find ~ -type f -name "*.zsh" 2> /dev/null); do zcompile $f; done
 fi
 zplug load
 
@@ -188,3 +190,12 @@ setopt    incappendhistory  # Immediately append to the history file, not just w
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+if [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]]; then
+    echo ".zshrc updated, compiling..."
+    zcompile ~/.zshrc
+fi
+
+if (which zprof > /dev/null 2>&1) ;then
+  zprof
+fi
