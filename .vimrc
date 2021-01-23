@@ -205,6 +205,7 @@ call plug#end()
 
 set termguicolors
 colorscheme iceberg
+hi Visual ctermbg=236 guibg=#363d5c
 
 " netrw
 let g:netrw_winsize=20
