@@ -14,7 +14,6 @@ deploy: ## Create symlink to home directory
 	mkdir -p ~/.config/karabiner && ln -sfFnv $(abspath karabiner.json) ~/.config/karabiner
 	ln -sfFnv $(abspath vim.zsh) /usr/local/bin
 	mkdir -p ~/.config/kitty && ln -sfFnv $(abspath kitty)/* ~/.config/kitty
-	mkdir -p "$(bat --config-dir)/themes" && ln -sfFnv $(abspath iceberg.tmTheme) $(bat --config-dir)
 .PHONY: deploy
 
 update: ## Fetch changes for this repo
@@ -31,7 +30,10 @@ init: zsh pip ## Initialize installation
 .PHONY: init
 
 brew:
-	brew bundle || true && bat cache --build
+	brew bundle || true && \
+		mkdir -p $(shell bat --config-dir)/themes && \
+		ln -sfFnv $(abspath iceberg.tmTheme) $(shell bat --config-dir) && \
+		bat cache --build
 .PHONY: brew
 
 _zsh:
