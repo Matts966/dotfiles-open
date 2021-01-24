@@ -5,7 +5,7 @@ endif
 scriptencoding utf-8
 set encoding=utf-8
 set langmenu=en_US
-let $LANG = 'en_US'
+let $LANG = 'en_US.UTF-8'
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
