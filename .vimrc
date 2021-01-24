@@ -199,7 +199,7 @@ nmap <leader>rn <Plug>(coc-rename)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 let g:coc_global_extensions = [
  \    'coc-dictionary', 'coc-word', 'coc-emoji', 
- \    'coc-python', 'coc-rls', 
+ \    'coc-python', 'coc-rls', 'coc-vimlsp',
  \    'coc-git', 'coc-tsserver', 'coc-sh',
  \ ]
 " Highlight the symbol and its references when holding the cursor.
