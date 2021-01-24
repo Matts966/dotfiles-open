@@ -71,6 +71,7 @@ Plug 'tpope/vim-repeat'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
+Plug 'thinca/vim-textobj-between'
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-operator-replace'
 map _ <Plug>(operator-replace)
