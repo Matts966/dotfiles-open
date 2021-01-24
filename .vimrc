@@ -112,6 +112,17 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 Plug 'thinca/vim-qfreplace'
 
+Plug 'skanehira/gh.vim'
+" Use gh command token
+let s:gh_token_path = glob('~/.config/gh/hosts.yml')
+if !empty(s:gh_token_path)
+    for line in readfile(s:gh_token_path, '')
+        if line =~ 'oauth_token'
+            let g:gh_token = matchlist(line, 'oauth_token: \(.*\)')[1]
+            break
+        endif
+    endfor
+endif
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
