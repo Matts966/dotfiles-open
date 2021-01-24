@@ -28,6 +28,16 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
+Plug 'mbbill/undotree'
+nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
+if has("persistent_undo")
+    if !isdirectory($HOME."/.vim/undo-dir")
+        call mkdir($HOME."/.vim/undo-dir", "p", 0700)
+    endif
+    set undodir=~/.vim/undo-dir
+    set undofile
+endif
+
 Plug 'vim-jp/vimdoc-ja'
 
 Plug 'szw/vim-g'
