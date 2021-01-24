@@ -64,9 +64,22 @@ Plug 'tamuhey/vim-jupyter'
 
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 
+" Toggle comment out with gcc and gc with selection.
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-operator-user'
+Plug 'kana/vim-operator-replace'
+map _ <Plug>(operator-replace)
+Plug 'haya14busa/vim-operator-flashy'
+map y <Plug>(operator-flashy)
+nmap Y <Plug>(operator-flashy)$
 
+Plug 'easymotion/vim-easymotion'
+map <Leader>e <Plug>(easymotion-prefix)
 
 " Git related settings
 Plug 'lambdalisue/gina.vim'
@@ -88,6 +101,10 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 Plug '907th/vim-auto-save'
 
 Plug 'psliwka/vim-smoothie'
+
+Plug 'terryma/vim-expand-region'
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 Plug 'thinca/vim-qfreplace'
 
@@ -129,14 +146,9 @@ nnoremap <C-t> :GFiles<CR>
 command! -bang -complete=shellcmd -nargs=* F
     \ call fzf#run(fzf#wrap(<q-args>, {'source': <q-args>." 2>&1"}, <bang>0))
 
-
-" Toggle comment out with gcc and gc with selection.
-Plug 'tpope/vim-commentary'
-
 Plug 'thinca/vim-quickrun'
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
-Plug 'tpope/vim-surround'
 
 " LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
