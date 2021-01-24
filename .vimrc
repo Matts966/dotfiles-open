@@ -175,6 +175,9 @@ let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
 " LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Lazily load coc for splash text
+let g:coc_start_at_startup = v:false
+autocmd FileType * CocStart
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
