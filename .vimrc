@@ -1,4 +1,9 @@
-if ! has('nvim')
+if has('nvim')
+    augroup neovim-terminal
+        autocmd!
+        autocmd termopen * startinsert
+    augroup end
+else
     source $VIMRUNTIME/defaults.vim
 endif
 
