@@ -9,6 +9,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 
 zplug "zsh-users/zsh-completions"
 zplug "greymd/docker-zsh-completion"
+zplug "zsh-users/zsh-autosuggestions"
 
 # Vim mode that is compatible bindkey -e
 zplug "softmoth/zsh-vim-mode", defer:1
