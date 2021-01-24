@@ -384,6 +384,15 @@ if &history < 1000
     set history=1000
 endif
 
+augroup HelpMode
+  autocmd!
+augroup END
+function! s:init_help()
+  nnoremap <buffer> q <C-w>c
+  nnoremap <buffer> <Space><Space> <C-]>
+endfunction
+autocmd HelpMode FileType help call s:init_help()
+
 " Close terminals when quitting
 autocmd ExitPre * call <sid>TermForceCloseAll()
 function! s:TermForceCloseAll() abort
