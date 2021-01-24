@@ -80,6 +80,9 @@ nmap Y <Plug>(operator-flashy)$
 
 Plug 'easymotion/vim-easymotion'
 map <Leader>e <Plug>(easymotion-prefix)
+Plug 'rhysd/clever-f.vim'
+map ; <Plug>(clever-f-repeat-forward)
+map , <Plug>(clever-f-repeat-back)
 
 " Git related settings
 Plug 'lambdalisue/gina.vim'
