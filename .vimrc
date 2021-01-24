@@ -139,63 +139,99 @@ let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 Plug 'tpope/vim-surround'
 
 " LSP
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'mattn/vim-lsp-icons'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'dense-analysis/ale'
-let g:ale_sign_column_always = 1
-
-let g:lsp_settings = {
-\   'pyls-all': {
-\       'workspace_config': {
-\           'pyls': {
-\             'configurationSources': ['flake8'],
-\             'plugins': {
-\                 'flake8': {
-\                     'enabled': v:true,
-\                     "ignore": ["#262", "E402", "E712"],
-\                     "max-line-length": 120,
-\                 },
-\                 'black': {'enabled': v:true},
-\             },
-\         },
-\     },
-\   },
-\ }
-
-let g:lsp_diagnostics_echo_cursor = 1
-
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> <leader>dd <plug>(lsp-document-diagnostics)
-    nmap <buffer> <silent> [g <Plug>(lsp-previous-diagnostic)
-    nmap <buffer> <silent> ]g <Plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
-    " refer to doc to add more commands
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
 endfunction
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in 
+" location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <buffer> <leader>rn <plug>(coc-rename)
+nmap <buffer> <leader>dd <plug>(coc-list-diagnostics)
+nmap <leader>f  <Plug>(coc-format)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+let g:coc_global_extensions = [
+ \    'coc-dictionary', 'coc-word', 'coc-emoji', 
+ \    'coc-python', 'coc-rls', 
+ \    'coc-git', 'coc-tsserver', 'coc-sh',
+ \ ]
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
+Plug 'gkeep/iceberg-dark'
+Plug 'itchyny/lightline.vim'
+function! CocErrors()
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if get(info, 'error', 0)
+        return '• ' . info['error']
+    endif
+    return ''
+endfunction
+function! CocWarnings()
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if get(info, 'warning', 0)
+        return '• ' . info['warning']
+    endif
+    return ''
+endfunction
+function! CocStatus()
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if get(info, 'error', 0)
+        return ''
+    endif
+    if get(info, 'warning', 0)
+        return ''
+    endif
+    let s:msg = get(g:, 'coc_status', '')
+    if s:msg
+        return '• ' . s:msg
+    endif
+    return '•'
+endfunction
+let g:lightline = {
+    \ 'colorscheme': 'icebergDark',
+    \ 'active': {
+    \     'left': [ [ 'mode', 'paste' ],
+    \         [ 'readonly', 'filename', 'modified', 'coc_errors', 'coc_warnings', 'coc_ok' ] ]
+    \ },
+    \ 'component_expand': {
+    \     'coc_errors': 'CocErrors',
+    \     'coc_warnings': 'CocWarnings',
+    \     'coc_ok': 'CocStatus'
+    \ },
+    \     'component_type': {
+    \     'coc_warnings': 'warning',
+    \     'coc_errors': 'error',
+    \     'coc_ok': 'ok',
+    \ },
+\ }
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+set laststatus=2
 
-
-Plug 'vim-airline/vim-airline'
 
 Plug 'dansomething/vim-hackernews'
 
