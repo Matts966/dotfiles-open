@@ -1,10 +1,23 @@
+" Keys are mapped with the mapping with the time so
+" important settings should be written earlier.
+let mapleader = "\<Space>" " Remap <leader> key to space
+
 if has('nvim')
     augroup neovim-terminal
         autocmd!
         autocmd termopen * startinsert
     augroup end
+    tnoremap <C-W> <C-U><C-\><C-N><C-W>
+    tnoremap <C-W>N <C-U><C-\><C-N>
+    tnoremap <C-W>. <C-W>
+    nnoremap <leader>` <CMD>tabnew<CR><CMD>terminal<CR>
+    autocmd TermOpen * setlocal nonumber norelativenumber
+    nnoremap <leader>gg <CMD>tabnew<CR><CMD>terminal lazygit<CR>
 else
     source $VIMRUNTIME/defaults.vim
+    nnoremap <leader>` :tab terminal<CR>
+    autocmd TerminalOpen * setlocal nonumber norelativenumber
+    nnoremap <leader>gg :tab term ++close lazygit<CR>
 endif
 
 scriptencoding utf-8
@@ -15,11 +28,6 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
 set background=dark
-
-" Keys are mapped with the mapping with the time so
-" important settings should be written earlier.
-let mapleader = "\<Space>" " Remap <leader> key to space
-"--------------------------------------------------------------------------
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -102,7 +110,6 @@ nnoremap [gina]P :Gina push<CR>
 " Enable spell check only in git commit
 set spelllang+=cjk
 autocmd FileType gitcommit setlocal spell
-nnoremap <leader>gg :tab term ++close lazygit<CR>
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -295,7 +302,6 @@ let g:netrw_liststyle=3
 let g:netrw_localrmdir='rm -r'
 let g:netrw_keepj=""
 nnoremap <C-E> :Lexplore<CR>
-nnoremap <leader>` :botright terminal<CR>
 
 set fenc=utf-8
 set nobackup
