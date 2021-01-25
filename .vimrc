@@ -239,6 +239,7 @@ nmap <leader>f  <Plug>(coc-format)
 nmap <leader>rn <Plug>(coc-rename)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+let g:coc_disable_transparent_cursor = 1
 let g:coc_global_extensions = [
  \    'coc-dictionary', 'coc-word', 'coc-emoji', 
  \    'coc-python', 'coc-rls', 'coc-vimlsp',
