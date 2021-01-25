@@ -28,13 +28,10 @@ def todo(filter: str):
     ).json()
     items = map(format_item, items)
     fzf = pyfzf.FzfPrompt()
-
-    print(fzf)
-
     try:
         result = fzf.prompt(
             items,
-            "--multi --cycle --preview 'curl --silent \
+            "--multi --cycle --preview 'curl -q \
                     https://api.todoist.com/sync/v8/items/get -d token="
             + token
             + " -d item_id=$(echo {} | cut -f1) | jq | bat --color=always'",
