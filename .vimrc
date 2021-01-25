@@ -223,6 +223,7 @@ let g:coc_user_config = {
 \   'python.linting.pylintEnabled': 0,
 \   'python.linting.flake8Enabled': 1,
 \   'python.linting.enabled': 1,
+\   'python.formatting.provider': 'black',
 \ }
 Plug 'psf/black', { 'branch': 'stable' }
 let g:black_linelength = 80
