@@ -173,10 +173,6 @@ nnoremap <C-t> :GFiles<CR>
 command! -bang -complete=shellcmd -nargs=* F
     \ call fzf#run(fzf#wrap(<q-args>, {'source': <q-args>." 2>&1"}, <bang>0))
 
-Plug 'thinca/vim-quickrun'
-let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
-
-
 " LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Lazily load coc for splash text
