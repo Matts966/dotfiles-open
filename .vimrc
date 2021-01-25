@@ -294,7 +294,12 @@ let g:lightline = {
     \     'coc_ok': 'ok',
     \ },
 \ }
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+augroup CocConf
+    autocmd!
+    autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+    " Highlight the symbol and its references when holding the cursor.
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 set laststatus=2
 
 
