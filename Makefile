@@ -24,11 +24,17 @@ update: ## Fetch changes for this repo
 install: update ## Run make update, deploy and init
 	make deploy
 	make init
+	make secret
 .PHONY: install
 
 init: zsh pip ## Initialize installation
 	git config --global core.editor $(shell which vim)
 .PHONY: init
+
+secret:
+	git submodule update --init && \
+		(cd dotfiles-secret && make) || true
+.PHONY: secret
 
 brew:
 	brew bundle || true && \

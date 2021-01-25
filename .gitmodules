@@ -1,0 +1,3 @@
+[submodule "dotfiles-secret"]
+	path = dotfiles-secret
+	url = git@github.com:Matts966/dotfiles-secret.git
