@@ -1,3 +1,4 @@
+tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
@@ -49,8 +50,17 @@ brew "terminal-notifier"
 brew "luajit", args: ["HEAD"]
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim", args: ["HEAD"]
+# Vi 'workalike' with many additional features
+brew "vim"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # Get events and tasks from the macOS calendar database
 brew "ical-buddy"
+# Tool to build, change, and version infrastructure
+brew "terraform"
+cask "adoptopenjdk9"
 cask "alt-tab"
 cask "appcleaner"
 cask "clipy"
