@@ -49,6 +49,8 @@ brew "terminal-notifier"
 brew "luajit", args: ["HEAD"]
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim", args: ["HEAD"]
+# Get events and tasks from the macOS calendar database
+brew "ical-buddy"
 cask "alt-tab"
 cask "appcleaner"
 cask "clipy"
