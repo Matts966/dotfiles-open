@@ -218,12 +218,19 @@ nmap <leader>rn <Plug>(coc-rename)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 let g:coc_disable_transparent_cursor = 1
 let g:coc_global_extensions = [
- \    'coc-dictionary', 'coc-word', 'coc-emoji', 
- \    'coc-python', 'coc-rls', 'coc-vimlsp',
- \    'coc-git', 'coc-tsserver', 'coc-sh',
- \ ]
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+\   'coc-dictionary', 'coc-word', 'coc-emoji',
+\   'coc-python', 'coc-rls', 'coc-vimlsp',
+\   'coc-git', 'coc-tsserver', 'coc-sh',
+\ ]
+let g:coc_user_config = {
+\   'diagnostic.warningSign': '>>',
+\   'python.linting.pylintEnabled': 0,
+\   'python.linting.flake8Enabled': 1,
+\   'python.linting.enabled': 1,
+\ }
+Plug 'psf/black', { 'branch': 'stable' }
+let g:black_linelength = 80
+autocmd BufWritePre *.py execute ':Black'
 
 Plug 'gkeep/iceberg-dark'
 Plug 'itchyny/lightline.vim'
