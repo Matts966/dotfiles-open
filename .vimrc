@@ -361,9 +361,14 @@ set expandtab
 set list listchars=tab:\▸\-
 set list
 " Remove trailing spaces.
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
 augroup remove_spaces
     autocmd!
-    autocmd BufWritePre * :%s/!(^-)\s\+$//e
+    autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
 set ignorecase
