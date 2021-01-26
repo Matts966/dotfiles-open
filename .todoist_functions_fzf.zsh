@@ -1,7 +1,8 @@
+# Set FILTER env var to change default, and reset by unset FILTER
 select_items_command() {
     DEFAULT_FILTER='(today|overdue)'
     eval "todoist --namespace --project-namespace \
-        list --filter '${FILTER:-(today|overdue)}' \
+        list --filter '${FILTER-(today|overdue)}' \
         | fzf --multi | cut -d ' ' -f 1 | tr '\n' ' '"
 }
 
