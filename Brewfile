@@ -58,6 +58,8 @@ brew "watch"
 brew "tree"
 # Get events and tasks from the macOS calendar database
 brew "ical-buddy"
+# Next-gen compiler infrastructure
+brew "llvm"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 cask "adoptopenjdk9"
