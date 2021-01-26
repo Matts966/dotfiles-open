@@ -1,9 +1,8 @@
 # Set FILTER env var to change default, and reset by unset FILTER
 select_items_command() {
-    DEFAULT_FILTER='(today|overdue)'
     eval "todoist --namespace --project-namespace \
-        list --filter '${FILTER-(today|overdue)}' \
-        | fzf --multi | cut -d ' ' -f 1 | tr '\n' ' '"
+        list --filter '${FILTER-!no date}' \
+        | sort -k 3,4 | fzf --multi | cut -d ' ' -f 1 | tr '\n' ' '"
 }
 
 function insert-in-buffer () {
