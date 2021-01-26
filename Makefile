@@ -29,6 +29,7 @@ install: update ## Run make update, deploy and init
 
 init: zsh pip ## Initialize installation
 	git config --global core.editor $(shell which vim)
+	go get -u github.com/sachaos/todoist
 .PHONY: init
 
 secret:

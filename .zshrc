@@ -27,6 +27,7 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
+source ~/.todoist_functions_fzf.zsh
 
 # Prompt using zsh-vim-mode
 autoload -Uz colors; colors
