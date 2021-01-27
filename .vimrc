@@ -10,11 +10,9 @@ if has('nvim')
     tnoremap <C-W> <C-U><C-\><C-N><C-W>
     tnoremap <C-W>N <C-U><C-\><C-N>
     tnoremap <C-W>. <C-W>
-    nnoremap <leader>` <CMD>tabnew<CR><CMD>terminal<CR>
     nnoremap <leader>gg <CMD>tabnew<CR><CMD>terminal lazygit<CR>
 else
     source $VIMRUNTIME/defaults.vim
-    nnoremap <leader>` :tab terminal<CR>
     nnoremap <leader>gg :tab term ++close lazygit<CR>
 endif
 
