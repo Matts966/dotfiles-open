@@ -60,6 +60,8 @@ brew "tree"
 brew "ical-buddy"
 # Next-gen compiler infrastructure
 brew "llvm"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 cask "adoptopenjdk9"
