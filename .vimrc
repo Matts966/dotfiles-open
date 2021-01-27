@@ -67,7 +67,7 @@ function! s:auto_goyo_length()
 endfunction
 augroup goyo_python
     autocmd!
-    autocmd WinEnter * call s:auto_goyo_length()
+    autocmd BufEnter * call s:auto_goyo_length()
 augroup END
 
 if ! executable('j2p2j')
