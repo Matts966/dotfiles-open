@@ -7,6 +7,10 @@ if has('nvim')
         autocmd!
         autocmd termopen * startinsert
         autocmd termopen * setlocal nonumber norelativenumber
+        autocmd TermClose term://*
+            \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
+            \   call nvim_input('<CR>')  |
+            \ endif
     augroup end
     tnoremap <C-W> <C-U><C-\><C-N><C-W>
     tnoremap <C-W>N <C-U><C-\><C-N>
