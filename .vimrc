@@ -157,7 +157,7 @@ function! s:cd_repo(repo) abort
         tabnew
     endif
     exe 'tcd ' . repo
-    Lexplore
+    edit README.md
 endfunction
 command! -bang -nargs=0 Repo
     \ call fzf#run(fzf#wrap({
