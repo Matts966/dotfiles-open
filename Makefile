@@ -60,9 +60,7 @@ zsh: _zsh brew
 # glances installed via brew is broken.
 # TODO: Use brew after the fix.
 pip: brew
-	pip3 install glances
-	pip3 install termdown
-	pip3 install haxor-news
+	pip3 install -r requirements.txt
 .PHONY: pip
 
 clean: ## Remove the dot files and this repo
