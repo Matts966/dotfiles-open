@@ -29,7 +29,7 @@ install: update ## Run make update, deploy and init
 
 init: zsh pip ## Initialize installation
 	git config --global core.editor $(shell which vim)
-	go get -u github.com/sachaos/todoist
+	go get github.com/sachaos/todoist@v0.15.0
 	sudo tlmgr update --self --all && suto tlmgr install cm-super preprint comment ncctools latexmk
 .PHONY: init
 
