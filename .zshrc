@@ -67,10 +67,6 @@ setopt no_auto_remove_slash
 WORDCHARS=${WORDCHARS/\/}
 
 
-# To open vim from terminal on vim
-export EDITOR=vim.zsh
-alias vim='vim.zsh'
-
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 export BAT_THEME="iceberg"
 export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
