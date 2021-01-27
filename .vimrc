@@ -15,10 +15,8 @@ if has('nvim')
     tnoremap <C-W> <C-U><C-\><C-N><C-W>
     tnoremap <C-W>N <C-U><C-\><C-N>
     tnoremap <C-W>. <C-W>
-    nnoremap <leader>gg <CMD>tabnew<CR><CMD>terminal lazygit<CR>
 else
     source $VIMRUNTIME/defaults.vim
-    nnoremap <leader>gg :tab term ++close lazygit<CR>
 endif
 
 scriptencoding utf-8
@@ -48,6 +46,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/fzf-floaterm'
 let g:floaterm_autoclose = 1
 let g:floaterm_keymap_toggle = '``'
+nnoremap <leader>gg <CMD>FloatermNew --height=0.9 --width=0.9 lazygit<CR>
 
 Plug 'mbbill/undotree'
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
