@@ -29,7 +29,9 @@ install: update ## Run make update, deploy and init
 
 init: zsh pip ## Initialize installation
 	zsh -c "go get github.com/sachaos/todoist@v0.15.0"
-	sudo tlmgr update --self --all && suto tlmgr install cm-super preprint comment ncctools latexmk
+	sudo /usr/local/texlive/2017/bin/x86_64-darwin/tlmgr path add && \
+		sudo tlmgr update --self --all && \
+		suto tlmgr install cm-super preprint comment ncctools latexmk
 .PHONY: init
 
 secret:
