@@ -46,6 +46,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/fzf-floaterm'
 let g:floaterm_autoclose = 1
 let g:floaterm_keymap_toggle = '``'
+let g:floaterm_gitcommit = 'split'
 nnoremap <leader>gg <CMD>FloatermNew --height=0.9 --width=0.9 lazygit<CR>
 
 Plug 'mbbill/undotree'
@@ -454,14 +455,4 @@ function! s:TermForceCloseAll() abort
     for t in term_bufs
             execute "bd! " t
     endfor
-endfunction
-
-" To open vim from terminal on vim
-function! Tapi_vit(bufnum, arglist)
-    let currfile = get(a:arglist, 0, '')
-    if empty(currfile)
-        return
-    endif
-    wincmd w
-    execute 'e' currfile
 endfunction
