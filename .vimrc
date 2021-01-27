@@ -145,10 +145,10 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
 function! s:cd_repo(repo) abort
     let l:repo = trim(system('ghq root')) . '/' . a:repo
-    exe 'lcd ' . repo
     if line('$') != 1 || getline(1) != ''
         tabnew
     endif
+    exe 'tcd ' . repo
     Lexplore
 endfunction
 command! -bang -nargs=0 Repo
@@ -419,7 +419,7 @@ function! s:OpenVimrc()
     else
         exe 'tabedit ' . resolve(expand($MYVIMRC))
     endif
-    exe 'lcd %:h'
+    exe 'tcd %:h'
 endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
 map <leader>, :OpenVimrc<CR>

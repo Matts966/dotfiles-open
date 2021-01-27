@@ -40,8 +40,8 @@ secret:
 
 brew:
 	brew bundle || true && \
-		mkdir -p $(shell bat --config-dir)/themes && \
-		ln -sfFnv $(abspath iceberg.tmTheme) $(shell bat --config-dir)/themes && \
+		mkdir -p $(HOME)/.config/bat/themes && \
+		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
 		bat cache --build
 .PHONY: brew
 
