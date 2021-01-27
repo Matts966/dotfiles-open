@@ -44,7 +44,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/fzf-floaterm'
 let g:floaterm_autoclose = 1
-let g:floaterm_keymap_toggle = '<Leader>`'
+let g:floaterm_keymap_toggle = '``'
 
 Plug 'mbbill/undotree'
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
