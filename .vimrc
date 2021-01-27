@@ -11,12 +11,10 @@ if has('nvim')
     tnoremap <C-W>N <C-U><C-\><C-N>
     tnoremap <C-W>. <C-W>
     nnoremap <leader>` <CMD>tabnew<CR><CMD>terminal<CR>
-    autocmd TermOpen * setlocal nonumber norelativenumber
     nnoremap <leader>gg <CMD>tabnew<CR><CMD>terminal lazygit<CR>
 else
     source $VIMRUNTIME/defaults.vim
     nnoremap <leader>` :tab terminal<CR>
-    autocmd TerminalOpen * setlocal nonumber norelativenumber
     nnoremap <leader>gg :tab term ++close lazygit<CR>
 endif
 
@@ -40,6 +38,13 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
+
+
+
+Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/fzf-floaterm'
+let g:floaterm_autoclose = 1
+let g:floaterm_keymap_toggle = '<Leader>`'
 
 Plug 'mbbill/undotree'
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
