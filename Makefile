@@ -12,7 +12,7 @@ deploy: ## Create symlink to home directory
 	@echo 'Symlink dot files in your home directory...'
 	@$(foreach val, $(DOTFILES), ln -sfFnv $(abspath $(val)) $(HOME);)
 	mkdir -p ~/.config/karabiner && ln -sfFnv $(abspath karabiner.json) ~/.config/karabiner
-	ln -sfFnv $(abspath vim.zsh) /usr/local/bin
+	sudo ln -sfFnv $(abspath vim.zsh) /usr/local/bin
 	mkdir -p ~/.config/kitty && ln -sfFnv $(abspath kitty)/* ~/.config/kitty
 	mkdir -p ~/.config/nvim && ln -sfFnv $(abspath init.vim) ~/.config/nvim
 .PHONY: deploy
