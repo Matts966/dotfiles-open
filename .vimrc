@@ -6,6 +6,7 @@ if has('nvim')
     augroup neovim-terminal
         autocmd!
         autocmd termopen * startinsert
+        autocmd termopen * setlocal nonumber norelativenumber
     augroup end
     tnoremap <C-W> <C-U><C-\><C-N><C-W>
     tnoremap <C-W>N <C-U><C-\><C-N>
