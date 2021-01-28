@@ -27,7 +27,7 @@ install: update ## Run make update, deploy and init
 .PHONY: install
 
 init: zsh pip ## Initialize installation
-	ghq get git@github.com:sachaos/todoist.git && \
+	ghq get https://github.com/sachaos/todoist.git && \
 		cd ~/ghq/github.com/sachaos/todoist && make install
 		sudo tlmgr update --self --all && \
 		suto tlmgr install cm-super preprint comment ncctools latexmk
