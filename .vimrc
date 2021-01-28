@@ -230,7 +230,7 @@ let g:coc_user_config = {
 \   'python.formatting.provider': 'black',
 \ }
 Plug 'psf/black', { 'branch': 'stable' }
-let g:black_linelength = 80
+let g:black_linelength = 120
 autocmd BufWritePre *.py execute ':Black'
 
 Plug 'gkeep/iceberg-dark'
