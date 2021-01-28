@@ -29,7 +29,6 @@ install: update ## Run make update, deploy and init
 init: zsh pip ## Initialize installation
 	ghq get git@github.com:sachaos/todoist.git && \
 		cd ~/ghq/github.com/sachaos/todoist && make install
-	sudo /usr/local/texlive/2017/bin/x86_64-darwin/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		suto tlmgr install cm-super preprint comment ncctools latexmk
 .PHONY: init
