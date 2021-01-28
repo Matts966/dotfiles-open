@@ -197,3 +197,12 @@ fi
 if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
+
+_floaterm() {
+    if [[ $VIM ]]; then
+        floaterm $@
+    else
+        nvim $@nvim
+    fi
+}
+alias vim='_floaterm'
