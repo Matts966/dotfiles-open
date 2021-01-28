@@ -49,7 +49,9 @@ Plug 'voldikss/fzf-floaterm'
 let g:floaterm_autoclose = 1
 let g:floaterm_keymap_toggle = '``'
 let g:floaterm_gitcommit = 'split'
-nnoremap <leader>gg <CMD>FloatermNew --height=0.9 --width=0.9 lazygit<CR>
+let g:floaterm_width = 0.9
+let g:floaterm_height = 0.9
+nnoremap <leader>gg <CMD>FloatermNew lazygit<CR>
 
 Plug 'mbbill/undotree'
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
