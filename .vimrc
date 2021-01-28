@@ -15,6 +15,8 @@ if has('nvim')
     tnoremap <C-W> <C-U><C-\><C-N><C-W>
     tnoremap <C-W>N <C-U><C-\><C-N>
     tnoremap <C-W>. <C-W>
+    set winblend=30
+    set pumblend=30
 else
     source $VIMRUNTIME/defaults.vim
 endif
