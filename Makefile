@@ -30,8 +30,9 @@ install: update ## Run make update, deploy and init
 init: zsh pip ## Initialize installation
 	ghq get https://github.com/sachaos/todoist.git && \
 		cd ~/ghq/github.com/sachaos/todoist && make install
-		zsh -c "sudo tlmgr update --self --all && \
-			suto tlmgr install cm-super preprint comment ncctools latexmk"
+	sudo /usr/local/texlive/2020basic/bin/*/tlmgr path add && \
+		sudo tlmgr update --self --all && \
+		suto tlmgr install cm-super preprint comment ncctools latexmk
 .PHONY: init
 
 secret:
