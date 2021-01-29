@@ -20,6 +20,9 @@ if has('nvim')
     set winblend=30
     set pumblend=30
 else
+    " Auto completion on vim command line
+    " This prevents popup mode on nvim
+    set wildmode=list:longest
     source $VIMRUNTIME/defaults.vim
 endif
 
@@ -371,7 +374,6 @@ set cursorcolumn
 set autoindent
 set visualbell
 set showmatch
-set wildmode=list:longest " Auto completion on vim command line
 nnoremap j gj
 nnoremap k gk
 
