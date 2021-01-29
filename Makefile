@@ -36,7 +36,12 @@ init: zsh pip ## Initialize installation
 		cd ~/ghq/github.com/sachaos/todoist && make install
 	sudo /usr/local/texlive/2020basic/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
-		suto tlmgr install cm-super preprint comment ncctools latexmk
+		sudo tlmgr install cm-super preprint comment ncctools latexmk
+	curl openlab.jp/skk/dic/SKK-JISYO.L.gz -o SKK-JISYO.L.gz && \
+		gzip -d SKK-JISYO.L.gz && \
+		mkdir -p ~/.skk && \
+		mv SKK-JISYO.L ~/.skk/SKK-JISYO.L && \
+		rm SKK-JISYO.L.gz
 .PHONY: init
 
 secret:

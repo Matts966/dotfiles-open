@@ -44,6 +44,25 @@ call plug#begin('~/.vim/plugged')
 
 
 
+
+" skk.vim
+"Plug 'tyru/skk.vim'
+"map! <C-j> <Plug>(skk-toggle-im)
+"let g:skk_large_jisyo = expand('~/.skk/SKK-JISYO.L')
+"let g:skk_auto_save_jisyo = 1
+""autofmt option
+" set imdisable
+" set formatexpr=autofmt#japanese#formatexpr()
+
+" eskk.vim
+Plug 'tyru/eskk.vim'
+let g:eskk#directory = "~/.skk"
+let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8', }
+let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp', }
+let g:eskk#enable_completion = 1
+set imdisable
+set formatexpr=autofmt#japanese#formatexpr()
+
 Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/fzf-floaterm'
 let g:floaterm_autoclose = 1
