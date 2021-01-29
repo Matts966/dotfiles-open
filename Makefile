@@ -1,7 +1,6 @@
 CANDIDATES := $(wildcard .??*)
 EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .ssh
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
-MAKEFLAGS  += -j
 
 .DEFAULT_GOAL := help
 
@@ -22,7 +21,7 @@ update: ## Fetch changes for this repo
 .PHONY: update
 
 install: ## Run make update, deploy and init
-	make -j$$(nproc) all
+	make --jobs all
 .PHONY: install
 
 all: update
