@@ -171,8 +171,10 @@ if !empty(s:gh_token_path)
     endfor
 endif
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/vim-peekaboo'
+
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'LeafCage/yankround.vim'
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
