@@ -45,6 +45,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'cohama/lexima.vim'
+
 " skk.vim
 "Plug 'tyru/skk.vim'
 "map! <C-j> <Plug>(skk-toggle-im)
