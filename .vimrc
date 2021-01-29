@@ -144,8 +144,8 @@ autocmd FileType gitcommit setlocal spell
 
 Plug 'jiangmiao/auto-pairs'
 
-let g:auto_save = 1  " enable AutoSave on Vim startup
-Plug '907th/vim-auto-save'
+" let g:auto_save = 1  " enable AutoSave on Vim startup
+" Plug '907th/vim-auto-save'
 
 Plug 'psliwka/vim-smoothie'
 
