@@ -436,7 +436,8 @@ function! s:OpenVimrc()
 endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
 map <leader>, :OpenVimrc<CR>
-map <leader>r :source $MYVIMRC<CR>
+map <leader>r <Cmd>write<CR><Cmd>source $MYVIMRC<CR>
+map <leader>w <Cmd>write<CR>
 
 if &history < 1000
     set history=1000
