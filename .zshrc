@@ -202,7 +202,7 @@ _floaterm() {
     if [[ $VIM ]]; then
         floaterm $@
     else
-        nvim $@nvim
+        nvim $@
     fi
 }
 alias vim='_floaterm'
