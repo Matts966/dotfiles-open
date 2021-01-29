@@ -86,6 +86,12 @@ if has("persistent_undo")
     set undofile
 endif
 
+let g:auto_save = 1  " enable AutoSave on Vim startup
+Plug '907th/vim-auto-save'
+" Save only on leaving insert to prevent overwriting
+" history on unde.
+let g:auto_save_events = ["InsertLeave"]
+
 Plug 'vim-jp/vimdoc-ja'
 
 Plug 'szw/vim-g'
@@ -147,9 +153,6 @@ set spelllang+=cjk
 autocmd FileType gitcommit setlocal spell
 
 " Plug 'jiangmiao/auto-pairs'
-
-" let g:auto_save = 1  " enable AutoSave on Vim startup
-" Plug '907th/vim-auto-save'
 
 Plug 'psliwka/vim-smoothie'
 
