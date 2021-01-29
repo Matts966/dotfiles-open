@@ -21,11 +21,15 @@ update: ## Fetch changes for this repo
 	git pull origin main
 .PHONY: update
 
-install: update ## Run make update, deploy and init
+install: ## Run make update, deploy and init
+	make -j$$(nproc) all
+.PHONY: install
+
+all: update
 	make deploy
 	make init
 	make secret
-.PHONY: install
+.PHONY: all
 
 init: zsh pip ## Initialize installation
 	ghq get https://github.com/sachaos/todoist.git && \
