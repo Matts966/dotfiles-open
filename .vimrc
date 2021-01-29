@@ -8,7 +8,9 @@ if has('nvim')
         autocmd termopen * startinsert
         autocmd termopen * setlocal nonumber norelativenumber
         autocmd TermClose term://*
-            \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
+            \ if (expand('<afile>') !~ "fzf") &&
+            \ (expand('<afile>') !~ "ranger") &&
+            \ (expand('<afile>') !~ "coc") |
             \   call nvim_input('<CR>')  |
             \ endif
     augroup end
