@@ -39,8 +39,7 @@ init: zsh pip ## Initialize installation
 	curl openlab.jp/skk/dic/SKK-JISYO.L.gz -o SKK-JISYO.L.gz && \
 		gzip -d SKK-JISYO.L.gz && \
 		mkdir -p ~/.skk && \
-		mv SKK-JISYO.L ~/.skk/SKK-JISYO.L && \
-		rm SKK-JISYO.L.gz
+		mv SKK-JISYO.L ~/.skk/SKK-JISYO.L
 .PHONY: init
 
 secret:
