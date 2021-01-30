@@ -497,10 +497,11 @@ command! -nargs=1 Cldo :call Cldo(<q-args>)
 
 " Open .vimrc with <leader>,
 function! s:OpenVimrc()
+    let s:vimrc = glob('~/.vimrc')
     if line('$') == 1 && getline(1) == ''
-        exe 'e' resolve(expand($MYVIMRC))
+        exe 'e' resolve(s:vimrc)
     else
-        exe 'tabedit ' . resolve(expand($MYVIMRC))
+        exe 'tabedit ' . resolve(s:vimrc)
     endif
     exe 'tcd %:h'
 endfunction
