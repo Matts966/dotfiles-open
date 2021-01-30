@@ -252,7 +252,6 @@ let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
             \ 'ctrl-x': 'split',
             \ 'ctrl-v': 'vsplit' }
-let $FZF_DEFAULT_OPTS = '--reverse --ansi --bind ctrl-a:select-all'
 nnoremap <leader>gr :Repo<CR>
 
 " Git Grep with fzf by :GGrep
