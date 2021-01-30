@@ -34,7 +34,7 @@ init: zsh pip ## Initialize installation
 	ghq get https://github.com/sachaos/todoist.git && \
 		cd ~/ghq/github.com/sachaos/todoist && make install
 	sudo /usr/local/texlive/2020basic/bin/*/tlmgr path add && \
-		sudo tlmgr update --self --all && \
+		sudo tlmgr update --self --all || true && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk
 	curl openlab.jp/skk/dic/SKK-JISYO.L.gz -o SKK-JISYO.L.gz && \
 		gzip -d SKK-JISYO.L.gz && \
