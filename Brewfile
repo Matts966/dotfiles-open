@@ -65,6 +65,8 @@ brew "llvm"
 brew "ghostscript"
 # Tool to build, change, and version infrastructure
 brew "terraform"
+# Todoist CLI, use head for XDG and better filter.
+brew "todoist", args: ["HEAD"]
 cask "adoptopenjdk9"
 cask "alt-tab"
 cask "appcleaner"
@@ -77,5 +79,3 @@ cask "typora"
 cask "kitty"
 cask "spotify"
 cask "basictex"
-# Todoist CLI, use head for XDG and better filter.
-cask "todoist", args: ["HEAD"]
