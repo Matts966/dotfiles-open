@@ -68,6 +68,7 @@ augroup vim-ghost
     au!
     au User vim-ghost#connected call s:SetupGhostBuffer()
 augroup END
+
 Plug 'cohama/lexima.vim'
 
 " skk.vim
