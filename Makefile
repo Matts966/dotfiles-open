@@ -31,8 +31,6 @@ all: update
 .PHONY: all
 
 init: zsh pip ## Initialize installation
-	ghq get https://github.com/sachaos/todoist.git && \
-		cd ~/ghq/github.com/sachaos/todoist && make install
 	sudo /usr/local/texlive/2020basic/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all || true && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk

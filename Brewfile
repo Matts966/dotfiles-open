@@ -2,6 +2,7 @@ tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "sachaos/todoist"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # User-friendly launcher for Bazel
@@ -76,3 +77,5 @@ cask "typora"
 cask "kitty"
 cask "spotify"
 cask "basictex"
+# Todoist CLI, use head for XDG and better filter.
+cask "todoist", args: ["HEAD"]
