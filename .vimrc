@@ -54,6 +54,20 @@ call plug#begin('~/.vim/plugged')
 
 
 Plug 'gabrielpoca/replacer.nvim'
+
+Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+let g:ghost_darwin_app = 'kitty'
+let g:ghost_autostart = 1
+let g:ghost_cmd = 'tabedit'
+function! s:SetupGhostBuffer()
+    if match(expand("%:a"), '\v/ghost-(github|reddit|stackexchange|stackoverflow)\.com-')
+        set ft=markdown
+    endif
+endfunction
+augroup vim-ghost
+    au!
+    au User vim-ghost#connected call s:SetupGhostBuffer()
+augroup END
 Plug 'cohama/lexima.vim'
 
 " skk.vim
