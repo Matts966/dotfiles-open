@@ -523,4 +523,3 @@ endfunction
 autocmd HelpMode FileType help call s:init_help()
 " Quit all read only buffers with q
 nnoremap <expr> q (&modifiable && !&readonly ? 'q' : ':close!<CR>')
-
