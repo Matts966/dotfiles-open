@@ -20,6 +20,7 @@ if has('nvim')
     set winblend=30
     set pumblend=30
     set wildmode=longest:full
+    nmap <leader>h :lua require("replacer").run()<cr>
 else
     " Auto completion on vim command line
     " This prevents popup mode on nvim
@@ -51,6 +52,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+
+Plug 'gabrielpoca/replacer.nvim'
 Plug 'cohama/lexima.vim'
 
 " skk.vim
