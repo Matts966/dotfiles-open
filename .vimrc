@@ -74,13 +74,6 @@ Plug 'cohama/lexima.vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Xuyuanp/scrollbar.nvim'
-  augroup ScrollbarInit
-      autocmd!
-      autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
-      autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-      autocmd WinLeave,FocusLost             * silent! lua require('scrollbar').clear()
-  augroup end
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
@@ -140,7 +133,17 @@ let g:black_linelength = 120
 autocmd BufWritePre *.py execute ':Black'
 
 Plug 'itchyny/lightline.vim'
-let g:lightline = {}
+Plug 'ojroques/vim-scrollstatus'
+let g:lightline = {
+\   'active': {
+\       'left': [
+\           [ 'percent' ],
+\           [ 'mode', 'paste' ],
+\           [ 'readonly', 'filename', 'modified' ]
+\       ]
+\   },
+\   'component_function': {'percent': 'ScrollStatus'},
+\}
 let g:lightline.colorscheme = 'iceberg'
 
 
