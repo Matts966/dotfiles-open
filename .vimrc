@@ -71,23 +71,70 @@ augroup END
 
 Plug 'cohama/lexima.vim'
 
-" skk.vim
-"Plug 'tyru/skk.vim'
-"map! <C-j> <Plug>(skk-toggle-im)
-"let g:skk_large_jisyo = expand('~/.skk/SKK-JISYO.L')
-"let g:skk_auto_save_jisyo = 1
-""autofmt option
-" set imdisable
-" set formatexpr=autofmt#japanese#formatexpr()
 
-" eskk.vim
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" " eskk.vim
 Plug 'tyru/eskk.vim'
 let g:eskk#directory = "~/.skk"
+let g:eskk#server = {
+\	'host': '0.0.0.0',
+\	'port': 55100,
+\}
 let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8', }
 let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp', }
 let g:eskk#enable_completion = 1
 set imdisable
 set formatexpr=autofmt#japanese#formatexpr()
+Plug 'tyru/skkdict.vim'
+
+
+" " This causes duplicate source lsp.
+" Plug 'deoplete-plugins/deoplete-lsp'
+
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'lighttiger2505/deoplete-vim-lsp'
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+    " refer to doc to add more commands
+endfunction
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+Plug 'psf/black', { 'branch': 'stable' }
+let g:black_linelength = 120
+autocmd BufWritePre *.py execute ':Black'
+
+Plug 'itchyny/lightline.vim'
+let g:lightline = {}
+let g:lightline.colorscheme = 'iceberg'
+
 
 Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/fzf-floaterm'
@@ -280,113 +327,6 @@ nnoremap <C-t> :GFiles<CR>
 " Redirect any shell commands to fzf.vim.
 command! -bang -complete=shellcmd -nargs=* F
     \ call fzf#run(fzf#wrap(<q-args>, {'source': <q-args>." 2>&1"}, <bang>0))
-
-" LSP
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Lazily load coc for splash text
-let g:coc_start_at_startup = v:false
-autocmd FileType * CocStart
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in
-" location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>dd <Cmd>CocDiagnostics<CR>
-nmap <leader>f  <Plug>(coc-format)
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-let g:coc_disable_transparent_cursor = 1
-let g:coc_global_extensions = [
-\   'coc-dictionary', 'coc-word', 'coc-emoji',
-\   'coc-python', 'coc-rls', 'coc-vimlsp',
-\   'coc-git', 'coc-tsserver', 'coc-sh',
-\ ]
-let g:coc_user_config = {
-\   'diagnostic.warningSign': '>>',
-\   'python.linting.pylintEnabled': 0,
-\   'python.linting.flake8Enabled': 1,
-\   'python.linting.enabled': 1,
-\   'python.formatting.provider': 'black',
-\ }
-Plug 'psf/black', { 'branch': 'stable' }
-let g:black_linelength = 120
-autocmd BufWritePre *.py execute ':Black'
-
-Plug 'gkeep/iceberg-dark'
-Plug 'itchyny/lightline.vim'
-function! CocErrors()
-    let info = get(b:, 'coc_diagnostic_info', {})
-    if get(info, 'error', 0)
-        return '• ' . info['error']
-    endif
-    return ''
-endfunction
-function! CocWarnings()
-    let info = get(b:, 'coc_diagnostic_info', {})
-    if get(info, 'warning', 0)
-        return '• ' . info['warning']
-    endif
-    return ''
-endfunction
-function! CocStatus()
-    let info = get(b:, 'coc_diagnostic_info', {})
-    if get(info, 'error', 0)
-        return ''
-    endif
-    if get(info, 'warning', 0)
-        return ''
-    endif
-    let s:msg = get(g:, 'coc_status', '')
-    if s:msg
-        return '• ' . s:msg
-    endif
-    return '•'
-endfunction
-let g:lightline = {
-    \ 'colorscheme': 'icebergDark',
-    \ 'active': {
-    \     'left': [ [ 'mode', 'paste' ],
-    \         [ 'readonly', 'filename', 'modified', 'coc_errors', 'coc_warnings', 'coc_ok' ] ]
-    \ },
-    \ 'component_expand': {
-    \     'coc_errors': 'CocErrors',
-    \     'coc_warnings': 'CocWarnings',
-    \     'coc_ok': 'CocStatus'
-    \ },
-    \     'component_type': {
-    \     'coc_warnings': 'warning',
-    \     'coc_errors': 'error',
-    \     'coc_ok': 'ok',
-    \ },
-\ }
-augroup CocConf
-    autocmd!
-    autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-    " Highlight the symbol and its references when holding the cursor.
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup END
-set laststatus=2
-
 
 Plug 'dansomething/vim-hackernews'
 

@@ -38,6 +38,7 @@ init: zsh pip ## Initialize installation
 		gzip -d SKK-JISYO.L.gz && \
 		mkdir -p ~/.skk && \
 		mv SKK-JISYO.L ~/.skk/SKK-JISYO.L
+	docker run --restart=always -d -p 55100:55100 matts966/google-ime-skk-docker
 .PHONY: init
 
 secret:
