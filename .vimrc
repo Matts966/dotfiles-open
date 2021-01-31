@@ -74,6 +74,13 @@ Plug 'cohama/lexima.vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Xuyuanp/scrollbar.nvim'
+  augroup ScrollbarInit
+      autocmd!
+      autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
+      autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+      autocmd WinLeave,FocusLost             * silent! lua require('scrollbar').clear()
+  augroup end
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
