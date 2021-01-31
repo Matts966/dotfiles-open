@@ -98,6 +98,7 @@ let g:eskk#server = {
 \}
 let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8', }
 let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp', }
+let g:eskk#start_completion_length = 1
 set imdisable
 set formatexpr=autofmt#japanese#formatexpr()
 Plug 'tyru/skkdict.vim'
