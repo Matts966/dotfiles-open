@@ -31,7 +31,7 @@ all: update
 .PHONY: all
 
 init: zsh pip ## Initialize installation
-	sudo /usr/local/texlive/2020basic/bin/*/tlmgr path add && \
+	sudo /usr/local/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all || true && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk
 	curl openlab.jp/skk/dic/SKK-JISYO.L.gz -o SKK-JISYO.L.gz && \
