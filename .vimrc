@@ -262,6 +262,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'LeafCage/yankround.vim'
 noremap <leader>b <Cmd>FzfPreviewBufferLinesRpc<CR>
+noremap <leader>p <Cmd>FzfPreviewMruFilesRpc<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
