@@ -516,7 +516,7 @@ endfunction
 augroup auto_load
     autocmd!
     autocmd VimEnter * call s:LoadPlugins()
-    autocmd BufWritePost .vimrc source $MYVIMRC
+    autocmd BufWritePost .vimrc source $MYVIMRC | call s:LoadPlugins()
 augroup END
 map <leader>w <Cmd>write<CR>
 
