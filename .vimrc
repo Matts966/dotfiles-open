@@ -507,7 +507,17 @@ function! s:OpenVimrc()
 endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
 map <leader>, :OpenVimrc<CR>
-map <leader>r <Cmd>write<CR><Cmd>source $MYVIMRC<CR>
+function! s:LoadPlugins()
+    if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+        PlugInstall --sync
+        quit
+    endif
+endfunction
+augroup auto_load
+    autocmd!
+    autocmd VimEnter * call s:LoadPlugins()
+    autocmd BufWritePost .vimrc source $MYVIMRC
+augroup END
 map <leader>w <Cmd>write<CR>
 
 if &history < 1000
