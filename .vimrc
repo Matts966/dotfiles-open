@@ -81,9 +81,10 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 
-" " eskk.vim
+" eskk.vim
 Plug 'tyru/eskk.vim'
 let g:eskk#directory = "~/.skk"
+" Note that google-ime-skk is not working if stopped with ;
 let g:eskk#server = {
 \	'host': '0.0.0.0',
 \	'port': 55100,
