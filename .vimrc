@@ -214,8 +214,11 @@ Plug 'haya14busa/vim-operator-flashy'
 map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
 
+Plug 'unblevable/quick-scope'
 Plug 'easymotion/vim-easymotion'
-map <Leader>e <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-overwin-f2)
 Plug 'rhysd/clever-f.vim'
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
