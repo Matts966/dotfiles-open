@@ -380,7 +380,8 @@ set noswapfile
 set autoread
 augroup vimrc-checktime
     autocmd!
-    autocmd InsertEnter,WinEnter * checktime
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+        \ if !bufexists("[Command Line]") | checktime | endif
 augroup END
 set hidden
 " Yank to clipboard
