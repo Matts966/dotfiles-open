@@ -67,6 +67,8 @@ brew "ghostscript"
 brew "terraform"
 # Todoist CLI, use head for XDG and better filter.
 brew "todoist", args: ["HEAD"]
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 cask "adoptopenjdk9"
 cask "alt-tab"
 cask "appcleaner"
