@@ -13,35 +13,15 @@ if has('nvim')
             \ (expand('<afile>') !~ "coc") |
             \   call nvim_input('<CR>')  |
             \ endif
-        autocmd CmdlineChanged * call OnCmdlineChanged()
     augroup end
     tnoremap <C-W> <C-\><C-N><C-W>
     tnoremap <C-W>N <C-\><C-N>
     tnoremap <C-W>. <C-W>
+    set wildmode=longest:full
     set winblend=30
     set pumblend=30
-    nmap <leader>h :lua require("replacer").run()<cr>
 
-    set wildmode=longest:full
-    function! OnCompletionDone(timer) abort
-        let g:doing_update = 0
-    endfunction
-    function! PromptCmd(timer) abort
-        if getcmdpos()
-            call nvim_input('<C-i>')
-        endif
-        call timer_start(5, 'OnCompletionDone')
-    endfunction
-    let g:doing_update = 0
-    function! OnCmdlineChanged() abort
-        if g:doing_update
-            return
-        endif
-        let g:doing_update = 1
-        if getcmdtype() == ':' && ! pumvisible()
-            call timer_start(5, 'PromptCmd')
-        endif
-    endfunction
+    nmap <leader>h :lua require("replacer").run()<cr>
 else
     " Auto completion on vim command line
     " This prevents popup mode on nvim
