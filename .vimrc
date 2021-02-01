@@ -137,14 +137,15 @@ Plug 'ojroques/vim-scrollstatus'
 let g:lightline = {
 \   'active': {
 \       'left': [
-\           [ 'percent' ],
 \           [ 'mode', 'paste' ],
-\           [ 'readonly', 'filename', 'modified' ]
+\           [ 'readonly', 'filename', 'modified' ],
+\           [ 'scrollbar' ],
 \       ]
 \   },
-\   'component_function': {'percent': 'ScrollStatus'},
+\   'component_function': {'scrollbar': 'ScrollStatus'},
 \}
-let g:lightline.colorscheme = 'iceberg'
+Plug 'gkeep/iceberg-dark'
+let g:lightline.colorscheme = 'icebergDark'
 
 
 Plug 'voldikss/vim-floaterm'
