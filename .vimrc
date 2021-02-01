@@ -470,9 +470,11 @@ endfunction
 augroup auto_load
     autocmd!
     autocmd VimEnter * call s:LoadPlugins()
-    autocmd BufWritePost .vimrc source $MYVIMRC | call s:LoadPlugins()
+    autocmd BufWritePost .vimrc source $MYVIMRC
 augroup END
 map <leader>w <Cmd>write<CR>
+command! -nargs=0 LoadPlugins call s:LoadPlugins()
+map <leader>r <Cmd>LoadPlugins<CR>
 
 if &history < 1000
     set history=1000
