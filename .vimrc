@@ -29,6 +29,14 @@ else
     source $VIMRUNTIME/defaults.vim
 endif
 
+augroup PDF
+    autocmd!
+    if executable('pdftotext')
+        autocmd BufEnter *.pdf :enew | setlocal nobuflisted buftype=nofile bufhidden=wipe
+            \ | 0read !pdftotext -layout -nopgbrk "#" -
+    endif
+augroup END
+
 scriptencoding utf-8
 set encoding=utf-8
 set langmenu=en_US
