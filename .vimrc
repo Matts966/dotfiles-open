@@ -228,9 +228,6 @@ Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
-Plug 'rhysd/clever-f.vim'
-map ; <Plug>(clever-f-repeat-forward)
-map , <Plug>(clever-f-repeat-back)
 
 " Git related settings
 Plug 'lambdalisue/gina.vim'
