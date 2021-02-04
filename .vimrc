@@ -354,6 +354,16 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'cocopon/iceberg.vim'
 
+Plug 'basyura/TweetVim'
+Plug 'mattn/favstar-vim'
+Plug 'Shougo/unite.vim'
+Plug 'basyura/bitly.vim'
+Plug 'h1mesuke/unite-outline'
+Plug 'mattn/webapi-vim'
+Plug 'basyura/twibill.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'Shougo/vimproc'
+
 " Initialize plugin system
 call plug#end()
 
