@@ -48,7 +48,8 @@ secret:
 .PHONY: secret
 
 brew:
-	brew bundle || true && \
+	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+		brew bundle || true && \
 		mkdir -p $(HOME)/.config/bat/themes && \
 		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
 		bat cache --build
