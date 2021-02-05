@@ -1,30 +1,25 @@
 export LANG=ja_JP.UTF-8
 
-# ZPlug
-source ~/.zplug/init.zsh
-
-zplug "docker/compose", use:contrib/completion/zsh
-
-zplug "zsh-users/zsh-syntax-highlighting"
-
-zplug "zsh-users/zsh-completions"
-zplug "greymd/docker-zsh-completion"
-zplug "zsh-users/zsh-autosuggestions"
-
+# For terminal on vim, initialize clearly.
 bindkey -e
 
-zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
-zplug "b4b4r07/zsh-gomi", if:"which fzf", defer:3
+# zinit
+source $HOME/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-    echo "compiling..."
-    for f in $(find ~ -type f -name "*.zsh" 2> /dev/null); do zcompile $f; done
-fi
-zplug load
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice from"gh-r" as"program"
+zinit load junegunn/fzf-bin
+zinit ice multisrc"shell/*.zsh"
+zinit light junegunn/fzf
+
+zinit ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
+zinit load docker/compose
+
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 
 source ~/.todoist_functions_fzf.zsh
 
