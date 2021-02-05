@@ -181,8 +181,6 @@ let g:auto_save_events = ["InsertLeave"]
 
 Plug 'vim-jp/vimdoc-ja'
 
-Plug 'szw/vim-g'
-
 Plug 'junegunn/goyo.vim'
 nnoremap <silent> <leader>go :Goyo<CR>
 function! s:auto_goyo_length()
