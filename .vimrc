@@ -130,7 +130,7 @@ endfunction
 " call s:on_lsp_buffer_enabled only for languages that has the server registered.
 autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
-Plug 'psf/black', { 'branch': 'stable' }
+Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
 let g:black_linelength = 120
 autocmd MyAutoCmd BufWritePre *.py execute ':Black'
 
@@ -196,7 +196,7 @@ if ! executable('j2p2j')
 endif
 Plug 'tamuhey/vim-jupyter'
 
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'vim-plug'] }
 
 " Toggle comment out with gcc and gc with selection.
 Plug 'tpope/vim-surround'
@@ -214,7 +214,6 @@ map _ <Plug>(operator-replace)
 Plug 'haya14busa/vim-operator-flashy'
 map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
-
 Plug 'unblevable/quick-scope'
 
 " Git related settings
@@ -313,8 +312,8 @@ Plug 'dansomething/vim-hackernews'
 if !exists('g:vscode')
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
         \ 'for': ['markdown', 'vim-plug']}
-    Plug 'godlygeek/tabular'
-    Plug 'plasticboy/vim-markdown'
+    Plug 'godlygeek/tabular', { 'for': ['markdown', 'vim-plug'] }
+    Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'vim-plug'] }
     let g:vim_markdown_new_list_item_indent = 2
     let g:vim_markdown_folding_disabled = 1
 endif
