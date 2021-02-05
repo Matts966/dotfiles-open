@@ -244,6 +244,8 @@ Plug 'skanehira/gh.vim'
 
 Plug 'junegunn/vim-peekaboo'
 
+
+" fzf
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -308,6 +310,7 @@ nnoremap <leader>p :GFiles<CR>
 " Redirect any shell commands to fzf.vim.
 command! -bang -complete=shellcmd -nargs=* F
     \ call fzf#run(fzf#wrap(<q-args>, {'source': <q-args>." 2>&1"}, <bang>0))
+
 
 Plug 'dansomething/vim-hackernews'
 
