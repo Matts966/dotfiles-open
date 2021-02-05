@@ -296,7 +296,7 @@ command! -bang -nargs=* GGrep
             \ 'git rev-parse --show-toplevel')[0]}), <bang>0)
 " Without fuzzy search with :RG
 function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --column --line-number --no-heading'
+    let command_fmt = 'rg --column --line-number --no-heading --smart-case'
         \ . ' --hidden --follow -g "!{node_modules,.git}" -- %s || true'
     let initial_command = printf(command_fmt, shellescape(a:query))
     let reload_command = printf(command_fmt, '{q}')
