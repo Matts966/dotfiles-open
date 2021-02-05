@@ -220,10 +220,6 @@ map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
 
 Plug 'unblevable/quick-scope'
-Plug 'easymotion/vim-easymotion'
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-overwin-f2)
 
 " Git related settings
 Plug 'lambdalisue/gina.vim'
