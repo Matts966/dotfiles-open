@@ -76,20 +76,20 @@ autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
 
 Plug 'cohama/lexima.vim'
 
-
 if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
 
     Plug 'kevinhwang91/nvim-bqf'
 else
-    Plug 'Shougo/deoplete.nvim'
+    Plug 'Shougo/deoplete.nvim', { 'on': [] }
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+Plug 'lighttiger2505/deoplete-vim-lsp', { 'on': [] }
 
 " eskk.vim
-Plug 'tyru/eskk.vim'
+Plug 'tyru/eskk.vim', { 'on': [] }
 let g:eskk#directory = "~/.skk"
 " Note that google-ime-skk is not working if stopped with ;
 let g:eskk#server = {
@@ -102,6 +102,9 @@ let g:eskk#start_completion_length = 1
 set imdisable
 set formatexpr=autofmt#japanese#formatexpr()
 Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
+autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
+autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
+autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
 
 
 " " This causes duplicate source lsp.
@@ -109,7 +112,6 @@ Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
 
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-Plug 'lighttiger2505/deoplete-vim-lsp'
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
