@@ -20,8 +20,6 @@ if has('nvim')
     set wildmode=longest:full
     set winblend=30
     set pumblend=30
-
-    nmap <leader>h :lua require("replacer").run()<cr>
 else
     " Auto completion on vim command line
     " This prevents popup mode on nvim
@@ -61,8 +59,6 @@ call plug#begin('~/.vim/plugged')
 
 
 
-
-Plug 'gabrielpoca/replacer.nvim'
 
 Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 let g:ghost_darwin_app = 'kitty'
