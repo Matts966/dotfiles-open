@@ -354,11 +354,7 @@ augroup vimrc-checktime
 augroup END
 set hidden
 " Yank to clipboard
-if system('uname -s') == "Darwin\n"
-    set clipboard=unnamed "OSX
-else
-    set clipboard=unnamedplus "Linux
-endif
+set clipboard^=unnamed,unnamedplus
 
 set number
 set relativenumber
