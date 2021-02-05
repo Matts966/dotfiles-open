@@ -60,6 +60,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'stsewd/gx-extended.vim'
+
 Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 let g:ghost_darwin_app = 'kitty'
 let g:ghost_autostart = 1
