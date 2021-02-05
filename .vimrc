@@ -266,7 +266,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'LeafCage/yankround.vim'
 noremap <leader>b <Cmd>FzfPreviewBufferLinesRpc<CR>
-noremap <leader>p <Cmd>FzfPreviewMruFilesRpc<CR>
+noremap <leader>m <Cmd>FzfPreviewMruFilesRpc<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
@@ -336,7 +336,7 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " Find with ripgrep
 nnoremap <C-f> :RG<CR>
 " Compatible with fzf default binding but ignore tag stack.
-nnoremap <C-t> :GFiles<CR>
+nnoremap <leader>p :GFiles<CR>
 
 " Redirect any shell commands to fzf.vim.
 command! -bang -complete=shellcmd -nargs=* F
