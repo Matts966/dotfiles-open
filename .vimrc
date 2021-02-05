@@ -257,10 +257,6 @@ noremap <leader>m <Cmd>FzfPreviewMruFilesRpc<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
-" Only works on nvim and prevents default behavior
-" cnoremap <expr> <Tab> getcmdtype() == "/" \|\|
-" \    getcmdtype() == "?" ? "<CR>/<C-r>/" : "<C-Z>"
-
 function! s:cd_repo(repo) abort
     let l:repo = trim(system('ghq root')) . '/' . a:repo
     if line('$') != 1 || getline(1) != ''
