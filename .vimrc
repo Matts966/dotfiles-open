@@ -40,6 +40,7 @@ set langmenu=en_US
 let $LANG = 'en_US.UTF-8'
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+set updatetime=250
 
 set background=dark
 
@@ -61,16 +62,17 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'stsewd/gx-extended.vim'
 
-Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
-let g:ghost_darwin_app = 'kitty'
+Plug 'raghur/vim-ghost', { 'do': ':GhostInstall', 'on': [] }
 let g:ghost_autostart = 1
-let g:ghost_cmd = 'tabedit'
 function! s:SetupGhostBuffer()
+    let g:ghost_darwin_app = 'kitty'
+    let g:ghost_cmd = 'tabedit'
     if match(expand("%:a"), '\v/ghost-(github|reddit|stackexchange|stackoverflow)\.com-')
         set ft=markdown
     endif
 endfunction
-au MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
+autocmd MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
+autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
 
 Plug 'cohama/lexima.vim'
 
