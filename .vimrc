@@ -446,19 +446,6 @@ cnoremap <C-B> <Left>
 " Clear search result on <C-l>
 nnoremap <silent> <C-l> :<Cmd>nohlsearch<CR>GitGutter<CR><C-l>
 
-
-function! Cldo(command)
-    try
-        silent crewind
-        while 1
-            execute a:command
-            silent cnext
-        endwhile
-    catch /^Vim\%((\a\+)\)\=:E\%(553\|42\):/
-    endtry
-endfunction
-command! -nargs=1 Cldo :call Cldo(<q-args>)
-
 " Open .vimrc with <leader>,
 function! s:OpenVimrc()
     let s:vimrc = glob('~/.vimrc')
