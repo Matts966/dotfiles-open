@@ -2,18 +2,20 @@
 " important settings should be written earlier.
 let mapleader = "\<Space>" " Remap <leader> key to space
 
+augroup MyAutoCmd
+    autocmd!
+augroup END
+
+
 if has('nvim')
-    augroup neovim-terminal
-        autocmd!
-        autocmd termopen * startinsert
-        autocmd termopen * setlocal nonumber norelativenumber
-        autocmd TermClose term://*
-            \ if (expand('<afile>') !~ "fzf") &&
-            \ (expand('<afile>') !~ "ranger") &&
-            \ (expand('<afile>') !~ "coc") |
-            \   call nvim_input('<CR>')  |
-            \ endif
-    augroup end
+    autocmd MyAutoCmd termopen * startinsert
+    autocmd MyAutoCmd termopen * setlocal nonumber norelativenumber
+    autocmd MyAutoCmd TermClose term://*
+        \ if (expand('<afile>') !~ "fzf") &&
+        \ (expand('<afile>') !~ "ranger") &&
+        \ (expand('<afile>') !~ "coc") |
+        \   call nvim_input('<CR>')  |
+        \ endif
     tnoremap <C-W> <C-\><C-N><C-W>
     tnoremap <C-W>N <C-\><C-N>
     tnoremap <C-W>. <C-W>
@@ -27,13 +29,10 @@ else
     source $VIMRUNTIME/defaults.vim
 endif
 
-augroup PDF
-    autocmd!
-    if executable('pdftotext')
-        autocmd BufEnter *.pdf :enew | setlocal nobuflisted buftype=nofile bufhidden=wipe
-            \ | 0read !pdftotext -layout -nopgbrk "#" -
-    endif
-augroup END
+if executable('pdftotext')
+    autocmd MyAutoCmd BufEnter *.pdf :enew | setlocal nobuflisted buftype=nofile bufhidden=wipe
+        \ | 0read !pdftotext -layout -nopgbrk "#" -
+endif
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -50,7 +49,7 @@ set background=dark
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    autocmd MyAutoCmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
 
@@ -71,10 +70,7 @@ function! s:SetupGhostBuffer()
         set ft=markdown
     endif
 endfunction
-augroup vim-ghost
-    au!
-    au User vim-ghost#connected call s:SetupGhostBuffer()
-augroup END
+au MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
 
 Plug 'cohama/lexima.vim'
 
@@ -127,19 +123,16 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> K <plug>(lsp-hover)
 
     let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    autocmd MyAutoCmd BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 
     " refer to doc to add more commands
 endfunction
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
+" call s:on_lsp_buffer_enabled only for languages that has the server registered.
+autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
 Plug 'psf/black', { 'branch': 'stable' }
 let g:black_linelength = 120
-autocmd BufWritePre *.py execute ':Black'
+autocmd MyAutoCmd BufWritePre *.py execute ':Black'
 
 Plug 'itchyny/lightline.vim'
 Plug 'ojroques/vim-scrollstatus'
@@ -196,10 +189,7 @@ function! s:auto_goyo_length()
         let g:goyo_width = 80
     endif
 endfunction
-augroup goyo_python
-    autocmd!
-    autocmd BufEnter * call s:auto_goyo_length()
-augroup END
+autocmd MyAutoCmd BufEnter * call s:auto_goyo_length()
 
 if ! executable('j2p2j')
     !go install github.com/tamuhey/j2p2j
@@ -238,7 +228,7 @@ nnoremap [gina]p :Gina pull<CR>
 nnoremap [gina]P :Gina push<CR>
 " Enable spell check only in git commit
 set spelllang+=cjk
-autocmd FileType gitcommit setlocal spell
+autocmd MyAutoCmd FileType gitcommit setlocal spell
 
 " Plug 'jiangmiao/auto-pairs'
 
@@ -351,11 +341,8 @@ set fenc=utf-8
 set nobackup
 set noswapfile
 set autoread
-augroup vimrc-checktime
-    autocmd!
-    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-        \ if !bufexists("[Command Line]") | checktime | endif
-augroup END
+autocmd MyAutoCmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+    \ if !bufexists("[Command Line]") | checktime | endif
 set hidden
 " Yank to clipboard
 set clipboard^=unnamed,unnamedplus
@@ -383,10 +370,7 @@ fun! TrimWhitespace()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
-augroup remove_spaces
-    autocmd!
-    autocmd BufWritePre * :call TrimWhitespace()
-augroup END
+autocmd MyAutoCmd BufWritePre * :call TrimWhitespace()
 
 set ignorecase
 set smartcase " Case Sensitive only with upper case
@@ -394,10 +378,7 @@ set wrapscan
 set hlsearch
 
 " Create dir if not exists when writing new file.
-augroup Mkdir
-    autocmd!
-    autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
-augroup END
+autocmd MyAutoCmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 
 " Mimic Emacs Line Editing in Insert and Ex Mode Only
 inoremap <C-A> <Home>
@@ -428,14 +409,11 @@ function! s:LoadPlugins()
         quit
     endif
 endfunction
-augroup auto_load
-    autocmd!
-    autocmd VimEnter * call s:LoadPlugins()
-    autocmd BufWritePost .vimrc source $MYVIMRC
-augroup END
+autocmd MyAutoCmd VimEnter * call s:LoadPlugins()
+autocmd MyAutoCmd BufWritePost .vimrc source $MYVIMRC
 map <leader>w <Cmd>write<CR>
 command! -nargs=0 LoadPlugins call s:LoadPlugins()
-map <leader>r <Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
+map <leader>r <Cmd>wa<CR><Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
 
 if &history < 1000
     set history=1000
