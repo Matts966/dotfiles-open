@@ -316,11 +316,13 @@ command! -bang -complete=shellcmd -nargs=* F
 
 Plug 'dansomething/vim-hackernews'
 
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
-    \ 'for': ['markdown', 'vim-plug']}
-Plug 'godlygeek/tabular'
 if !exists('g:vscode')
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
+        \ 'for': ['markdown', 'vim-plug']}
+    Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
+    let g:vim_markdown_new_list_item_indent = 2
+    let g:vim_markdown_folding_disabled = 1
 endif
 
 Plug 'airblade/vim-gitgutter'
