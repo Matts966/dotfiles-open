@@ -27,7 +27,7 @@ zinit load docker/compose
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 
-PROMPT="%F{cyan}%~%f
+PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
 %F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
 
 
