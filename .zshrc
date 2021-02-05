@@ -60,3 +60,4 @@ _floaterm() {
     fi
 }
 alias vim='_floaterm'
+export EDITOR=_floaterm
