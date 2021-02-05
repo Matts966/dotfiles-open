@@ -102,9 +102,17 @@ let g:eskk#start_completion_length = 1
 set imdisable
 set formatexpr=autofmt#japanese#formatexpr()
 Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
+
+let g:auto_save = 1  " enable AutoSave on Vim startup
+Plug '907th/vim-auto-save', { 'on': [] }
+" Save only on leaving insert to prevent overwriting
+" history on unde.
+let g:auto_save_events = ["InsertLeave"]
+
 autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
 autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
 autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
+autocmd MyAutoCmd InsertEnter * :call plug#load('vim-auto-save')
 
 
 " " This causes duplicate source lsp.
@@ -174,12 +182,6 @@ if has("persistent_undo")
     set undodir=~/.vim/undo-dir
     set undofile
 endif
-
-let g:auto_save = 1  " enable AutoSave on Vim startup
-Plug '907th/vim-auto-save'
-" Save only on leaving insert to prevent overwriting
-" history on unde.
-let g:auto_save_events = ["InsertLeave"]
 
 Plug 'vim-jp/vimdoc-ja'
 
