@@ -162,8 +162,8 @@ Plug 'gkeep/iceberg-dark'
 let g:lightline.colorscheme = 'icebergDark'
 
 
-Plug 'voldikss/vim-floaterm'
-Plug 'voldikss/fzf-floaterm'
+Plug 'voldikss/vim-floaterm', { 'on': ['FloatermNew', 'Floaterms'] }
+Plug 'voldikss/fzf-floaterm', { 'on': 'Floaterms' }
 let g:floaterm_autoclose = 1
 let g:floaterm_keymap_toggle = '``'
 let g:floaterm_gitcommit = 'split'
@@ -173,7 +173,7 @@ nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>FloatermNew lazygit<CR>
 nnoremap <leader>` <CMD>Floaterms<CR>
 nnoremap <leader>d <CMD>FloatermNew<CR>
 
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
 if has("persistent_undo")
     if !isdirectory($HOME."/.vim/undo-dir")
@@ -185,7 +185,7 @@ endif
 
 Plug 'vim-jp/vimdoc-ja'
 
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 nnoremap <silent> <leader>go :Goyo<CR>
 function! s:auto_goyo_length()
     if &ft == 'python'
@@ -223,7 +223,7 @@ nmap Y <Plug>(operator-flashy)$
 Plug 'unblevable/quick-scope'
 
 " Git related settings
-Plug 'lambdalisue/gina.vim'
+Plug 'lambdalisue/gina.vim', { 'on': 'Gina' }
 nnoremap [gina]  <Nop>
 nmap <leader>g [gina]
 nnoremap <silent> [gina]s :Gina status<CR>
