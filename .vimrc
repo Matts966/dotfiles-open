@@ -101,7 +101,7 @@ let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'enco
 let g:eskk#start_completion_length = 1
 set imdisable
 set formatexpr=autofmt#japanese#formatexpr()
-Plug 'tyru/skkdict.vim'
+Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
 
 
 " " This causes duplicate source lsp.
