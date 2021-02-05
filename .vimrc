@@ -378,7 +378,6 @@ let g:netrw_winsize=20
 let g:netrw_liststyle=3
 let g:netrw_localrmdir='rm -r'
 let g:netrw_keepj=""
-nnoremap <C-E> :Lexplore<CR>
 
 set fenc=utf-8
 set nobackup
