@@ -471,7 +471,7 @@ augroup auto_load
 augroup END
 map <leader>w <Cmd>write<CR>
 command! -nargs=0 LoadPlugins call s:LoadPlugins()
-map <leader>r <Cmd>LoadPlugins<CR>
+map <leader>r <Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
 
 if &history < 1000
     set history=1000
