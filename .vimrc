@@ -247,10 +247,6 @@ autocmd FileType gitcommit setlocal spell
 
 Plug 'psliwka/vim-smoothie'
 
-Plug 'terryma/vim-expand-region'
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
 Plug 'thinca/vim-qfreplace'
 
 Plug 'skanehira/gh.vim'
