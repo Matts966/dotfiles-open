@@ -437,12 +437,5 @@ if &history < 1000
     set history=1000
 endif
 
-augroup HelpMode
-    autocmd!
-augroup END
-function! s:init_help()
-    nnoremap <buffer> <Space><Space> <C-]>
-endfunction
-autocmd HelpMode FileType help call s:init_help()
 " Quit all read only buffers with q
 nnoremap <expr> q (&modifiable && !&readonly ? 'q' : ':close!<CR>')
