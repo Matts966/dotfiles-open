@@ -31,8 +31,8 @@ all: update
 .PHONY: all
 
 init: zsh pip ## Initialize installation
-	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add || true && \
-		sudo tlmgr update --self --all || true && \
+	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
+		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
 			totpages xstring environ hyperxmp ifmtarg || true
 	curl openlab.jp/skk/dic/SKK-JISYO.L.gz -o SKK-JISYO.L.gz && \
