@@ -81,6 +81,8 @@ Plug 'cohama/lexima.vim'
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+    Plug 'kevinhwang91/nvim-bqf'
 else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
