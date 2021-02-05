@@ -162,6 +162,7 @@ let g:floaterm_width = 0.9
 let g:floaterm_height = 0.9
 nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>FloatermNew lazygit<CR>
 nnoremap <leader>` <CMD>Floaterms<CR>
+nnoremap <leader>d <CMD>FloatermNew<CR>
 
 Plug 'mbbill/undotree'
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
