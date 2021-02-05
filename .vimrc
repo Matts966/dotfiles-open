@@ -257,22 +257,6 @@ noremap <leader>m <Cmd>FzfPreviewMruFilesRpc<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
-function! s:FzfCommandHistory()
-    let s:INTERRUPT = "\u03\u0c" " <C-c><C-l>
-    let s:SUBMIT = "\u0d" " <C-m>
-    let s:cmdtype = getcmdtype()
-    let s:args = string({
-    \   "options": "--query=" . shellescape(getcmdline()),
-    \ })
-    if s:cmdtype == ':'
-        return s:INTERRUPT . ":keepp call fzf#vim#command_history(" .  s:args . ")" . s:SUBMIT
-    elseif s:cmdtype == '/' || s:cmdtype == '?'
-        return s:INTERRUPT . ":keepp call fzf#vim#search_history(" .  s:args . ")" . s:SUBMIT
-    else
-        return ''
-    endif
-endfunction
-cnoremap <expr> <C-R> <SID>FzfCommandHistory()
 " Only works on nvim and prevents default behavior
 " cnoremap <expr> <Tab> getcmdtype() == "/" \|\|
 " \    getcmdtype() == "?" ? "<CR>/<C-r>/" : "<C-Z>"
