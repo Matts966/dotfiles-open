@@ -165,6 +165,7 @@ let g:floaterm_gitcommit = 'split'
 let g:floaterm_width = 0.9
 let g:floaterm_height = 0.9
 nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>FloatermNew lazygit<CR>
+nnoremap <leader>` <CMD>Floaterms<CR>
 
 Plug 'mbbill/undotree'
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
