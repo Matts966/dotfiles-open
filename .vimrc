@@ -162,7 +162,7 @@ Plug 'gkeep/iceberg-dark'
 let g:lightline.colorscheme = 'icebergDark'
 
 
-Plug 'voldikss/vim-floaterm', { 'on': ['FloatermNew', 'Floaterms'] }
+Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/fzf-floaterm', { 'on': 'Floaterms' }
 let g:floaterm_autoclose = 1
 let g:floaterm_keymap_toggle = '``'
