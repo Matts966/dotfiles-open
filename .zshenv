@@ -17,3 +17,6 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
+export IDF_PATH=$HOME/esp/esp-idf
+export PATH=$PATH:$HOME/esp/xtensa-esp32-elf/bin
