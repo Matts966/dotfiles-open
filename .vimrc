@@ -406,7 +406,7 @@ function! s:LoadPlugins()
     endif
 endfunction
 autocmd MyAutoCmd VimEnter * call s:LoadPlugins()
-autocmd MyAutoCmd BufWritePost .vimrc source $MYVIMRC
+autocmd MyAutoCmd BufWritePost .vimrc ++nested source $MYVIMRC
 map <leader>w <Cmd>write<CR>
 command! -nargs=0 LoadPlugins call s:LoadPlugins()
 map <leader>r <Cmd>wa<CR><Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
