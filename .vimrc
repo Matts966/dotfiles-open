@@ -320,6 +320,8 @@ Plug 'cocopon/iceberg.vim'
 " Initialize plugin system
 call plug#end()
 
+set scrolloff=999
+
 set termguicolors
 colorscheme iceberg
 " Visible selection
