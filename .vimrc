@@ -79,7 +79,7 @@ if has('nvim')
 
     Plug 'kevinhwang91/nvim-bqf'
     Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
-    nnoremap <leader>h <Cmd>HopWord<CR>
+    nnoremap <leader>hh <Cmd>HopWord<CR>
 else
     Plug 'Shougo/deoplete.nvim', { 'on': [] }
     Plug 'roxma/nvim-yarp'
@@ -314,7 +314,6 @@ if !exists('g:vscode')
 endif
 
 Plug 'airblade/vim-gitgutter'
-let g:gitgutter_map_keys = 0
 
 Plug 'cocopon/iceberg.vim'
 
