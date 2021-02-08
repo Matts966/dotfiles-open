@@ -409,7 +409,7 @@ autocmd MyAutoCmd VimEnter * call s:LoadPlugins()
 autocmd MyAutoCmd BufWritePost .vimrc ++nested source $MYVIMRC
 map <leader>w <Cmd>write<CR>
 command! -nargs=0 LoadPlugins call s:LoadPlugins()
-map <leader>r <Cmd>wa<CR><Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
+map <leader>r <Cmd>silent! wa!<CR><Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
 
 if &history < 1000
     set history=1000
