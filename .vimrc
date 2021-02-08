@@ -29,11 +29,6 @@ else
     source $VIMRUNTIME/defaults.vim
 endif
 
-if executable('pdftotext')
-    autocmd MyAutoCmd BufEnter *.pdf :enew | setlocal nobuflisted buftype=nofile bufhidden=wipe
-        \ | 0read !pdftotext -layout -nopgbrk "#" -
-endif
-
 scriptencoding utf-8
 set encoding=utf-8
 set langmenu=en_US
@@ -60,6 +55,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+
+Plug 'makerj/vim-pdf'
 
 Plug 'stsewd/gx-extended.vim'
 
