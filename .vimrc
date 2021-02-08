@@ -60,6 +60,7 @@ call plug#begin('~/.vim/plugged')
 
 
 
+
 Plug 'stsewd/gx-extended.vim'
 
 Plug 'raghur/vim-ghost', { 'do': ':GhostInstall', 'on': [] }
@@ -80,6 +81,8 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
 
     Plug 'kevinhwang91/nvim-bqf'
+    Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
+    nnoremap <leader>h <Cmd>HopWord<CR>
 else
     Plug 'Shougo/deoplete.nvim', { 'on': [] }
     Plug 'roxma/nvim-yarp'
@@ -314,6 +317,7 @@ if !exists('g:vscode')
 endif
 
 Plug 'airblade/vim-gitgutter'
+let g:gitgutter_map_keys = 0
 
 Plug 'cocopon/iceberg.vim'
 
