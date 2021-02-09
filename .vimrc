@@ -72,8 +72,6 @@ endfunction
 autocmd MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
 autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
 
-Plug 'cohama/lexima.vim'
-
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
 
@@ -349,7 +347,6 @@ set cursorline
 set cursorcolumn
 set autoindent
 set visualbell
-set showmatch
 nnoremap j gj
 nnoremap k gk
 
