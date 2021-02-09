@@ -77,7 +77,7 @@ if has('nvim')
 
     Plug 'kevinhwang91/nvim-bqf'
     Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
-    nnoremap <leader>hh <Cmd>HopWord<CR>
+    nnoremap <leader>j <Cmd>HopWord<CR>
 else
     Plug 'Shougo/deoplete.nvim', { 'on': [] }
     Plug 'roxma/nvim-yarp'
