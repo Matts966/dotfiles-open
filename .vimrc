@@ -289,10 +289,7 @@ command! -bang -nargs=* GGrep
         \ 'git grep --line-number -- '.shellescape(<q-args>), 0,
         \ fzf#vim#with_preview({'dir': systemlist(
             \ 'git rev-parse --show-toplevel')[0]}), <bang>0)
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-" Find with ripgrep
 nnoremap <leader>f :GGrep<CR>
-" Compatible with fzf default binding but ignore tag stack.
 nnoremap <leader>p :GFiles<CR>
 
 " Redirect any shell commands to fzf.vim.
