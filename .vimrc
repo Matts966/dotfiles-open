@@ -150,10 +150,8 @@ let g:lightline = {
 Plug 'gkeep/iceberg-dark'
 let g:lightline.colorscheme = 'icebergDark'
 
-
 Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/fzf-floaterm', { 'on': 'Floaterms' }
-
 let g:floaterm_autoclose = 1
 let g:floaterm_keymap_toggle = '``'
 let g:floaterm_gitcommit = 'split'
@@ -225,8 +223,6 @@ nnoremap [gina]P :Gina push<CR>
 set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
 
-" Plug 'jiangmiao/auto-pairs'
-
 Plug 'psliwka/vim-smoothie'
 
 Plug 'thinca/vim-qfreplace'
@@ -234,7 +230,6 @@ Plug 'thinca/vim-qfreplace'
 Plug 'skanehira/gh.vim'
 
 Plug 'junegunn/vim-peekaboo'
-
 
 " fzf
 Plug 'junegunn/fzf.vim'
@@ -287,7 +282,6 @@ nnoremap <leader>p :GFiles<CR>
 " Redirect any shell commands to fzf.vim.
 command! -bang -complete=shellcmd -nargs=* F
     \ call fzf#run(fzf#wrap(<q-args>, {'source': <q-args>." 2>&1"}, <bang>0))
-
 
 Plug 'dansomething/vim-hackernews'
 
