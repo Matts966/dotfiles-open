@@ -326,9 +326,7 @@ colorscheme iceberg
 hi Visual ctermbg=236 guibg=#363d5c
 
 " netrw
-let g:netrw_winsize=20
 let g:netrw_liststyle=3
-let g:netrw_localrmdir='rm -r'
 let g:netrw_keepj=""
 
 set fenc=utf-8
