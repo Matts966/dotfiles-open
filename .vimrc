@@ -353,8 +353,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set list listchars=tab:\▸\-
-set list
 " Remove trailing spaces.
 fun! TrimWhitespace()
     let l:save = winsaveview()
