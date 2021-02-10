@@ -60,31 +60,31 @@ Plug 'makerj/vim-pdf'
 
 Plug 'stsewd/gx-extended.vim'
 
-Plug 'raghur/vim-ghost', { 'do': ':GhostInstall', 'on': [] }
-let g:ghost_autostart = 1
-function! s:SetupGhostBuffer()
-    let g:ghost_darwin_app = 'kitty'
-    let g:ghost_cmd = 'tabedit'
-    if match(expand("%:a"), '\v/ghost-(github|reddit|stackexchange|stackoverflow)\.com-')
-        set ft=markdown
-    endif
-endfunction
-autocmd MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
-autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
-
 if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
-
     Plug 'kevinhwang91/nvim-bqf'
     Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
     nnoremap <leader>j <Cmd>HopWord<CR>
-else
-    Plug 'Shougo/deoplete.nvim', { 'on': [] }
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
+
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
+    autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
+    autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
+    autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
+    autocmd MyAutoCmd InsertEnter * :call plug#load('vim-auto-save')
+    let g:deoplete#enable_at_startup = 1
+    Plug 'lighttiger2505/deoplete-vim-lsp', { 'on': [] }
+
+    Plug 'raghur/vim-ghost', { 'do': ':GhostInstall', 'on': [] }
+    let g:ghost_autostart = 1
+    function! s:SetupGhostBuffer()
+        let g:ghost_darwin_app = 'kitty'
+        let g:ghost_cmd = 'tabedit'
+        if match(expand("%:a"), '\v/ghost-(github|reddit|stackexchange|stackoverflow)\.com-')
+            set ft=markdown
+        endif
+    endfunction
+    autocmd MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
+    autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
 endif
-let g:deoplete#enable_at_startup = 1
-Plug 'lighttiger2505/deoplete-vim-lsp', { 'on': [] }
 
 " eskk.vim
 Plug 'tyru/eskk.vim', { 'on': [] }
@@ -106,15 +106,6 @@ Plug '907th/vim-auto-save', { 'on': [] }
 " Save only on leaving insert to prevent overwriting
 " history on unde.
 let g:auto_save_events = ["InsertLeave"]
-
-autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
-autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
-autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
-autocmd MyAutoCmd InsertEnter * :call plug#load('vim-auto-save')
-
-
-" " This causes duplicate source lsp.
-" Plug 'deoplete-plugins/deoplete-lsp'
 
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
@@ -162,6 +153,7 @@ let g:lightline.colorscheme = 'icebergDark'
 
 Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/fzf-floaterm', { 'on': 'Floaterms' }
+
 let g:floaterm_autoclose = 1
 let g:floaterm_keymap_toggle = '``'
 let g:floaterm_gitcommit = 'split'
