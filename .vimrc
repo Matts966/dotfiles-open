@@ -138,6 +138,7 @@ autocmd MyAutoCmd BufWritePre *.py execute ':Black'
 Plug 'itchyny/lightline.vim'
 Plug 'ojroques/vim-scrollstatus'
 Plug 'mengelbrecht/lightline-bufferline'
+set showtabline=2
 let g:lightline = {
 \   'active': {
 \       'left': [
