@@ -2,7 +2,6 @@ tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "sachaos/todoist"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # User-friendly launcher for Bazel
@@ -65,8 +64,6 @@ brew "llvm"
 brew "ghostscript"
 # Tool to build, change, and version infrastructure
 brew "terraform"
-# Todoist CLI, use head for XDG and better filter.
-brew "todoist", args: ["HEAD"]
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 cask "adoptopenjdk9"
