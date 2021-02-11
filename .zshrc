@@ -60,12 +60,10 @@ if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
 
-_floaterm() {
-    if [[ $VIM ]]; then
-        floaterm $@
-    else
-        nvim $@
-    fi
-}
-alias vim='_floaterm'
-export EDITOR=_floaterm
+if [[ $VIM ]]; then
+    alias vim floaterm
+    export EDITOR=floaterm
+else
+    alias vim nvim
+    export EDITOR=nvim
+fi
