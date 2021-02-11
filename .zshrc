@@ -28,7 +28,12 @@ zinit lucid has'docker' for \
     as'completion' is-snippet \
     'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
 
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+    zsh-users/zsh-completions \
+    light-mode Aloxaf/fzf-tab
+zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
+# zinit ice pick"zsh/*"
+# zinit light lincheney/fzf-tab-completion
 
 PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
 %F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
