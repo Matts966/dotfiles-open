@@ -31,7 +31,7 @@ all: update
 	make secret
 .PHONY: all
 
-init: zsh pip ## Initialize installation
+init: zsh pip yarn ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
@@ -57,17 +57,9 @@ brew:
 		bat cache --build
 .PHONY: brew
 
-_zsh:
+zsh:
 	# Install zinit
 	which zinit || sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-	mkdir -p ~/.zsh/completion
-.PHONY: _zsh
-
-zsh: _zsh brew
-	npm install --global filthy-prompt
-	curl -o ~/.zsh/completion/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-	curl -o ~/.zsh/completion/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
-	curl -o ~/.zsh/completion/_docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker
 .PHONY: zsh
 
 # glances installed via brew is broken.
@@ -75,6 +67,10 @@ zsh: _zsh brew
 pip: brew
 	pip3 install -r requirements.txt
 .PHONY: pip
+
+yarn: brew
+	npm install --global yarn
+.PHONY: yarn
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
