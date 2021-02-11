@@ -69,7 +69,7 @@ pip: brew
 .PHONY: pip
 
 yarn: brew
-	npm install --global yarn
+	npm install --global yarn @marp-team/marp-cli
 .PHONY: yarn
 
 clean: ## Remove the dot files and this repo

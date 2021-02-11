@@ -370,6 +370,8 @@ cnoremap <C-B> <Left>
 " Clear search result on <C-l>
 nnoremap <silent> <C-l> :<Cmd>nohlsearch<CR>GitGutter<CR><C-l>
 
+command! -nargs=0 Marp FloatermNew marp --preview %
+
 " Open .vimrc with <leader>,
 function! s:OpenVimrc()
     let s:vimrc = glob('~/.vimrc')
