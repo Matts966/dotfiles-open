@@ -61,9 +61,9 @@ if (which zprof > /dev/null 2>&1) ;then
 fi
 
 if [[ $VIM ]]; then
-    alias vim floaterm
+    alias vim=floaterm
     export EDITOR=floaterm
 else
-    alias vim nvim
+    alias vim=nvim
     export EDITOR=nvim
 fi
