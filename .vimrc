@@ -137,6 +137,7 @@ autocmd MyAutoCmd BufWritePre *.py execute ':Black'
 
 Plug 'itchyny/lightline.vim'
 Plug 'ojroques/vim-scrollstatus'
+Plug 'mengelbrecht/lightline-bufferline'
 let g:lightline = {
 \   'active': {
 \       'left': [
@@ -145,8 +146,19 @@ let g:lightline = {
 \           [ 'scrollbar' ],
 \       ]
 \   },
+\   'tabline': {
+\       'left': [ ['buffers'] ],
+\       'right': [ ['close'] ]
+\   },
 \   'component_function': {'scrollbar': 'ScrollStatus'},
+\   'component_expand': {
+\       'buffers': 'lightline#bufferline#buffers'
+\   },
+\   'component_type': {
+\       'buffers': 'tabsel'
+\   }
 \}
+let g:lightline#bufferline#show_number = 1
 Plug 'gkeep/iceberg-dark'
 let g:lightline.colorscheme = 'icebergDark'
 
