@@ -20,8 +20,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=bg+:#1e2132,bg:#161821,spinne
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 
-# zinit ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
-# zinit load docker/compose
 zinit lucid has'docker' for \
     as'completion' is-snippet \
     'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker' \
@@ -32,6 +30,7 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions \
     light-mode Aloxaf/fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
+zstyle ':fzf-tab:*' accept-line ctrl-x
 # zinit ice pick"zsh/*"
 # zinit light lincheney/fzf-tab-completion
 
