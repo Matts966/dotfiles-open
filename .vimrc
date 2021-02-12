@@ -56,7 +56,7 @@ call plug#begin('~/.vim/plugged')
 
 
 
-Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern.vim', { 'on': 'Fern' }
 if has('nvim')
     Plug 'antoinemadec/FixCursorHold.nvim'
 endif
