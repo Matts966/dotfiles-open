@@ -299,6 +299,13 @@ if !exists('g:vscode')
     Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'vim-plug'] }
     let g:vim_markdown_new_list_item_indent = 2
     let g:vim_markdown_folding_disabled = 1
+    autocmd MyAutoCmd filetype markdown setlocal tabstop=2 softtabstop=2 shiftwidth=2 |
+    \    nnoremap <buffer> <Tab> >>|
+    \    inoremap <buffer> <Tab> <C-t>|
+    \    vnoremap <buffer> <Tab> >gv|
+    \    nnoremap <buffer> <S-Tab> <<|
+    \    inoremap <buffer> <S-Tab> <C-d>|
+    \    vnoremap <buffer> <S-Tab> <gv
 endif
 
 Plug 'airblade/vim-gitgutter'
