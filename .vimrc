@@ -56,6 +56,14 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'lambdalisue/fern.vim'
+if has('nvim')
+    Plug 'antoinemadec/FixCursorHold.nvim'
+endif
+nnoremap <leader>F <Cmd>vert Fern . -toggle -reveal=% -drawer<CR>
+let g:fern#default_hidden = 1
+autocmd MyAutoCmd FileType fern nmap <buffer> <Tab> <Plug>(fern-action-mark)j
+
 Plug 'makerj/vim-pdf'
 
 Plug 'stsewd/gx-extended.vim'
