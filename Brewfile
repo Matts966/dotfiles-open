@@ -66,6 +66,8 @@ brew "ghostscript"
 brew "terraform"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Time tracker
+cask "toggl-track"
 cask "adoptopenjdk9"
 cask "alt-tab"
 cask "appcleaner"
