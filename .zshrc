@@ -31,13 +31,12 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     light-mode Aloxaf/fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
 zstyle ':fzf-tab:*' accept-line ctrl-x
+zstyle ':fzf-tab:*' fzf-flags --height 100%
 # zinit ice pick"zsh/*"
 # zinit light lincheney/fzf-tab-completion
 
 PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
 %F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
-
-
 
 HISTSIZE=50000              # How many lines of history to keep in memory
 HISTFILE=~/.zsh_history     # Where to save history to disk
