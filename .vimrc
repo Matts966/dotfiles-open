@@ -145,7 +145,6 @@ autocmd MyAutoCmd BufWritePre *.py execute ':Black'
 
 Plug 'itchyny/lightline.vim'
 Plug 'ojroques/vim-scrollstatus'
-Plug 'mengelbrecht/lightline-bufferline'
 let g:lightline = {
 \   'active': {
 \       'left': [
@@ -156,12 +155,6 @@ let g:lightline = {
 \   },
 \   'component_function': {'scrollbar': 'ScrollStatus'},
 \}
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
-set showtabline=2
-let g:lightline#bufferline#show_number = 1
-let g:lightline#bufferline#unnamed = '[No Name]'
 Plug 'gkeep/iceberg-dark'
 let g:lightline.colorscheme = 'icebergDark'
 
@@ -255,7 +248,7 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'LeafCage/yankround.vim'
-noremap <leader>b <Cmd>FzfPreviewBufferLinesRpc<CR>
+noremap <leader>b <Cmd>FzfPreviewBuffersRpc<CR>
 noremap <leader>m <Cmd>FzfPreviewMruFilesRpc<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
