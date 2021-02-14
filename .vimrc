@@ -287,10 +287,6 @@ command! -bang -nargs=* GGrep
 nnoremap <leader>f :GGrep<CR>
 nnoremap <leader>p :GFiles<CR>
 
-" Redirect any shell commands to fzf.vim.
-command! -bang -complete=shellcmd -nargs=* F
-    \ call fzf#run(fzf#wrap(<q-args>, {'source': <q-args>." 2>&1"}, <bang>0))
-
 Plug 'dansomething/vim-hackernews'
 
 if !exists('g:vscode')
