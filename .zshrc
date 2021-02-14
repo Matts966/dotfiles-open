@@ -29,9 +29,9 @@ zinit lucid has'docker' for \
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions \
     light-mode Aloxaf/fzf-tab
-zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
-zstyle ':fzf-tab:*' accept-line ctrl-x
-zstyle ':fzf-tab:*' fzf-flags --height 100%
+zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down' 'ctrl-e:accept'
+zstyle ':fzf-tab:*' accept-line enter
+zstyle ':fzf-tab:*' fzf-flags --height 100% --header "ctrl-e: Edit"
 # zinit ice pick"zsh/*"
 # zinit light lincheney/fzf-tab-completion
 
