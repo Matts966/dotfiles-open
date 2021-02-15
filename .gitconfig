@@ -1,7 +1,10 @@
 [user]
-	name = Matts966
-	email = "Matts966@users.noreply.github.com"
+    name = Matts966
+    email = "Matts966@users.noreply.github.com"
 [grep]
     lineNumber = true
 [core]
     editor = /usr/local/bin/nvim
+[ghq]
+    root = ~/ghq
+    root = ~/go/src
