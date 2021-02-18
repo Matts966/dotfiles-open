@@ -5,6 +5,3 @@
     lineNumber = true
 [core]
     editor = /usr/local/bin/nvim
-[ghq]
-    root = ~/ghq
-    root = ~/go/src
