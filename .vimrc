@@ -134,7 +134,15 @@ function! s:on_lsp_buffer_enabled() abort
     let g:lsp_format_sync_timeout = 1000
     autocmd MyAutoCmd BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 
-    " refer to doc to add more commands
+    let g:lsp_settings = {
+    \   'pyls-all': {
+    \     'workspace_config': {
+    \       'pyls': {
+    \         'configurationSources': ['flake8']
+    \       }
+    \     }
+    \   },
+    \}
 endfunction
 " call s:on_lsp_buffer_enabled only for languages that has the server registered.
 autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
