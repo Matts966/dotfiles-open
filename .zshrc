@@ -65,3 +65,5 @@ else
     alias vim=nvim
     export EDITOR=nvim
 fi
+
+eval $(thefuck --alias)
