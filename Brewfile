@@ -18,8 +18,6 @@ brew "ghq"
 brew "go"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-# GitHub Markdown previewer
-brew "grip"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Simple terminal UI for git commands
