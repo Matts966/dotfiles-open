@@ -70,6 +70,8 @@ brew "poppler"
 brew "thefuck"
 # Time tracker
 cask "toggl-track"
+# Menu bar application that lists iCloud Tabs
+cask "cloudytabs"
 cask "adoptopenjdk9"
 cask "alt-tab"
 cask "appcleaner"
