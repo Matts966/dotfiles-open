@@ -66,6 +66,8 @@ brew "terraform"
 brew "poppler"
 # Programmatically correct mistyped console commands
 brew "thefuck"
+# Web browser
+cask "firefox"
 # Time tracker
 cask "toggl-track"
 # Menu bar application that lists iCloud Tabs
