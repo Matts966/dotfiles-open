@@ -66,21 +66,34 @@ brew "terraform"
 brew "poppler"
 # Programmatically correct mistyped console commands
 brew "thefuck"
-# Web browser
-cask "firefox"
-# Time tracker
-cask "toggl-track"
+cask "alt-tab"
+cask "clipy"
+cask "slack"
+# Todoist CLI client
+brew "sachaos/todoist/todoist", args: ["HEAD"]
+# AdoptOpenJDK OpenJDK (Java) Development Kit
+cask "adoptopenjdk9"
+# Application uninstaller
+cask "appcleaner"
+# Compact TeX distribution as alternative to the full TeX Live / MacTeX
+cask "basictex"
 # Menu bar application that lists iCloud Tabs
 cask "cloudytabs"
-cask "adoptopenjdk9"
-cask "alt-tab"
-cask "appcleaner"
-cask "clipy"
+# App to build and share containerized applications and microservices
 cask "docker"
+# Web browser
+cask "firefox"
+cask "font-hack-nerd-font"
 cask "font-source-code-pro"
+# Keyboard customizer
 cask "karabiner-elements"
-cask "slack"
-cask "typora"
+# GPU-based terminal emulator
 cask "kitty"
+# Music streaming service
 cask "spotify"
-cask "basictex"
+# Time tracker
+cask "toggl-track"
+# Configurable document editor that supports Markdown
+cask "typora"
+# GUI for the Neovim text editor
+cask "vimr"
