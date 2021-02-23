@@ -55,6 +55,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'voldikss/vim-translator'
+let g:translator_target_lang = 'ja'
 
 Plug 'lambdalisue/fern.vim', { 'on': 'Fern' }
 if has('nvim')
