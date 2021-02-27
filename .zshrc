@@ -35,6 +35,9 @@ zstyle ':fzf-tab:*' fzf-flags --height 100% --header "ctrl-e: Edit"
 # zinit ice pick"zsh/*"
 # zinit light lincheney/fzf-tab-completion
 
+zinit light MichaelAquilina/zsh-auto-notify
+export AUTO_NOTIFY_THRESHOLD=5
+
 PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
 %F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
 

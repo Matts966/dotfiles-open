@@ -89,8 +89,8 @@ cask "font-hack-nerd-font"
 cask "font-source-code-pro"
 # Keyboard customizer
 cask "karabiner-elements"
-# GPU-based terminal emulator
-cask "kitty"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Music streaming service
 cask "spotify"
 # Time tracker
