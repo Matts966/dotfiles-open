@@ -66,6 +66,8 @@ brew "terraform"
 brew "poppler"
 # Programmatically correct mistyped console commands
 brew "thefuck"
+# Provides session management: i.e. separate programs from terminals
+brew "abduco"
 cask "alt-tab"
 cask "clipy"
 cask "slack"
