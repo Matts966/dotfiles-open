@@ -1,0 +1,4 @@
+[pycodestyle]
+ignore = E262,E266,E402,E712
+max-line-length = 120
+exclude = venv/*,**/*proto,__sandbox/*,apps/riapp_custom_dash_component/*
