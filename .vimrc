@@ -57,6 +57,7 @@ call plug#begin('~/.vim/plugged')
 
 
 Plug 'easymotion/vim-easymotion'
+let g:EasyMotion_do_mapping = 0
 map  <Leader>j <Plug>(easymotion-bd-w)
 nmap <Leader>j <Plug>(easymotion-overwin-w)
 
