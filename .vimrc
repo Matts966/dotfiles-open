@@ -55,6 +55,11 @@ call plug#begin('~/.vim/plugged')
 
 
 
+
+Plug 'easymotion/vim-easymotion'
+map  <Leader>j <Plug>(easymotion-bd-w)
+nmap <Leader>j <Plug>(easymotion-overwin-w)
+
 Plug 'voldikss/vim-translator'
 let g:translator_target_lang = 'ja'
 
@@ -72,8 +77,6 @@ Plug 'stsewd/gx-extended.vim'
 
 if has('nvim')
     Plug 'kevinhwang91/nvim-bqf'
-    Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
-    nnoremap <leader>j <Cmd>HopWord<CR>
 
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
     autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
