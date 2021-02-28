@@ -155,7 +155,8 @@ autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 
 Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
 let g:black_linelength = 120
-autocmd MyAutoCmd BufWritePre *.py execute ':Black'
+Plug 'fisadev/vim-isort', { 'for': ['python', 'vim-plug'] }
+autocmd MyAutoCmd BufWritePre *.py execute ':Black' | execute ':Isort'
 
 Plug 'itchyny/lightline.vim'
 Plug 'ojroques/vim-scrollstatus'
