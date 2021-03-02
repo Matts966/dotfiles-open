@@ -30,7 +30,7 @@ fshow() {
 FZF-EOF"
 }
 zle -N fshow
-bindkey '^g^s' fshow
+bindkey '^g^l' fshow
 
 function agg() {
     openvim='{system("vim " $1 " +" $2 " < /dev/tty > /dev/tty")}'
