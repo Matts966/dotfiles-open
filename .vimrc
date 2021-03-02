@@ -215,8 +215,8 @@ Plug 'tamuhey/vim-jupyter'
 
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'vim-plug'] }
 
+Plug 'machakann/vim-sandwich'
 " Toggle comment out with gcc and gc with selection.
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
@@ -224,7 +224,6 @@ Plug 'tpope/vim-dispatch'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
-Plug 'thinca/vim-textobj-between'
 Plug 'kana/vim-operator-user'
 Plug 'kana/vim-operator-replace'
 map _ <Plug>(operator-replace)
