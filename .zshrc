@@ -62,12 +62,10 @@ if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
 
-if [[ $VIM ]]; then
-    alias vim=floaterm
-    export EDITOR=floaterm
+if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
+    alias vim="nvr -s -p"
 else
-    alias vim=nvim
-    export EDITOR=nvim
+    alias vim="nvim"
 fi
 
 eval $(thefuck --alias)

@@ -173,16 +173,8 @@ let g:lightline = {
 Plug 'gkeep/iceberg-dark'
 let g:lightline.colorscheme = 'icebergDark'
 
-Plug 'voldikss/vim-floaterm'
-Plug 'voldikss/fzf-floaterm', { 'on': 'Floaterms' }
-let g:floaterm_autoclose = 1
-let g:floaterm_keymap_toggle = '``'
-let g:floaterm_gitcommit = 'split'
-let g:floaterm_width = 0.9
-let g:floaterm_height = 0.9
-nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>FloatermNew lazygit<CR>
-nnoremap <leader>` <CMD>Floaterms<CR>
-nnoremap <leader>d <CMD>FloatermNew<CR>
+nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal lazygit<CR>
+command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
@@ -389,8 +381,6 @@ cnoremap <C-B> <Left>
 
 " Clear search result on <C-l>
 nnoremap <silent> <C-l> :<Cmd>nohlsearch<CR>GitGutter<CR><C-l>
-
-command! -nargs=0 Marp FloatermNew marp --preview %
 
 " Open .vimrc with <leader>,
 function! s:OpenVimrc()
