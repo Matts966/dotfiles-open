@@ -212,7 +212,6 @@ Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-dispatch'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
