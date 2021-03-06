@@ -205,7 +205,7 @@ endfunction
 function! s:goyo_leave()
     let g:goyo_now = 0
 endfunction
-if exists(g:goyo_now) && g:goyo_now == 0
+if get(g:, 'goyo_now', 0) == 0
     set number
     set relativenumber
 endif
