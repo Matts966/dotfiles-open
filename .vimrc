@@ -333,7 +333,7 @@ set nobackup
 set noswapfile
 set autoread
 autocmd MyAutoCmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-    \ if !bufexists("[Command Line]") | checktime | endif
+\   if !bufexists("[Command Line]") | checktime | endif
 set hidden
 " Yank to clipboard
 set clipboard^=unnamed,unnamedplus
