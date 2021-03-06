@@ -389,7 +389,6 @@ set clipboard^=unnamed,unnamedplus
 
 set cursorline
 set cursorcolumn
-set autoindent
 set visualbell
 nnoremap j gj
 nnoremap k gk
@@ -399,6 +398,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+set autoindent
+autocmd MyAutoCmd FileType typescript, typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
+
 " Remove trailing spaces.
 fun! TrimWhitespace()
     let l:save = winsaveview()
