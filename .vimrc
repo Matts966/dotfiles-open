@@ -190,15 +190,20 @@ Plug 'vim-jp/vimdoc-ja'
 
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 nnoremap <silent> <leader>go :Goyo<CR>
-function! s:auto_goyo_length()
-    if &ft == 'python'
-        " Python standard
-        let g:goyo_width = 120
-    else
-        let g:goyo_width = 80
-    endif
+let g:goyo_width = 120
+autocmd MyAutoCmd User GoyoEnter nested call <SID>goyo_enter()
+autocmd MyAutoCmd User GoyoLeave nested call <SID>goyo_leave()
+let g:goyo_now = 0
+function! s:goyo_enter()
+    let g:goyo_now = 1
 endfunction
-autocmd MyAutoCmd BufEnter * call s:auto_goyo_length()
+function! s:goyo_leave()
+    let g:goyo_now = 0
+endfunction
+if g:goyo_now == 0
+    set number
+    set relativenumber
+endif
 
 if ! executable('j2p2j')
     !go install github.com/tamuhey/j2p2j
@@ -338,8 +343,6 @@ set hidden
 " Yank to clipboard
 set clipboard^=unnamed,unnamedplus
 
-set number
-set relativenumber
 set cursorline
 set cursorcolumn
 set autoindent
