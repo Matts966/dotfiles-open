@@ -60,6 +60,8 @@ if has('nvim')
     Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
     map  <Leader>j <CMD>HopWord<CR>
     vmap <Leader>j <CMD>HopWordVisual<CR>
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 else
     Plug 'easymotion/vim-easymotion'
     let g:EasyMotion_do_mapping = 0
@@ -340,6 +342,14 @@ highlight default HopNextKey1 guifg=#00dfff gui=bold blend=0
 highlight default HopNextKey2 guifg=#2b8db3          blend=0
 " Visible selection
 hi Visual ctermbg=236 guibg=#363d5c
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    highlight = {
+        enable = true,              -- false will disable the whole extension
+    },
+}
+EOF
 
 " netrw
 let g:netrw_liststyle=3
