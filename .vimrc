@@ -56,12 +56,10 @@ call plug#begin('~/.vim/plugged')
 
 
 
-if has('nvim')
+if has('nvim') && !exists('g:vscode')
     Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
     map  <Leader>j <CMD>HopWord<CR>
     vmap <Leader>j <CMD>HopWordVisual<CR>
-
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 else
     Plug 'easymotion/vim-easymotion'
     let g:EasyMotion_do_mapping = 0
@@ -106,6 +104,8 @@ if has('nvim')
     endfunction
     autocmd MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
     autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
 " eskk.vim
