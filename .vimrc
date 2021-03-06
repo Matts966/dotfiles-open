@@ -199,14 +199,13 @@ nnoremap <silent> <leader>go :Goyo<CR>
 let g:goyo_width = 120
 autocmd MyAutoCmd User GoyoEnter nested call <SID>goyo_enter()
 autocmd MyAutoCmd User GoyoLeave nested call <SID>goyo_leave()
-let g:goyo_now = 0
 function! s:goyo_enter()
     let g:goyo_now = 1
 endfunction
 function! s:goyo_leave()
     let g:goyo_now = 0
 endfunction
-if g:goyo_now == 0
+if exists(g:goyo_now) && g:goyo_now == 0
     set number
     set relativenumber
 endif
