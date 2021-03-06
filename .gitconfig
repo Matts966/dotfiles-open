@@ -5,3 +5,6 @@
     lineNumber = true
 [core]
     editor = /usr/local/bin/nvim
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
