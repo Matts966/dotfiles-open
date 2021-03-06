@@ -323,8 +323,6 @@ set termguicolors
 colorscheme iceberg
 " Visible selection
 hi Visual ctermbg=236 guibg=#363d5c
-" Hide ~
-hi EndOfBuffer ctermfg=bg guifg=bg
 
 " netrw
 let g:netrw_liststyle=3
