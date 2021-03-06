@@ -63,7 +63,7 @@ if (which zprof > /dev/null 2>&1) ;then
 fi
 
 if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
-    alias vim="nvr -s -p"
+    alias vim="nvr -s"
 else
     alias vim="nvim"
 fi
