@@ -38,12 +38,8 @@ brew "wget"
 brew "git-delta"
 # NCurses Disk Usage
 brew "ncdu"
-# Cross-platform ncurses Spotify client written in Rust
-brew "ncspot"
 # Terminal-based client for Spotify
 brew "spotify-tui"
-# Send macOS User Notifications from the command-line
-brew "terminal-notifier"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit", args: ["HEAD"]
 # Ambitious Vim-fork focused on extensibility and agility
@@ -79,23 +75,15 @@ cask "adoptopenjdk9"
 cask "appcleaner"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
-# Menu bar application that lists iCloud Tabs
-cask "cloudytabs"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Web browser
 cask "firefox"
-cask "font-hack-nerd-font"
-cask "font-source-code-pro"
 # Keyboard customizer
 cask "karabiner-elements"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Music streaming service
 cask "spotify"
-# Time tracker
-cask "toggl-track"
 # Configurable document editor that supports Markdown
 cask "typora"
-# GUI for the Neovim text editor
-cask "vimr"
