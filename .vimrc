@@ -56,15 +56,19 @@ call plug#begin('~/.vim/plugged')
 
 
 
+" For vscode
+Plug 'asvetliakov/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 if has('nvim') && !exists('g:vscode')
     Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
     map  <Leader>j <CMD>HopWord<CR>
     vmap <Leader>j <CMD>HopWordVisual<CR>
 else
-    Plug 'easymotion/vim-easymotion'
     let g:EasyMotion_do_mapping = 0
     map  <Leader>j <Plug>(easymotion-bd-w)
-    nmap <Leader>j <Plug>(easymotion-overwin-w)
+    if !exists('g:vscode')
+        nmap <Leader>j <Plug>(easymotion-overwin-w)
+    endif
 endif
 
 Plug 'voldikss/vim-translator'
