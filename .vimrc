@@ -106,6 +106,7 @@ if has('nvim')
     autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 endif
 
 " eskk.vim
@@ -348,6 +349,23 @@ require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,              -- false will disable the whole extension
     },
+    indent = {
+        enable = true,
+    },
+    textobjects = {
+        select = {
+            enable = true,
+            keymaps = {
+                -- You can use the capture groups defined in textobjects.scm
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+                ["ab"] = "@block.outer",
+                ["ib"] = "@block.inner",
+            }
+        }
+    }
 }
 EOF
 
