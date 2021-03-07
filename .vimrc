@@ -61,6 +61,7 @@ function! s:customize_vaffle_mappings() abort
     nmap <buffer> <Tab> <Plug>(vaffle-toggle-current)
 endfunction
 autocmd MyAutoCmd FileType vaffle call s:customize_vaffle_mappings()
+nnoremap <leader>V <Cmd>Vaffle<CR>
 
 " For vscode
 Plug 'asvetliakov/vim-easymotion'
@@ -76,17 +77,6 @@ else
         nmap <Leader>j <Plug>(easymotion-overwin-w)
     endif
 endif
-
-Plug 'voldikss/vim-translator'
-let g:translator_target_lang = 'ja'
-
-Plug 'lambdalisue/fern.vim', { 'on': 'Fern' }
-if has('nvim')
-    Plug 'antoinemadec/FixCursorHold.nvim'
-endif
-nnoremap <leader>F <Cmd>vert Fern . -toggle -reveal=% -drawer<CR>
-let g:fern#default_hidden = 1
-autocmd MyAutoCmd FileType fern nmap <buffer> <Tab> <Plug>(fern-action-mark)j
 
 Plug 'makerj/vim-pdf'
 
