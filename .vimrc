@@ -55,6 +55,12 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'cocopon/vaffle.vim'
+function! s:customize_vaffle_mappings() abort
+    " Customize key mappings here
+    nmap <buffer> <Tab> <Plug>(vaffle-toggle-current)
+endfunction
+autocmd MyAutoCmd FileType vaffle call s:customize_vaffle_mappings()
 
 " For vscode
 Plug 'asvetliakov/vim-easymotion'
