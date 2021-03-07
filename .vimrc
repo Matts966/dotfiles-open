@@ -60,7 +60,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'asvetliakov/vim-easymotion'
 " Plug 'easymotion/vim-easymotion'
 if has('nvim') && !exists('g:vscode')
-    Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
+    Plug 'Matts966/hop.nvim', { 'on': 'HopWord' }
     map  <Leader>j <CMD>HopWord<CR>
     vmap <Leader>j <CMD>HopWordVisual<CR>
 else
@@ -338,13 +338,6 @@ set scrolloff=999
 
 set termguicolors
 colorscheme iceberg
-" Re-highlight hop.nvim
-" Highlight used for the mono-sequence keys (i.e. sequence of 1).
-highlight default HopNextKey  guifg=#ff007c gui=bold blend=0
-" Highlight used for the first key in a sequence.
-highlight default HopNextKey1 guifg=#00dfff gui=bold blend=0
-" Highlight used for the second and remaining keys in a sequence.
-highlight default HopNextKey2 guifg=#2b8db3          blend=0
 " Visible selection
 hi Visual ctermbg=236 guibg=#363d5c
 lua <<EOF
