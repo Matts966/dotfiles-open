@@ -65,13 +65,13 @@ nnoremap <leader>V <Cmd>Vaffle<CR>
 
 " For vscode
 Plug 'asvetliakov/vim-easymotion'
+let g:EasyMotion_do_mapping = 0
 " Plug 'easymotion/vim-easymotion'
 if has('nvim') && !exists('g:vscode')
     Plug 'Matts966/hop.nvim', { 'on': 'HopWord' }
     map  <Leader>j <CMD>HopWord<CR>
     vmap <Leader>j <CMD>HopWordVisual<CR>
 else
-    let g:EasyMotion_do_mapping = 0
     map  <Leader>j <Plug>(easymotion-bd-w)
     if !exists('g:vscode')
         nmap <Leader>j <Plug>(easymotion-overwin-w)
