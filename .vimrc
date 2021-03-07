@@ -370,6 +370,9 @@ EOF
 let g:netrw_liststyle=3
 let g:netrw_keepj=""
 
+set splitbelow
+set splitright
+
 set fenc=utf-8
 set nobackup
 set noswapfile
