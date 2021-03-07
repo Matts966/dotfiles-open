@@ -404,6 +404,8 @@ autocmd MyAutoCmd BufWritePre * :call TrimWhitespace()
 
 set ignorecase
 set smartcase " Case Sensitive only with upper case
+set wildcharm=<Tab>
+cnoremap <expr> <Tab> '<Cmd>set nosmartcase<CR><Tab><Cmd>let &smartcase = ' .. &smartcase .. '<CR>'
 set wrapscan
 set hlsearch
 
