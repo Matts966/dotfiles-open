@@ -55,6 +55,9 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'voldikss/vim-translator'
+let g:translator_target_lang = 'ja'
+
 Plug 'cocopon/vaffle.vim'
 function! s:customize_vaffle_mappings() abort
     " Customize key mappings here
