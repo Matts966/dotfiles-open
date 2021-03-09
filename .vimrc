@@ -378,8 +378,6 @@ EOF
                     \ denite#do_map('do_action')
         nnoremap <silent><buffer><expr> d
                     \ denite#do_map('do_action', 'delete')
-        nnoremap <silent><buffer><expr> p
-                    \ denite#do_map('do_action', 'preview')
         nnoremap <silent><buffer><expr> q
                     \ denite#do_map('quit')
         nnoremap <silent><buffer><expr> i
