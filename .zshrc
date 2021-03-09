@@ -69,7 +69,7 @@ fi
 if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
     alias vim="nvr -s"
     export EDITOR="nvr -s"
-    export GIT_EDITOR "nvr -s"
+    export GIT_EDITOR="nvr -s"
 else
     alias vim="nvim"
     export EDITOR="nvim"
