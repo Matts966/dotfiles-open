@@ -257,6 +257,7 @@ nnoremap [gina]P :Gina push<CR>
 " Enable spell check only in git commit
 set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
+autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
 
 Plug 'psliwka/vim-smoothie'
 
