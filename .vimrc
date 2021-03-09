@@ -110,6 +110,8 @@ if has('nvim')
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+
+    Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
 " eskk.vim
@@ -269,7 +271,6 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'LeafCage/yankround.vim'
-noremap <leader>b <Cmd>FzfPreviewAllBuffersRpc<CR>
 noremap <leader>m <Cmd>History<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
@@ -339,7 +340,9 @@ set termguicolors
 colorscheme iceberg
 " Visible selection
 hi Visual ctermbg=236 guibg=#363d5c
-lua <<EOF
+
+if has('nvim')
+    lua <<EOF
 require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     indent = {
@@ -361,6 +364,29 @@ require'nvim-treesitter.configs'.setup {
     }
 }
 EOF
+
+    noremap <leader>b <Cmd>Denite buffer<CR>
+    noremap <leader>t <Cmd>Denite buffer -input=term://<CR>
+    call denite#custom#option('default', {
+    \   'auto_action': 'preview',
+    \})
+    " Define mappings
+    autocmd FileType denite call s:denite_my_settings()
+    function! s:denite_my_settings() abort
+        nnoremap <silent><buffer><expr> <CR>
+                    \ denite#do_map('do_action')
+        nnoremap <silent><buffer><expr> d
+                    \ denite#do_map('do_action', 'delete')
+        nnoremap <silent><buffer><expr> p
+                    \ denite#do_map('do_action', 'preview')
+        nnoremap <silent><buffer><expr> q
+                    \ denite#do_map('quit')
+        nnoremap <silent><buffer><expr> i
+                    \ denite#do_map('open_filter_buffer')
+        nnoremap <silent><buffer><expr> <Space>
+                    \ denite#do_map('toggle_select').'j'
+    endfunction
+endif
 
 " netrw
 let g:netrw_liststyle=3
