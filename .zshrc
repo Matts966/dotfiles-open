@@ -8,9 +8,11 @@ autoload -Uz _zinit
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
-zinit ice from"gh-r" as"program"
-zinit load b4b4r07/gomi
-alias rm=gomi
+# zinit ice from"gh-r" as"program"
+# zinit load b4b4r07/gomi
+# alias rm=gomi
+zinit light b4b4r07/zsh-gomi
+alias rm='echo "This is not the command you are looking for, use gomi -s."; false'
 
 # Overwrite keybinds
 zvm_after_init_commands+=('source ~/.keybinds.zsh')
