@@ -55,6 +55,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'tpope/vim-sleuth'
+
 Plug 'voldikss/vim-translator'
 let g:translator_target_lang = 'ja'
 
@@ -319,7 +321,7 @@ if !exists('g:vscode')
     Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'vim-plug'] }
     let g:vim_markdown_new_list_item_indent = 2
     let g:vim_markdown_folding_disabled = 1
-    autocmd MyAutoCmd filetype markdown setlocal tabstop=2 softtabstop=2 shiftwidth=2 |
+    autocmd MyAutoCmd filetype markdown
     \    nnoremap <buffer> <Tab> >>|
     \    inoremap <buffer> <Tab> <C-t>|
     \    vnoremap <buffer> <Tab> >gv|
@@ -406,14 +408,6 @@ set cursorcolumn
 set visualbell
 nnoremap j gj
 nnoremap k gk
-
-" Tab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-autocmd MyAutoCmd FileType typescript, typescriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " Remove trailing spaces.
 fun! TrimWhitespace()
