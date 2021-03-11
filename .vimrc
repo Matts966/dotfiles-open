@@ -149,9 +149,10 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic<CR>
 
     let g:lsp_format_sync_timeout = 1000
-    autocmd MyAutoCmd BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    autocmd MyAutoCmd BufWritePre *.rs,*.go,*.ts call execute('LspDocumentFormatSync')
 
     let g:lsp_settings = {
     \   'pyls-all': {
