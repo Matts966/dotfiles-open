@@ -33,7 +33,7 @@ zle -N fshow
 bindkey '^g^l' fshow
 
 function agg() {
-    openvim='{system("vim " $1 " +" $2 " < /dev/tty > /dev/tty")}'
+    openvim='{system("$EDITOR " $1 " +" $2 " < /dev/tty > /dev/tty")}'
     result=`rg --column --line-number --no-heading -- . 2> /dev/null | fzf --bind "ctrl-v:execute(printf %q {} | awk -F ':' '$openvim')"`
     if [ -z $result ]
     then
