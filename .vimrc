@@ -110,9 +110,6 @@ if has('nvim')
     autocmd MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
     autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
 
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-
     Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
@@ -345,29 +342,6 @@ colorscheme iceberg
 hi Visual ctermbg=236 guibg=#363d5c
 
 if has('nvim')
-    lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    indent = {
-        enable = true,
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-                ["ab"] = "@block.outer",
-                ["ib"] = "@block.inner",
-            }
-        }
-    }
-}
-EOF
-
     noremap <leader>b <Cmd>Denite buffer<CR>
     noremap <leader>t <Cmd>Denite buffer -input=term://<CR>
     call denite#custom#option('default', {
