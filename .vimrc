@@ -411,7 +411,7 @@ cnoremap <C-A> <Home>
 cnoremap <C-B> <Left>
 
 " Clear search result on <C-l>
-nnoremap <silent> <C-l> :<Cmd>nohlsearch<CR>GitGutter<CR><C-l>
+nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
 
 " Open .vimrc with <leader>,
 function! s:OpenVimrc()
