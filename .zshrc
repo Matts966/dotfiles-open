@@ -78,3 +78,4 @@ else
 fi
 
 eval $(thefuck --alias)
+source <(kubectl completion zsh)
