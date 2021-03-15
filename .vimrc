@@ -90,11 +90,28 @@ if has('nvim')
 
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
     autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
-    autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
-    autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
-    autocmd MyAutoCmd InsertEnter * :call plug#load('vim-auto-save')
     let g:deoplete#enable_at_startup = 1
     Plug 'lighttiger2505/deoplete-vim-lsp', { 'on': [] }
+    autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
+
+    " eskk.vim
+    Plug 'tyru/eskk.vim', { 'on': [] }
+    autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
+    let g:eskk#directory = "~/.skk"
+    let g:eskk#server = {
+    \	'host': '0.0.0.0',
+    \	'port': 55100,
+    \}
+    let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8' }
+    let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp' }
+    let g:eskk#start_completion_length = 1
+    set imdisable
+    set formatexpr=autofmt#japanese#formatexpr()
+    Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
+
+    Plug '907th/vim-auto-save', { 'on': [] }
+    autocmd MyAutoCmd InsertEnter * :call plug#load('vim-auto-save')
+    let g:auto_save = 1  " enable AutoSave on Vim startup
 
     Plug 'raghur/vim-ghost', { 'do': ':GhostInstall', 'on': [] }
     let g:ghost_autostart = 1
@@ -116,24 +133,6 @@ if has('nvim')
 " else
     " Plug 'junegunn/vim-peekaboo'
 endif
-
-" eskk.vim
-Plug 'tyru/eskk.vim', { 'on': [] }
-let g:eskk#directory = "~/.skk"
-" Note that google-ime-skk is not working if stopped with ;
-let g:eskk#server = {
-\	'host': '0.0.0.0',
-\	'port': 55100,
-\}
-let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8' }
-let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp' }
-let g:eskk#start_completion_length = 1
-set imdisable
-set formatexpr=autofmt#japanese#formatexpr()
-Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
-
-let g:auto_save = 1  " enable AutoSave on Vim startup
-Plug '907th/vim-auto-save', { 'on': [] }
 
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
