@@ -53,7 +53,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
-Plug 'tpope/vim-sleuth'
+Plug 'ciaranm/detectindent'
+autocmd MyAutoCmd BufReadPost * :DetectIndent
 
 Plug 'voldikss/vim-translator'
 let g:translator_target_lang = 'ja'
