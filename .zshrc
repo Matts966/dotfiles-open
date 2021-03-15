@@ -69,9 +69,9 @@ if (which zprof > /dev/null 2>&1) ;then
 fi
 
 if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
-    alias vim="nvr -s"
-    export EDITOR="nvr -s"
-    export GIT_EDITOR="nvr -s"
+    alias vim="nvr --remote-tab"
+    export EDITOR="nvr --remote-tab"
+    export GIT_EDITOR="nvr --remote-tab-wait"
 else
     alias vim="nvim"
     export EDITOR="nvim"
