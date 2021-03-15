@@ -53,6 +53,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+" Not working with neovim-remote
+Plug 'rhysd/committia.vim'
 Plug 'ciaranm/detectindent'
 autocmd MyAutoCmd BufReadPost * :DetectIndent
 
