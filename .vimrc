@@ -55,8 +55,11 @@ call plug#begin('~/.vim/plugged')
 
 " Not working with neovim-remote
 Plug 'rhysd/committia.vim'
+
 Plug 'ciaranm/detectindent'
-autocmd MyAutoCmd BufReadPost * :DetectIndent
+autocmd MyAutoCmd BufEnter * :DetectIndent
+let g:detectindent_preferred_when_mixed = 1
+let g:detectindent_preferred_indent = 2
 
 Plug 'voldikss/vim-translator'
 let g:translator_target_lang = 'ja'
