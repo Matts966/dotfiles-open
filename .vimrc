@@ -109,6 +109,12 @@ if has('nvim')
     autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
 
     Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+
+    " Unused. would like to use this after black hole register related bugs
+    " are fixed.
+    " Plug 'tversteeg/registers.nvim'
+" else
+    " Plug 'junegunn/vim-peekaboo'
 endif
 
 " eskk.vim
@@ -258,8 +264,6 @@ Plug 'psliwka/vim-smoothie'
 Plug 'thinca/vim-qfreplace'
 
 Plug 'skanehira/gh.vim'
-
-Plug 'junegunn/vim-peekaboo'
 
 " fzf
 Plug 'junegunn/fzf.vim'
