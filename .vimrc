@@ -134,9 +134,6 @@ Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 Plug '907th/vim-auto-save', { 'on': [] }
-" Save only on leaving insert to prevent overwriting
-" history on unde.
-let g:auto_save_events = ["InsertLeave"]
 
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
