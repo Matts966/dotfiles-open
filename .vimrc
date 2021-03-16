@@ -53,9 +53,6 @@ call plug#begin('~/.vim/plugged')
 
 
 
-Plug 'rhysd/committia.vim'
-let g:committia_open_only_vim_starting = 0
-
 Plug 'ciaranm/detectindent'
 autocmd MyAutoCmd BufEnter * :DetectIndent
 let g:detectindent_preferred_when_mixed = 1
