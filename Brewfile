@@ -64,6 +64,8 @@ brew "poppler"
 brew "thefuck"
 # Provides session management: i.e. separate programs from terminals
 brew "abduco"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 cask "alt-tab"
 cask "clipy"
 cask "slack"

@@ -302,14 +302,9 @@ let g:fzf_action = {
             \ 'ctrl-v': 'vsplit' }
 nnoremap <leader>gr :Repo<CR>
 
-" Git Grep with fzf by :GGrep
-command! -bang -nargs=* GGrep
-    \ call fzf#vim#grep(
-        \ 'git grep --line-number -- '.shellescape(<q-args>), 0,
-        \ fzf#vim#with_preview({'dir': systemlist(
-            \ 'git rev-parse --show-toplevel')[0]}), <bang>0)
-nnoremap <leader>f :GGrep<CR>
-nnoremap <leader>p :GFiles<CR>
+nnoremap <leader>f :Rg<CR>
+let g:fzf_preview_directory_files_command = 'fd --type=file .'
+nnoremap <leader>p :FzfPreviewDirectoryFilesRpc<CR>
 
 Plug 'dansomething/vim-hackernews'
 
