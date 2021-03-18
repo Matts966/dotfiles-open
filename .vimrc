@@ -181,11 +181,14 @@ let g:lightline = {
 \   'active': {
 \       'left': [
 \           [ 'mode', 'paste' ],
-\           [ 'readonly', 'filename', 'modified' ],
+\           [ 'gitbranch', 'readonly', 'filename', 'modified' ],
 \           [ 'scrollbar' ],
 \       ]
 \   },
-\   'component_function': {'scrollbar': 'ScrollStatus'},
+\   'component_function': {
+\       'scrollbar': 'ScrollStatus',
+\       'gitbranch': 'gina#component#repo#branch'
+\   },
 \}
 Plug 'gkeep/iceberg-dark'
 let g:lightline.colorscheme = 'icebergDark'
@@ -245,7 +248,7 @@ nmap Y <Plug>(operator-flashy)$
 Plug 'unblevable/quick-scope'
 
 " Git related settings
-Plug 'lambdalisue/gina.vim', { 'on': 'Gina' }
+Plug 'lambdalisue/gina.vim'
 nnoremap [gina]  <Nop>
 nmap <leader>g [gina]
 nnoremap <silent> [gina]s :Gina status<CR>
