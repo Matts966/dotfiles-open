@@ -19,6 +19,27 @@ fbr() {
 zle -N fbr
 bindkey '^g^b' fbr
 
+gcd() {
+    repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") &&
+        cd $(ghq root)/$repo
+            zle reset-prompt
+}
+zle -N gcd
+bindkey '^g^r' gcd
+
+_lazygit() {
+    git status &> /dev/null
+    if [[ $? -eq 0 ]]; then
+        lazygit
+        return
+    fi
+    # zle's returns code is always 0...
+    repo=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*") && cd $(ghq root)/$repo && lazygit
+    zle reset-prompt
+}
+zle -N _lazygit
+bindkey '^g^g' _lazygit
+
 fshow() {
     git log --graph --all --color=always \
         --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
@@ -45,3 +66,7 @@ function agg() {
 }
 zle -N agg
 bindkey '^x^f' agg
+# Open vim for editing commands
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
