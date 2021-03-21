@@ -121,7 +121,7 @@ if has('nvim')
     function! s:SetupGhostBuffer()
         let g:ghost_darwin_app = 'kitty'
         let g:ghost_cmd = 'tabedit'
-        if match(expand("%:a"), '\v/ghost-(github|reddit|stackexchange|stackoverflow)\.com-')
+        if match(expand("%:a"), '\v/ghost-(github|reddit|stackexchange|stackoverflow|calendar.google)\.com-')
             set ft=markdown
         endif
     endfunction
