@@ -68,8 +68,6 @@ brew "vim"
 brew "watch"
 # Internet file retriever
 brew "wget"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
 # AdoptOpenJDK OpenJDK (Java) Development Kit
 cask "adoptopenjdk9"
 # GPU-accelerated terminal emulator
