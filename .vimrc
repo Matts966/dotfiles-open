@@ -303,7 +303,7 @@ let g:fzf_action = {
 nnoremap <leader>gr :Repo<CR>
 
 nnoremap <leader>f :Rg<CR>
-let g:fzf_preview_directory_files_command = 'fd --type=file .'
+let g:fzf_preview_directory_files_command = 'fd --type=file --hidden --exclude ".git"'
 nnoremap <leader>p :FzfPreviewDirectoryFilesRpc<CR>
 
 Plug 'dansomething/vim-hackernews'
