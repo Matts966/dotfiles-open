@@ -4,6 +4,8 @@ export LANG=ja_JP.UTF-8
 source $HOME/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+autoload -Uz compinit
+compinit
 
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode

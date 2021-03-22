@@ -430,12 +430,12 @@ background_opacity: 0.9
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-shell:
-  program: /bin/zsh
-  args:
-    - --login
-    - -c
-    - ". ~/.zshenv; . ~/.zshrc; abduco -c default nvim || abduco -a default"
+# shell:
+#   program: /bin/zsh
+#   args:
+#     - --login
+#     - -c
+#     - ". ~/.zshenv; . ~/.zshrc; abduco -c default nvim || abduco -a default"
 
 # Startup directory
 #
