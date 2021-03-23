@@ -80,6 +80,8 @@ cask "appcleaner"
 cask "basictex"
 # Clipboard extension app
 cask "clipy"
+# Trains AIs to understand and translate texts
+cask "deepl"
 # Web browser
 cask "google-chrome"
 # Keyboard customizer
