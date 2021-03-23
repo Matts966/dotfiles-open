@@ -1,5 +1,5 @@
 CANDIDATES := $(wildcard .??*)
-EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .ssh
+EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .ssh .github
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help
