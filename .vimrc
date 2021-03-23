@@ -53,6 +53,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+
 Plug 'ciaranm/detectindent'
 autocmd MyAutoCmd BufEnter * :DetectIndent
 let g:detectindent_preferred_when_mixed = 1
@@ -392,10 +394,23 @@ autocmd MyAutoCmd BufWritePre * :call TrimWhitespace()
 
 set ignorecase
 set smartcase " Case Sensitive only with upper case
-set wildcharm=<Tab>
 cnoremap <expr> <Tab> '<Cmd>set nosmartcase<CR><Tab><Cmd>let &smartcase = ' .. &smartcase .. '<CR>'
 set wrapscan
 set hlsearch
+
+call wilder#enable_cmdline_enter()
+" only / and ? are enabled by default
+set pumblend=30
+set winblend=30
+set wildcharm=<Tab>
+cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
+cmap <expr> <C-n> wilder#in_context() ? wilder#next() : "\<C-n>"
+cmap <expr> <C-p> wilder#in_context() ? wilder#previous() : "\<C-p>"
+call wilder#set_option('modes', [':', '/', '?'])
+call wilder#set_option('renderer', wilder#popupmenu_renderer({
+      \ 'highlighter': wilder#basic_highlighter(),
+      \ 'winblend': 20,
+      \ }))
 
 " Create dir if not exists when writing new file.
 autocmd MyAutoCmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
