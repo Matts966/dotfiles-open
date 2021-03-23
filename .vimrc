@@ -402,11 +402,12 @@ call wilder#enable_cmdline_enter()
 " only / and ? are enabled by default
 set pumblend=20
 set winblend=20
-set wildcharm=<C-x>
+set wildcharm=<Tab>
 " For :cd ~/<C-n> to complete path
-cmap <expr> <C-n> wildmenumode() ? "\<C-n>" : "\<C-x>"
 cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
 cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
+cmap <expr> <C-n> wilder#in_context() ? wilder#next() : "\<C-n>"
+cmap <expr> <C-p> wilder#in_context() ? wilder#previous() : "\<C-p>"
 call wilder#set_option('modes', [':', '/', '?'])
 call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ 'highlighter': wilder#basic_highlighter(),
