@@ -52,6 +52,7 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'jreybert/vimagit'
 
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
