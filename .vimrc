@@ -55,11 +55,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'ciaranm/detectindent'
-autocmd MyAutoCmd BufEnter * :DetectIndent
-let g:detectindent_preferred_when_mixed = 1
-let g:detectindent_preferred_indent = 2
-
 Plug 'voldikss/vim-translator'
 let g:translator_target_lang = 'ja'
 
@@ -131,6 +126,9 @@ if has('nvim')
     autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
 
     Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
     " Unused. would like to use this after black hole register related bugs
     " are fixed.
@@ -362,6 +360,29 @@ if has('nvim')
         nnoremap <silent><buffer><expr> <Space>
                     \ denite#do_map('toggle_select').'j'
     endfunction
+
+    lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  indent = {
+    enable = true
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["ab"] = "@block.outer",
+        ["ib"] = "@block.inner",
+      },
+    },
+  },
+}
+EOF
 endif
 
 " netrw
