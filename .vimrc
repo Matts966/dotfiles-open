@@ -305,6 +305,10 @@ let g:fzf_action = {
             \ 'ctrl-v': 'vsplit' }
 nnoremap <leader>gr :Repo<CR>
 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 nnoremap <leader>f :Rg<CR>
 let g:fzf_preview_directory_files_command = 'fd --type=file --hidden --exclude ".git"'
 nnoremap <leader>p :FzfPreviewDirectoryFilesRpc<CR>
