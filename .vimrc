@@ -442,6 +442,16 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ 'highlighter': wilder#basic_highlighter(),
       \ 'winblend': 20,
       \ }))
+call wilder#set_option('pipeline', [
+      \   wilder#branch(
+      \     [
+      \       wilder#check({_, x -> empty(x)}),
+      \       wilder#history(),
+      \     ],
+      \     wilder#cmdline_pipeline(),
+      \     wilder#search_pipeline(),
+      \   ),
+      \ ])
 
 " Create dir if not exists when writing new file.
 autocmd MyAutoCmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
