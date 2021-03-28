@@ -397,6 +397,14 @@ endif
 let g:netrw_liststyle=3
 let g:netrw_keepj=""
 
+set preserveindent
+set copyindent
+set expandtab
+set autoindent
+set smartindent
+set tabstop=2
+set shiftwidth=2
+
 set fenc=utf-8
 set nobackup
 set noswapfile
