@@ -113,9 +113,9 @@ if has('nvim')
     set formatexpr=autofmt#japanese#formatexpr()
     Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
 
-    Plug '907th/vim-auto-save', { 'on': [] }
-    autocmd MyAutoCmd InsertEnter * :call plug#load('vim-auto-save')
+    Plug '907th/vim-auto-save'
     let g:auto_save = 1  " enable AutoSave on Vim startup
+    autocmd MyAutoCmd FileType magit let b:auto_save = 0
 
     Plug 'raghur/vim-ghost', { 'do': ':GhostInstall', 'on': [] }
     let g:ghost_autostart = 1
