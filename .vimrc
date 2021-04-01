@@ -159,7 +159,9 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic<CR>
 
     let g:lsp_format_sync_timeout = 1000
-    autocmd MyAutoCmd BufWritePre *.rs,*.go,*.ts call execute('LspDocumentFormatSync')
+    if &ft == 'rust' || &ft == 'go' || &ft == 'typescript'
+        nmap <buffer> <leader>s <CMD>LspDocumentFormatSync<CR>
+    endif
 
     let g:lsp_settings = {
     \   'pyls-all': {
@@ -177,7 +179,7 @@ autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
 let g:black_linelength = 120
 Plug 'fisadev/vim-isort', { 'for': ['python', 'vim-plug'] }
-autocmd MyAutoCmd BufWritePre *.py execute ':Black' | execute ':Isort'
+autocmd MyAutoCmd FileType python nmap <buffer> <leader>s <CMD>Black<CR><CMD>Isort<CR>
 
 Plug 'itchyny/lightline.vim'
 Plug 'ojroques/vim-scrollstatus'
