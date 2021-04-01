@@ -507,3 +507,5 @@ endif
 
 " Quit all read only buffers with q
 nnoremap <expr> q (&modifiable && !&readonly ? 'q' : ':close!<CR>')
+
+autocmd MyAutoCmd FileType qf setlocal wrap
