@@ -68,6 +68,10 @@ brew "vim"
 brew "watch"
 # Internet file retriever
 brew "wget"
+# Improved top (interactive process viewer)
+brew "htop"
+# Tiny, lightning fast, feature-packed file manager
+brew "nnn"
 # AdoptOpenJDK OpenJDK (Java) Development Kit
 cask "adoptopenjdk9"
 # GPU-accelerated terminal emulator
