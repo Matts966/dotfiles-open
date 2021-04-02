@@ -45,7 +45,7 @@ zstyle ':fzf-tab:*' fzf-flags --height 100% --header "ctrl-e: Edit"
 
 zinit light MichaelAquilina/zsh-auto-notify
 export AUTO_NOTIFY_THRESHOLD=5
-AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit")
+AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit" "nnn" "k9s")
 
 PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
 %F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
