@@ -267,12 +267,7 @@ set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
 autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
 
-if has('nvim')
-    Plug 'karb94/neoscroll.nvim'
-else
-    Plug 'psliwka/vim-smoothie'
-endif
-
+Plug 'psliwka/vim-smoothie'
 
 Plug 'thinca/vim-qfreplace'
 
