@@ -32,7 +32,7 @@ all: update
 	make secret
 .PHONY: all
 
-init: zsh pip yarn apps ## Initialize installation
+init: zsh pip yarn # apps ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
