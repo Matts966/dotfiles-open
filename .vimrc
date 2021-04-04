@@ -95,6 +95,7 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
     autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
     let g:deoplete#enable_at_startup = 1
+    let g:deoplete#refresh_backspace = v:false
     Plug 'lighttiger2505/deoplete-vim-lsp', { 'on': [] }
     autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
 
