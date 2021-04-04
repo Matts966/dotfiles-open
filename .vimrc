@@ -448,7 +448,7 @@ cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
 cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 cmap <expr> <C-n> wilder#in_context() ? wilder#next() : "\<C-n>"
 cmap <expr> <C-p> wilder#in_context() ? wilder#previous() : "\<C-p>"
-call wilder#set_option('modes', [':', '/', '?'])
+call wilder#set_option('modes', [':'])
 call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ 'highlighter': wilder#basic_highlighter(),
       \ 'winblend': 20,
