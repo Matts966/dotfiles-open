@@ -47,7 +47,7 @@ init: zsh pip yarn apps ## Initialize installation
 
 apps:
 ifeq  ($(shell uname),Darwin)
-ifneq  ($$CI,true) # Skip on github actions
+ifndef CI # Skip on github actions
 	$$CI || gh -R televator-apps/vimari release download -p Vimari.app.zip && \
 		unzip Vimari.app.zip && gomi -s /Applications/Vimari.app && \
 		mv -f Vimari.app /Applications && open /Applications/Vimac.app && \
