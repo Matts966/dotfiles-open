@@ -132,8 +132,6 @@ if has('nvim')
 
     Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
-    Plug 'nacro90/numb.nvim'
-
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
@@ -395,8 +393,6 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
-
-require('numb').setup()
 EOF
 endif
 
@@ -462,9 +458,6 @@ call wilder#set_option('pipeline', [
       \     [
       \       wilder#check({_, x -> empty(x)}),
       \       wilder#history(),
-      \     ],
-      \     [
-      \       wilder#check({_, x -> match(x, "\d\+")}),
       \     ],
       \     wilder#cmdline_pipeline(),
       \     wilder#search_pipeline(),
