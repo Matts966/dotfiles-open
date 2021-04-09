@@ -70,19 +70,15 @@ endfunction
 autocmd MyAutoCmd FileType vaffle call s:customize_vaffle_mappings()
 nnoremap <leader>V <Cmd>Vaffle<CR>
 
-" For vscode
-Plug 'asvetliakov/vim-easymotion'
-let g:EasyMotion_do_mapping = 0
-" Plug 'easymotion/vim-easymotion'
-if has('nvim') && !exists('g:vscode')
+if has('nvim')
     Plug 'Matts966/hop.nvim', { 'on': 'HopWord' }
     map  <Leader>j <CMD>HopWord<CR>
     vmap <Leader>j <CMD>HopWordVisual<CR>
 else
+    Plug 'vim-easymotion/vim-easymotion'
+    let g:EasyMotion_do_mapping = 0
     map  <Leader>j <Plug>(easymotion-bd-w)
-    if !exists('g:vscode')
-        nmap <Leader>j <Plug>(easymotion-overwin-w)
-    endif
+    nmap <Leader>j <Plug>(easymotion-overwin-w)
 endif
 
 Plug 'makerj/vim-pdf'
@@ -322,20 +318,18 @@ nnoremap <leader>p :FzfPreviewDirectoryFilesRpc<CR>
 
 Plug 'dansomething/vim-hackernews'
 
-if !exists('g:vscode')
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
-        \ 'for': ['markdown', 'vim-plug']}
-    Plug 'godlygeek/tabular', { 'for': ['markdown', 'vim-plug'] }
-    Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'vim-plug'] }
-    let g:vim_markdown_new_list_item_indent = 2
-    let g:vim_markdown_folding_disabled = 1
-    autocmd MyAutoCmd filetype markdown
-    \    inoremap <buffer> <Tab> <C-t>|
-    \    vnoremap <buffer> <Tab> >gv|
-    \    nnoremap <buffer> <S-Tab> <<|
-    \    inoremap <buffer> <S-Tab> <C-d>|
-    \    vnoremap <buffer> <S-Tab> <gv
-endif
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
+    \ 'for': ['markdown', 'vim-plug']}
+Plug 'godlygeek/tabular', { 'for': ['markdown', 'vim-plug'] }
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'vim-plug'] }
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_folding_disabled = 1
+autocmd MyAutoCmd filetype markdown
+\    inoremap <buffer> <Tab> <C-t>|
+\    vnoremap <buffer> <Tab> >gv|
+\    nnoremap <buffer> <S-Tab> <<|
+\    inoremap <buffer> <S-Tab> <C-d>|
+\    vnoremap <buffer> <S-Tab> <gv
 
 Plug 'airblade/vim-gitgutter'
 
