@@ -237,6 +237,7 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'v
 Plug 'machakann/vim-sandwich'
 " Toggle comment out with gcc and gc with selection.
 Plug 'tpope/vim-commentary'
+autocmd MyAutoCmd FileType tf setlocal commentstring=#\ %s
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 
