@@ -6,6 +6,7 @@
 [core]
     editor = /usr/local/bin/nvim
     pager = delta
+	excludesfile = /Users/mattsm/.gitignore
 [interactive]
     diffFilter = delta --color-only
 [commit]
