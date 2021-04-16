@@ -72,6 +72,10 @@ brew "wget"
 brew "htop"
 # Tiny, lightning fast, feature-packed file manager
 brew "nnn"
+# Connect and disconnect Bluetooth devices
+brew "bluetoothconnector"
+# Change macOS audio source from the command-line
+brew "switchaudio-osx"
 # AdoptOpenJDK OpenJDK (Java) Development Kit
 cask "adoptopenjdk9"
 # GPU-accelerated terminal emulator

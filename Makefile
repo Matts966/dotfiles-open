@@ -16,6 +16,7 @@ deploy: ## Create symlink to home directory
 	mkdir -p ~/.config/spotify-tui && ln -sfFnv $(abspath spotify-tui)/* ~/.config/spotify-tui
 	mkdir -p ~/.config/nvim && ln -sfFnv $(abspath init.vim) ~/.config/nvim
 	ln -sfFnv $(abspath pycodestyle) ~/.config
+	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin
 .PHONY: deploy
 
 update: ## Fetch changes for this repo
