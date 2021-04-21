@@ -429,7 +429,6 @@ autocmd MyAutoCmd BufWritePre * :call TrimWhitespace()
 
 set ignorecase
 set smartcase " Case Sensitive only with upper case
-cnoremap <expr> <Tab> '<Cmd>set nosmartcase<CR><Tab><Cmd>let &smartcase = ' .. &smartcase .. '<CR>'
 set wrapscan
 set hlsearch
 
@@ -439,8 +438,6 @@ set pumblend=20
 set winblend=20
 set wildcharm=<Tab>
 " For :cd ~/<C-n> to complete path
-cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
-cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 cmap <expr> <C-n> wilder#in_context() ? wilder#next() : "\<C-n>"
 cmap <expr> <C-p> wilder#in_context() ? wilder#previous() : "\<C-p>"
 call wilder#set_option('modes', [':'])
