@@ -1,4 +1,6 @@
 #!/bin/bash
+
+https://yoshiori.hatenablog.com/entry/2021/04/13/171405
 AIR_PODS_ADDRESS=3c-4d-be-12-2f-2f #3c-4d-be-12-2f-2f Your AirPods MAC address
 AIR_PODS_NAME="Matts966's AirPods Pro" # Your AirPods name
 
