@@ -328,6 +328,7 @@ set scrolloff=999
 highlight Visual ctermbg=236 guibg=#363d5c
 highlight VertSplit cterm=NONE
 highlight Pmenu None
+highlight PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
 
 if has('nvim')
     noremap <leader>b <Cmd>Denite buffer<CR>
