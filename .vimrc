@@ -193,8 +193,6 @@ let g:lightline = {
 \       'gitbranch': 'gina#component#repo#branch'
 \   },
 \}
-Plug 'gkeep/iceberg-dark'
-let g:lightline.colorscheme = 'icebergDark'
 
 nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal lazygit<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
@@ -341,8 +339,6 @@ call plug#end()
 
 set scrolloff=999
 
-set termguicolors
-colorscheme iceberg
 " Visible selection
 hi Visual ctermbg=236 guibg=#363d5c
 
@@ -413,8 +409,6 @@ set hidden
 " Yank to clipboard
 set clipboard^=unnamed,unnamedplus
 
-set cursorline
-set cursorcolumn
 set visualbell
 nnoremap j gj
 nnoremap k gk
