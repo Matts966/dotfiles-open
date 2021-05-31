@@ -27,7 +27,7 @@ install: update ## Run make update, deploy and init
 	make --jobs all
 .PHONY: install
 
-all: deploy init secret term
+all: deploy init secret
 .PHONY: all
 
 init: zsh pip yarn mac ## Initialize installation
