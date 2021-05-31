@@ -412,6 +412,8 @@ set smartcase " Case Sensitive only with upper case
 set wrapscan
 set hlsearch
 
+hi Pmenu None
+
 call wilder#enable_cmdline_enter()
 " only / and ? are enabled by default
 set wildcharm=<Tab>
