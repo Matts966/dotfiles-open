@@ -78,8 +78,6 @@ brew "bluetoothconnector"
 brew "switchaudio-osx"
 # AdoptOpenJDK OpenJDK (Java) Development Kit
 cask "adoptopenjdk9"
-# GPU-accelerated terminal emulator
-cask "alacritty"
 # Utility to set up alt-tab to switch between windows
 cask "alt-tab"
 # Application uninstaller

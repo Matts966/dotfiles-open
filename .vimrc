@@ -95,21 +95,6 @@ if has('nvim')
     Plug 'lighttiger2505/deoplete-vim-lsp', { 'on': [] }
     autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
 
-    " eskk.vim
-    Plug 'tyru/eskk.vim', { 'on': [] }
-    autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
-    let g:eskk#directory = "~/.skk"
-    let g:eskk#server = {
-    \	'host': '0.0.0.0',
-    \	'port': 55100,
-    \}
-    let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8' }
-    let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp' }
-    let g:eskk#start_completion_length = 1
-    set imdisable
-    set formatexpr=autofmt#japanese#formatexpr()
-    Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
-
     Plug '907th/vim-auto-save'
     let g:auto_save = 1  " enable AutoSave on Vim startup
     autocmd MyAutoCmd FileType magit let b:auto_save = 0

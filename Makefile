@@ -38,12 +38,6 @@ init: zsh pip yarn apps ## Initialize installation
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
 			totpages xstring environ hyperxmp ifmtarg || true
-	curl openlab.jp/skk/dic/SKK-JISYO.L.gz -o SKK-JISYO.L.gz && \
-		gzip -d SKK-JISYO.L.gz && \
-		mkdir -p ~/.skk && \
-		mv SKK-JISYO.L ~/.skk/SKK-JISYO.L
-	docker start google-ime-skk || docker run --name google-ime-skk \
-		 -d --restart=always -d -p 55100:55100 matts966/google-ime-skk-docker || true
 .PHONY: init
 
 apps:
