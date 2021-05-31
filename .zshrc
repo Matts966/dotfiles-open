@@ -79,5 +79,7 @@ else
     export EDITOR="nvim"
 fi
 
+export PATH="$HOME/flutter/flutter/bin:$PATH"
+
 eval $(thefuck --alias)
 source <(kubectl completion zsh)
