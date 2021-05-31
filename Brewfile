@@ -2,6 +2,7 @@ tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "ellie/atuin"
 # Provides session management: i.e. separate programs from terminals
 brew "abduco"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -76,6 +77,8 @@ brew "nnn"
 brew "bluetoothconnector"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
+# Improved shell history for zsh and bash
+brew "atuin"
 # AdoptOpenJDK OpenJDK (Java) Development Kit
 cask "adoptopenjdk9"
 # Utility to set up alt-tab to switch between windows

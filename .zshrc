@@ -18,10 +18,10 @@ alias rm='echo "This is not the command you are looking for, use gomi -s."; fals
 
 # Overwrite keybinds
 zvm_after_init_commands+=('source ~/.keybinds.zsh')
-zvm_after_init_commands+=('zinit ice multisrc"shell/*.zsh" && zinit light junegunn/fzf')
+zvm_after_init_commands+=('zinit ice multisrc"shell/*.zsh" && zinit light junegunn/fzf && zinit wait atload"bindkey '^P' _atuin_search_widget" for ellie/atuin')
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 export BAT_THEME="iceberg"
-export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
+export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi --color=16'
 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
