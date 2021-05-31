@@ -327,6 +327,7 @@ set scrolloff=999
 " Visible selection
 highlight Visual ctermbg=236 guibg=#363d5c
 highlight VertSplit cterm=NONE
+highlight Pmenu None
 
 if has('nvim')
     noremap <leader>b <Cmd>Denite buffer<CR>
@@ -411,8 +412,6 @@ set ignorecase
 set smartcase " Case Sensitive only with upper case
 set wrapscan
 set hlsearch
-
-hi Pmenu None
 
 call wilder#enable_cmdline_enter()
 " only / and ? are enabled by default
