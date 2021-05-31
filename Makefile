@@ -23,14 +23,11 @@ update: ## Fetch changes for this repo
 	git pull origin main
 .PHONY: update
 
-install: ## Run make update, deploy and init
+install: update ## Run make update, deploy and init
 	make --jobs all
 .PHONY: install
 
-all: update
-	make deploy
-	make init
-	make secret
+all: deploy init secret term
 .PHONY: all
 
 init: zsh pip yarn apps ## Initialize installation
@@ -81,6 +78,10 @@ pip: brew
 yarn: brew
 	npm install --global yarn @marp-team/marp-cli
 .PHONY: yarn
+
+term: ## Install profile of Terminal.app
+	open Iceberg.terminal
+	defaults write com.apple.terminal "Startup Window Settings" "Iceberg"
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
