@@ -340,7 +340,8 @@ call plug#end()
 set scrolloff=999
 
 " Visible selection
-hi Visual ctermbg=236 guibg=#363d5c
+highlight Visual ctermbg=236 guibg=#363d5c
+highlight VertSplit cterm=NONE
 
 if has('nvim')
     noremap <leader>b <Cmd>Denite buffer<CR>
