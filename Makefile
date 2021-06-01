@@ -49,6 +49,7 @@ ifndef CI # Skip on github actions
 endif
 	open Iceberg.terminal
 	defaults write com.apple.terminal "Startup Window Settings" "Iceberg"
+	defaults write com.apple.terminal "Default Window Settings" "Iceberg"
 endif
 .PHONY: mac
 
