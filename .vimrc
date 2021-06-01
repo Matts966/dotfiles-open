@@ -326,6 +326,9 @@ highlight Visual ctermbg=236 guibg=#363d5c
 highlight VertSplit cterm=NONE
 highlight Pmenu None
 highlight PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
+set cursorcolumn
+set cursorline
+highlight CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
 
 if has('nvim')
     noremap <leader>b <Cmd>Denite buffer<CR>
