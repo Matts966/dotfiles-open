@@ -275,8 +275,12 @@
 	<true/>
 	<key>VisualBell</key>
 	<false/>
+	<key>columnCount</key>
+	<integer>1000</integer>
 	<key>name</key>
 	<string>Iceberg</string>
+	<key>rowCount</key>
+	<integer>1000</integer>
 	<key>shellExitAction</key>
 	<integer>1</integer>
 	<key>type</key>
