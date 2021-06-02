@@ -113,9 +113,6 @@ if has('nvim')
 
     Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-
     " Unused. would like to use this after black hole register related bugs
     " are fixed.
     " Plug 'tversteeg/registers.nvim'
@@ -329,6 +326,9 @@ highlight Visual ctermbg=236 guibg=#363d5c
 highlight VertSplit cterm=NONE
 highlight Pmenu None
 highlight PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
+set cursorcolumn
+set cursorline
+highlight CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
 
 if has('nvim')
     noremap <leader>b <Cmd>Denite buffer<CR>
@@ -350,29 +350,6 @@ if has('nvim')
         nnoremap <silent><buffer><expr> <Space>
                     \ denite#do_map('toggle_select').'j'
     endfunction
-
-    lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
-  indent = {
-    enable = true
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["ab"] = "@block.outer",
-        ["ib"] = "@block.inner",
-      },
-    },
-  },
-}
-EOF
 endif
 
 " netrw
