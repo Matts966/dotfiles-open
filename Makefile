@@ -39,7 +39,7 @@ init: mac ## Initialize installation
 .PHONY: init
 
 asdf: brew zsh
-	$(eval SHELL := $(shell which zsh))
+	$(eval SHELL := zsh)
 	cut -d' ' -f1 .tool-versions | sort \
   	| while read plugin ; do \
   			asdf plugin add $$plugin; asdf install $$plugin & \
@@ -82,7 +82,7 @@ zsh:
 	# Install zinit
 	which zinit || sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 ifeq  ($(shell uname),Linux)
-	sudo apt-get update; sudo apt-get install zsh; sudo chsh -s $(shell which zsh)
+	sudo apt-get update; sudo apt-get install -y zsh; sudo chsh -s /usr/local/bin/zsh
 endif
 .PHONY: zsh
 
