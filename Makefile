@@ -44,9 +44,9 @@ asdf: zsh ~/.zinit
 	. ~/.zshrc && cut -d' ' -f1 .tool-versions | sort | \
 		while read plugin ; do \
 			asdf plugin add $$plugin; asdf install $$plugin & \
-		done && wait
-	mkdir -p $(HOME)/.config/bat/themes
-	ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes
+		done && wait && \
+	mkdir -p $(HOME)/.config/bat/themes && \
+	ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
 	bat cache --build
 .PHONY: asdf
 
