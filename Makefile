@@ -5,10 +5,27 @@ DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 .DEFAULT_GOAL := help
 SHELL := $(shell which bash)
 
+.PHONY: list
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
-.PHONY: list
 
+.PHONY: update
+update: ## Fetch changes for this repo
+	git pull origin main
+
+.PHONY: install
+install: update ## Run make update, deploy and init
+	make --jobs all
+
+.PHONY: clean
+clean: ## Remove the dot files and this repo
+	@echo 'Remove dot files in your home directory...'
+	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
+
+.PHONY: all
+all: deploy init secret
+
+.PHONY: deploy
 deploy: ## Create symlink to home directory
 	@echo 'Symlink dot files in your home directory...'
 	@$(foreach val, $(DOTFILES), ln -sfFnv $(abspath $(val)) $(HOME);)
@@ -18,18 +35,7 @@ deploy: ## Create symlink to home directory
 	mkdir -p ~/.config/nvim && ln -sfFnv $(abspath init.vim) ~/.config/nvim
 	ln -sfFnv $(abspath pycodestyle) ~/.config
 	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin
-.PHONY: deploy
 
-update: ## Fetch changes for this repo
-	git pull origin main
-.PHONY: update
-
-install: update ## Run make update, deploy and init
-	make --jobs all
-.PHONY: install
-
-all: deploy init secret
-.PHONY: all
 
 init: mac ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
