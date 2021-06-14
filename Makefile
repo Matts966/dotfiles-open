@@ -82,12 +82,14 @@ brew:
 .PHONY: brew
 
 zsh:
-	# Install zinit
-	which zinit || sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 ifeq  ($(shell uname),Linux)
 	sudo apt-get update; sudo apt-get install -y zsh; sudo chsh -s /usr/bin/zsh
 endif
 .PHONY: zsh
+
+~/.zinit:
+	# Install zinit
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'
