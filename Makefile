@@ -38,8 +38,8 @@ init: mac ## Initialize installation
 			totpages xstring environ hyperxmp ifmtarg || true
 .PHONY: init
 
-asdf: brew zsh
-	zsh ~/.zshrc && cut -d' ' -f1 .tool-versions | sort \
+asdf: $(eval SHELL:=$(shell which zsh)) brew zsh
+	cut -d' ' -f1 .tool-versions | sort \
   	| while read plugin ; do \
   			asdf plugin add $$plugin; asdf install $$plugin & \
   		done && wait && \
