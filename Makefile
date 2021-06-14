@@ -38,7 +38,8 @@ init: mac ## Initialize installation
 			totpages xstring environ hyperxmp ifmtarg || true
 .PHONY: init
 
-asdf: $(eval SHELL:=zsh) brew zsh
+asdf: brew zsh
+	$(eval SHELL:=zsh)
 	cut -d' ' -f1 .tool-versions | sort \
   	| while read plugin ; do \
   			asdf plugin add $$plugin; asdf install $$plugin & \
@@ -72,11 +73,9 @@ secret:
 
 brew:
 	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
-		cat Brewfile | grep ^brew | cut -d' ' -f2 \
-			| while read formula ; do \
-					brew fetch $$formula & \
-				done && wait && \
-		brew bundle || true
+	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
+		| xargs -n 1 -P 8 brew fetch --deps
+	brew bundle || true
 .PHONY: brew
 
 zsh:
