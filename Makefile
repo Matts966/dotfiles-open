@@ -98,6 +98,9 @@ bundle: parallel asdf-dep # Wait for installation of asdf deps by brew
 		| xargs parallel brew install ::: || true
 	cat Brewfile | grep ^cask | cut -d' ' -f2 | xargs echo \
 		| xargs parallel brew install --cask ::: || true
+ifeq  ($(shell uname),Linux)
+	brew install texlive
+endif
 	brew bundle || true
 
 .PHONY: zsh
