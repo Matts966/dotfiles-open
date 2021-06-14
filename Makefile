@@ -31,14 +31,14 @@ install: update ## Run make update, deploy and init
 all: deploy init secret
 .PHONY: all
 
-init: zsh pip yarn mac asdf ## Initialize installation
+init: mac asdf ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
 			totpages xstring environ hyperxmp ifmtarg || true
 .PHONY: init
 
-asdf: brew
+asdf: brew zsh
 	cut -d' ' -f1 .tool-versions | sort \
   	| while read plugin ; do \
   			asdf plugin add $$plugin; asdf install $$plugin & \
