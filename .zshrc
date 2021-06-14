@@ -4,8 +4,6 @@ export LANG=ja_JP.UTF-8
 source $HOME/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-autoload -Uz compinit
-compinit
 
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
@@ -32,15 +30,6 @@ zinit lucid has'docker' for \
     as'completion' is-snippet \
     'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
 
-zinit wait lucid atload"zicompinit; zicdreplay" blockf light-mode for \
-    asdf-vm/asdf \
-    zsh-users/zsh-completions \
-    Aloxaf/fzf-tab
-
-zinit light asdf-vm/asdf
-
-zplugin light 'b4b4r07/emoji-cli'
-
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
 # zstyle ':fzf-tab:*' accept-line enter
 zstyle ':fzf-tab:*' fzf-flags --height 100%
@@ -50,6 +39,12 @@ zstyle ':fzf-tab:*' fzf-flags --height 100%
 zinit light MichaelAquilina/zsh-auto-notify
 export AUTO_NOTIFY_THRESHOLD=5
 AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit" "nnn" "k9s")
+
+zinit light asdf-vm/asdf
+
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+    zsh-users/zsh-completions \
+    light-mode Aloxaf/fzf-tab
 
 PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
 %F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
