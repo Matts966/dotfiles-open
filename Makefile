@@ -42,7 +42,10 @@ asdf: brew zsh
 	cut -d' ' -f1 .tool-versions | sort \
   	| while read plugin ; do \
   			asdf plugin add $$plugin; asdf install $$plugin & \
-  		done && wait
+  		done && wait && \
+  mkdir -p $(HOME)/.config/bat/themes && \
+		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
+		bat cache --build
 .PHONY: asdf
 
 mac: asdf
@@ -69,10 +72,7 @@ secret:
 
 brew:
 	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
-		brew bundle || true && \
-		mkdir -p $(HOME)/.config/bat/themes && \
-		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
-		bat cache --build
+		brew bundle || true
 .PHONY: brew
 
 zsh:
