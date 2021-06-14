@@ -81,7 +81,7 @@ brew:
 
 bundle: brew
 	brew bundle || true
-.PHONY bundle
+.PHONY: bundle
 
 zsh:
 	# Install zinit
