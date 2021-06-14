@@ -40,7 +40,7 @@ init: mac bundle ## Initialize installation
 
 asdf: brew zsh
 	$(eval SHELL := zsh)
-	. .zshrc && cut -d' ' -f1 .tool-versions | sort \
+	. ~/.zshrc && cut -d' ' -f1 .tool-versions | sort \
   	| while read plugin ; do \
   			asdf plugin add $$plugin; asdf install $$plugin & \
   		done && wait && \
