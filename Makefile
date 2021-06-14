@@ -74,9 +74,9 @@ secret:
 brew:
 	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
 	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
-		| xargs -n 1 -P 8 brew fetch --deps
+		| xargs -n 1 -P 8 brew fetch --deps || true
 	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
-		| xargs -n 1 -P 8 brew install
+		| xargs -n 1 -P 8 brew install || true
 	brew bundle || true
 .PHONY: brew
 
