@@ -80,7 +80,7 @@ zsh:
 	which zinit || sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 ifeq  ($(shell uname),Linux)
 	sudo apt-get install zsh
-	chsh -s $(which zsh)
+	chsh -s $(shell which zsh)
 endif
 .PHONY: zsh
 
