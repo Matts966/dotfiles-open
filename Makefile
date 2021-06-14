@@ -31,7 +31,7 @@ install: update ## Run make update, deploy and init
 all: deploy init secret
 .PHONY: all
 
-init: mac ## Initialize installation
+init: mac bundle ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
@@ -77,8 +77,11 @@ brew:
 		| xargs -n 1 -P 8 brew fetch --deps || true
 	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
 		| xargs -n 1 -P 8 brew install || true
-	brew bundle || true
 .PHONY: brew
+
+bundle: brew
+	brew bundle || true
+.PHONY bundle
 
 zsh:
 	# Install zinit
