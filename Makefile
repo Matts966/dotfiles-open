@@ -74,7 +74,7 @@ secret:
 brew:
 	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
 	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
-		| xargs -n 1 -P 8 brew fetch --deps || true
+		| xargs -n 1 -P 8 brew fetch --deps
 	brew bundle || true
 .PHONY: brew
 
@@ -82,7 +82,7 @@ zsh:
 	# Install zinit
 	which zinit || sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 ifeq  ($(shell uname),Linux)
-	sudo apt-get update; sudo apt-get install -y zsh; sudo chsh -s /usr/local/bin/zsh
+	sudo apt-get update; sudo apt-get install -y zsh; sudo chsh -s /usr/bin/zsh
 endif
 .PHONY: zsh
 
