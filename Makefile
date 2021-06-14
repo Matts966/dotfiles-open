@@ -39,7 +39,7 @@ init: mac asdf ## Initialize installation
 .PHONY: init
 
 asdf: brew zsh
-	bash ~/.zshrc && cut -d' ' -f1 .tool-versions | sort \
+	zsh ~/.zshrc && cut -d' ' -f1 .tool-versions | sort \
   	| while read plugin ; do \
   			asdf plugin add $$plugin; asdf install $$plugin & \
   		done && wait && \
@@ -78,6 +78,10 @@ brew:
 zsh:
 	# Install zinit
 	which zinit || sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+ifeq  ($(shell uname),Linux)
+	sudo apt-get install zsh
+	chsh -s $(which zsh)
+endif
 .PHONY: zsh
 
 clean: ## Remove the dot files and this repo
