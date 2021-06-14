@@ -44,7 +44,13 @@ init: mac bundle asdf brew ## Initialize installation
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
 			totpages xstring environ hyperxmp ifmtarg || true
 
-asdf: zsh ~/.zinit
+.PHONY: secret
+secret:
+ifndef CI # Skip on github actions
+	git submodule update --init
+	(cd dotfiles-secret && make)
+endif
+
 .PHONY: asdf
 asdf: zsh ~/.zinit parallel asdf-dep
 	$(eval SHELL := zsh)
@@ -76,14 +82,6 @@ endif
 	defaults write com.apple.terminal "Startup Window Settings" "Iceberg"
 	defaults write com.apple.terminal "Default Window Settings" "Iceberg"
 endif
-
-
-secret:
-ifndef CI # Skip on github actions
-	git submodule update --init
-	(cd dotfiles-secret && make)
-endif
-.PHONY: secret
 
 .PHONY: brew
 brew:
