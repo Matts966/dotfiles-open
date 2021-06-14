@@ -31,31 +31,32 @@ install: update ## Run make update, deploy and init
 all: deploy init secret
 .PHONY: all
 
-init: mac bundle ## Initialize installation
+init: mac ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
 			totpages xstring environ hyperxmp ifmtarg || true
 .PHONY: init
 
-asdf: brew zsh
+asdf: zsh ~/.zinit
 	$(eval SHELL := zsh)
-	. ~/.zshrc && cut -d' ' -f1 .tool-versions | sort \
-  	| while read plugin ; do \
-  			asdf plugin add $$plugin; asdf install $$plugin & \
-  		done && wait && \
-  mkdir -p $(HOME)/.config/bat/themes && \
-		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
-		bat cache --build
+	brew install coreutils gawk
+	. ~/.zshrc && cut -d' ' -f1 .tool-versions | sort | \
+		while read plugin ; do \
+			asdf plugin add $$plugin; asdf install $$plugin & \
+		done && wait
+	mkdir -p $(HOME)/.config/bat/themes
+	ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes
+	bat cache --build
 .PHONY: asdf
 
 mac: asdf
 ifeq  ($(shell uname),Darwin)
 ifndef CI # Skip on github actions
-	gh -R televator-apps/vimari release download -p Vimari.app.zip && \
-		unzip Vimari.app.zip && gomi -s /Applications/Vimari.app && \
-		mv -f Vimari.app /Applications && open /Applications/Vimac.app && \
-		gomi -s Vimari.app.zip
+	gh -R televator-apps/vimari release download -p Vimari.app.zip
+	unzip Vimari.app.zip && gomi -s /Applications/Vimari.app
+	mv -f Vimari.app /Applications && open /Applications/Vimac.app
+	gomi -s Vimari.app.zip
 	open https://apps.apple.com/app/ghosttext/id1552641506
 	open "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/7372ab44-0d76-48fb-b4c9-f9aa97aedc2d/Vimac_distribution.zip?sv=2019-02-02&sr=c&sig=WXWZBSXlBU488%2FatDModyJyjg4s0iA3yenjFkDcYn5k%3D&se=2021-03-24T12%3A13%3A46Z&sp=r&download_origin=appcenter"
 endif
@@ -67,21 +68,18 @@ endif
 
 
 secret:
-	git submodule update --init && \
-		(cd dotfiles-secret && make) || true
+ifndef CI # Skip on github actions
+	git submodule update --init
+	(cd dotfiles-secret && make)
+endif
 .PHONY: secret
 
 brew:
-	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
-	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
-		| xargs -n 1 -P 8 brew fetch --deps || true
+	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
 		| xargs -n 1 -P 8 brew install || true
-.PHONY: brew
-
-bundle: brew
 	brew bundle || true
-.PHONY: bundle
+.PHONY: brew
 
 zsh:
 	# Install zinit
