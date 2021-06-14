@@ -40,7 +40,7 @@ deploy: ## Create symlink to home directory
 init: mac ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
-		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
+		sudo tlmgr install cm-super preprint comment ncctools latexmk \
 			totpages xstring environ hyperxmp ifmtarg || true
 .PHONY: init
 
