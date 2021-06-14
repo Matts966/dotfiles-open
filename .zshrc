@@ -8,9 +8,6 @@ autoload -Uz _zinit
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
-# zinit ice from"gh-r" as"program"
-# zinit load b4b4r07/gomi
-# alias rm=gomi
 zinit light b4b4r07/zsh-gomi
 alias rm='echo "This is not the command you are looking for, use gomi -s."; false'
 
@@ -31,10 +28,7 @@ zinit lucid has'docker' for \
     'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
 
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
-# zstyle ':fzf-tab:*' accept-line enter
 zstyle ':fzf-tab:*' fzf-flags --height 100%
-# zinit ice pick"zsh/*"
-# zinit light lincheney/fzf-tab-completion
 
 zinit light MichaelAquilina/zsh-auto-notify
 export AUTO_NOTIFY_THRESHOLD=5
