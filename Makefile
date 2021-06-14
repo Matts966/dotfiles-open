@@ -54,7 +54,7 @@ endif
 .PHONY: asdf
 asdf: zsh ~/.zinit parallel asdf-dep
 	$(eval SHELL := zsh)
-	. ~/.zshrc && cut -d' ' -f1 .tool-versions | sort | \
+	. ~/.zshrc && cut -d' ' -f1 .tool-versions | \
 		while read plugin ; do \
 			asdf plugin add $$plugin; asdf install $$plugin & \
 		done && wait && \
