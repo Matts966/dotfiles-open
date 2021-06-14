@@ -25,12 +25,6 @@ brew "nnn"
 brew "bluetoothconnector"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
-# GNU awk utility
-brew "gawk"
-# GNU Pretty Good Privacy (PGP) package
-brew "gnupg"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
 # Utility to set up alt-tab to switch between windows
 cask "alt-tab"
 # Application uninstaller
