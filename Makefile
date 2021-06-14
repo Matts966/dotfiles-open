@@ -54,7 +54,6 @@ endif
 .PHONY: asdf
 asdf: zsh ~/.zinit parallel asdf-dep
 	$(eval SHELL := zsh)
-	brew install coreutils gawk
 	. ~/.zshrc && cut -d' ' -f1 .tool-versions | sort | \
 		while read plugin ; do \
 			asdf plugin add $$plugin; asdf install $$plugin & \
