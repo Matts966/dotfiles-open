@@ -37,14 +37,16 @@ deploy: ## Create symlink to home directory
 	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin
 
 
-init: mac ## Initialize installation
+.PHONY: init
+init: mac bundle asdf brew ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
 			totpages xstring environ hyperxmp ifmtarg || true
-.PHONY: init
 
 asdf: zsh ~/.zinit
+.PHONY: asdf
+asdf: zsh ~/.zinit parallel asdf-dep
 	$(eval SHELL := zsh)
 	brew install coreutils gawk
 	. ~/.zshrc && cut -d' ' -f1 .tool-versions | sort | \
@@ -54,7 +56,10 @@ asdf: zsh ~/.zinit
 	mkdir -p $(HOME)/.config/bat/themes && \
 	ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
 	bat cache --build
-.PHONY: asdf
+
+.PHONY: asdf-dep
+asdf-dep: brew
+	brew install coreutils gawk gnupg
 
 .PHONY: mac
 mac: asdf
@@ -80,12 +85,23 @@ ifndef CI # Skip on github actions
 endif
 .PHONY: secret
 
+.PHONY: brew
 brew:
 	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+.PHONY: parallel
+parallel: brew
+	brew install parallel
+
+.PHONY: bundle
+bundle: parallel asdf-dep # Wait for installation of asdf deps by brew
+	cat Brewfile | grep ^tap | cut -d' ' -f2 | xargs echo \
+		| xargs parallel brew tap ::: || true
 	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
-		| xargs -n 1 -P 8 brew install || true
+		| xargs parallel brew install ::: || true
+	cat Brewfile | grep ^cask | cut -d' ' -f2 | xargs echo \
+		| xargs parallel brew install --cask ::: || true
 	brew bundle || true
-.PHONY: brew
 
 .PHONY: zsh
 zsh:
