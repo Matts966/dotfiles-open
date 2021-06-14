@@ -52,7 +52,7 @@ ifndef CI # Skip on github actions
 endif
 
 .PHONY: asdf
-asdf: zsh ~/.zinit parallel asdf-dep
+asdf: zsh ~/.zinit asdf-dep
 	$(eval SHELL := zsh)
 	. ~/.zshrc && cut -d' ' -f1 .tool-versions | \
 		while read plugin ; do \
