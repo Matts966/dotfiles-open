@@ -3,28 +3,36 @@ tap "homebrew/cask"
 tap "homebrew/core"
 # User-friendly launcher for Bazel
 brew "bazelisk"
+# Connect and disconnect Bluetooth devices
+brew "bluetoothconnector"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# GNU awk utility
+brew "gawk"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# Improved top (interactive process viewer)
+brew "htop"
 # Next-gen compiler infrastructure
 brew "llvm"
+# Tiny, lightning fast, feature-packed file manager
+brew "nnn"
+# Shell command parallelization utility
+brew "parallel"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Change macOS audio source from the command-line
+brew "switchaudio-osx"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
 brew "wget"
-# Improved top (interactive process viewer)
-brew "htop"
-# Tiny, lightning fast, feature-packed file manager
-brew "nnn"
-# Connect and disconnect Bluetooth devices
-brew "bluetoothconnector"
-# Change macOS audio source from the command-line
-brew "switchaudio-osx"
 # Utility to set up alt-tab to switch between windows
 cask "alt-tab"
 # Application uninstaller
