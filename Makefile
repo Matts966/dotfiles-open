@@ -38,7 +38,7 @@ init: zsh pip yarn mac asdf ## Initialize installation
 			totpages xstring environ hyperxmp ifmtarg || true
 .PHONY: init
 
-asdf:
+asdf: brew
 	cut -d' ' -f1 .tool-versions | sort \
   	| while read plugin ; do \
   			asdf plugin add $$plugin; asdf install $$plugin & \
