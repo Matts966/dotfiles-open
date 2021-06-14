@@ -3,6 +3,7 @@ EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .ssh .github
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help
+SHELL := $(shell which bash)
 
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
@@ -30,14 +31,21 @@ install: update ## Run make update, deploy and init
 all: deploy init secret
 .PHONY: all
 
-init: zsh pip yarn mac ## Initialize installation
+init: zsh pip yarn mac asdf ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
 			totpages xstring environ hyperxmp ifmtarg || true
 .PHONY: init
 
-mac:
+asdf:
+	cut -d' ' -f1 .tool-versions | sort \
+  	| while read plugin ; do \
+  			asdf plugin add $$plugin; asdf install $$plugin & \
+  		done && wait
+.PHONY: asdf
+
+mac: asdf
 ifeq  ($(shell uname),Darwin)
 ifndef CI # Skip on github actions
 	gh -R televator-apps/vimari release download -p Vimari.app.zip && \
@@ -71,16 +79,6 @@ zsh:
 	# Install zinit
 	which zinit || sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 .PHONY: zsh
-
-# glances installed via brew is broken.
-# TODO: Use brew after the fix.
-pip: brew
-	pip3 install -r requirements.txt
-.PHONY: pip
-
-yarn: brew
-	npm install --global yarn @marp-team/marp-cli
-.PHONY: yarn
 
 clean: ## Remove the dot files and this repo
 	@echo 'Remove dot files in your home directory...'

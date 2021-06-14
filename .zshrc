@@ -32,9 +32,15 @@ zinit lucid has'docker' for \
     as'completion' is-snippet \
     'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
 
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+zinit wait lucid atload"zicompinit; zicdreplay" blockf light-mode for \
+    asdf-vm/asdf \
     zsh-users/zsh-completions \
-    light-mode Aloxaf/fzf-tab
+    Aloxaf/fzf-tab
+
+zinit light asdf-vm/asdf
+
+zplugin light 'b4b4r07/emoji-cli'
+
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
 # zstyle ':fzf-tab:*' accept-line enter
 zstyle ':fzf-tab:*' fzf-flags --height 100%
@@ -55,10 +61,6 @@ HISTDUP=erase               # Erase duplicates in the history file
 setopt    appendhistory     # Append history to the history file (no overwriting)
 setopt    incappendhistory  # Immediately append to the history file, not just when a term is killed
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - --no-rehash)"
-
 if [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]]; then
     echo ".zshrc updated, compiling..."
     zcompile ~/.zshrc
@@ -77,9 +79,4 @@ else
     export EDITOR="nvim"
 fi
 
-export PATH="$HOME/flutter/bin:$PATH"
-
-eval $(thefuck --alias)
 source <(kubectl completion zsh)
-
-eval "$(atuin init zsh)"

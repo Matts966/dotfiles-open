@@ -70,5 +70,3 @@ bindkey '^x^f' agg
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
-
-bindkey '^P' _atuin_search_widget
