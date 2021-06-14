@@ -39,8 +39,8 @@ init: mac bundle ## Initialize installation
 .PHONY: init
 
 asdf: brew zsh
-	zsh .zshrc
-	cut -d' ' -f1 .tool-versions | sort \
+	$(eval SHELL := zsh)
+	. .zshrc && cut -d' ' -f1 .tool-versions | sort \
   	| while read plugin ; do \
   			asdf plugin add $$plugin; asdf install $$plugin & \
   		done && wait && \
