@@ -56,6 +56,7 @@ asdf: zsh ~/.zinit
 	bat cache --build
 .PHONY: asdf
 
+.PHONY: mac
 mac: asdf
 ifeq  ($(shell uname),Darwin)
 ifndef CI # Skip on github actions
@@ -70,7 +71,6 @@ endif
 	defaults write com.apple.terminal "Startup Window Settings" "Iceberg"
 	defaults write com.apple.terminal "Default Window Settings" "Iceberg"
 endif
-.PHONY: mac
 
 
 secret:
@@ -87,23 +87,18 @@ brew:
 	brew bundle || true
 .PHONY: brew
 
+.PHONY: zsh
 zsh:
 ifeq  ($(shell uname),Linux)
 	sudo apt-get update; sudo apt-get install -y zsh; sudo chsh -s /usr/bin/zsh
 endif
-.PHONY: zsh
 
 ~/.zinit:
 	# Install zinit
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
-clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory...'
-	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
-.PHONY: clean
-
+.PHONY: help
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| sort \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-.PHONY: help
