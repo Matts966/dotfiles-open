@@ -79,8 +79,7 @@ zsh:
 	# Install zinit
 	which zinit || sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 ifeq  ($(shell uname),Linux)
-	sudo apt-get install zsh
-	chsh -s $(shell which zsh)
+	sudo apt-get update; sudo apt-get install zsh; sudo chsh -s zsh
 endif
 .PHONY: zsh
 
