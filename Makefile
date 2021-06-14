@@ -31,7 +31,7 @@ install: update ## Run make update, deploy and init
 all: deploy init secret
 .PHONY: all
 
-init: mac asdf ## Initialize installation
+init: mac ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk && \
@@ -72,6 +72,10 @@ secret:
 
 brew:
 	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+		cat Brewfile | grep ^brew | cut -d' ' -f2 \
+			| while read formula ; do \
+					brew fetch $$formula & \
+				done && wait && \
 		brew bundle || true
 .PHONY: brew
 

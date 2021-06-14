@@ -41,7 +41,6 @@ cask "basictex"
 cask "clipy"
 # Trains AIs to understand and translate texts
 cask "deepl"
-cask "emacs"
 # Web browser
 cask "google-chrome"
 # Keyboard customizer
