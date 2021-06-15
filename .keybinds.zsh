@@ -66,9 +66,8 @@ function agg() {
 }
 zle -N agg
 bindkey '^x^f' agg
+
 # Open vim for editing commands
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
-
-bindkey '^P' _atuin_search_widget

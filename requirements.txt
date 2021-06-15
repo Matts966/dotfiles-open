@@ -1,4 +1,0 @@
-glances
-termdown
-haxor-news
-neovim-remote

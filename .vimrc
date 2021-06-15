@@ -207,9 +207,6 @@ if get(g:, 'goyo_now', 0) == 0
     set relativenumber
 endif
 
-if ! executable('j2p2j')
-    !go install github.com/tamuhey/j2p2j
-endif
 Plug 'tamuhey/vim-jupyter'
 
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'vim-plug'] }

@@ -1,86 +1,38 @@
-tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "ellie/atuin"
-# Provides session management: i.e. separate programs from terminals
-brew "abduco"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
 # User-friendly launcher for Bazel
 brew "bazelisk"
-# Convert text between DOS, UNIX, and Mac formats
-brew "dos2unix"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
-# Command-line fuzzy finder written in Go
-brew "fzf"
-# GitHub command-line tool
-brew "gh"
+# Connect and disconnect Bluetooth devices
+brew "bluetoothconnector"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# GNU awk utility
+brew "gawk"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
-# Remote repository management made easy
-brew "ghq"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-# Get events and tasks from the macOS calendar database
-brew "ical-buddy"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
-# Kubernetes command-line interface
-brew "kubernetes-cli"
-# Simple terminal UI for git commands
-brew "lazygit"
+# Improved top (interactive process viewer)
+brew "htop"
 # Next-gen compiler infrastructure
 brew "llvm"
-# Just-In-Time Compiler (JIT) for the Lua programming language
-brew "luajit", args: ["HEAD"]
-# NCurses Disk Usage
-brew "ncdu"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim", args: ["HEAD"]
-# Platform built on V8 to build network applications
-brew "node"
+# Tiny, lightning fast, feature-packed file manager
+brew "nnn"
+# Shell command parallelization utility
+brew "parallel"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
-# Python version management
-brew "pyenv"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Safe, concurrent, practical language
-brew "rust"
-# Terminal-based client for Spotify
-brew "spotify-tui"
-# Tool to build, change, and version infrastructure
-brew "terraform"
-# Code-search similar to ack
-brew "the_silver_searcher"
-# Programmatically correct mistyped console commands
-brew "thefuck"
+# Change macOS audio source from the command-line
+brew "switchaudio-osx"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Vi 'workalike' with many additional features
-brew "vim"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
 brew "wget"
-# Improved top (interactive process viewer)
-brew "htop"
-# Tiny, lightning fast, feature-packed file manager
-brew "nnn"
-# Connect and disconnect Bluetooth devices
-brew "bluetoothconnector"
-# Change macOS audio source from the command-line
-brew "switchaudio-osx"
-# Improved shell history for zsh and bash
-brew "atuin"
-# AdoptOpenJDK OpenJDK (Java) Development Kit
-cask "adoptopenjdk9"
 # Utility to set up alt-tab to switch between windows
 cask "alt-tab"
 # Application uninstaller
@@ -91,7 +43,6 @@ cask "basictex"
 cask "clipy"
 # Trains AIs to understand and translate texts
 cask "deepl"
-cask "emacs"
 # Web browser
 cask "google-chrome"
 # Keyboard customizer
