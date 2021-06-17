@@ -5,14 +5,20 @@ tap "homebrew/core"
 brew "bazelisk"
 # Connect and disconnect Bluetooth devices
 brew "bluetoothconnector"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # GNU awk utility
 brew "gawk"
-# Interpreter for PostScript and PDF
-brew "ghostscript"
+# General-purpose lossless data-compression library
+brew "zlib"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Improved top (interactive process viewer)
