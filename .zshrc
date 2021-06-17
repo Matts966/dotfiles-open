@@ -70,6 +70,5 @@ else
 fi
 
 source <(kubectl completion zsh)
-export ASDF_DIRENV_VERSION=2.28.0
 eval "$(direnv hook zsh)"
 direnv() { asdf exec direnv "$@"; }

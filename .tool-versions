@@ -12,3 +12,4 @@ rust 1.52.1
 terraform 1.0.0
 fzf 0.27.2
 protoc 3.17.3
+direnv 2.28.0
