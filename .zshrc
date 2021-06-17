@@ -8,9 +8,6 @@ autoload -Uz _zinit
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
-zinit light b4b4r07/zsh-gomi
-alias rm='echo "This is not the command you are looking for, use gomi -s."; false'
-
 # Overwrite keybinds
 zvm_after_init_commands+=('source ~/.keybinds.zsh')
 zvm_after_init_commands+=('zinit ice multisrc"shell/*.zsh" && zinit light junegunn/fzf')
@@ -39,6 +36,8 @@ zinit light asdf-vm/asdf
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions \
     light-mode Aloxaf/fzf-tab
+zinit light b4b4r07/zsh-gomi
+alias rm='echo "This is not the command you are looking for, use gomi -s."; false'
 
 PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
 %F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
