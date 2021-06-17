@@ -31,6 +31,8 @@ brew "nnn"
 brew "parallel"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Version control system designed to be a better CVS
+brew "subversion"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
 # Display directories as trees (with optional color/HTML output)
