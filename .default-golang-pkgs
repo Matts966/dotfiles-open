@@ -1,2 +1,4 @@
 github.com/tamuhey/j2p2j
 github.com/jesseduffield/lazygit
+sigs.k8s.io/kind@v0.11.1
+github.com/derailed/k9s

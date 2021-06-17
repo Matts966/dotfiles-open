@@ -41,6 +41,8 @@ brew "tree"
 brew "watch"
 # Internet file retriever
 brew "wget"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Utility to set up alt-tab to switch between windows
 cask "alt-tab"
 # Application uninstaller
