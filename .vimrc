@@ -86,8 +86,6 @@ Plug 'makerj/vim-pdf'
 Plug 'stsewd/gx-extended.vim'
 
 if has('nvim')
-    Plug 'kevinhwang91/nvim-bqf'
-
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
     autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
     let g:deoplete#enable_at_startup = 1
