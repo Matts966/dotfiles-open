@@ -18,6 +18,8 @@ export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 
+zinit light agkozak/zsh-z
+
 zinit lucid has'docker' for \
     as'completion' is-snippet \
     'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker' \
