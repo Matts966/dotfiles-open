@@ -52,6 +52,13 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'michal-h21/vim-zettel'
+let g:zettel_fzf_command = 'rg --hidden --column --line-number --no-heading --color=always --smart-case -g "!.git" -- '
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [
+      \ {'path': '~/Library/Mobile Documents/iCloud~app~cyan~taio/Documents/Editor/vimwiki/',
+      \ 'syntax': 'markdown', 'ext': '.md'}
+      \ ]
 
 Plug 'itchyny/vim-highlighturl'
 
