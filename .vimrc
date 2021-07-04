@@ -266,6 +266,8 @@ noremap <leader>m <Cmd>History<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
+noremap <leader>b <Cmd>Buffers<CR>
+
 function! s:cd_repo(repo) abort
     let l:repo = trim(system('ghq root')) . '/' . a:repo
     if line('$') != 1 || getline(1) != ''
@@ -333,7 +335,6 @@ set cursorline
 highlight CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
 
 if has('nvim')
-    noremap <leader>b <Cmd>Denite buffer<CR>
     noremap <leader>t <Cmd>Denite buffer -input=term://<CR>
     call denite#custom#option('default', {
     \   'auto_action': 'preview',
