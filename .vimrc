@@ -318,7 +318,7 @@ autocmd MyAutoCmd filetype markdown
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'cocopon/iceberg.vim'
+Plug 'airblade/vim-gitgutter'
 
 " Initialize plugin system
 call plug#end()
