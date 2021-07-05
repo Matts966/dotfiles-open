@@ -89,7 +89,7 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
     autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
     let g:deoplete#enable_at_startup = 1
-    let g:deoplete#refresh_backspace = v:false
+    " let g:deoplete#refresh_backspace = v:false " TODO: Can I remove this?
     Plug 'lighttiger2505/deoplete-vim-lsp', { 'on': [] }
     autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
 
