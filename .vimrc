@@ -418,6 +418,7 @@ call wilder#set_option('pipeline', [
       \     [
       \       wilder#check({_, x -> empty(x)}),
       \       wilder#history(),
+      \       {_, xs -> reverse(xs)},
       \     ],
       \     wilder#cmdline_pipeline(),
       \     wilder#search_pipeline(),
