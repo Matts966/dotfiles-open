@@ -52,13 +52,6 @@ call plug#begin('~/.vim/plugged')
 
 
 
-Plug 'michal-h21/vim-zettel'
-let g:zettel_fzf_command = 'rg --hidden --column --line-number --no-heading --color=always --smart-case -g "!.git" -- '
-Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [
-      \ {'path': '~/Library/Mobile Documents/iCloud~app~cyan~taio/Documents/Editor/private-diary/wiki',
-      \ 'syntax': 'markdown', 'ext': '.md'}
-      \ ]
 
 Plug 'itchyny/vim-highlighturl'
 
@@ -303,20 +296,36 @@ nnoremap <leader>p :FzfPreviewDirectoryFilesRpc<CR>
 
 Plug 'dansomething/vim-hackernews'
 
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [
+\   {
+\     'path': '~/Library/Mobile Documents/iCloud~app~cyan~taio/Documents/Editor/private-diary/wiki',
+\     'syntax': 'markdown', 'ext': '.md'
+\   }
+\ ]
+let g:vimwiki_key_mappings =
+\ {
+\   'all_maps': 0,
+\ }
+let g:vimwiki_menu = '' " To disable No menu Vimwiki error
+Plug 'michal-h21/vim-zettel'
+let g:zettel_fzf_command = 'fd --type=file --hidden --exclude ".git"'
+
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
-    \ 'for': ['markdown', 'vim-plug']}
+  \ 'for': ['markdown', 'vim-plug']}
 Plug 'godlygeek/tabular', { 'for': ['markdown', 'vim-plug'] }
 Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'vim-plug'] }
 let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_folding_disabled = 1
 autocmd MyAutoCmd filetype markdown
-\    inoremap <buffer> <Tab> <C-t>|
-\    vnoremap <buffer> <Tab> >gv|
-\    nnoremap <buffer> <S-Tab> <<|
-\    inoremap <buffer> <S-Tab> <C-d>|
-\    vnoremap <buffer> <S-Tab> <gv
-
-Plug 'airblade/vim-gitgutter'
+\  inoremap <buffer> <Tab> <C-t>|
+\  vnoremap <buffer> <Tab> >gv|
+\  nnoremap <buffer> <S-Tab> <<|
+\  inoremap <buffer> <S-Tab> <C-d>|
+\  vnoremap <buffer> <S-Tab> <gv|
+\  nnoremap <buffer> <CR> <Cmd>VimwikiFollowLink<CR>|
+\  nnoremap <buffer> <C-n> <Cmd>VimwikiNextLink<CR>|
+\  nnoremap <buffer> <C-p> <Cmd>VimwikiPrevLink<CR>
 
 Plug 'airblade/vim-gitgutter'
 
