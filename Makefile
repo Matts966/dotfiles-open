@@ -70,11 +70,6 @@ asdf-dep: brew
 mac: asdf
 ifeq  ($(shell uname),Darwin)
 ifndef CI # Skip on github actions
-	gh -R televator-apps/vimari release download -p Vimari.app.zip
-	unzip Vimari.app.zip && gomi -s /Applications/Vimari.app
-	mv -f Vimari.app /Applications && open /Applications/Vimac.app
-	gomi -s Vimari.app.zip
-	open https://apps.apple.com/app/ghosttext/id1552641506
 	open "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/7372ab44-0d76-48fb-b4c9-f9aa97aedc2d/Vimac_distribution.zip?sv=2019-02-02&sr=c&sig=WXWZBSXlBU488%2FatDModyJyjg4s0iA3yenjFkDcYn5k%3D&se=2021-03-24T12%3A13%3A46Z&sp=r&download_origin=appcenter"
 endif
 	open Iceberg.terminal
