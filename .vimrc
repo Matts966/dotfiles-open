@@ -407,18 +407,18 @@ call wilder#enable_cmdline_enter()
 " only / and ? are enabled by default
 set wildcharm=<Tab>
 " For :cd ~/<C-n> to complete path
-cmap <expr> <C-n> wilder#in_context() ? wilder#next() : "\<C-n>"
-cmap <expr> <C-p> wilder#in_context() ? wilder#previous() : "\<C-p>"
+cmap <expr> <C-n> wilder#in_context() ? wilder#previous() : "\<C-n>"
+cmap <expr> <C-p> wilder#in_context() ? wilder#next() : "\<C-p>"
 call wilder#set_option('modes', [':'])
 call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ 'highlighter': wilder#basic_highlighter(),
+      \ 'reverse': v:true,
       \ }))
 call wilder#set_option('pipeline', [
       \   wilder#branch(
       \     [
       \       wilder#check({_, x -> empty(x)}),
       \       wilder#history(),
-      \       {_, xs -> reverse(xs)},
       \     ],
       \     wilder#cmdline_pipeline(),
       \     wilder#search_pipeline(),
