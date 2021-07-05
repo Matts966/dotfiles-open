@@ -69,9 +69,6 @@ asdf-dep: brew
 .PHONY: mac
 mac: asdf
 ifeq  ($(shell uname),Darwin)
-ifndef CI # Skip on github actions
-	open "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/7372ab44-0d76-48fb-b4c9-f9aa97aedc2d/Vimac_distribution.zip?sv=2019-02-02&sr=c&sig=WXWZBSXlBU488%2FatDModyJyjg4s0iA3yenjFkDcYn5k%3D&se=2021-03-24T12%3A13%3A46Z&sp=r&download_origin=appcenter"
-endif
 	open Iceberg.terminal
 	defaults write com.apple.terminal "Startup Window Settings" "Iceberg"
 	defaults write com.apple.terminal "Default Window Settings" "Iceberg"
