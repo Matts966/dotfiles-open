@@ -14,6 +14,7 @@ zvm_after_init_commands+=('zinit ice multisrc"shell/*.zsh" && zinit light junegu
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 export BAT_THEME="iceberg"
 export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
+export FZF_DEFAULT_COMMAND='fd --type=file --hidden --exclude ".git"'
 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting

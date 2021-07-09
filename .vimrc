@@ -291,8 +291,7 @@ command! -bang -nargs=* Rg
   \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -g "!.git" -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 nnoremap <leader>f :Rg<CR>
-let g:fzf_preview_directory_files_command = 'fd --type=file --hidden --exclude ".git"'
-nnoremap <leader>p :FzfPreviewDirectoryFilesRpc<CR>
+nnoremap <leader>p :Files<CR>
 
 Plug 'dansomething/vim-hackernews'
 
