@@ -43,6 +43,8 @@ init: mac bundle brew ~/.zinit ~/.asdf ## Initialize installation
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
 			totpages xstring environ hyperxmp ifmtarg || true
+	mkdir -p $(HOME)/.config/bat/themes && \
+		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes
 
 .PHONY: secret
 secret:

@@ -39,7 +39,8 @@ AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit" "nnn" "k9s")
 zinit ice as"program" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
 zinit light BurntSushi/ripgrep
 # bat
-zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"
+zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat" \
+  atclone"./bat/bat cache --build" # for iceberg theme
 zinit light sharkdp/bat
 # fd
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"
