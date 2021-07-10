@@ -7,6 +7,7 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+if [ command -v xcrun &> /dev/null ]; then export LDFLAGS="-L$(xcrun --show-sdk-path)/usr/lib"; fi
 # export LDFLAGS="-L/usr/local/opt/llvm/lib"
 # export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
