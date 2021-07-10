@@ -316,6 +316,7 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_folding_disabled = 1
 autocmd MyAutoCmd filetype markdown
 \  inoremap <buffer> <Tab> <C-t>|
+\  nnoremap <buffer> <Tab> >>|
 \  vnoremap <buffer> <Tab> >gv|
 \  nnoremap <buffer> <S-Tab> <<|
 \  inoremap <buffer> <S-Tab> <C-d>|
