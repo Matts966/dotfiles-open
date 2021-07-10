@@ -286,9 +286,10 @@ let g:fzf_action = {
             \ 'ctrl-v': 'vsplit' }
 nnoremap <leader>gr :Repo<CR>
 
+let rg_command = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git" --glob "!node_modules" -- '
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git" --glob "!node_modules" -- '.shellescape(<q-args>), 1,
+  \   rg_command.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 nnoremap <leader>f :Rg<CR>
 nnoremap <leader>p :Files<CR>
@@ -308,10 +309,9 @@ let g:vimwiki_key_mappings =
 \ }
 let g:vimwiki_menu = '' " To disable No menu Vimwiki error
 Plug 'michal-h21/vim-zettel'
-let g:zettel_fzf_command = 'fd --type=file --hidden --exclude ".git"'
-
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
   \ 'for': ['markdown', 'vim-plug']}
+let g:zettel_fzf_command = rg_command
 Plug 'godlygeek/tabular', { 'for': ['markdown', 'vim-plug'] }
 Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'vim-plug'] }
 let g:vim_markdown_new_list_item_indent = 2
