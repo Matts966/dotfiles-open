@@ -5,12 +5,12 @@ source $HOME/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
-
 # Overwrite keybinds
-zvm_after_init_commands+=('source ~/.keybinds.zsh')
-zvm_after_init_commands+=('zinit ice multisrc"shell/*.zsh" && zinit light junegunn/fzf')
+source ~/.keybinds.zsh
+zinit ice from"gh-r" as"program"
+zinit light junegunn/fzf
+zinit ice multisrc"shell/*.zsh" id-as"junegunn/fzf_completions" pick"/dev/null"
+zinit light junegunn/fzf
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 export BAT_THEME="iceberg"
 export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
