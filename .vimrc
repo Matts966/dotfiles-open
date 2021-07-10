@@ -310,7 +310,6 @@ let g:vimwiki_key_mappings =
 let g:vimwiki_menu = '' " To disable No menu Vimwiki error
 Plug 'michal-h21/vim-zettel'
 let g:zettel_fzf_command = rg_command
-Plug 'gabrielelana/vim-markdown'
 autocmd MyAutoCmd filetype markdown
 \  inoremap <buffer> <Tab> <C-t>|
 \  nnoremap <buffer> <Tab> >>|
