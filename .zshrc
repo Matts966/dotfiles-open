@@ -36,6 +36,30 @@ export AUTO_NOTIFY_THRESHOLD=5
 AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit" "nnn" "k9s")
 
 zinit light asdf-vm/asdf
+# rg
+zinit ice as"program" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
+zinit light BurntSushi/ripgrep
+# bat
+zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"
+zinit light sharkdp/bat
+# fd
+zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"
+zinit light sharkdp/fd
+# spt
+zinit ice as"program" from"gh-r"
+zinit light Rigellute/spotify-tui
+# tokei
+zinit ice as"program" from"gh-r"
+zinit light XAMPPRocky/tokei
+
+# gh
+zinit ice as"program" from"gh-r" mv"gh* -> gh" pick"gh/bin/gh"
+zinit light cli/cli
+
+zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh" for \
+        direnv/direnv
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions \
