@@ -67,12 +67,13 @@ zinit light kubernetes-sigs/kind
 # j2p2j
 zinit ice from"gh-r" as"program" mv"j2p2j* -> j2p2j"
 zinit light tamuhey/j2p2j
-# lazygit
-zinit ice as"program" from"gh-r" mv"lazygit* -> lazygit" pick"lazygit/lazygit"
-zinit light jesseduffield/lazygit
 # ghq
 zinit ice as"program" from"gh-r" mv"ghq* -> ghq" pick"ghq/ghq"
 zinit light x-motemen/ghq
+# lazygit
+# TODO: Use below instead of default golang package after 0.28.3 is released
+# zinit ice as"program" from"gh-r" mv"lazygit* -> lazygit" pick"lazygit/lazygit"
+# zinit light jesseduffield/lazygit
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions \
