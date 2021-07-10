@@ -96,8 +96,10 @@ endif
 ~/.asdf:
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-	cd ~/.asdf
-	git checkout "$(shell git describe --abbrev=0 --tags)"
+	cut -d' ' -f1 .tool-versions | \
+		while read plugin ; do \
+			asdf plugin add $$plugin & \
+		done && wait
 
 .PHONY: help
 help: ## Self-documented Makefile
