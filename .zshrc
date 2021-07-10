@@ -45,6 +45,9 @@ zinit light sharkdp/bat
 # fd
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"
 zinit light sharkdp/fd
+# delta
+zinit ice as"program" from"gh-r" mv"delta* -> delta" pick"delta/delta"
+zinit light dandavison/delta
 # spt
 zinit ice as"program" from"gh-r"
 zinit light Rigellute/spotify-tui
@@ -55,6 +58,21 @@ zinit light XAMPPRocky/tokei
 # gh
 zinit ice as"program" from"gh-r" mv"gh* -> gh" pick"gh/bin/gh"
 zinit light cli/cli
+
+# k9s
+zinit ice from"gh-r" as"program"; zinit light derailed/k9s
+# kind
+zinit ice from"gh-r" as"program" mv"kind* -> kind"
+zinit light kubernetes-sigs/kind
+# j2p2j
+zinit ice from"gh-r" as"program" mv"j2p2j* -> j2p2j"
+zinit light tamuhey/j2p2j
+# lazygit
+zinit ice as"program" from"gh-r" mv"lazygit* -> lazygit" pick"lazygit/lazygit"
+zinit light jesseduffield/lazygit
+# ghq
+zinit ice as"program" from"gh-r" mv"ghq* -> ghq" pick"ghq/ghq"
+zinit light x-motemen/ghq
 
 zinit from"gh-r" as"program" mv"direnv* -> direnv" \
     atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
