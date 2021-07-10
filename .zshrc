@@ -74,11 +74,6 @@ zinit light jesseduffield/lazygit
 zinit ice as"program" from"gh-r" mv"ghq* -> ghq" pick"ghq/ghq"
 zinit light x-motemen/ghq
 
-zinit from"gh-r" as"program" mv"direnv* -> direnv" \
-    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-    pick"direnv" src="zhook.zsh" for \
-        direnv/direnv
-
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions \
     light-mode Aloxaf/fzf-tab

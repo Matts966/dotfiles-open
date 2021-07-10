@@ -96,10 +96,7 @@ endif
 ~/.asdf:
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-	cut -d' ' -f1 .tool-versions | \
-		while read plugin ; do \
-			asdf plugin add $$plugin & \
-		done && wait
+	cut -d' ' -f1 .tool-versions | xargs -L1 asdf plugin add
 
 .PHONY: help
 help: ## Self-documented Makefile
