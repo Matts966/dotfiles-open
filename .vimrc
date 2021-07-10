@@ -309,8 +309,6 @@ let g:vimwiki_key_mappings =
 \ }
 let g:vimwiki_menu = '' " To disable No menu Vimwiki error
 Plug 'michal-h21/vim-zettel'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() },
-  \ 'for': ['markdown', 'vim-plug']}
 let g:zettel_fzf_command = rg_command
 Plug 'godlygeek/tabular', { 'for': ['markdown', 'vim-plug'] }
 Plug 'plasticboy/vim-markdown', { 'for': ['markdown', 'vim-plug'] }
