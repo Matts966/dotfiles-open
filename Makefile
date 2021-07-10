@@ -38,7 +38,7 @@ deploy: ## Create symlink to home directory
 
 
 .PHONY: init
-init: mac bundle asdf brew ## Initialize installation
+init: mac bundle brew ~/.zinit ~/.asdf ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
@@ -51,23 +51,8 @@ ifndef CI # Skip on github actions
 	(cd dotfiles-secret && make)
 endif
 
-.PHONY: asdf
-asdf: zsh ~/.zinit asdf-dep
-	$(eval SHELL := zsh)
-	. ~/.zshrc && cut -d' ' -f1 .tool-versions | \
-		while read plugin ; do \
-			asdf plugin add $$plugin; asdf install $$plugin & \
-		done && wait && \
-	mkdir -p $(HOME)/.config/bat/themes && \
-	ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
-	bat cache --build
-
-.PHONY: asdf-dep
-asdf-dep: brew
-	brew install coreutils gawk gnupg
-
 .PHONY: mac
-mac: asdf
+mac:
 ifeq  ($(shell uname),Darwin)
 	open Iceberg.terminal
 	defaults write com.apple.terminal "Startup Window Settings" "Iceberg"
@@ -83,7 +68,7 @@ parallel: brew
 	brew install parallel
 
 .PHONY: bundle
-bundle: parallel asdf-dep # Wait for installation of asdf deps by brew
+bundle: parallel
 	cat Brewfile | grep ^tap | cut -d' ' -f2 | xargs echo \
 		| xargs parallel brew tap ::: || true
 	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
@@ -105,6 +90,12 @@ endif
 ~/.zinit:
 	# Install zinit
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+
+~/.asdf:
+	# Install asdf
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+	cd ~/.asdf
+	git checkout "$(git describe --abbrev=0 --tags)"
 
 .PHONY: help
 help: ## Self-documented Makefile

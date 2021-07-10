@@ -35,7 +35,6 @@ zinit light MichaelAquilina/zsh-auto-notify
 export AUTO_NOTIFY_THRESHOLD=5
 AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit" "nnn" "k9s")
 
-zinit light asdf-vm/asdf
 # rg
 zinit ice as"program" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
 zinit light BurntSushi/ripgrep
@@ -116,5 +115,8 @@ else
 fi
 
 source <(kubectl completion zsh)
+
+source $HOME/.asdf/asdf.sh
+fpath=($HOME/.asdf/completions $fpath)
 eval "$(direnv hook zsh)"
 direnv() { asdf exec direnv "$@"; }
