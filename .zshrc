@@ -75,7 +75,7 @@ zinit light x-motemen/ghq
 # zinit ice as"program" from"gh-r" mv"lazygit* -> lazygit" pick"lazygit/lazygit"
 # zinit light jesseduffield/lazygit
 
-zinit wait lucid atload"zicompinit; zicdreplay; _comp_options+=(globdots) # Show hidden files in completion" blockf for \
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     zsh-users/zsh-completions \
     light-mode Aloxaf/fzf-tab
 zinit light b4b4r07/zsh-gomi
@@ -90,6 +90,7 @@ SAVEHIST=50000              # Number of history entries to save to disk
 HISTDUP=erase               # Erase duplicates in the history file
 setopt    appendhistory     # Append history to the history file (no overwriting)
 setopt    incappendhistory  # Immediately append to the history file, not just when a term is killed
+setopt    globdots          # Show hidden files in completion
 
 if [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]]; then
     echo ".zshrc updated, compiling..."
