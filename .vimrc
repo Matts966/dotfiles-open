@@ -53,6 +53,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'jparise/vim-graphql'
+
 Plug 'itchyny/vim-highlighturl'
 
 Plug 'jreybert/vimagit'
