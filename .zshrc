@@ -75,7 +75,7 @@ zinit light x-motemen/ghq
 # zinit ice as"program" from"gh-r" mv"lazygit* -> lazygit" pick"lazygit/lazygit"
 # zinit light jesseduffield/lazygit
 
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+zinit wait lucid atload"zicompinit; zicdreplay; _comp_options+=(globdots) # Show hidden files in completion" blockf for \
     zsh-users/zsh-completions \
     light-mode Aloxaf/fzf-tab
 zinit light b4b4r07/zsh-gomi
