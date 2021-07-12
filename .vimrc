@@ -72,7 +72,7 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> L
   \ defx#do_action('open_tree')
   nnoremap <silent><buffer><expr> H
-  \ defx#do_action('open_tree')
+  \ defx#do_action('close_tree')
   nnoremap <silent><buffer><expr> .
   \ defx#do_action('toggle_ignored_files')
   nnoremap <silent><buffer><expr> yy
