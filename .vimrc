@@ -61,14 +61,18 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 function! s:defx_my_settings() abort
-  nnoremap <silent><buffer><expr> l
-  \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> v
   \ defx#do_action('drop', 'vsplit')
-  nnoremap <silent><buffer><expr> h
-  \ defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> t
   \ defx#do_action('open','tabnew')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> h
+  \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> L
+  \ defx#do_action('open_tree')
+  nnoremap <silent><buffer><expr> H
+  \ defx#do_action('open_tree')
   nnoremap <silent><buffer><expr> .
   \ defx#do_action('toggle_ignored_files')
   nnoremap <silent><buffer><expr> yy
