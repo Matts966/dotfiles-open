@@ -53,6 +53,52 @@ call plug#begin('~/.vim/plugged')
 
 
 
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+function! s:defx_my_settings() abort
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> v
+  \ defx#do_action('drop', 'vsplit')
+  nnoremap <silent><buffer><expr> h
+  \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> t
+  \ defx#do_action('open','tabnew')
+  nnoremap <silent><buffer><expr> .
+  \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> yy
+  \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> i
+  \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> o
+  \ defx#do_action('new_directory')
+  vnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('toggle_select_visual') . 'j'
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+endfunction
+autocmd MyAutoCmd FileType defx call s:defx_my_settings()
+nnoremap <leader>D <Cmd>Defx -winwidth=50 -split=vertical -direction=topleft<CR>
+
 Plug 'jparise/vim-graphql'
 
 Plug 'itchyny/vim-highlighturl'
@@ -63,16 +109,6 @@ Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'voldikss/vim-translator'
 let g:translator_target_lang = 'ja'
-
-Plug 'cocopon/vaffle.vim'
-function! s:customize_vaffle_mappings() abort
-    " Customize key mappings here
-    nmap <buffer> <Tab> <Plug>(vaffle-toggle-current)
-    nmap <buffer> l <Plug>(vaffle-open-selected-vsplit)
-endfunction
-autocmd MyAutoCmd FileType vaffle call s:customize_vaffle_mappings()
-let g:vaffle_open_selected_vsplit_position = "rightbelow"
-nnoremap <leader>V <Cmd>Vaffle<CR>
 
 if has('nvim')
     Plug 'Matts966/hop.nvim', { 'on': 'HopWord' }
