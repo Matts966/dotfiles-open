@@ -126,13 +126,6 @@ Plug 'makerj/vim-pdf'
 Plug 'stsewd/gx-extended.vim'
 
 if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'on': [] }
-    autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete.nvim')
-    let g:deoplete#enable_at_startup = 1
-    " let g:deoplete#refresh_backspace = v:false " TODO: Can I remove this?
-    Plug 'lighttiger2505/deoplete-vim-lsp', { 'on': [] }
-    autocmd MyAutoCmd InsertEnter * :call plug#load('deoplete-vim-lsp')
-
     Plug '907th/vim-auto-save'
     let g:auto_save = 1  " enable AutoSave on Vim startup
     autocmd MyAutoCmd FileType magit let b:auto_save = 0
@@ -158,6 +151,8 @@ if has('nvim')
     " Plug 'junegunn/vim-peekaboo'
 endif
 
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 function! s:on_lsp_buffer_enabled() abort
