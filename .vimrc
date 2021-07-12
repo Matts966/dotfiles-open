@@ -68,8 +68,10 @@ Plug 'cocopon/vaffle.vim'
 function! s:customize_vaffle_mappings() abort
     " Customize key mappings here
     nmap <buffer> <Tab> <Plug>(vaffle-toggle-current)
+    nmap <buffer> l <Plug>(vaffle-open-selected-vsplit)
 endfunction
 autocmd MyAutoCmd FileType vaffle call s:customize_vaffle_mappings()
+let g:vaffle_open_selected_vsplit_position = "rightbelow"
 nnoremap <leader>V <Cmd>Vaffle<CR>
 
 if has('nvim')
