@@ -65,6 +65,10 @@ ifeq  ($(shell uname),Darwin)
 	cp com.googlecode.iterm2.plist ~/Library/Preferences/
 endif
 
+.PHONY: update-iterm-plist
+update-iterm-plist:
+	cp ~/Library/Preferences/com.googlecode.iterm2.plist com.googlecode.iterm2.plist
+
 .PHONY: brew
 brew:
 	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
