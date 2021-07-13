@@ -475,6 +475,6 @@ endif
 nnoremap <expr> q (&modifiable && !&readonly ? 'q' : ':close!<CR>')
 
 " Help vertical
-autocmd MyAutoCmd BufEnter *.txt if &filetype=='help' | wincmd L | endif
+autocmd MyAutoCmd BufEnter *.txt,*.jax if &filetype=='help' | wincmd L | endif
 
 autocmd MyAutoCmd FileType qf setlocal wrap
