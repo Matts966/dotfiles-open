@@ -354,6 +354,7 @@ if $TERM_PROGRAM == 'Apple_Terminal'
 else
   set termguicolors
   colorscheme iceberg
+  hi Normal guibg=NONE ctermbg=NONE
   let g:lightline.colorscheme = 'iceberg'
 endif
 
