@@ -120,6 +120,10 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+highlight link LspErrorHighlight Error
+highlight link LspWarningHighlight WarningMsg
+highlight link LspInformationHighlight WarningMsg
+highlight link LspHintHighlight WarningMsg
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
