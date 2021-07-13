@@ -7,6 +7,8 @@ WORDCHARS=${WORDCHARS/\/}
 # Ignore ctrl-d EOF and delete-char-or-list
 setopt ignore_eof
 
+# Emacs bindings
+bindkey -e
 
 # Git functions
 bindkey -r '^g'
@@ -50,5 +52,3 @@ bindkey '^x^f' agg
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
-
-bindkey -e
