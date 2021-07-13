@@ -23,10 +23,10 @@ zinit light zdharma/fast-syntax-highlighting
 zinit light agkozak/zsh-z
 
 zinit lucid has'docker' for \
-    as'completion' is-snippet \
-    'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker' \
-    as'completion' is-snippet \
-    'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
+  as'completion' is-snippet \
+  'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker' \
+  as'completion' is-snippet \
+  'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
 
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
 zstyle ':fzf-tab:*' fzf-flags --height 100%
@@ -39,8 +39,7 @@ AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit" "nnn" "k9s")
 zinit ice as"program" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
 zinit light BurntSushi/ripgrep
 # bat
-zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat" \
-  atclone"./bat/bat cache --build" # for iceberg theme
+zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat" atclone"./bat/bat cache --build" # for iceberg theme
 zinit light sharkdp/bat
 # fd
 zinit ice as"program" from"gh-r" mv"fd* -> fd" pick"fd/fd"
@@ -76,8 +75,9 @@ zinit light x-motemen/ghq
 # zinit light jesseduffield/lazygit
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-    zsh-users/zsh-completions \
-    light-mode Aloxaf/fzf-tab
+  zsh-users/zsh-completions \
+  light-mode Aloxaf/fzf-tab
+
 zinit light b4b4r07/zsh-gomi
 alias rm='echo "This is not the command you are looking for, use gomi -s."; false'
 
@@ -93,8 +93,8 @@ setopt    incappendhistory  # Immediately append to the history file, not just w
 setopt    globdots          # Show hidden files in completion
 
 if [[ ! -f ~/.zshrc.zwc || ~/.zshrc -nt ~/.zshrc.zwc ]]; then
-    echo ".zshrc updated, compiling..."
-    zcompile ~/.zshrc
+  echo ".zshrc updated, compiling..."
+  zcompile ~/.zshrc
 fi
 
 if (which zprof > /dev/null 2>&1) ;then
@@ -102,14 +102,14 @@ if (which zprof > /dev/null 2>&1) ;then
 fi
 
 if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
-    alias vim="nvr --remote-tab"
-    export EDITOR="nvr --remote-tab"
-    export GIT_EDITOR="nvr --remote-tab-wait"
-    export VISUAL="nvr -cc split --remote-wait +'setlocal bufhidden=wipe'"
+  alias vim="nvr --remote-tab"
+  export EDITOR="nvr --remote-tab"
+  export GIT_EDITOR="nvr --remote-tab-wait"
+  export VISUAL="nvr -cc split --remote-wait +'setlocal bufhidden=wipe'"
 else
-    alias vim="nvim"
-    export EDITOR="nvim"
-    export VISUAL="nvim"
+  alias vim="nvim"
+  export EDITOR="nvim"
+  export VISUAL="nvim"
 fi
 
 source <(kubectl completion zsh)
