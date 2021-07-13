@@ -59,6 +59,9 @@ ifeq  ($(shell uname),Darwin)
 	open Iceberg.terminal
 	defaults write com.apple.terminal "Startup Window Settings" "Iceberg"
 	defaults write com.apple.terminal "Default Window Settings" "Iceberg"
+
+	./iTerm2-Color-Schemes/tools/import-scheme.sh iTerm2-Color-Schemes/schemes/iceberg-dark.itermcolors
+	cp com.googlecode.iterm2.plist ~/Library/Preferences/
 endif
 
 .PHONY: brew

@@ -343,8 +343,19 @@ autocmd MyAutoCmd filetype markdown
 
 Plug 'airblade/vim-gitgutter'
 
+
+Plug 'cocopon/iceberg.vim'
+
 " Initialize plugin system
 call plug#end()
+
+if $TERM_PROGRAM == 'Apple_Terminal'
+  set notermguicolors
+else
+  set termguicolors
+  colorscheme iceberg
+  let g:lightline.colorscheme = 'iceberg'
+endif
 
 set scrolloff=999
 
