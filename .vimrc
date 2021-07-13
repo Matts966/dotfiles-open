@@ -63,48 +63,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-function! s:defx_my_settings() abort
-  nnoremap <silent><buffer><expr> v
-        \ defx#do_action('drop', 'vsplit')
-  nnoremap <silent><buffer><expr> t
-        \ defx#do_action('open','tabnew')
-  nnoremap <silent><buffer><expr> l
-        \ defx#do_action('drop')
-  nnoremap <silent><buffer><expr> h
-        \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> L
-        \ defx#do_action('open_tree')
-  nnoremap <silent><buffer><expr> H
-        \ defx#do_action('close_tree')
-  nnoremap <silent><buffer><expr> .
-        \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> yy
-        \ defx#do_action('yank_path')
-  nnoremap <silent><buffer><expr> c
-        \ defx#do_action('copy')
-  nnoremap <silent><buffer><expr> m
-        \ defx#do_action('move')
-  nnoremap <silent><buffer><expr> p
-        \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> d
-        \ defx#do_action('remove')
-  nnoremap <silent><buffer><expr> r
-        \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> x
-        \ defx#do_action('execute_system')
-  nnoremap <silent><buffer><expr> i
-        \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> o
-        \ defx#do_action('new_directory')
-  vnoremap <silent><buffer><expr> <CR>
-        \ defx#do_action('toggle_select_visual') . 'j'
-  nnoremap <silent><buffer><expr> <CR>
-        \ defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr> *
-        \ defx#do_action('toggle_select_all')
-endfunction
-autocmd MyAutoCmd FileType defx call s:defx_my_settings()
-nnoremap <leader>D <Cmd>Defx -winwidth=50 -split=vertical -direction=topleft<CR>
 
 Plug 'jparise/vim-graphql'
 
@@ -440,6 +398,64 @@ call wilder#set_option('pipeline', [wilder#branch([
       \     wilder#search_pipeline(),
       \   ),
       \ ])
+
+function! s:defx_my_settings() abort
+  nnoremap <silent><buffer><expr> v
+        \ defx#do_action('drop', 'vsplit')
+  nnoremap <silent><buffer><expr> t
+        \ defx#do_action('open','tabnew')
+  nnoremap <silent><buffer><expr> L
+        \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> H
+        \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> l
+        \ defx#is_directory() ?
+        \ defx#do_action('open_tree') :
+        \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> h
+        \ defx#do_action('close_tree')
+  nnoremap <silent><buffer><expr> .
+        \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> yy
+        \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> c
+        \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+        \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+        \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> d
+        \ defx#do_action('remove_trash')
+  nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> x
+        \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> i
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> o
+        \ defx#do_action('new_directory')
+  vnoremap <silent><buffer><expr> <CR>
+        \ defx#do_action('toggle_select_visual') . 'j'
+  nnoremap <silent><buffer><expr> <CR>
+        \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+        \ defx#do_action('toggle_select_all')
+endfunction
+autocmd MyAutoCmd FileType defx call s:defx_my_settings()
+call defx#custom#column('filename', {
+	    \   'min_width': 10,
+	    \   'max_width': 40,
+	    \ })
+call defx#custom#column('icon', {
+	    \   'directory_icon': '▸',
+	    \   'opened_icon': '▾',
+	    \   'root_icon': ' ',
+	    \ })
+
+autocmd MyAutoCmd BufLeave,BufWinLeave \[defx\]*
+      \ call defx#call_action('add_session')
+nnoremap <leader>D <Cmd>Defx -winwidth=50 -split=vertical
+      \ -direction=topleft -session-file=.defx_session.json -buffer-name=defx<CR>
 
 " Create dir if not exists when writing new file.
 autocmd MyAutoCmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
