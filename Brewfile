@@ -61,3 +61,5 @@ cask "karabiner-elements"
 cask "spotify"
 # Configurable document editor that supports Markdown
 cask "typora"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
