@@ -145,7 +145,7 @@ function! s:on_lsp_buffer_enabled() abort
   endif
 
   let g:lsp_settings = {
-        \ 'pyls-all': { 'workspace_config': { 'pyls': { 'configurationSources': ['flake8'] } } }
+        \   'pyls-all': { 'workspace_config': { 'pyls': { 'configurationSources': ['flake8'] } } }
         \ }
 endfunction
 " call s:on_lsp_buffer_enabled only for languages that has the server registered.
