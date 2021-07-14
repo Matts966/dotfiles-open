@@ -140,7 +140,7 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic<CR>
 
   let g:lsp_format_sync_timeout = 1000
-  if &ft == 'rust' || &ft == 'go' || &ft == 'typescript'
+  if &ft == 'rust' || &ft == 'go' || matchstr(&ft, 'typescript*') != ''
     nmap <buffer> <leader>s <CMD>LspDocumentFormatSync<CR>
   endif
 
