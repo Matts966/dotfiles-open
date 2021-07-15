@@ -92,7 +92,8 @@ Plug 'voldikss/vim-translator'
 let g:translator_target_lang = 'ja'
 
 if has('nvim')
-  Plug 'Matts966/hop.nvim', { 'on': 'HopWord' }
+  Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
+  autocmd! MyAutoCmd User hop.nvim lua require'hop'.setup()
   map  <Leader>j <CMD>HopWord<CR>
   vmap <Leader>j <CMD>HopWordVisual<CR>
 else
