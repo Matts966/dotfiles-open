@@ -19,6 +19,12 @@ if has('nvim')
   tnoremap <C-W> <C-\><C-N><C-W>
   tnoremap <C-W>N <C-\><C-N>
   tnoremap <C-W>. <C-W>
+
+  " To prevent unintended wincmd only
+  tnoremap <C-W><C-O> <C-\><C-N><C-O>
+  tnoremap <C-W>o <C-\><C-N><C-O>
+  tnoremap <C-O> <C-\><C-N><C-O>
+
   set wildmode=longest:full
 else
   " Auto completion on vim command line
