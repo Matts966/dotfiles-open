@@ -59,6 +59,16 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-hijack.vim'
+function! s:init_fern() abort
+  nmap <buffer> <C-L> <Plug>(fern-action-reload)
+  nmap <buffer> . <Plug>(fern-action-hidden:toggle)
+  nmap <buffer> d <Nop>
+endfunction
+autocmd MyAutoCmd FileType fern call s:init_fern()
+nnoremap <leader>F <Cmd>Fern -drawer .<CR>
+
 Plug 'editorconfig/editorconfig-vim'
 nnoremap <leader>s gg=G``
 
