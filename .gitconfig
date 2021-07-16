@@ -5,7 +5,7 @@
   lineNumber = true
 [core]
   pager = delta
-  excludesfile = /Users/mattsm/.gitignore
+  excludesfile = ~/.gitignore
 [interactive]
   diffFilter = delta --color-only
 [commit]
