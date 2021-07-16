@@ -33,4 +33,19 @@ if (( $+commands[sw_vers] )) && (( $+commands[arch] )); then
 	exec arch -arch $arch /bin/zsh
 }
 fi
+
 setopt magic_equal_subst
+
+if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
+  alias vim="nvr --remote-tab"
+  alias vi="nvr --remote-tab"
+  export EDITOR="nvr --remote-tab"
+  export GIT_EDITOR="nvr --remote-tab"
+  export VISUAL="nvr -cc split --remote-wait +'setlocal bufhidden=wipe'"
+else
+  alias vim="nvim"
+  alias vi="nvim"
+  export EDITOR="nvim"
+  export GIT_EDITOR="nvim"
+  export VISUAL="nvim"
+fi

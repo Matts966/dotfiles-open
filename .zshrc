@@ -105,20 +105,6 @@ if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
 
-if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
-  alias vim="nvr --remote-tab"
-  alias vi="nvr --remote-tab"
-  export EDITOR="nvr --remote-tab"
-  export GIT_EDITOR="nvr --remote-tab-wait"
-  export VISUAL="nvr -cc split --remote-wait +'setlocal bufhidden=wipe'"
-else
-  alias vim="nvim"
-  alias vi="nvim"
-  export EDITOR="nvim"
-  export GIT_EDITOR="nvim"
-  export VISUAL="nvim"
-fi
-
 source <(kubectl completion zsh)
 
 source $HOME/.asdf/asdf.sh
