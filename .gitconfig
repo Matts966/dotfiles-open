@@ -4,7 +4,6 @@
 [grep]
   lineNumber = true
 [core]
-  editor = nvim
   pager = delta
   excludesfile = /Users/mattsm/.gitignore
 [interactive]
