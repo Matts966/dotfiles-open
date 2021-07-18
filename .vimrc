@@ -61,6 +61,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 function! s:init_fern() abort
   nmap <buffer> <C-L> <Plug>(fern-action-reload)
   nmap <buffer> . <Plug>(fern-action-hidden:toggle)
@@ -79,6 +80,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'kristijanhusak/defx-git'
 
 Plug 'jparise/vim-graphql'
 
@@ -479,7 +481,8 @@ call defx#custom#column('icon', {
 autocmd MyAutoCmd BufLeave,BufWinLeave \[defx\]*
       \ call defx#call_action('add_session')
 nnoremap <leader>D <Cmd>Defx -winwidth=50 -split=vertical
-      \ -direction=topleft -session-file=.defx_session.json -buffer-name=defx<CR>
+      \ -direction=topleft -session-file=.defx_session.json -buffer-name=defx
+      \ -columns=git:mark:indent:filename:type<CR>
 
 " Create dir if not exists when writing new file.
 autocmd MyAutoCmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
