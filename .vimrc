@@ -313,12 +313,15 @@ let g:vimwiki_key_mappings = {
       \   'all_maps': 0,
       \ }
 let g:vimwiki_menu = '' " To disable No menu Vimwiki error
-Plug 'michal-h21/vim-zettel'
-let g:zettel_fzf_command = rg_command
 autocmd MyAutoCmd filetype markdown
       \  nnoremap <buffer> <CR> <Cmd>VimwikiFollowLink<CR>|
       \  nnoremap <buffer> <C-n> <Cmd>VimwikiNextLink<CR>|
       \  nnoremap <buffer> <C-p> <Cmd>VimwikiPrevLink<CR>
+Plug 'michal-h21/vim-zettel'
+let g:zettel_fzf_command = rg_command
+let g:zettel_default_mappings = 0
+" This is basically the same as the default configuration
+autocmd MyAutoCmd FileType vimwiki imap <buffer><silent> [[ [[<esc><Plug>ZettelSearchMap
 
 Plug 'airblade/vim-gitgutter'
 
