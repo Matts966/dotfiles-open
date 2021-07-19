@@ -270,6 +270,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
+" Relative path
+" https://github.com/junegunn/fzf.vim/pull/628#issuecomment-766440334
+inoremap <expr> <c-x><c-p> fzf#vim#complete("fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0
+      \ <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h")))
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
@@ -330,11 +334,11 @@ autocmd MyAutoCmd filetype markdown
       \  nnoremap <buffer> <CR> <Cmd>VimwikiFollowLink<CR>|
       \  nnoremap <buffer> <C-n> <Cmd>VimwikiNextLink<CR>|
       \  nnoremap <buffer> <C-p> <Cmd>VimwikiPrevLink<CR>
-Plug 'michal-h21/vim-zettel'
-let g:zettel_fzf_command = rg_command
-let g:zettel_default_mappings = 0
-" This is basically the same as the default configuration
-autocmd MyAutoCmd FileType vimwiki imap <buffer><silent> [[ [[<esc><Plug>ZettelSearchMap
+autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[ fzf#vim#complete(fzf#wrap({
+      \   'source': "fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0
+      \     <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h")),
+      \   'reducer': { lines -> '['. fnamemodify(lines[0], ":t:r") . '](' . lines[0] . ')' },
+      \ }))
 
 Plug 'airblade/vim-gitgutter'
 
