@@ -59,6 +59,9 @@ call plug#begin('~/.vim/plugged')
 
 
 
+" MarkdownPreivew with scrolling
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-git-status.vim'
