@@ -63,12 +63,29 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 function! s:init_fern() abort
+  setlocal wrap
+  nmap <buffer> d D
+  nmap <buffer> c C
+  nmap <buffer> p P
+  nmap <buffer> m M
   nmap <buffer> <C-L> <Plug>(fern-action-reload)
+  nmap <buffer> r <Plug>(fern-action-move)
+  nmap <buffer> i <Plug>(fern-action-new-file)
+  nmap <buffer> o <Plug>(fern-action-new-dir)
   nmap <buffer> . <Plug>(fern-action-hidden:toggle)
-  nmap <buffer> d <Nop>
+  nnoremap <buffer> N N
 endfunction
-autocmd MyAutoCmd FileType fern call s:init_fern()
-nnoremap <leader>F <Cmd>Fern -drawer .<CR>
+autocmd MyAutoCmd BufEnter fern://* call s:init_fern()
+nnoremap <leader>F <Cmd>Fern -drawer -toggle -reveal=% -width=60 .<CR>
+let g:fern#renderer#default#leaf_symbol = ' '
+let g:fern#renderer#default#collapsed_symbol = '▸'
+let g:fern#renderer#default#expanded_symbol = '▾'
+function! s:OpenDrawer() abort
+  if &modifiable && filereadable(expand('%'))
+    execute printf('FernDo -stay FernReveal %s', fnameescape(expand('%:p')))
+  endif
+endfunction
+autocmd MyAutoCmd BufEnter * call s:OpenDrawer()
 
 Plug 'editorconfig/editorconfig-vim'
 nnoremap <leader>s gg=G``
