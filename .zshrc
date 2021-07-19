@@ -14,6 +14,7 @@ zinit light junegunn/fzf
 export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > /dev/tty)" --preview "bat --color=always --style=header,grid --line-range :100 {}"'
 export BAT_THEME="iceberg"
 export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind ctrl-d:page-down,ctrl-u:page-up"
 # Iceberg
 if [[ $TERM_PROGRAM != "Apple_Terminal" ]]; then
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=spinner:#84a0c6,hl:#6b7089,fg:#c6c8d1,header:#6b7089,info:#b4be82,pointer:#84a0c6,marker:#84a0c6,fg+:#c6c8d1,prompt:#84a0c6,hl+:#84a0c6"
