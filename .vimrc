@@ -190,7 +190,7 @@ let g:lightline = {
       \   'component_function': { 'scrollbar': 'ScrollStatus', 'gitbranch': 'gina#component#repo#branch' },
       \ }
 
-nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal lazygit<CR>
+nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
