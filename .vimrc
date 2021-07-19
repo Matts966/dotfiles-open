@@ -85,7 +85,7 @@ let g:fern#renderer#default#collapsed_symbol = '▸'
 let g:fern#renderer#default#expanded_symbol = '▾'
 function! s:OpenDrawer() abort
   if &modifiable && filereadable(expand('%'))
-    execute printf('FernDo -stay FernReveal %s', fnameescape(expand('%:p')))
+    execute 'FernDo -stay FernReveal ' . @%
   endif
 endfunction
 autocmd MyAutoCmd BufEnter * call s:OpenDrawer()
