@@ -273,7 +273,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 " Relative path
 " https://github.com/junegunn/fzf.vim/pull/628#issuecomment-766440334
 inoremap <expr> <c-x><c-p> fzf#vim#complete("fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0
-      \ <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h"))) . " <Bar> sort -r"
+      \ <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h")) . " <Bar> sort -r")
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
