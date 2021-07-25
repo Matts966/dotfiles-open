@@ -60,7 +60,8 @@ call plug#begin('~/.vim/plugged')
 
 
 Plug 'skywind3000/asyncrun.vim'
-nnoremap <expr> <leader>A ':AsyncRun '
+command! -bang -nargs=* -complete=shellcmd AsyncRunX AsyncRun <args>
+nnoremap <expr> <leader>A ':AsyncRunX '
 let g:asyncrun_open = 8
 
 " MarkdownPreivew with scrolling
