@@ -345,10 +345,10 @@ let g:vimwiki_key_mappings = {
       \ }
 let g:vimwiki_menu = '' " To disable No menu Vimwiki error
 autocmd MyAutoCmd filetype vimwiki
-      \  nnoremap <buffer> <CR> <Cmd>VimwikiFollowLink<CR>|
-      \  vnoremap <buffer> <CR> <Cmd>VimwikiFollowLink<CR>|
-      \  nnoremap <buffer> <C-n> <Cmd>VimwikiNextLink<CR>|
-      \  nnoremap <buffer> <C-p> <Cmd>VimwikiPrevLink<CR>
+      \  nmap <buffer> <CR> <Plug>VimwikiFollowLink|
+      \  vmap <buffer> <CR> <Plug>VimwikiNormalizeLinkVisualCR|
+      \  nmap <buffer> <C-n> <Plug>VimwikiNextLink|
+      \  nmap <buffer> <C-p> <Plug>VimwikiPrevLink
 autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[ fzf#vim#complete(fzf#wrap({
       \   'source': "fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0
       \     <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h")) . " <Bar> sort -r",
