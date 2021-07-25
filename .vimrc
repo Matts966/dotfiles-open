@@ -63,7 +63,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/fern-hijack.vim'
+" Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 function! s:init_fern() abort
   setlocal wrap
@@ -450,6 +450,10 @@ call wilder#set_option('pipeline', [wilder#branch([
       \   ),
       \ ])
 
+" defx hijack
+autocmd BufEnter * if !exists('b:defx') && isdirectory(expand('%'))
+      \ | call defx#util#call_defx('Defx', escape(expand('%'), ' '))
+      \ | endif
 function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> v
         \ defx#do_action('drop', 'vsplit')
@@ -505,7 +509,7 @@ call defx#custom#column('icon', {
 
 autocmd MyAutoCmd BufLeave,BufWinLeave \[defx\]*
       \ call defx#call_action('add_session')
-nnoremap <leader>D <Cmd>Defx -winwidth=50 -split=vertical
+nnoremap <leader>D <Cmd>Defx -winwidth=60 -split=vertical
       \ -direction=topleft -session-file=.defx_session.json -buffer-name=defx
       \ -columns=git:mark:indent:filename:type<CR>
 
