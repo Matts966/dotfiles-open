@@ -59,6 +59,10 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'skywind3000/asyncrun.vim'
+nnoremap <expr> <leader>A ':AsyncRun '
+let g:asyncrun_open = 8
+
 " MarkdownPreivew with scrolling
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
