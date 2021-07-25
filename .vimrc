@@ -339,7 +339,7 @@ let g:vimwiki_key_mappings = {
       \   'all_maps': 0,
       \ }
 let g:vimwiki_menu = '' " To disable No menu Vimwiki error
-autocmd MyAutoCmd filetype markdown
+autocmd MyAutoCmd filetype vimwiki
       \  nnoremap <buffer> <CR> <Cmd>VimwikiFollowLink<CR>|
       \  vnoremap <buffer> <CR> <Cmd>VimwikiFollowLink<CR>|
       \  nnoremap <buffer> <C-n> <Cmd>VimwikiNextLink<CR>|
