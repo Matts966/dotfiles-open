@@ -107,8 +107,3 @@ if (which zprof > /dev/null 2>&1) ;then
 fi
 
 source <(kubectl completion zsh)
-
-source $HOME/.asdf/asdf.sh
-fpath=($HOME/.asdf/completions $fpath)
-eval "$(direnv hook zsh)"
-direnv() { asdf exec direnv "$@"; }

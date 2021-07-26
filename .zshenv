@@ -49,3 +49,9 @@ else
   export GIT_EDITOR="nvim"
   export VISUAL="nvim"
 fi
+
+
+source $HOME/.asdf/asdf.sh
+fpath=($HOME/.asdf/completions $fpath)
+eval "$(direnv hook zsh)"
+direnv() { asdf exec direnv "$@"; }
