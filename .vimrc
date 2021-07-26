@@ -63,6 +63,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'direnv/direnv.vim'
 
+Plug 'skywind3000/asyncrun.vim'
+command! -bang -nargs=* -complete=shellcmd AsyncRunX AsyncRun <args>
+nnoremap <expr> <leader>A ':AsyncRunX '
+let g:asyncrun_open = 8
+
 " MarkdownPreivew with scrolling
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
