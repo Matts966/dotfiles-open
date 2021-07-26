@@ -60,6 +60,9 @@ call plug#begin('~/.vim/plugged')
 
 
 
+
+Plug 'direnv/direnv.vim'
+
 " MarkdownPreivew with scrolling
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
