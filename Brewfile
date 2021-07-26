@@ -51,6 +51,8 @@ cask "appcleaner"
 cask "basictex"
 # Clipboard extension app
 cask "clipy"
+# Menu bar application that lists iCloud Tabs
+cask "cloudytabs"
 # Trains AIs to understand and translate texts
 cask "deepl"
 # Web browser
