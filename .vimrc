@@ -33,6 +33,8 @@ else
   source $VIMRUNTIME/defaults.vim
 endif
 
+nnoremap <leader>T <C-W><C-V><Cmd>terminal<CR>
+
 scriptencoding utf-8
 set encoding=utf-8
 set langmenu=en_US
