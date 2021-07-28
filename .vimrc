@@ -61,6 +61,11 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'JamshedVesuna/vim-markdown-preview'
+let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_hotkey='<C-T>'
+let vim_markdown_preview_temp_file=1
 
 Plug 'skywind3000/asyncrun.vim'
 command! -bang -nargs=* -complete=shellcmd AsyncRunX AsyncRun <args>
