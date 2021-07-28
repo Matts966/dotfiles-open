@@ -16,9 +16,9 @@ export PATH=$PATH:$HOME/esp/xtensa-esp32-elf/bin
 
 typeset -U path PATH
 path=(
+	$path
 	/opt/homebrew/bin(N-/)
 	/usr/local/bin(N-/)
-	$path
 )
 if (( $+commands[sw_vers] )) && (( $+commands[arch] )); then
 	[[ -x /usr/local/bin/brew ]] && alias brew="arch -arch x86_64 /usr/local/bin/brew"
