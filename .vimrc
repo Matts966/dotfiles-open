@@ -61,7 +61,6 @@ call plug#begin('~/.vim/plugged')
 
 
 
-Plug 'direnv/direnv.vim'
 
 Plug 'skywind3000/asyncrun.vim'
 command! -bang -nargs=* -complete=shellcmd AsyncRunX AsyncRun <args>

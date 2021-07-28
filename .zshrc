@@ -108,7 +108,8 @@ fi
 
 source <(kubectl completion zsh)
 
-source $HOME/.asdf/asdf.sh
+PATH=$PATH:~/.asdf/bin
+source ~/.asdf/lib/asdf.sh
 fpath=($HOME/.asdf/completions $fpath)
-eval "$(direnv hook zsh)"
+eval "$(asdf exec direnv hook zsh)"
 direnv() { asdf exec direnv "$@"; }
