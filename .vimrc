@@ -332,6 +332,17 @@ let g:fzf_action = {
       \ }
 nnoremap <leader>gr :Repo<CR>
 
+function! s:cd_dir(dir) abort
+  exe 'tcd ' . a:dir
+  edit README.md
+endfunction
+command! -bang -nargs=0 Z
+      \ call fzf#run(fzf#wrap({
+      \ 'source': systemlist('cat ~/.z | cut -f1 -d"|"'),
+      \ 'sink': function('s:cd_dir')
+      \ }, <bang>0))
+nnoremap <leader>z :Z<CR>
+
 let rg_command = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git" --glob "!node_modules" -- '
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
