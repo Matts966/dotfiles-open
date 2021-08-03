@@ -333,6 +333,9 @@ let g:fzf_action = {
 nnoremap <leader>gr :Repo<CR>
 
 function! s:cd_dir(dir) abort
+  if line('$') != 1 || getline(1) != ''
+    tabnew
+  endif
   exe 'tcd ' . a:dir
   edit README.md
 endfunction
