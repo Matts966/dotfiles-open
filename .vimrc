@@ -60,12 +60,15 @@ call plug#begin('~/.vim/plugged')
 
 
 
-
-Plug 'JamshedVesuna/vim-markdown-preview'
-let vim_markdown_preview_github=1
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_hotkey='<C-T>'
-let vim_markdown_preview_temp_file=1
+Plug 'iamcco/markdown-preview.nvim'
+" nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
+nnoremap <C-T> <Cmd>silent execute('!open -a Safari.app')<CR>
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 0
+function g:Open(url)
+  silent execute('!open -ga Safari.app ' . a:url)
+endfunction
+let g:mkdp_browserfunc = 'g:Open'
 
 Plug 'skywind3000/asyncrun.vim'
 command! -bang -nargs=* -complete=shellcmd AsyncRunX AsyncRun <args>
