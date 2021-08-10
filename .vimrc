@@ -196,7 +196,7 @@ function! s:on_lsp_buffer_enabled() abort
 
   let g:lsp_format_sync_timeout = 1000
   if &ft == 'rust' || &ft == 'go' || &ft == 'dart' || matchstr(&ft, 'typescript*') != ''
-    nmap <buffer> <leader>s <CMD>LspDocumentFormatSync<CR>
+    nmap <buffer> <leader>s <CMD>LspDocumentFormatSync<CR><CMD>LspCodeAction source.organizeImports<CR>
   endif
 
   let g:lsp_settings = {
