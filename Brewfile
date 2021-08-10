@@ -53,8 +53,6 @@ cask "basictex"
 cask "clipy"
 # Menu bar application that lists iCloud Tabs
 cask "cloudytabs"
-# Trains AIs to understand and translate texts
-cask "deepl"
 # Web browser
 cask "google-chrome"
 # Keyboard customizer
