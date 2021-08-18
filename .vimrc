@@ -60,12 +60,15 @@ call plug#begin('~/.vim/plugged')
 
 
 
-
-Plug 'JamshedVesuna/vim-markdown-preview'
-let vim_markdown_preview_github=1
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_hotkey='<C-T>'
-let vim_markdown_preview_temp_file=1
+Plug 'iamcco/markdown-preview.nvim'
+" nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
+nnoremap <C-T> <Cmd>silent execute('!open -a Safari.app')<CR>
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 0
+function g:Open(url)
+  silent execute('!open -ga Safari.app ' . a:url)
+endfunction
+let g:mkdp_browserfunc = 'g:Open'
 
 Plug 'skywind3000/asyncrun.vim'
 command! -bang -nargs=* -complete=shellcmd AsyncRunX AsyncRun <args>
@@ -193,7 +196,7 @@ function! s:on_lsp_buffer_enabled() abort
 
   let g:lsp_format_sync_timeout = 1000
   if &ft == 'rust' || &ft == 'go' || &ft == 'dart' || matchstr(&ft, 'typescript*') != ''
-    nmap <buffer> <leader>s <CMD>LspDocumentFormatSync<CR>
+    nmap <buffer> <leader>s <CMD>LspDocumentFormatSync<CR><CMD>LspCodeAction source.organizeImports<CR>
   endif
 
   let g:lsp_settings = {
@@ -331,6 +334,20 @@ let g:fzf_action = {
       \   'ctrl-v': 'vsplit'
       \ }
 nnoremap <leader>gr :Repo<CR>
+
+function! s:cd_dir(dir) abort
+  if line('$') != 1 || getline(1) != ''
+    tabnew
+  endif
+  exe 'tcd ' . a:dir
+  edit README.md
+endfunction
+command! -bang -nargs=0 Z
+      \ call fzf#run(fzf#wrap({
+      \ 'source': systemlist('cat ~/.z | cut -f1 -d"|"'),
+      \ 'sink': function('s:cd_dir')
+      \ }, <bang>0))
+nnoremap <leader>z :Z<CR>
 
 let rg_command = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git" --glob "!node_modules" --glob "!vendor" -- '
 command! -bang -nargs=* Rg
