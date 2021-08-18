@@ -332,7 +332,7 @@ let g:fzf_action = {
       \ }
 nnoremap <leader>gr :Repo<CR>
 
-let rg_command = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git" --glob "!node_modules" -- '
+let rg_command = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git" --glob "!node_modules" --glob "!vendor" -- '
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
       \   rg_command.shellescape(<q-args>), 1,
