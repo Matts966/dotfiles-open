@@ -60,6 +60,31 @@ call plug#begin('~/.vim/plugged')
 
 
 
+if has('nvim')
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  noremap <leader>t <Cmd>Telescope buffers<CR>term://
+  noremap <leader>b <Cmd>Telescope buffers<CR>
+lua << EOF
+  require('telescope').setup{
+    pickers = {
+      -- Your special builtin config goes in here
+      buffers = {
+        sort_lastused = true,
+        mappings = {
+          i = {
+            ["<c-x>"] = require("telescope.actions").delete_buffer,
+          },
+          n = {
+            ["<c-x>"] = require("telescope.actions").delete_buffer,
+          }
+        }
+      },
+    },
+  }
+EOF
+endif
+
 Plug 'iamcco/markdown-preview.nvim'
 " nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
 nnoremap <C-T> <Cmd>silent execute('!open -a Safari.app')<CR>
@@ -161,8 +186,6 @@ if has('nvim')
   endfunction
   autocmd MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
   autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
-
-  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
   " Unused. would like to use this after black hole register related bugs
   " are fixed.
@@ -307,8 +330,6 @@ noremap <leader>m <Cmd>History<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
-noremap <leader>b <Cmd>Buffers<CR>
-
 function! s:cd_repo(repo) abort
   let l:repo = trim(system('ghq root')) . '/' . a:repo
   if line('$') != 1 || getline(1) != ''
@@ -407,27 +428,6 @@ highlight PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
 set cursorcolumn
 set cursorline
 highlight CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
-
-if has('nvim')
-  noremap <leader>t <Cmd>Denite buffer -input=term://<CR>
-  call denite#custom#option('default', {
-        \   'auto_action': 'preview',
-        \})
-  " Define mappings
-  autocmd FileType denite call s:denite_my_settings()
-  function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-          \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d
-          \ denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> q
-          \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-          \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-          \ denite#do_map('toggle_select').'j'
-  endfunction
-endif
 
 " netrw
 let g:netrw_liststyle=3
