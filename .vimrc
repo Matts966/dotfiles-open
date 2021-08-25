@@ -86,10 +86,7 @@ EOF
 endif
 
 Plug 'iamcco/markdown-preview.nvim'
-" nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
-nnoremap <C-T> <Cmd>silent execute('!open -a Safari.app')<CR>
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 0
+nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
 function g:Open(url)
   silent execute('!open -ga Safari.app ' . a:url)
 endfunction
