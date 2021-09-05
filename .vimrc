@@ -35,6 +35,27 @@ endif
 
 nnoremap <leader>T <C-W><C-V><Cmd>terminal<CR>
 
+nnoremap ]t <Cmd>call g:NextTerm()<CR>i
+nnoremap [t <Cmd>call g:PrevTerm()<CR>i
+tnoremap ]t <Cmd>call g:NextTerm()<CR>
+tnoremap [t <Cmd>call g:PrevTerm()<CR>
+function g:NextTerm()
+  while v:true
+    bnext
+    if &buftype ==# 'terminal'
+      break
+    endif
+  endwhile
+endfunction
+function g:PrevTerm()
+  while v:true
+    bprevious
+    if &buftype ==# 'terminal'
+      break
+    endif
+  endwhile
+endfunction
+
 scriptencoding utf-8
 set encoding=utf-8
 set langmenu=en_US
