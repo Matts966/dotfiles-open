@@ -349,6 +349,7 @@ command! -bang -nargs=* Rg
       \   fzf#vim#with_preview(), <bang>0)
 nnoremap <leader>f :Rg<CR>
 nnoremap <leader>p :Files<CR>
+nnoremap <leader>b :Buffers<CR>
 
 Plug 'dansomething/vim-hackernews'
 
