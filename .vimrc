@@ -60,13 +60,6 @@ call plug#begin('~/.vim/plugged')
 
 
 
-if has('nvim')
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  noremap <leader>t <Cmd>Telescope buffers<CR>term://
-  noremap <leader>b <Cmd>Telescope buffers<CR>
-endif
-
 Plug 'iamcco/markdown-preview.nvim'
 nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
 function g:Open(url)
@@ -395,27 +388,6 @@ else
   colorscheme iceberg
   hi Normal guibg=NONE ctermbg=NONE
   let g:lightline.colorscheme = 'iceberg'
-endif
-
-if has('nvim')
-lua << EOF
-  require('telescope').setup{
-    pickers = {
-      -- Your special builtin config goes in here
-      buffers = {
-        sort_lastused = true,
-        mappings = {
-          i = {
-            ["<c-x>"] = require("telescope.actions").delete_buffer,
-          },
-          n = {
-            ["<c-x>"] = require("telescope.actions").delete_buffer,
-          }
-        }
-      },
-    },
-  }
-EOF
 endif
 
 set scrolloff=999
