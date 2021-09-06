@@ -41,11 +41,13 @@ if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
   alias vi="nvr --remote-tab"
   export EDITOR="nvr --remote-tab"
   export GIT_EDITOR="nvr --remote-tab-wait"
+  export KUBE_EDITOR="nvr --remote-tab-wait +'setlocal bufhidden=wipe'"
   export VISUAL="nvr -cc split --remote-wait +'setlocal bufhidden=wipe'"
 else
   alias vim="nvim"
   alias vi="nvim"
   export EDITOR="nvim"
   export GIT_EDITOR="nvim"
+  export KUBE_EDITOR="nvim"
   export VISUAL="nvim"
 fi
