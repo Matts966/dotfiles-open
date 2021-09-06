@@ -35,6 +35,27 @@ endif
 
 nnoremap <leader>T <C-W><C-V><Cmd>terminal<CR>
 
+nnoremap ]t <Cmd>call g:NextTerm()<CR>i
+nnoremap [t <Cmd>call g:PrevTerm()<CR>i
+tnoremap ]t <Cmd>call g:NextTerm()<CR>
+tnoremap [t <Cmd>call g:PrevTerm()<CR>
+function g:NextTerm()
+  while v:true
+    bnext
+    if &buftype ==# 'terminal'
+      break
+    endif
+  endwhile
+endfunction
+function g:PrevTerm()
+  while v:true
+    bprevious
+    if &buftype ==# 'terminal'
+      break
+    endif
+  endwhile
+endfunction
+
 scriptencoding utf-8
 set encoding=utf-8
 set langmenu=en_US
@@ -59,13 +80,6 @@ call plug#begin('~/.vim/plugged')
 
 
 
-
-if has('nvim')
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  noremap <leader>t <Cmd>Telescope buffers<CR>term://
-  noremap <leader>b <Cmd>Telescope buffers<CR>
-endif
 
 Plug 'iamcco/markdown-preview.nvim'
 nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
@@ -356,6 +370,7 @@ command! -bang -nargs=* Rg
       \   fzf#vim#with_preview(), <bang>0)
 nnoremap <leader>f :Rg<CR>
 nnoremap <leader>p :Files<CR>
+nnoremap <leader>b :Buffers<CR>
 
 Plug 'dansomething/vim-hackernews'
 
@@ -395,27 +410,6 @@ else
   colorscheme iceberg
   hi Normal guibg=NONE ctermbg=NONE
   let g:lightline.colorscheme = 'iceberg'
-endif
-
-if has('nvim')
-lua << EOF
-  require('telescope').setup{
-    pickers = {
-      -- Your special builtin config goes in here
-      buffers = {
-        sort_lastused = true,
-        mappings = {
-          i = {
-            ["<c-x>"] = require("telescope.actions").delete_buffer,
-          },
-          n = {
-            ["<c-x>"] = require("telescope.actions").delete_buffer,
-          }
-        }
-      },
-    },
-  }
-EOF
 endif
 
 set scrolloff=999
