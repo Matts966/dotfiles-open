@@ -81,6 +81,10 @@ call plug#begin('~/.vim/plugged')
 
 
 
+
+Plug 'tyru/open-browser-github.vim'
+Plug 'tyru/open-browser.vim'
+
 Plug 'iamcco/markdown-preview.nvim'
 nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
 function g:Open(url)
