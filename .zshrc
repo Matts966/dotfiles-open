@@ -106,10 +106,10 @@ if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
 
-source <(kubectl completion zsh)
-
 PATH=$PATH:~/.asdf/bin
 source ~/.asdf/lib/asdf.sh
 fpath=($HOME/.asdf/completions $fpath)
 eval "$(asdf exec direnv hook zsh)"
 direnv() { asdf exec direnv "$@"; }
+
+source <(asdf exec kubectl completion zsh)
