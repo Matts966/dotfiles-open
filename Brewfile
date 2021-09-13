@@ -43,6 +43,8 @@ brew "watch"
 brew "wget"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Linux virtual machines
+brew "lima"
 # Utility to set up alt-tab to switch between windows
 cask "alt-tab"
 # Application uninstaller
