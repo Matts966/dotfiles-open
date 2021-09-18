@@ -41,22 +41,30 @@ nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
 nnoremap <expr> <leader>A ':tabnew <Bar> terminal '
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
-nnoremap ]t <Cmd>call g:NextTerm()<CR>i
-nnoremap [t <Cmd>call g:PrevTerm()<CR>i
+nnoremap ]t <Cmd>call g:NextTerm()<CR><Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
+nnoremap [t <Cmd>call g:PrevTerm()<CR><Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
 tnoremap ]t <Cmd>call g:NextTerm()<CR>
 tnoremap [t <Cmd>call g:PrevTerm()<CR>
 function g:NextTerm()
+  let current = bufnr('%')
   while v:true
     bnext
     if &buftype ==# 'terminal'
       break
     endif
+    if current ==# bufnr('%')
+      break
+    endif
   endwhile
 endfunction
 function g:PrevTerm()
+  let current = bufnr('%')
   while v:true
     bprevious
     if &buftype ==# 'terminal'
+      break
+    endif
+    if current ==# bufnr('%')
       break
     endif
   endwhile
