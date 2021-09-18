@@ -92,11 +92,6 @@ function g:Open(url)
 endfunction
 let g:mkdp_browserfunc = 'g:Open'
 
-Plug 'skywind3000/asyncrun.vim'
-command! -bang -nargs=* -complete=shellcmd AsyncRunX AsyncRun <args>
-nnoremap <expr> <leader>A ':AsyncRunX '
-let g:asyncrun_open = 8
-
 " MarkdownPreivew with scrolling
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
@@ -129,7 +124,7 @@ endfunction
 autocmd MyAutoCmd BufEnter * call s:OpenDrawer()
 
 Plug 'editorconfig/editorconfig-vim'
-nnoremap <leader>s gg=G``
+nnoremap <leader>ss gg=G``
 
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -216,7 +211,7 @@ function! s:on_lsp_buffer_enabled() abort
 
   let g:lsp_format_sync_timeout = 1000
   if &ft == 'rust' || &ft == 'go' || &ft == 'dart' || matchstr(&ft, 'typescript*') != ''
-    nmap <buffer> <leader>s <CMD>LspDocumentFormatSync<CR><CMD>LspCodeAction source.organizeImports<CR>
+    nmap <buffer> <leader>ss <CMD>LspDocumentFormatSync<CR><CMD>LspCodeAction source.organizeImports<CR>
   endif
 
   let g:lsp_settings = {
@@ -229,7 +224,7 @@ autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
 let g:black_linelength = 120
 Plug 'fisadev/vim-isort', { 'for': ['python', 'vim-plug'] }
-autocmd MyAutoCmd FileType python nmap <buffer> <leader>s <CMD>Black<CR><CMD>Isort<CR>
+autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <CMD>Black<CR><CMD>Isort<CR>
 
 Plug 'itchyny/lightline.vim'
 Plug 'ojroques/vim-scrollstatus'
@@ -239,6 +234,9 @@ let g:lightline = {
       \ }
 
 nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
+nmap <leader>k <CMD>tabnew<CR><CMD>terminal k9s<CR><C-W>g<Tab>
+nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
+nnoremap <expr> <leader>A ':tabnew <Bar> terminal '
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
@@ -323,7 +321,7 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'LeafCage/yankround.vim'
-noremap <leader>m <Cmd>History<CR>
+noremap <leader>h <Cmd>History<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
