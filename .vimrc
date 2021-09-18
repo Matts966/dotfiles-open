@@ -385,11 +385,7 @@ nnoremap <leader>b :Buffers<CR>
 Plug 'dansomething/vim-hackernews'
 
 Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [{
-      \     'path': '~/Library/Mobile Documents/iCloud~app~cyan~taio/Documents/Editor/private-diary/wiki',
-      \     'syntax': 'markdown', 'ext': '.md'
-      \   }
-      \ ]
+command! Links execute(':VimwikiGenerateLinks ' . glob(expand('%:h') . '/') . '*.md')
 let g:vimwiki_key_mappings = {
       \   'all_maps': 0,
       \ }
