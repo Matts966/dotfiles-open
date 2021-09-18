@@ -35,6 +35,12 @@ endif
 
 nnoremap <leader>T <C-W><C-V><Cmd>terminal<CR>
 
+nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
+nmap <leader>k <CMD>tabnew<CR><CMD>terminal k9s<CR><C-W>g<Tab>
+nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
+nnoremap <expr> <leader>A ':tabnew <Bar> terminal '
+command! -nargs=0 Marp tabedit % | terminal marp --preview %
+
 nnoremap ]t <Cmd>call g:NextTerm()<CR>i
 nnoremap [t <Cmd>call g:PrevTerm()<CR>i
 tnoremap ]t <Cmd>call g:NextTerm()<CR>
@@ -232,12 +238,6 @@ let g:lightline = {
       \   'active': { 'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ], [ 'scrollbar' ] ] },
       \   'component_function': { 'scrollbar': 'ScrollStatus', 'gitbranch': 'gina#component#repo#branch' },
       \ }
-
-nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
-nmap <leader>k <CMD>tabnew<CR><CMD>terminal k9s<CR><C-W>g<Tab>
-nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
-nnoremap <expr> <leader>A ':tabnew <Bar> terminal '
-command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
