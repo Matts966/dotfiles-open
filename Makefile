@@ -45,7 +45,7 @@ init: mac bundle brew ~/.zinit ~/.asdf ## Initialize installation
 			totpages xstring environ hyperxmp ifmtarg || true
 	mkdir -p $(HOME)/.config/bat/themes && \
 		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
-		bat cache --build
+		bat cache --build || true
 
 .PHONY: secret
 secret:
