@@ -233,6 +233,13 @@ function! s:on_lsp_buffer_enabled() abort
 endfunction
 " call s:on_lsp_buffer_enabled only for languages that has the server registered.
 autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+if !executable('texlab')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'texlab',
+        \ 'cmd': {server_info->['texlab']},
+        \ 'whitelist': ['tex', 'bib', 'sty'],
+        \ })
+endif
 
 Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
 let g:black_linelength = 120
