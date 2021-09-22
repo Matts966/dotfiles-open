@@ -35,8 +35,14 @@ endif
 
 nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
 nmap <leader>k <CMD>tabnew<CR><CMD>terminal k9s<CR><C-W>g<Tab>
+function! g:Job()
+  call inputsave()
+  let command = input('Enter command: ')
+  call inputrestore()
+  execute 'terminal ' . command
+endfunction
 nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
-nnoremap <expr> <leader>A ':tabnew <Bar> terminal '
+nnoremap <leader>A <CMD>tabnew<CR><CMD>call g:Job()<CR><CMD>tabprevious<CR>
 nnoremap <leader>T <C-W><C-V><Cmd>terminal<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
