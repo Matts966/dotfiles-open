@@ -33,12 +33,11 @@ else
   source $VIMRUNTIME/defaults.vim
 endif
 
-nnoremap <leader>T <C-W><C-V><Cmd>terminal<CR>
-
 nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
 nmap <leader>k <CMD>tabnew<CR><CMD>terminal k9s<CR><C-W>g<Tab>
 nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
 nnoremap <expr> <leader>A ':tabnew <Bar> terminal '
+nnoremap <leader>T <C-W><C-V><Cmd>terminal<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
 nnoremap ]t <Cmd>call g:NextTerm()<CR><Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
