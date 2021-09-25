@@ -46,8 +46,9 @@ nnoremap <leader>A <CMD>tabnew<CR><CMD>call g:Job()<CR><CMD>tabprevious<CR>
 nnoremap <leader>T <C-W><C-V><Cmd>terminal<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
-nnoremap ]t <Cmd>call g:NextTerm()<CR><Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
-nnoremap [t <Cmd>call g:PrevTerm()<CR><Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
+" Comment out after " for automatically startinsert
+nnoremap ]t <Cmd>call g:NextTerm()<CR> " <Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
+nnoremap [t <Cmd>call g:PrevTerm()<CR> " <Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
 tnoremap ]t <Cmd>call g:NextTerm()<CR>
 tnoremap [t <Cmd>call g:PrevTerm()<CR>
 function g:NextTerm()
