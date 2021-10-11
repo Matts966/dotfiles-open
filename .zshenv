@@ -32,8 +32,8 @@ setopt magic_equal_subst
 if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
   alias vim="nvr --remote-tab"
   alias vi="nvr --remote-tab"
-  export EDITOR="nvr --remote-tab"
-  export GIT_EDITOR="nvr --remote-tab-wait"
+  export EDITOR="nvr --remote-tab-wait +'setlocal bufhidden=wipe'"
+  export GIT_EDITOR="nvr --remote-tab-wait +'setlocal bufhidden=wipe'"
   export KUBE_EDITOR="nvr --remote-tab-wait +'setlocal bufhidden=wipe'"
   export VISUAL="nvr -cc split --remote-wait +'setlocal bufhidden=wipe'"
 else
