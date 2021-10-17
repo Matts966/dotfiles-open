@@ -1,4 +1,4 @@
-java adoptopenjdk-12.0.2+10.1
+java adoptopenjdk-8.0.282+8
 kubectl 1.21.1
 neovim 0.5.0
 terraform 1.0.4

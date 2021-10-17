@@ -113,8 +113,10 @@ if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
 
-PATH=$PATH:~/.asdf/bin
-source ~/.asdf/lib/asdf.sh
+# not working https://github.com/asdf-community/asdf-direnv/blob/0a0e1c42f55ba8c76e5e575491234e11b4f8a58c/README.md#pro-tips
+# PATH=$PATH:~/.asdf/bin
+# source ~/.asdf/lib/asdf.sh
+. $HOME/.asdf/asdf.sh
 fpath=($HOME/.asdf/completions $fpath)
 eval "$(asdf exec direnv hook zsh)"
 direnv() { asdf exec direnv "$@"; }
