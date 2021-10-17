@@ -11,3 +11,4 @@ python 3.8.10
 nodejs 16.3.0
 rust 1.52.1
 kustomize 3.8.9
+kubectx 0.9.4

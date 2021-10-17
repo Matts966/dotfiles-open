@@ -48,6 +48,19 @@ function agg() {
 zle -N agg
 bindkey '^x^f' agg
 
+function _kubectx() {
+  BUFFER="kubectx"
+  zle accept-line
+}
+zle -N _kubectx
+bindkey '^k^k' _kubectx
+function _kubens() {
+  BUFFER="kubens"
+  zle accept-line
+}
+zle -N _kubens
+bindkey '^k^n' _kubens
+
 # Open vim for editing commands
 autoload -z edit-command-line
 zle -N edit-command-line
