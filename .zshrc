@@ -79,6 +79,8 @@ zinit light x-motemen/ghq
 # zinit ice as"program" from"gh-r" mv"lazygit* -> lazygit" pick"lazygit/lazygit"
 # zinit light jesseduffield/lazygit
 
+zinit light jonmosco/kube-ps1
+
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
   zsh-users/zsh-completions \
   light-mode Aloxaf/fzf-tab
@@ -86,8 +88,13 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 zinit light b4b4r07/zsh-gomi
 alias rm='echo "This is not the command you are looking for, use gomi -s."; false'
 
+KUBE_PS1_SYMBOL_ENABLE=false
+KUBE_PS1_CTX_COLOR=yellow
 PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
-%F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
+"
+PROMPT=$PROMPT'$(kube_ps1)
+'
+PROMPT=$PROMPT"%F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
 
 HISTSIZE=50000              # How many lines of history to keep in memory
 HISTFILE=~/.zsh_history     # Where to save history to disk
