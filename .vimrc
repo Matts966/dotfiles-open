@@ -229,7 +229,7 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> [q <Plug>(lsp-previous-diagnostic)
   nmap <buffer> ]q <Plug>(lsp-next-diagnostic)
   nmap <buffer> K <plug>(lsp-hover)
-  nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic<CR>
+  nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic --buffers=*<CR>
 
   let g:lsp_format_sync_timeout = 1000
   if &ft == 'rust' || &ft == 'go' || &ft == 'dart' || matchstr(&ft, 'typescript*') != ''
@@ -249,6 +249,13 @@ if !executable('texlab')
         \ 'whitelist': ['tex', 'bib', 'sty'],
         \ })
 endif
+let g:lsp_debug_servers = 1
+au User lsp_setup call lsp#register_server({
+      \ 'name': 'efm-langserver',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, '/Users/mattsm/.asdf/installs/golang/1.16/packages/bin/efm-langserver 2> /tmp/ok.log']},
+      \ 'whitelist': ['sql'],
+      \ })
+
 
 Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
 let g:black_linelength = 120
