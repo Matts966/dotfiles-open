@@ -1,6 +1,6 @@
 java adoptopenjdk-8.0.282+8
 kubectl 1.21.1
-neovim 0.5.0
+neovim 0.6.0
 terraform 1.0.4
 protoc 3.17.3
 direnv 2.28.0
