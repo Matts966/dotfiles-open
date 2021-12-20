@@ -102,6 +102,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'github/copilot.vim'
+
 Plug 'tyru/open-browser-github.vim'
 Plug 'tyru/open-browser.vim'
 
