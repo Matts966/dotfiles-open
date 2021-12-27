@@ -8,7 +8,7 @@ cloudsql-proxy 1.23.0
 flutter 2.0.4-stable
 golang 1.16
 python 3.8.10
-nodejs 16.3.0
+nodejs 14.18.2
 rust 1.52.1
 kustomize 3.8.9
 kubectx 0.9.4
