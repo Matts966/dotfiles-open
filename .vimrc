@@ -252,7 +252,7 @@ endif
 let g:lsp_debug_servers = 1
 au User lsp_setup call lsp#register_server({
       \ 'name': 'efm-langserver',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, '/Users/mattsm/.asdf/installs/golang/1.16/packages/bin/efm-langserver 2> /tmp/ok.log']},
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'efm-langserver 2> /tmp/ok.log']},
       \ 'whitelist': ['sql'],
       \ })
 
