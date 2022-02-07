@@ -43,7 +43,7 @@ function! g:Job()
 endfunction
 nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
 nnoremap <leader>A <CMD>tabnew<CR><CMD>call g:Job()<CR><CMD>tabprevious<CR>
-nnoremap <leader>T <C-W><C-V><Cmd>terminal<CR>
+nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
 " Comment out after " for automatically startinsert
