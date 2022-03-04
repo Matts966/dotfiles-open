@@ -230,6 +230,8 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> ]q <Plug>(lsp-next-diagnostic)
   nmap <buffer> K <plug>(lsp-hover)
   nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic --buffers=*<CR>
+  nnoremap <buffer> <expr><c-j> lsp#scroll(+4)
+  nnoremap <buffer> <expr><c-k> lsp#scroll(-4)
 
   let g:lsp_format_sync_timeout = 1000
   if &ft == 'rust' || &ft == 'go' || &ft == 'dart' || &ft == 'sql' || matchstr(&ft, 'typescript*') != ''
