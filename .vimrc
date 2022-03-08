@@ -41,7 +41,7 @@ function! g:Job()
   call inputrestore()
   execute 'terminal ' . command
 endfunction
-command! -nargs=0 Sqlp tabnew | b# | execute "terminal echo '" . join(getline(1, '$')) . "'" . ' <Bar> sqlp'
+command! -nargs=0 Sqlp tabedit % | terminal sqlp %
 nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
 nnoremap <leader>A <CMD>tabnew<CR><CMD>call g:Job()<CR><CMD>tabprevious<CR>
 nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
