@@ -35,15 +35,8 @@ endif
 
 nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
 nmap <leader>k <CMD>tabnew<CR><CMD>terminal k9s<CR><C-W>g<Tab>
-function! g:Job()
-  call inputsave()
-  let command = input('Enter command: ')
-  call inputrestore()
-  execute 'terminal ' . command
-endfunction
 command! -nargs=0 Sqlp tabedit % | terminal sqlp %
 nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
-nnoremap <leader>A <CMD>tabnew<CR><CMD>call g:Job()<CR><CMD>tabprevious<CR>
 nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
@@ -233,6 +226,7 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic --buffers=*<CR>
   nnoremap <buffer> <expr><c-j> lsp#scroll(+4)
   nnoremap <buffer> <expr><c-k> lsp#scroll(-4)
+  nnoremap <buffer> <leader>A <CMD>LspCodeAction<CR>
 
   let g:lsp_format_sync_timeout = 1000
   if &ft == 'rust' || &ft == 'go' || &ft == 'dart' || &ft == 'sql' || matchstr(&ft, 'typescript*') != ''
