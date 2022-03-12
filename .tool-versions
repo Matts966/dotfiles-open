@@ -13,3 +13,5 @@ rust 1.52.1
 kustomize 3.8.9
 kubectx 0.9.4
 sops 3.7.1
+ruby 2.6.6
+perl 5.20.1
