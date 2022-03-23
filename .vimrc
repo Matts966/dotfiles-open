@@ -26,6 +26,8 @@ if has('nvim')
   tnoremap <C-O> <C-\><C-N><C-O>
 
   set wildmode=longest:full
+
+  set pumblend=30
 else
   " Auto completion on vim command line
   " This prevents popup mode on nvim
