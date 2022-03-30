@@ -225,7 +225,8 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> [q <Plug>(lsp-previous-diagnostic)
   nmap <buffer> ]q <Plug>(lsp-next-diagnostic)
   nmap <buffer> K <plug>(lsp-hover)
-  nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic --buffers=*<CR>
+  nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic<CR>
+  nmap <buffer> <leader>da <CMD>LspDocumentDiagnostic --buffers=*<CR>
   nnoremap <buffer> <expr><c-j> lsp#scroll(+4)
   nnoremap <buffer> <expr><c-k> lsp#scroll(-4)
   nnoremap <buffer> <leader>A <CMD>LspCodeAction<CR>
