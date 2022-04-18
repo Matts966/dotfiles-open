@@ -189,18 +189,6 @@ if has('nvim')
   let g:auto_save = 1  " enable AutoSave on Vim startup
   autocmd MyAutoCmd FileType magit let b:auto_save = 0
 
-  Plug 'raghur/vim-ghost', { 'do': ':GhostInstall', 'on': [] }
-  let g:ghost_autostart = 1
-  function! s:SetupGhostBuffer()
-    let g:ghost_darwin_app = 'kitty'
-    let g:ghost_cmd = 'tabedit'
-    if match(expand("%:a"), '\v/ghost-(github|reddit|stackexchange|stackoverflow|calendar.google)\.com-')
-      set ft=markdown
-    endif
-  endfunction
-  autocmd MyAutoCmd User vim-ghost#connected call s:SetupGhostBuffer()
-  autocmd MyAutoCmd CursorHold,CursorHoldI * :call plug#load('vim-ghost')
-
   " Unused. would like to use this after black hole register related bugs
   " are fixed.
   " Plug 'tversteeg/registers.nvim'
