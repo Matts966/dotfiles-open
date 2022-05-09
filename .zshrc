@@ -38,7 +38,7 @@ zstyle ':fzf-tab:*' fzf-flags --height 100%
 
 zinit light MichaelAquilina/zsh-auto-notify
 export AUTO_NOTIFY_THRESHOLD=5
-AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit" "nnn" "k9s")
+AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit" "nnn" "k9s", "kubectx")
 
 # rg
 zinit ice as"program" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
