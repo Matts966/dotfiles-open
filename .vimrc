@@ -102,6 +102,8 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'rhysd/conflict-marker.vim'
+
 Plug 'github/copilot.vim'
 
 Plug 'tyru/open-browser-github.vim'
