@@ -112,9 +112,3 @@ fi
 if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
-
-. $HOME/.asdf/asdf.sh
-fpath=($HOME/.asdf/completions $fpath)
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-source <(asdf exec kubectl completion zsh)
-. ~/.asdf/plugins/java/set-java-home.zsh

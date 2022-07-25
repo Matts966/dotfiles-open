@@ -294,7 +294,7 @@ if get(g:, 'goyo_now', 0) == 0
   set relativenumber
 endif
 
-Plug 'tamuhey/vim-jupyter'
+" Plug 'tamuhey/vim-jupyter'
 
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'vim-plug'] }
 
@@ -329,7 +329,7 @@ set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
 autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
 
-Plug 'psliwka/vim-smoothie'
+" Plug 'psliwka/vim-smoothie'
 
 Plug 'thinca/vim-qfreplace'
 
@@ -611,3 +611,5 @@ nnoremap <expr> q (&modifiable && !&readonly ? 'q' : ':close!<CR>')
 autocmd MyAutoCmd BufEnter *.txt,*.jax if &filetype=='help' | wincmd L | endif
 
 autocmd MyAutoCmd FileType qf setlocal wrap
+
+let g:neovide_transparency=0.8
