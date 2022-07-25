@@ -621,6 +621,7 @@ if exists('g:neovide')
   nnoremap <D-v> "+p
   inoremap <D-v> <Esc>"+pa
   cnoremap <D-v> <c-r>+
+  tnoremap <D-v> <Esc>p
 
   " undo
   nnoremap <D-z> u
