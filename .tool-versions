@@ -2,16 +2,12 @@ java adoptopenjdk-8.0.282+8
 kubectl 1.21.1
 neovim 0.6.0
 terraform 1.0.4
-# protoc 3.17.3
 direnv system
 cloudsql-proxy 1.23.0
-# flutter 2.0.4-stable
 golang 1.16
 nodejs 14.18.2
 rust nightly
 kustomize 3.8.9
 kubectx 0.9.4
 sops 3.7.1
-# ruby 2.6.6
-# perl 5.20.1
 python 3.8.10
