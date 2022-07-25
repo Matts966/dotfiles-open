@@ -611,15 +611,14 @@ autocmd MyAutoCmd BufEnter *.txt,*.jax if &filetype=='help' | wincmd L | endif
 
 autocmd MyAutoCmd FileType qf setlocal wrap
 
-let g:neovide_transparency=0.8
 if exists('g:neovide')
   let g:neovide_input_use_logo=v:true
   " copy
   vnoremap <D-c> "+y
 
   " paste
-  nnoremap <D-v> "+p
-  inoremap <D-v> <Esc>"+pa
+  nnoremap <D-v> "+P
+  inoremap <D-v> <Esc>"+P
   cnoremap <D-v> <c-r>+
   tnoremap <D-v> <C-\><C-n>"+pi<right>
 
@@ -628,4 +627,5 @@ if exists('g:neovide')
   inoremap <D-z> <Esc>ua
   let g:neovide_remember_window_size = v:true
   let g:neovide_cursor_vfx_mode = "railgun"
+  let g:neovide_transparency=0.9
 endif
