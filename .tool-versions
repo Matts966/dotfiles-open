@@ -14,3 +14,4 @@ kubectx 0.9.4
 sops 3.7.1
 # ruby 2.6.6
 # perl 5.20.1
+python 3.8.10
