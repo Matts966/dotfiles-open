@@ -102,6 +102,7 @@ endif
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 	cut -d' ' -f1 .tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
+	brew install direnv
 	~/.asdf/bin/asdf direnv setup --shell zsh --version system
 
 .PHONY: help
