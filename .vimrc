@@ -215,8 +215,6 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> gr <plug>(lsp-references)
   nmap <buffer> gi <plug>(lsp-implementation)
   nmap <buffer> <leader>rn <plug>(lsp-rename)
-  nmap <buffer> [q <Plug>(lsp-previous-diagnostic)
-  nmap <buffer> ]q <Plug>(lsp-next-diagnostic)
   nmap <buffer> K <plug>(lsp-hover)
   nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic<CR>
   nmap <buffer> <leader>da <CMD>LspDocumentDiagnostic --buffers=*<CR>
