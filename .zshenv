@@ -54,6 +54,3 @@ if [[ $TERM_PROGRAM != "Apple_Terminal" ]]; then
 fi
 export FZF_DEFAULT_COMMAND='fd --type=file --hidden --exclude ".git" --exclude "node_modules"'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-
-# Smooth scroll for neovide
-export NEOVIDE_MULTIGRID=1
