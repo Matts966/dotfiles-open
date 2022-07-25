@@ -1,6 +1,6 @@
 ripgrep
 bat
-fd
-delta
+fd-find
+git-delta
 spotify-tui
 tokei
