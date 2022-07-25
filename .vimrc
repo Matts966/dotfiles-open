@@ -627,4 +627,5 @@ if exists('g:neovide')
   nnoremap <D-z> u
   inoremap <D-z> <Esc>ua
   let g:neovide_remember_window_size = v:true
+  let g:neovide_cursor_vfx_mode = "railgun"
 endif
