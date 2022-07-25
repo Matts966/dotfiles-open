@@ -1,5 +1,23 @@
 export LANG=ja_JP.UTF-8
 
+# zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+mkdir -p "$(dirname $ZINIT_HOME)"
+git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit ice from"gh-r" as"program"
+zinit light junegunn/fzf
+
+# gh
+zinit ice as"program" from"gh-r" mv"gh* -> gh" pick"gh/bin/gh"
+zinit light cli/cli
+
+zinit load b4b4r07/zsh-gomi
+alias rm='echo "This is not the command you are looking for, use gomi -s."; false'
+
 # Overwrite keybinds
 source ~/.keybinds.zsh
 zinit ice multisrc"shell/*.zsh" id-as"junegunn/fzf_completions" pick"/dev/null"

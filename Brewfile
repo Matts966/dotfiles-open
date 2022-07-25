@@ -16,6 +16,8 @@ brew "coreutils"
 brew "gawk"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
+# Remote repository management made easy
+brew "ghq"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Graph visualization software from AT&T and Bell Labs
@@ -26,6 +28,10 @@ brew "helm"
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "k9s"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Linux virtual machines
 brew "lima"
 # Next-gen compiler infrastructure
@@ -54,7 +60,7 @@ brew "wget"
 brew "zlib"
 # Kubectl Argo Rollouts Plugin.
 brew "argoproj/tap/kubectl-argo-rollouts"
-# Utility to set up alt-tab to switch between windows
+# Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
 cask "appcleaner"
@@ -68,6 +74,8 @@ cask "cloudytabs"
 cask "google-chrome"
 # Keyboard customizer
 cask "karabiner-elements"
+# Neovim Client
+cask "neovide"
 # Music streaming service
 cask "spotify"
 # Configurable document editor that supports Markdown

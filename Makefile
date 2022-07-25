@@ -98,11 +98,7 @@ ifeq  ($(shell uname),Linux)
 	sudo apt-get update; sudo apt-get install -y zsh; sudo chsh -s /usr/bin/zsh
 endif
 
-~/.zinit:
-	# Install zinit
-	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-
-~/.asdf:
+~/.csdf:
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 	cut -d' ' -f1 .tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add

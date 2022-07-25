@@ -1,7 +1,6 @@
 " Keys are mapped with the mapping with the time so
 " important settings should be written earlier.
 let mapleader = "\<Space>" " Remap <leader> key to space
-
 augroup MyAutoCmd
   autocmd!
 augroup END
@@ -626,4 +625,5 @@ if exists('g:neovide')
   " undo
   nnoremap <D-z> u
   inoremap <D-z> <Esc>ua
+  let g:neovide_remember_window_size = v:true
 endif
