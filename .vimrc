@@ -100,6 +100,19 @@ call plug#begin('~/.vim/plugged')
 
 
 
+" Use emoji-fzf and fzf to fuzzy-search for emoji, and insert the result
+function! InsertEmoji(emoji)
+    let @a = system('cut -d " " -f 1 | emoji-fzf get', a:emoji)
+    normal! "agP
+endfunction
+command! -bang Emoj
+  \ call fzf#run(fzf#wrap({
+      \ 'source': 'emoji-fzf preview',
+      \ 'options': "--preview 'emoji-fzf get --name {1}' ".$FZF_DEFAULT_OPTS,
+      \ 'sink': function('InsertEmoji')
+      \ }))
+map <C-x><C-e> :Emoj<CR>
+imap <C-x><C-e> <C-o><C-x>
 
 Plug 'rhysd/conflict-marker.vim'
 
