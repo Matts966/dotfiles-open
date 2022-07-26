@@ -101,6 +101,7 @@ call plug#begin('~/.vim/plugged')
 
 
 
+Plug 'luk400/vim-jukit'
 
 " Use emoji-fzf and fzf to fuzzy-search for emoji, and insert the result
 function! InsertEmoji(emoji)
