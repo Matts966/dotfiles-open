@@ -638,5 +638,5 @@ if exists('g:neovide')
   inoremap <D-z> <Esc>ua
   let g:neovide_remember_window_size = v:true
   let g:neovide_cursor_vfx_mode = "railgun"
-  let g:neovide_transparency=0.9
+  let g:neovide_transparency=0.5
 endif
