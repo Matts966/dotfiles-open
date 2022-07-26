@@ -617,10 +617,10 @@ if exists('g:neovide')
   vnoremap <D-c> "+y
 
   " paste
-  nnoremap <D-v> "+P
-  inoremap <D-v> <Esc>"+P
-  cnoremap <D-v> <c-r>+
-  tnoremap <D-v> <C-\><C-n>"+pi<right>
+  nnoremap <D-v> p
+  inoremap <D-v> <C-r>+
+  cnoremap <D-v> <C-r>+
+  tnoremap <D-v> <C-\><C-n>pi
 
   " undo
   nnoremap <D-z> u
