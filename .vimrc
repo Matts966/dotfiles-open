@@ -112,7 +112,7 @@ command! -bang Emoj
       \ 'sink': function('InsertEmoji')
       \ }))
 map <C-x><C-e> :Emoj<CR>
-imap <C-x><C-e> <C-o><C-x>
+imap <C-x><C-e> <C-o><C-x><C-e>
 
 Plug 'rhysd/conflict-marker.vim'
 
