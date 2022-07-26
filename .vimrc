@@ -646,6 +646,6 @@ if exists('g:neovide')
   function! ChangeTransparency(delta)
     let g:neovide_transparency = g:neovide_transparency + a:delta
   endfunction
-  noremap <expr><D-]> ChangeTransparency(0.1)
-  noremap <expr><D-[> ChangeTransparency(-0.1)
+  noremap <expr><D-]> ChangeTransparency(0.01)
+  noremap <expr><D-[> ChangeTransparency(-0.01)
 endif
