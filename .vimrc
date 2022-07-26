@@ -85,6 +85,8 @@ set updatetime=250
 
 set background=dark
 
+set mouse=a
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
