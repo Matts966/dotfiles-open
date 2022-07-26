@@ -339,7 +339,7 @@ set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
 autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
 
-" Plug 'psliwka/vim-smoothie'
+Plug 'psliwka/vim-smoothie'
 
 Plug 'thinca/vim-qfreplace'
 
