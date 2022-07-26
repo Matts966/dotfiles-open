@@ -625,7 +625,16 @@ if exists('g:neovide')
   " undo
   nnoremap <D-z> u
   inoremap <D-z> <Esc>ua
+
   let g:neovide_remember_window_size = v:true
   let g:neovide_cursor_vfx_mode = "railgun"
-  let g:neovide_transparency=0.7
+
+
+  " transparency
+  let g:neovide_transparency=0.8
+  function! ChangeTransparency(delta)
+    let g:neovide_transparency = g:neovide_transparency + a:delta
+  endfunction
+  noremap <expr><D-]> ChangeTransparency(0.1)
+  noremap <expr><D-[> ChangeTransparency(-0.1)
 endif
