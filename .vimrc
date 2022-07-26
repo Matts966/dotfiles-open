@@ -198,18 +198,6 @@ Plug 'makerj/vim-pdf'
 
 Plug 'stsewd/gx-extended.vim'
 
-if has('nvim')
-  Plug '907th/vim-auto-save'
-  let g:auto_save = 1  " enable AutoSave on Vim startup
-  autocmd MyAutoCmd FileType magit let b:auto_save = 0
-
-  " Unused. would like to use this after black hole register related bugs
-  " are fixed.
-  " Plug 'tversteeg/registers.nvim'
-  " else
-  " Plug 'junegunn/vim-peekaboo'
-endif
-
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
