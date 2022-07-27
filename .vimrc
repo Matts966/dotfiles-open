@@ -655,4 +655,7 @@ if exists('g:neovide')
   noremap <expr><D-[> ChangeTransparency(-0.01)
 
   tnoremap <C-CR> <CR>
+  tnoremap <S-BS> <BS>
+  tnoremap <C-BS> <BS>
+  tnoremap <C-Tab> <Tab>
 endif
