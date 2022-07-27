@@ -101,7 +101,11 @@ call plug#begin('~/.vim/plugged')
 
 
 
+let g:jukit_mappings = 0
 Plug 'luk400/vim-jukit'
+nnoremap <leader><CR> :call jukit#send#section(1)<cr>
+nnoremap <leader>on :call jukit#convert#notebook_convert("jupyter-notebook")<cr>:tcd %:p:h<CR>
+nnoremap <leader>os :call jukit#splits#output()<cr><esc>
 
 " Use emoji-fzf and fzf to fuzzy-search for emoji, and insert the result
 function! InsertEmoji(emoji)
