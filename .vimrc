@@ -653,4 +653,6 @@ if exists('g:neovide')
   endfunction
   noremap <expr><D-]> ChangeTransparency(0.01)
   noremap <expr><D-[> ChangeTransparency(-0.01)
+
+  tnoremap <C-CR> <CR>
 endif
