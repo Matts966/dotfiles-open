@@ -111,6 +111,7 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
     \ 'useSkkServer': v:true,
     \ 'skkServerPort': 55100,
+    \ 'keepState': v:true,
     \ })
     \ | call skkeleton#register_kanatable('rom', {
     \   "/": ["・", ""],
