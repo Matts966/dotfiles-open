@@ -115,6 +115,7 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ | call skkeleton#register_kanatable('rom', {
     \   "/": ["・", ""],
     \ })
+autocmd VimEnter * lua require'skkeleton_indicator'.setup{ eijiText = 'AaBb', hiraText = 'Hira' }
 autocmd MyAutoCmd User skkeleton-initialize-post call
     \ ddc#custom#patch_global('sources', ['skkeleton'])
     \ | call ddc#custom#patch_global('sourceOptions', {
