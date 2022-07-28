@@ -102,49 +102,46 @@ call plug#begin('~/.vim/plugged')
 
 
 
-" " okURinas と誤変換されたり、サーバが動作しない。いったんコメントアウト
-" Plug 'vim-denops/denops.vim'
-" Plug 'vim-skk/skkeleton'
-" Plug 'Shougo/ddc.vim'
-" augroup skkeleton-initialize-pre
-"   autocmd!
-"   autocmd User skkeleton-initialize-pre call skkeleton#config({
-"       \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
-"       \ 'useSkkServer': v:true,
-"       \ 'skkServerPort': 55100,
-"       \ })
-"       \ | call ddc#custom#patch_global('sources', ['skkeleton'])
-"       \ | call ddc#custom#patch_global('sourceOptions', {
-"       \   '_': {
-"       \     'matchers': ['matcher_head'],
-"       \     'sorters': ['sorter_rank']
-"       \   },
-"       \   'skkeleton': {
-"       \     'mark': 'skkeleton',
-"       \     'matchers': ['skkeleton'],
-"       \     'sorters': [],
-"       \     'minAutoCompleteLength': 1,
-"       \   },
-"       \ })
-" autocmd MyAutoCmd User skkeleton-enable-pre  call ddc#enable()
-" autocmd MyAutoCmd User skkeleton-disable-pre call ddc#disable()
-" imap <C-j> <Plug>(skkeleton-toggle)
-" cmap <C-j> <Plug>(skkeleton-toggle)
 " SKK
-Plug 'tyru/eskk.vim', { 'on': [] }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
-autocmd MyAutoCmd User eskk-enable-pre :call deoplete#enable()
-autocmd MyAutoCmd User eskk-disable-pre :call deoplete#disable()
-let g:eskk#start_completion_length = 1
-let g:eskk#directory = "~/.skk"
-let g:eskk#server = {
-\    'host': '0.0.0.0',
-\    'port': 55100,
-\}
-let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8' }
-let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp' }
-Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
+Plug 'vim-denops/denops.vim', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-skk/skkeleton'
+Plug 'Shougo/ddc.vim'
+autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
+    \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
+    \ 'useSkkServer': v:true,
+    \ 'skkServerPort': 55100,
+    \ })
+autocmd MyAutoCmd  User skkeleton-initialize-post call ddc#custom#patch_global('sources', ['skkeleton'])
+    \ | call ddc#custom#patch_global('sourceOptions', {
+    \   '_': {
+    \     'matchers': ['matcher_head'],
+    \     'sorters': ['sorter_rank']
+    \   },
+    \   'skkeleton': {
+    \     'mark': 'skkeleton',
+    \     'matchers': ['skkeleton'],
+    \     'sorters': [],
+    \     'minAutoCompleteLength': 1,
+    \   },
+    \ })
+autocmd MyAutoCmd User skkeleton-enable-pre  call ddc#enable()
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
+
+" Plug 'tyru/eskk.vim', { 'on': [] }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
+" autocmd MyAutoCmd User eskk-enable-pre :call deoplete#enable()
+" autocmd MyAutoCmd User eskk-disable-pre :call deoplete#disable()
+" let g:eskk#start_completion_length = 1
+" let g:eskk#directory = "~/.skk"
+" let g:eskk#server = {
+" \    'host': '0.0.0.0',
+" \    'port': 55100,
+" \}
+" let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8' }
+" let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp' }
+" Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
 
 let g:jukit_mappings = 0
 Plug 'luk400/vim-jukit'
