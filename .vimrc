@@ -111,7 +111,11 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ 'useSkkServer': v:true,
     \ 'skkServerPort': 55100,
     \ })
-autocmd MyAutoCmd  User skkeleton-initialize-post call ddc#custom#patch_global('sources', ['skkeleton'])
+    \ | call skkeleton#register_kanatable('rom', {
+    \   "/": ["・", ""],
+    \ })
+autocmd MyAutoCmd User skkeleton-initialize-post call
+    \ ddc#custom#patch_global('sources', ['skkeleton'])
     \ | call ddc#custom#patch_global('sourceOptions', {
     \   '_': {
     \     'matchers': ['matcher_head'],
