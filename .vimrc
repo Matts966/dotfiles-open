@@ -119,7 +119,8 @@ Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
 
 let g:jukit_mappings = 0
 Plug 'luk400/vim-jukit'
-nnoremap <leader><CR> :call jukit#send#section(1)<CR>
+nnoremap <leader><C-CR> :call jukit#send#section(1)<CR>
+nnoremap <leader><CR> :call jukit#send#section(0)<CR>
 nnoremap <leader>on :call jukit#convert#notebook_convert("jupyter-notebook")<CR>
 nnoremap <leader>os :tcd %:p:h<CR>:call jukit#splits#output()<CR><ESC>:tcd -<CR>
 autocmd ColorScheme * highlight! jukit_textcell_bg_colors guibg=#131628 ctermbg=16
