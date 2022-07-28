@@ -101,6 +101,35 @@ call plug#begin('~/.vim/plugged')
 
 
 
+
+" " okURinas と誤変換されたり、サーバが動作しない。いったんコメントアウト
+" Plug 'vim-denops/denops.vim'
+" Plug 'vim-skk/skkeleton'
+" Plug 'Shougo/ddc.vim'
+" augroup skkeleton-initialize-pre
+"   autocmd!
+"   autocmd User skkeleton-initialize-pre call skkeleton#config({
+"       \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
+"       \ 'useSkkServer': v:true,
+"       \ 'skkServerPort': 55100,
+"       \ })
+"       \ | call ddc#custom#patch_global('sources', ['skkeleton'])
+"       \ | call ddc#custom#patch_global('sourceOptions', {
+"       \   '_': {
+"       \     'matchers': ['matcher_head'],
+"       \     'sorters': ['sorter_rank']
+"       \   },
+"       \   'skkeleton': {
+"       \     'mark': 'skkeleton',
+"       \     'matchers': ['skkeleton'],
+"       \     'sorters': [],
+"       \     'minAutoCompleteLength': 1,
+"       \   },
+"       \ })
+" autocmd MyAutoCmd User skkeleton-enable-pre  call ddc#enable()
+" autocmd MyAutoCmd User skkeleton-disable-pre call ddc#disable()
+" imap <C-j> <Plug>(skkeleton-toggle)
+" cmap <C-j> <Plug>(skkeleton-toggle)
 " SKK
 Plug 'tyru/eskk.vim', { 'on': [] }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
