@@ -130,9 +130,8 @@ autocmd MyAutoCmd User skkeleton-initialize-post call
     \     'minAutoCompleteLength': 1,
     \   },
     \ })
-    \ | lua require'skkeleton_indicator'.setup()
-autocmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 guibg=#2e3440 gui=bold
-autocmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#2e3440 guibg=#a3be8c gui=bold
+autocmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 gui=bold
+autocmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
 autocmd MyAutoCmd User skkeleton-enable-pre call ddc#enable()
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
