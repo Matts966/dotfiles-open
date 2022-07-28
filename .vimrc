@@ -122,6 +122,8 @@ Plug 'luk400/vim-jukit'
 nnoremap <leader><CR> :call jukit#send#section(1)<CR>
 nnoremap <leader>on :call jukit#convert#notebook_convert("jupyter-notebook")<CR>
 nnoremap <leader>os :tcd %:p:h<CR>:call jukit#splits#output()<CR><ESC>:tcd -<CR>
+autocmd ColorScheme * highlight! jukit_textcell_bg_colors guibg=#131628 ctermbg=16
+autocmd ColorScheme * highlight! jukit_cellmarker_colors guifg=#1d615a guibg=#1d615a ctermbg=22 ctermfg=22
 
 " Use emoji-fzf and fzf to fuzzy-search for emoji, and insert the result
 function! InsertEmoji(emoji)
