@@ -107,6 +107,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
 autocmd MyAutoCmd User eskk-enable-pre :call deoplete#enable()
 autocmd MyAutoCmd User eskk-disable-pre :call deoplete#disable()
+let g:eskk#start_completion_length = 1
 let g:eskk#directory = "~/.skk"
 let g:eskk#server = {
 \    'host': '0.0.0.0',
