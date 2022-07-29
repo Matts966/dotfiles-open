@@ -116,6 +116,7 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ | call skkeleton#register_kanatable('rom', {
     \   "/": ["・", ""],
     \ })
+    \ | call ddc#enable()
 autocmd VimEnter * lua require'skkeleton_indicator'.setup{ eijiText = 'AaBb', hiraText = 'Hira' }
 autocmd MyAutoCmd User skkeleton-initialize-post call
     \ ddc#custom#patch_global('sources', ['skkeleton'])
@@ -134,10 +135,8 @@ autocmd MyAutoCmd User skkeleton-initialize-post call
     \ | call ddc#custom#patch_global('backspaceCompletion', v:true)
 " SKKは文字数が増えるとなぜか補完が起動しなくなる
 inoremap <silent><expr> <TAB> ddc#map#manual_complete()
-
 autocmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 gui=bold
 autocmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
-autocmd MyAutoCmd User skkeleton-enable-pre call ddc#enable()
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
