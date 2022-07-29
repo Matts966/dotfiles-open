@@ -117,6 +117,8 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ | call skkeleton#register_kanatable('rom', {
     \   "/": ["・", ""],
     \ })
+    \ | call skkeleton#register_keymap('henkan', "\<BS>", 'henkanBackward')
+    \ | call skkeleton#register_keymap('henkan', "\<C-h>", 'henkanBackward')
     \ | call ddc#enable()
 autocmd VimEnter * lua require'skkeleton_indicator'.setup{ eijiText = 'AaBb', hiraText = 'Hira' }
 autocmd MyAutoCmd User skkeleton-initialize-post call
