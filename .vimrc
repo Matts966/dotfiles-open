@@ -113,6 +113,7 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ 'skkServerPort': 55100,
     \ 'keepState': v:true,
     \ 'eggLikeNewline': v:true,
+    \ 'immediatelyCancel': v:false,
     \ })
     \ | call skkeleton#register_kanatable('rom', {
     \   "/": ["・", ""],
