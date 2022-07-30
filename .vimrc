@@ -199,7 +199,7 @@ let g:mkdp_browserfunc = 'g:Open'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'lambdalisue/fern.vim'
-" Plug 'lambdalisue/fern-hijack.vim'
+Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 function! s:init_fern() abort
   setlocal wrap
