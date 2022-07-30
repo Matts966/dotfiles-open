@@ -943,14 +943,6 @@
             "manipulators": [
               {
                 "type": "basic",
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application"
-                  }
-                ],
                 "from": {
                   "key_code": "k",
                   "modifiers": {
@@ -972,14 +964,6 @@
               },
               {
                 "type": "basic",
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application"
-                  }
-                ],
                 "from": {
                   "key_code": "j",
                   "modifiers": {
