@@ -937,6 +937,69 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Jupyter on VSCodeでスクロールが利かないのでcommand+j,kを使用",
+            "manipulators": [
+              {
+                "type": "basic",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.microsoft\\.VSCode$"
+                    ],
+                    "type": "frontmost_application"
+                  }
+                ],
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "mouse_key": {
+                      "vertical_wheel": -32
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.microsoft\\.VSCode$"
+                    ],
+                    "type": "frontmost_application"
+                  }
+                ],
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "mouse_key": {
+                      "vertical_wheel": 32
+                    }
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
