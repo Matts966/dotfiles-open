@@ -103,15 +103,8 @@ call plug#begin('~/.vim/plugged')
 
 
 " SKK
-function! Convert()
-  let l:reg = getreg('*')
-  echom reg
-  let l:res = system('convert_to_roman.sh', reg)
-  echom res
-  call nvim_input('<C-k>;' . res)
-endfunction
-imap <C-k> <Plug>(skkeleton-enable)
-vnoremap <C-j> c<CMD>:call Convert()<CR>
+let g:skk_enable_henkan_command = "\<C-r>=skkeleton#request('enable', [])\<CR>;"
+vnoremap <C-j> c<CMD>call feedkeys(g:skk_enable_henkan_command . system('convert_to_roman.sh', getreg('*')), 't')<CR>
 Plug 'vim-denops/denops.vim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-skk/skkeleton'
 Plug 'delphinus/skkeleton_indicator.nvim'
