@@ -686,7 +686,8 @@ if exists('g:neovide')
 
   " paste
   nnoremap <D-v> p
-  inoremap <D-v> <C-r>+
+  set pastetoggle=<F3>
+  inoremap <D-v> <F3><C-r>+<F3>
   cnoremap <D-v> <C-r>+
   tnoremap <D-v> <C-\><C-n>pi
 
