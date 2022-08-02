@@ -1,3 +1,7 @@
+" プラグインの組み合わせによって出たり出なかったりするので
+" チラツキを抑えるためにスタートページを無効化
+set shm+=I
+
 " Keys are mapped with the mapping with the time so
 " important settings should be written earlier.
 let mapleader = "\<Space>" " Remap <leader> key to space
