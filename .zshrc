@@ -48,16 +48,16 @@ zinit light kubernetes-sigs/kind
 # j2p2j
 zinit ice from"gh-r" as"program" mv"j2p2j* -> j2p2j"
 zinit light tamuhey/j2p2j
-zinit light jonmosco/kube-ps1
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
   zsh-users/zsh-completions \
   light-mode Aloxaf/fzf-tab
 
-KUBE_PS1_SYMBOL_ENABLE=false
-KUBE_PS1_CTX_COLOR=yellow
 PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
 "
+zinit light jonmosco/kube-ps1
+KUBE_PS1_SYMBOL_ENABLE=false
+KUBE_PS1_CTX_COLOR=yellow
 PROMPT=$PROMPT'$(kube_ps1)
 '
 PROMPT=$PROMPT"%F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
