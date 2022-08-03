@@ -53,7 +53,8 @@ nnoremap k gk
 set ignorecase
 set smartcase " Case Sensitive only with upper case
 set wrapscan
-set hlsearch"}}}
+set hlsearch
+"}}}
 
 " Clear search result on <C-l>{{{
 nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
@@ -62,7 +63,8 @@ nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
 " コマンド履歴1000件に{{{
 if &history < 1000
   set history=1000
-endif"}}}
+endif
+"}}}
 
 " Mimic Emacs Line Editing in Insert and Ex Mode Only{{{
 inoremap <C-A> <Home>
@@ -70,7 +72,8 @@ inoremap <C-F> <Right>
 inoremap <C-B> <Left>
 inoremap <C-E> <End>
 cnoremap <C-A> <Home>
-cnoremap <C-B> <Left>"}}}
+cnoremap <C-B> <Left>
+"}}}
 
 " vim-plug{{{
 " Specify a directory for plugins
@@ -127,7 +130,6 @@ else
 endif
 "}}}
 
-
 " VSCodeの場合終了{{{
 if exists('g:vscode')
   "Do not execute rest of init.vim, do not apply any configs
@@ -135,6 +137,7 @@ if exists('g:vscode')
   finish
 endif
 "}}}
+
 "}}}
 
 " VSCodeでは使わないもの{{{
@@ -181,7 +184,8 @@ autocmd MyAutoCmd User skkeleton-initialize-post call
 autocmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 gui=bold
 autocmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
 imap <C-j> <Plug>(skkeleton-toggle)
-cmap <C-j> <Plug>(skkeleton-toggle)"}}}
+cmap <C-j> <Plug>(skkeleton-toggle)
+"}}}
 
 " Jupyter on Vim{{{
 Plug 'luk400/vim-jukit'
@@ -509,6 +513,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'cocopon/iceberg.vim'
 "}}}
 
+Plug 'dbinagi/nomodoro'
+
 " Initialize plugin system
 call plug#end()"}}}
 
@@ -533,7 +539,8 @@ highlight CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
 
 " netrw{{{
 let g:netrw_liststyle=3
-let g:netrw_keepj="""}}}
+let g:netrw_keepj=""
+"}}}
 
 " widler, コマンドライン自動補完{{{
 call wilder#enable_cmdline_enter()
@@ -554,7 +561,8 @@ call wilder#set_option('pipeline', [wilder#branch([
       \     wilder#cmdline_pipeline(),
       \     wilder#search_pipeline(),
       \   ),
-      \ ])"}}}
+      \ ])
+"}}}
 
 " Create dir if not exists when writing new file.{{{
 autocmd MyAutoCmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
@@ -582,14 +590,16 @@ autocmd MyAutoCmd VimEnter * call s:LoadPlugins()
 autocmd MyAutoCmd BufWritePost .vimrc ++nested source $MYVIMRC
 map <leader>w <Cmd>write<CR>
 command! -nargs=0 LoadPlugins call s:LoadPlugins()
-map <leader>r <Cmd>silent! wa!<CR><Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>"}}}
+map <leader>r <Cmd>silent! wa!<CR><Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
+"}}}
 
 " Quit all read only buffers with q{{{
 nnoremap <expr> q (&modifiable && !&readonly ? 'q' : ':close!<CR>')
 "}}}
 
 " Help vertical{{{
-autocmd MyAutoCmd BufEnter *.txt,*.jax if &filetype=='help' | wincmd L | endif"}}}
+autocmd MyAutoCmd BufEnter *.txt,*.jax if &filetype=='help' | wincmd L | endif
+"}}}
 
 " ターミナル移動{{{
 " Comment out after " for automatically startinsert
@@ -620,7 +630,8 @@ function g:PrevTerm()
       break
     endif
   endwhile
-endfunction"}}}
+endfunction
+"}}}
 
 " ターミナル系コマンド{{{
 nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
@@ -628,7 +639,8 @@ nmap <leader>k <CMD>tabnew<CR><CMD>terminal k9s<CR><C-W>g<Tab>
 command! -nargs=0 Sqlp tabedit % | terminal sqlp %
 nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
 nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
-command! -nargs=0 Marp tabedit % | terminal marp --preview %"}}}
+command! -nargs=0 Marp tabedit % | terminal marp --preview %
+"}}}
 
 autocmd MyAutoCmd FileType qf setlocal wrap"{{{
 "}}}
@@ -664,7 +676,8 @@ else
   " This prevents popup mode on nvim
   set wildmode=list:longest
   source $VIMRUNTIME/defaults.vim
-endif"}}}
+endif
+"}}}
 
 " Neovide 設定{{{
 if exists('g:neovide')
@@ -708,4 +721,5 @@ if exists('g:neovide')
   tnoremap <S-BS> <BS>
   tnoremap <C-BS> <BS>
   tnoremap <C-Tab> <Tab>
-endif"}}}
+endif
+"}}}
