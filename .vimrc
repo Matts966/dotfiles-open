@@ -664,10 +664,6 @@ if has('nvim')
   set wildmode=longest:full
 
   set pumblend=30
-  hi! link Pmenu icebergNormalFg
-  hi! link PmenuSbar icebergNormalFg
-  hi! link PmenuSel icebergNormalFg
-  hi! link PmenuThumb icebergNormalFg
 else
   " Auto completion on vim command line
   " This prevents popup mode on nvim
