@@ -75,7 +75,7 @@ cnoremap <C-A> <Home>
 cnoremap <C-B> <Left>
 "}}}
 
-" vim-plug{{{
+" vim-plug, Make sure you use single quotes {{{
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -85,9 +85,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd MyAutoCmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
-
 
 
 " VSCodeでも使うもの{{{
