@@ -106,9 +106,10 @@ Plug 'stsewd/gx-extended.vim'
 Plug 'machakann/vim-sandwich'
 " Toggle comment out with gcc and gc with selection.
 Plug 'tpope/vim-commentary'
-" Terraform and ipynb
+" Terraform
 autocmd MyAutoCmd FileType tf setlocal commentstring=#\ %s
-autocmd MyAutoCmd BufEnter *.ipynb setlocal commentstring=#\ %s
+" Jupyter on VSCode
+autocmd MyAutoCmd BufEnter *.ipynb#* setlocal commentstring=#\ %s
 
 Plug 'itchyny/vim-highlighturl'
 
