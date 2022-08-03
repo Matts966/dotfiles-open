@@ -617,6 +617,7 @@ autocmd MyAutoCmd BufEnter *.txt,*.jax if &filetype=='help' | wincmd L | endif
 
 autocmd MyAutoCmd FileType qf setlocal wrap
 
+" Neovide 設定{{{
 if exists('g:neovide')
   let g:neovide_input_use_logo=v:true
   " copy
@@ -658,4 +659,4 @@ if exists('g:neovide')
   tnoremap <S-BS> <BS>
   tnoremap <C-BS> <BS>
   tnoremap <C-Tab> <Tab>
-endif
+endif"}}}
