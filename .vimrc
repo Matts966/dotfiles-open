@@ -207,6 +207,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-git-status.vim'
+let g:fern#default_hidden = 1
 function! s:init_fern() abort
   setlocal wrap
   nmap <buffer> d D
@@ -218,10 +219,13 @@ function! s:init_fern() abort
   nmap <buffer> i <Plug>(fern-action-new-file)
   nmap <buffer> o <Plug>(fern-action-new-dir)
   nmap <buffer> . <Plug>(fern-action-hidden:toggle)
+  nmap <buffer> H <Plug>(fern-action-leave)
+  nmap <buffer> L <Plug>(fern-action-enter)
   nnoremap <buffer> N N
+  call fern#action#call('tcd:root')
 endfunction
 autocmd MyAutoCmd BufEnter fern://* call s:init_fern()
-nnoremap <leader>F <Cmd>Fern -drawer -toggle -reveal=% -width=60 .<CR>
+nnoremap <leader>D <Cmd>Fern -drawer -toggle -reveal=% -width=60 .<CR>
 let g:fern#renderer#default#leaf_symbol = ' '
 let g:fern#renderer#default#collapsed_symbol = '▸'
 let g:fern#renderer#default#expanded_symbol = '▾'
