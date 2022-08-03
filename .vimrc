@@ -149,21 +149,6 @@ autocmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
-" Plug 'tyru/eskk.vim', { 'on': [] }
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" autocmd MyAutoCmd InsertEnter * :call plug#load('eskk.vim')
-" autocmd MyAutoCmd User eskk-enable-pre :call deoplete#enable()
-" autocmd MyAutoCmd User eskk-disable-pre :call deoplete#disable()
-" let g:eskk#start_completion_length = 1
-" let g:eskk#directory = "~/.skk"
-" let g:eskk#server = {
-" \    'host': '0.0.0.0',
-" \    'port': 55100,
-" \}
-" let g:eskk#dictionary = { 'path': "~/.skk-jisyo", 'sorted': 0, 'encoding': 'utf-8' }
-" let g:eskk#large_dictionary = { 'path': "~/.skk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp' }
-" Plug 'tyru/skkdict.vim', { 'for': 'skkdict' }
-
 let g:jukit_mappings = 0
 Plug 'luk400/vim-jukit'
 nnoremap <leader><C-CR> :call jukit#send#section(1)<CR>
