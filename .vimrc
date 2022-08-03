@@ -229,12 +229,6 @@ nnoremap <leader>D <Cmd>Fern -drawer -toggle -reveal=% -width=60 .<CR>
 let g:fern#renderer#default#leaf_symbol = ' '
 let g:fern#renderer#default#collapsed_symbol = '▸'
 let g:fern#renderer#default#expanded_symbol = '▾'
-function! s:OpenDrawer() abort
-  if &modifiable && filereadable(expand('%'))
-    execute 'FernDo -stay FernReveal ' . @%
-  endif
-endfunction
-autocmd MyAutoCmd BufEnter * call s:OpenDrawer()
 
 Plug 'editorconfig/editorconfig-vim'
 nnoremap <leader>ss gg=G``
