@@ -234,11 +234,27 @@ Plug 'editorconfig/editorconfig-vim'
 nnoremap <leader>ss gg=G``
 
 if has('nvim')
+  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 else
   Plug 'Shougo/denite.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
+nnoremap <leader>b <Cmd>Denite buffer -auto-action=preview<CR>
+nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 
 Plug 'jparise/vim-graphql'
 
@@ -466,7 +482,6 @@ command! -bang -nargs=* Rg
       \   fzf#vim#with_preview(), <bang>0)
 nnoremap <leader>f :Rg<CR>
 nnoremap <leader>p :Files<CR>
-nnoremap <leader>b :Buffers<CR>
 
 Plug 'dansomething/vim-hackernews'
 
