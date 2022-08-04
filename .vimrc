@@ -86,7 +86,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 
-
 " VSCodeでも使うもの{{{
 
 " Text Object系{{{
@@ -114,11 +113,15 @@ autocmd MyAutoCmd BufEnter *.ipynb#* setlocal commentstring=#\ %s
 Plug 'itchyny/vim-highlighturl'
 
 " Motion系{{{
+Plug 'unblevable/quick-scope'
 if has('nvim')
   Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
   autocmd! MyAutoCmd User hop.nvim lua require'hop'.setup()
   map  <Leader>j <CMD>HopWord<CR>
   vmap <Leader>j <CMD>HopWordVisual<CR>
+
+  autocmd MyAutoCmd ColorScheme * highlight link QuickScopePrimary HopNextKey
+  autocmd MyAutoCmd ColorScheme * highlight link QuickScopeSecondary HopNextKey1
 else
   Plug 'vim-easymotion/vim-easymotion'
   let g:EasyMotion_do_mapping = 0
@@ -178,8 +181,8 @@ autocmd MyAutoCmd User skkeleton-initialize-post call
 " SKKは文字数が増えるとなぜか補完が起動しなくなる
 " Google IMEでの補完が実装されたら使う
 " inoremap <silent><expr> <C-n> ddc#map#manual_complete()
-autocmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 gui=bold
-autocmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
+autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 gui=bold
+autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 "}}}
@@ -397,8 +400,6 @@ endif
 "}}}
 
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'vim-plug'] }
-
-Plug 'unblevable/quick-scope'
 
 " Git related settings{{{
 Plug 'lambdalisue/gina.vim'
