@@ -115,10 +115,10 @@ Plug 'itchyny/vim-highlighturl'
 " Motion系{{{
 Plug 'unblevable/quick-scope'
 if exists('g:vscode')
-  highlight QuickScopePrimary gui=underline cterm=underline
+  highlight QuickScopePrimary guifg=#00dfff ctermfg=45 gui=underline cterm=underline
   highlight QuickScopeSecondary gui=underline cterm=underline
 else
-  autocmd MyAutoCmd ColorScheme * highlight QuickScopePrimary gui=underline cterm=underline
+  autocmd MyAutoCmd ColorScheme * highlight QuickScopePrimary guifg=#00dfff ctermfg=45 gui=underline cterm=underline
   autocmd MyAutoCmd ColorScheme * highlight QuickScopeSecondary gui=underline cterm=underline
 endif
 if has('nvim')
