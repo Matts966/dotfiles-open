@@ -7,6 +7,9 @@ set shm+=I
 " Keys are mapped with the mapping with the time so
 " important settings should be written earlier.
 let mapleader = "\<Space>" " Remap <leader> key to space
+
+map <leader>w <Cmd>write<CR>
+
 augroup MyAutoCmd
   autocmd!
 augroup END
@@ -592,7 +595,6 @@ function! s:LoadPlugins()
 endfunction
 autocmd MyAutoCmd VimEnter * call s:LoadPlugins()
 autocmd MyAutoCmd BufWritePost .vimrc ++nested source $MYVIMRC
-map <leader>w <Cmd>write<CR>
 command! -nargs=0 LoadPlugins call s:LoadPlugins()
 map <leader>r <Cmd>silent! wa!<CR><Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
 "}}}
