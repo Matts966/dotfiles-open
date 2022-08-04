@@ -114,14 +114,18 @@ Plug 'itchyny/vim-highlighturl'
 
 " Motion系{{{
 Plug 'unblevable/quick-scope'
+if exists('g:vscode')
+  highlight QuickScopePrimary gui=underline cterm=underline
+  highlight QuickScopeSecondary gui=underline cterm=underline
+else
+  autocmd MyAutoCmd ColorScheme * highlight QuickScopePrimary gui=underline cterm=underline
+  autocmd MyAutoCmd ColorScheme * highlight QuickScopeSecondary gui=underline cterm=underline
+endif
 if has('nvim')
   Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
   autocmd! MyAutoCmd User hop.nvim lua require'hop'.setup()
   map  <Leader>j <CMD>HopWord<CR>
   vmap <Leader>j <CMD>HopWordVisual<CR>
-
-  autocmd MyAutoCmd ColorScheme * highlight link QuickScopePrimary HopNextKey
-  autocmd MyAutoCmd ColorScheme * highlight link QuickScopeSecondary HopNextKey1
 else
   Plug 'vim-easymotion/vim-easymotion'
   let g:EasyMotion_do_mapping = 0
