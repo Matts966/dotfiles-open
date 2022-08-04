@@ -112,6 +112,8 @@ autocmd MyAutoCmd BufEnter *.ipynb#* setlocal commentstring=#\ %s
 
 Plug 'itchyny/vim-highlighturl'
 
+Plug 'Yggdroot/indentLine'
+
 " Motion系{{{
 Plug 'unblevable/quick-scope'
 if exists('g:vscode')
