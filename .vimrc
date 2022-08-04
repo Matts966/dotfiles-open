@@ -67,12 +67,12 @@ endif
 "}}}
 
 " Mimic Emacs Line Editing in Insert and Ex Mode Only{{{
-inoremap <C-A> <Home>
-inoremap <C-F> <Right>
-inoremap <C-B> <Left>
-inoremap <C-E> <End>
-cnoremap <C-A> <Home>
-cnoremap <C-B> <Left>
+noremap! <C-A> <Home>
+noremap! <C-F> <Right>
+noremap! <C-B> <Left>
+noremap! <C-E> <End>
+"}}}
+
 "}}}
 
 " vim-plug, Make sure you use single quotes {{{
