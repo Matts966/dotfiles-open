@@ -76,8 +76,6 @@ noremap! <C-B> <Left>
 noremap! <C-E> <End>
 "}}}
 
-"}}}
-
 " vim-plug, Make sure you use single quotes {{{
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
