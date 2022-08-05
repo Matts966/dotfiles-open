@@ -524,24 +524,25 @@ Plug 'dbinagi/nomodoro'
 call plug#end()"}}}
 
 " Colorscheme, plugin読み込み後に{{{
+autocmd ColorScheme * highlight! Visual ctermbg=236 guibg=#363d5c
+autocmd ColorScheme * highlight! VertSplit cterm=NONE
+autocmd ColorScheme * highlight! Pmenu None
+autocmd ColorScheme * highlight! PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
+autocmd ColorScheme * highlight! CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
+
 if $TERM_PROGRAM == 'Apple_Terminal'
   set notermguicolors
 else
   set termguicolors
-  colorscheme iceberg
-  hi Normal guibg=NONE ctermbg=NONE
+  autocmd ColorScheme * highlight! Normal guibg=NONE ctermbg=NONE
   let g:lightline.colorscheme = 'iceberg'
+  colorscheme iceberg
 endif
 " Hide ~
-set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
-" Visible selection
-highlight Visual ctermbg=236 guibg=#363d5c
-highlight VertSplit cterm=NONE
-highlight Pmenu None
-highlight PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
+set fillchars=eob:\ ,
+" カーソルの強調
 set cursorcolumn
 set cursorline
-highlight CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
 "}}}
 
 " netrw{{{
