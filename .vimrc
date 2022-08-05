@@ -314,9 +314,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 autocmd ColorScheme * highlight! link LspErrorHighlight Error
-autocmd ColorScheme * highlight! link LspWarningHighlight WarningMsg
-autocmd ColorScheme * highlight! link LspInformationHighlight WarningMsg
-autocmd ColorScheme * highlight! link LspHintHighlight WarningMsg
+autocmd ColorScheme * highlight! link LspWarningHighlight DiagnosticWarn
+autocmd ColorScheme * highlight! link LspInformationHighlight DiagnosticInfo
+autocmd ColorScheme * highlight! link LspHintHighlight DiagnosticHint
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
