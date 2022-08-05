@@ -534,6 +534,8 @@ else
   hi Normal guibg=NONE ctermbg=NONE
   let g:lightline.colorscheme = 'iceberg'
 endif
+" Hide ~
+set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 " Visible selection
 highlight Visual ctermbg=236 guibg=#363d5c
 highlight VertSplit cterm=NONE
