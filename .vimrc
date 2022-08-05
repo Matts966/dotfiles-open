@@ -169,9 +169,7 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ | call skkeleton#register_keymap('henkan', "\<BS>", 'henkanBackward')
     \ | call skkeleton#register_keymap('henkan', "\<C-h>", 'henkanBackward')
     \ | call ddc#enable()
-autocmd VimEnter * lua require'skkeleton_indicator'.setup{ eijiText = 'AaBb', hiraText = 'Hira' }
-autocmd MyAutoCmd User skkeleton-initialize-post call
-    \ ddc#custom#patch_global('sources', ['skkeleton'])
+    \ | call ddc#custom#patch_global('backspaceCompletion', v:true)
     \ | call ddc#custom#patch_global('sourceOptions', {
     \   '_': {
     \     'matchers': ['matcher_head'],
@@ -184,7 +182,11 @@ autocmd MyAutoCmd User skkeleton-initialize-post call
     \     'minAutoCompleteLength': 1,
     \   },
     \ })
-    \ | call ddc#custom#patch_global('backspaceCompletion', v:true)
+autocmd VimEnter * lua require'skkeleton_indicator'.setup{ eijiText = 'AaBb', hiraText = 'Hira' }
+autocmd MyAutoCmd User skkeleton-enable-pre call
+    \ ddc#custom#patch_global('sources', ['skkeleton'])
+autocmd MyAutoCmd User skkeleton-disable-post call
+    \ ddc#custom#patch_global('sources', [])
 " SKKは文字数が増えるとなぜか補完が起動しなくなる
 " Google IMEでの補完が実装されたら使う
 " inoremap <silent><expr> <C-n> ddc#map#manual_complete()
