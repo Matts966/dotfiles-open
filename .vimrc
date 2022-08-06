@@ -749,5 +749,8 @@ if exists('g:neovide')
   tnoremap <S-BS> <BS>
   tnoremap <C-BS> <BS>
   tnoremap <C-Tab> <Tab>
+
+  set nocursorcolumn
+  set nocursorline
 endif
 "}}}
