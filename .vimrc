@@ -382,6 +382,8 @@ let g:lightline = {
       \   'component_function': { 'gitbranch': 'gina#component#repo#branch' },
       \ }
 "}}}
+let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
+
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }"{{{
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
