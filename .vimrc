@@ -372,7 +372,11 @@ autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <CMD>Black<CR><CMD>Is
 
 Plug 'itchyny/lightline.vim'"{{{
 let g:lightline = {
-      \   'active': { 'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
+      \   'active': {
+      \     'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \     'right': [ [ 'lineinfo' ],
+      \                [ 'percent', 'fileformat', 'fileencoding', 'filetype' ]],
+      \    },
       \   'component_function': { 'gitbranch': 'gina#component#repo#branch' },
       \ }
 "}}}
@@ -537,6 +541,11 @@ else
   set termguicolors
   autocmd ColorScheme * highlight! Normal guibg=NONE ctermbg=NONE
   let g:lightline.colorscheme = 'iceberg'
+  " Transparent lightline
+  let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+  let s:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
+  let s:palette.inactive.middle = s:palette.normal.middle
+  let s:palette.tabline.middle = s:palette.normal.middle
   colorscheme iceberg
 endif
 " Hide ~
