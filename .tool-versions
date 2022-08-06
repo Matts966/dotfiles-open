@@ -1,6 +1,6 @@
 java adoptopenjdk-8.0.282+8
 kubectl 1.21.1
-neovim 0.6.0
+neovim nightly
 terraform 1.0.4
 direnv system
 cloudsql-proxy 1.23.0
