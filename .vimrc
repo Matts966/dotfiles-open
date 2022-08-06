@@ -39,8 +39,6 @@ set tabstop=2
 set shiftwidth=2
 set fileformats=
 
-set cmdheight=0
-
 set fenc=utf-8
 set nobackup
 set noswapfile
