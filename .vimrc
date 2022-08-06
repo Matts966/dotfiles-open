@@ -371,10 +371,9 @@ autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <CMD>Black<CR><CMD>Is
 "}}}
 
 Plug 'itchyny/lightline.vim'"{{{
-Plug 'ojroques/vim-scrollstatus'
 let g:lightline = {
-      \   'active': { 'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ], [ 'scrollbar' ] ] },
-      \   'component_function': { 'scrollbar': 'ScrollStatus', 'gitbranch': 'gina#component#repo#branch' },
+      \   'active': { 'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ] },
+      \   'component_function': { 'gitbranch': 'gina#component#repo#branch' },
       \ }
 "}}}
 
