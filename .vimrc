@@ -263,6 +263,7 @@ function! s:init_fern() abort
 endfunction
 autocmd MyAutoCmd BufEnter fern://* call s:init_fern()
 nnoremap <leader>D <Cmd>Fern -drawer -toggle -reveal=% -width=60 .<CR>
+autocmd MyAutoCmd VimEnter * ++nested Fern ~/ghq
 let g:fern#renderer#default#leaf_symbol = ' '
 let g:fern#renderer#default#collapsed_symbol = '▸'
 let g:fern#renderer#default#expanded_symbol = '▾'
