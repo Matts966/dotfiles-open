@@ -57,6 +57,7 @@ skk:
      -d --restart=always -d -p 55100:55100 matts966/google-ime-skk-docker || true
 
 .PHONY: neovide
+ifeq  ($(shell uname),Darwin)
 neovide:
 	\rm -rf /Applications/Neovide.app
 	(cd $(mktemp -d) && \
@@ -65,6 +66,9 @@ neovide:
 		cargo install cargo-bundle && \
 		cargo bundle --release && \
 		cp -r ./target/release/bundle/osx/neovide.app ~/Applications)
+else
+	cargo install --git https://github.com/neovide/neovide
+endif
 
 .PHONY: secret
 secret:
