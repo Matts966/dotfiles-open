@@ -739,6 +739,7 @@ if exists('g:neovide')
   tnoremap <C-BS> <BS>
   tnoremap <C-Tab> <Tab>
 
+  " Cursor animation does work
   set nocursorcolumn
   set nocursorline
 endif
