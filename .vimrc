@@ -248,7 +248,7 @@ Plug 'lambdalisue/fern-git-status.vim'
 let g:fern#default_hidden = 1
 function! s:init_fern() abort
   setlocal wrap
-  nmap <buffer> d D
+  nmap <buffer> D <Plug>(fern-action-remove=)y<CR>
   nmap <buffer> c C
   nmap <buffer> p P
   nmap <buffer> m M
