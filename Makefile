@@ -38,7 +38,7 @@ deploy: ## Create symlink to home directory
 
 
 .PHONY: init
-init: mac bundle brew ~/.asdf skk ## Initialize installation
+init: mac bundle brew ~/.asdf skk neovide ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
@@ -55,6 +55,16 @@ skk:
     mv SKK-JISYO.L ~/.skk/SKK-JISYO.L
 	docker start google-ime-skk || docker run --name google-ime-skk \
      -d --restart=always -d -p 55100:55100 matts966/google-ime-skk-docker || true
+
+.PHONY: neovide
+neovide:
+	\rm -rf /Applications/Neovide.app
+	(cd $(mktemp -d) && \
+		git clone https://github.com/neovide/neovide && \
+		cd neovide && cargo install --path . && \
+		cargo install cargo-bundle && \
+		cargo bundle --release && \
+		cp -r ./target/release/bundle/osx/neovide.app ~/Applications)
 
 .PHONY: secret
 secret:
