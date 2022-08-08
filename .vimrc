@@ -101,6 +101,21 @@ nmap Y <Plug>(operator-flashy)$
 
 Plug 'stsewd/gx-extended.vim'
 
+Plug 'andymass/vim-matchup'
+Plug 'nvim-treesitter/nvim-treesitter'
+function! InitTreesitter()
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  matchup = {
+    enable = true, -- mandatory, false will disable the whole extension
+    disable = {},  -- optional, list of language that will be disabled
+    -- [options]
+  },
+}
+EOF
+endfunction
+autocmd MyAutoCmd VimEnter * call InitTreesitter()
+
 " コメント系
 Plug 'machakann/vim-sandwich'
 " Toggle comment out with gcc and gc with selection.
