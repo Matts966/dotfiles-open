@@ -4,7 +4,7 @@ neovim nightly
 terraform 1.0.4
 direnv system
 cloudsql-proxy 1.23.0
-golang 1.16
+golang 1.19
 nodejs 14.18.2
 rust nightly
 kustomize 3.8.9
