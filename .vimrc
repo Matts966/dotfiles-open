@@ -378,6 +378,8 @@ au User lsp_setup call lsp#register_server({
       \ })
 "}}}
 
+Plug 'hashivim/vim-terraform'
+
 " Python fmt{{{
 Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
 let g:black_linelength = 120
