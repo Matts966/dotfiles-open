@@ -163,6 +163,12 @@ endif
 
 " VSCodeでは使わないもの{{{
 
+
+set cmdheight=0
+" ちらつき対策
+" 消す時は<Plug>(ahc)も消すこと
+Plug 'utubo/vim-auto-hide-cmdline'
+
 " SKK{{{
 Plug 'Matts966/skk-vconv.vim'
 Plug 'vim-denops/denops.vim', { 'do': ':UpdateRemotePlugins' }
@@ -335,18 +341,18 @@ function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
   if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-  nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> gs <plug>(lsp-document-symbol-search)
-  nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-  nmap <buffer> gr <plug>(lsp-references)
-  nmap <buffer> gi <plug>(lsp-implementation)
-  nmap <buffer> <leader>rn <plug>(lsp-rename)
-  nmap <buffer> K <plug>(lsp-hover)
-  nmap <buffer> <leader>dd <CMD>LspDocumentDiagnostic<CR>
-  nmap <buffer> <leader>da <CMD>LspDocumentDiagnostic --buffers=*<CR>
+  nmap <buffer> gd <Plug>(ahc)<plug>(lsp-definition)
+  nmap <buffer> gs <Plug>(ahc)<plug>(lsp-document-symbol-search)
+  nmap <buffer> gS <Plug>(ahc)<plug>(lsp-workspace-symbol-search)
+  nmap <buffer> gr <Plug>(ahc)<plug>(lsp-references)
+  nmap <buffer> gi <Plug>(ahc)<plug>(lsp-implementation)
+  nmap <buffer> <leader>rn <Plug>(ahc)<plug>(lsp-rename)
+  nmap <buffer> K <Plug>(ahc)<plug>(lsp-hover)
+  nmap <buffer> <leader>dd <Plug>(ahc)<CMD>LspDocumentDiagnostic<CR>
+  nmap <buffer> <leader>da <Plug>(ahc)<CMD>LspDocumentDiagnostic --buffers=*<CR>
   nnoremap <buffer> <expr><c-j> lsp#scroll(+4)
   nnoremap <buffer> <expr><c-k> lsp#scroll(-4)
-  nnoremap <buffer> <leader>A <CMD>LspCodeAction<CR>
+  nnoremap <buffer> <leader>A <Plug>(ahc)<plug>(lsp-code-action)
 
   let g:lsp_format_sync_timeout = 1000
   if &ft == 'sql'
