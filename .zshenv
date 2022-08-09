@@ -23,7 +23,8 @@ fi
 
 setopt magic_equal_subst
 
-if [[ -n "${NVIM_LISTEN_ADDRESS}" && -x "$(command -v nvr)" ]]; then
+if [[ -n "${NVIM}" && -x "$(command -v nvr)" ]]; then
+  export NVIM_LISTEN_ADDRESS=$NVIM
   alias vim="nvr --remote-tab"
   alias vi="nvr --remote-tab"
   export EDITOR="nvr --remote-tab-wait +'setlocal bufhidden=wipe'"
