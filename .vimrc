@@ -479,6 +479,7 @@ nnoremap <silent> [gina]c :Gina commit<CR>
 nnoremap [gina]p <Cmd>Gina pull<CR>
 nnoremap [gina]P <Cmd>Gina push<CR>
 nnoremap [gina]s <Cmd>silent! wa<CR><Cmd>Gina status<CR>
+autocmd MyAutoCmd FileType gina-status nnoremap <buffer> p <Cmd>call gina#action#call('patch:oneside')<CR>
 " Enable spell check only in git commit
 set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
