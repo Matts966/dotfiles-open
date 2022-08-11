@@ -717,8 +717,12 @@ endif
 "}}}
 
 " Neovide 設定{{{
+
 if exists('g:neovide')
   let g:neovide_input_use_logo=v:true
+
+  nnoremap <D-w> <Cmd>tabc<CR>
+
   " copy
   vnoremap <D-c> "+y
 
@@ -766,4 +770,5 @@ if exists('g:neovide')
   set nocursorcolumn
   set nocursorline
 endif
+
 "}}}
