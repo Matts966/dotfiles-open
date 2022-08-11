@@ -177,9 +177,12 @@ endif
 
 
 set cmdheight=0
-" ちらつき対策
+" <CR> 待ち対策
 " 消す時は<Plug>(ahc)も消すこと
 Plug 'utubo/vim-auto-hide-cmdline'
+" 検索時の候補数を表示したい
+nnoremap n <Plug>(ahc)n
+nnoremap N <Plug>(ahc)N
 
 " SKK{{{
 
