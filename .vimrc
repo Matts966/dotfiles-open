@@ -438,18 +438,22 @@ endif
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'vim-plug'] }
 
 " Git related settings{{{
+
 Plug 'lambdalisue/gina.vim'
+set diffopt+=vertical
 nnoremap [gina]  <Nop>
 nmap <leader>g [gina]
-nnoremap <silent> [gina]s :Gina status<CR>
-nnoremap <silent> [gina]a :Gina add %<CR>
+nnoremap <silent> [gina]s <Cmd>Gina status<CR>
+nnoremap <silent> [gina]a <Cmd>Gina add %<CR>
 nnoremap <silent> [gina]c :Gina commit<CR>
-nnoremap [gina]p :Gina pull<CR>
-nnoremap [gina]P :Gina push<CR>
+nnoremap [gina]p <Cmd>Gina pull<CR>
+nnoremap [gina]P <Cmd>Gina push<CR>
+nnoremap [gina]s <Cmd>Gina status<CR>
 " Enable spell check only in git commit
 set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
 autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
+
 "}}}
 
 Plug 'psliwka/vim-smoothie'
