@@ -637,8 +637,11 @@ call wilder#set_option('pipeline', [wilder#branch([
 
 "}}}
 
-" Create dir if not exists when writing new file.{{{
+"{{{VSCode以外の共通標準設定
 
+autocmd MyAutoCmd FileType qf setlocal wrap
+
+" Create dir if not exists when writing new file.
 autocmd MyAutoCmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 
 "}}}
@@ -725,8 +728,6 @@ nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
 "}}}
-
-autocmd MyAutoCmd FileType qf setlocal wrap
 
 " Vim と Neovim の分岐設定{{{
 
