@@ -150,8 +150,8 @@ endif
 if has('nvim')
   Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
   autocmd! MyAutoCmd User hop.nvim lua require'hop'.setup()
-  map  <Leader>j <CMD>HopWord<CR>
-  vmap <Leader>j <CMD>HopWordVisual<CR>
+  map  <Leader>j <Cmd>HopWord<CR>
+  vmap <Leader>j <Cmd>HopWordVisual<CR>
 else
   Plug 'vim-easymotion/vim-easymotion'
   let g:EasyMotion_do_mapping = 0
@@ -237,10 +237,10 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 
 Plug 'luk400/vim-jukit'
 let g:jukit_mappings = 0
-nnoremap <leader><C-CR> :call jukit#send#section(1)<CR>
-nnoremap <leader><CR> :call jukit#send#section(0)<CR>
-nnoremap <leader>on :call jukit#convert#notebook_convert("jupyter-notebook")<CR>
-nnoremap <leader>os :tcd %:p:h<CR>:call jukit#splits#output()<CR><ESC>:tcd -<CR>
+nnoremap <leader><C-CR> <Cmd>call jukit#send#section(1)<CR>
+nnoremap <leader><CR> <Cmd>call jukit#send#section(0)<CR>
+nnoremap <leader>on <Cmd>call jukit#convert#notebook_convert("jupyter-notebook")<CR>
+nnoremap <leader>os <Cmd>tcd %:p:h<CR<Cmd>call jukit#splits#output()<CR><ESC<Cmd>tcd -<CR>
 autocmd ColorScheme * highlight! jukit_textcell_bg_colors guibg=#131628 ctermbg=16
 autocmd ColorScheme * highlight! jukit_cellmarker_colors guifg=#1d615a guibg=#1d615a ctermbg=22 ctermfg=22
 
@@ -258,7 +258,7 @@ command! -bang Emoj
       \ 'options': "--preview 'emoji-fzf get --name {1}' ".$FZF_DEFAULT_OPTS,
       \ 'sink': function('InsertEmoji')
       \ }))
-map <C-x><C-e> :Emoj<CR>
+map <C-x><C-e> <Cmd>Emoj<CR>
 imap <C-x><C-e> <C-o><C-x><C-e>
 
 "}}}
@@ -375,18 +375,18 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> gi <Plug>(ahc)<plug>(lsp-implementation)
   nmap <buffer> <leader>rn <Plug>(ahc)<plug>(lsp-rename)
   nmap <buffer> K <Plug>(ahc)<plug>(lsp-hover)
-  nmap <buffer> <leader>dd <Plug>(ahc)<CMD>LspDocumentDiagnostic<CR>
-  nmap <buffer> <leader>da <Plug>(ahc)<CMD>LspDocumentDiagnostic --buffers=*<CR>
+  nmap <buffer> <leader>dd <Plug>(ahc)<Cmd>LspDocumentDiagnostic<CR>
+  nmap <buffer> <leader>da <Plug>(ahc)<Cmd>LspDocumentDiagnostic --buffers=*<CR>
   nnoremap <buffer> <expr><c-j> lsp#scroll(+4)
   nnoremap <buffer> <expr><c-k> lsp#scroll(-4)
   nnoremap <buffer> <leader>A <Plug>(ahc)<plug>(lsp-code-action)
 
   let g:lsp_format_sync_timeout = 1000
   if &ft == 'sql'
-    nmap <buffer> <leader>ss <CMD>LspDocumentFormatSync<CR>
+    nmap <buffer> <leader>ss <Cmd>LspDocumentFormatSync<CR>
   endif
   if &ft == 'rust' || &ft == 'go' || &ft == 'dart' || matchstr(&ft, 'typescript*') != ''
-    nmap <buffer> <leader>ss <CMD>LspDocumentFormatSync<CR><CMD>LspCodeAction source.organizeImports<CR>
+    nmap <buffer> <leader>ss <Cmd>LspDocumentFormatSync<CR><Cmd>LspCodeAction source.organizeImports<CR>
   endif
 
   let g:lsp_settings = {
@@ -418,7 +418,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
 let g:black_linelength = 120
 Plug 'fisadev/vim-isort', { 'for': ['python', 'vim-plug'] }
-autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <CMD>Black<CR><CMD>Isort<CR>
+autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <Cmd>Black<CR><Cmd>Isort<CR>
 
 "}}}
 
@@ -449,7 +449,7 @@ endif
 Plug 'vim-jp/vimdoc-ja'
 
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }"{{{
-nnoremap <silent> <leader>go :Goyo<CR>
+nnoremap <silent> <leader>go <Cmd>Goyo<CR>
 let g:goyo_width = 120
 autocmd MyAutoCmd User GoyoEnter nested call <SID>goyo_enter()
 autocmd MyAutoCmd User GoyoLeave nested call <SID>goyo_leave()
@@ -475,7 +475,7 @@ nnoremap [gina]  <Nop>
 nmap <leader>g [gina]
 nnoremap <silent> [gina]s <Cmd>Gina status<CR>
 nnoremap <silent> [gina]a <Cmd>Gina add %<CR>
-nnoremap <silent> [gina]c :Gina commit<CR>
+nnoremap <silent> [gina]c <Cmd>Gina commit<CR>
 nnoremap [gina]p <Cmd>Gina pull<CR>
 nnoremap [gina]P <Cmd>Gina push<CR>
 nnoremap [gina]s <Cmd>silent! wa<CR><Cmd>Gina status<CR>
@@ -533,15 +533,15 @@ let g:fzf_action = {
       \   'ctrl-x': 'split',
       \   'ctrl-v': 'vsplit'
       \ }
-nnoremap <leader>gr :Repo<CR>
+nnoremap <leader>gr <Cmd>Repo<CR>
 
 let rg_command = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!.git" --glob "!node_modules" --glob "!vendor" -- '
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
       \   rg_command.shellescape(<q-args>), 1,
       \   fzf#vim#with_preview(), <bang>0)
-nnoremap <leader>f :Rg<CR>
-nnoremap <leader>p :Files<CR>
+nnoremap <leader>f <Cmd>Rg<CR>
+nnoremap <leader>p <Cmd>Files<CR>
 
 "}}}
 
@@ -658,7 +658,7 @@ function! s:OpenVimrc()
   exe 'tcd %:h'
 endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
-map <leader>, :OpenVimrc<CR>
+map <leader>, <Cmd>OpenVimrc<CR>
 function! s:LoadPlugins()
   if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
     PlugInstall --sync
@@ -720,10 +720,10 @@ endfunction
 
 " ターミナル系コマンド{{{
 
-nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
-nmap <leader>k <CMD>tabnew<CR><CMD>terminal k9s<CR><C-W>g<Tab>
+nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
+nmap <leader>k <Cmd>tabnew<CR><Cmd>terminal k9s<CR><C-W>g<Tab>
 command! -nargs=0 Sqlp tabedit % | terminal sqlp %
-nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
+nnoremap <leader>sp <Cmd>tabnew<CR><Cmd>terminal spt<CR>
 nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
 
