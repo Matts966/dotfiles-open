@@ -342,7 +342,7 @@ nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 Plug 'jparise/vim-graphql'
 
 Plug 'jreybert/vimagit'
-nnoremap <leader>gm <Cmd>slient! wa!<CR><Cmd>MagitOnly<CR>
+nnoremap <leader>gm <Cmd>silent! wa!<CR><Cmd>MagitOnly<CR>
 
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
