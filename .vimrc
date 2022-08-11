@@ -59,20 +59,26 @@ set hlsearch
 "}}}
 
 " Clear search result on <C-l>{{{
+
 nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
+
 "}}}
 
 " コマンド履歴1000件に{{{
+
 if &history < 1000
   set history=1000
 endif
+
 "}}}
 
 " Mimic Emacs Line Editing in Insert and Ex Mode Only{{{
+
 noremap! <C-A> <Home>
 noremap! <C-F> <Right>
 noremap! <C-B> <Left>
 noremap! <C-E> <End>
+
 "}}}
 
 " vim-plug, Make sure you use single quotes {{{
@@ -89,6 +95,7 @@ call plug#begin('~/.vim/plugged')
 " VSCodeでも使うもの{{{
 
 " Text Object系{{{
+
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-operator-user'
@@ -97,6 +104,7 @@ map _ <Plug>(operator-replace)
 Plug 'haya14busa/vim-operator-flashy'
 map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
+
 "}}}
 
 Plug 'stsewd/gx-extended.vim'
@@ -130,6 +138,7 @@ Plug 'itchyny/vim-highlighturl'
 Plug 'Yggdroot/indentLine'
 
 " Motion系{{{
+
 Plug 'unblevable/quick-scope'
 if exists('g:vscode')
   highlight QuickScopePrimary guifg=#00dfff ctermfg=45 gui=underline cterm=underline
@@ -149,14 +158,17 @@ else
   map  <Leader>j <Plug>(easymotion-bd-w)
   nmap <Leader>j <Plug>(easymotion-overwin-w)
 endif
+
 "}}}
 
 " VSCodeの場合終了{{{
+
 if exists('g:vscode')
   "Do not execute rest of init.vim, do not apply any configs
   call plug#end()
   finish
 endif
+
 "}}}
 
 "}}}
@@ -170,6 +182,7 @@ set cmdheight=0
 Plug 'utubo/vim-auto-hide-cmdline'
 
 " SKK{{{
+
 Plug 'Matts966/skk-vconv.vim'
 Plug 'vim-denops/denops.vim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-skk/skkeleton'
@@ -214,9 +227,11 @@ autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 
 autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
+
 "}}}
 
 " Jupyter on Vim{{{
+
 Plug 'luk400/vim-jukit'
 let g:jukit_mappings = 0
 nnoremap <leader><C-CR> :call jukit#send#section(1)<CR>
@@ -225,9 +240,11 @@ nnoremap <leader>on :call jukit#convert#notebook_convert("jupyter-notebook")<CR>
 nnoremap <leader>os :tcd %:p:h<CR>:call jukit#splits#output()<CR><ESC>:tcd -<CR>
 autocmd ColorScheme * highlight! jukit_textcell_bg_colors guibg=#131628 ctermbg=16
 autocmd ColorScheme * highlight! jukit_cellmarker_colors guifg=#1d615a guibg=#1d615a ctermbg=22 ctermfg=22
+
 "}}}
 
 " Use emoji-fzf and fzf to fuzzy-search for emoji, and insert the result{{{
+
 function! InsertEmoji(emoji)
     let @a = system('cut -d " " -f 1 | emoji-fzf get', a:emoji)
     normal! "agP
@@ -240,6 +257,7 @@ command! -bang Emoj
       \ }))
 map <C-x><C-e> :Emoj<CR>
 imap <C-x><C-e> <C-o><C-x><C-e>
+
 "}}}
 
 Plug 'github/copilot.vim'
@@ -251,6 +269,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 
 " Markdown{{{
+
 Plug 'iamcco/markdown-preview.nvim'
 nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
 function g:Open(url)
@@ -260,6 +279,7 @@ let g:mkdp_browserfunc = 'g:Open'
 
 " MarkdownPreivew with scrolling
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 "}}}
 
 Plug 'lambdalisue/fern.vim'"{{{
@@ -293,6 +313,7 @@ Plug 'editorconfig/editorconfig-vim'
 nnoremap <leader>ss gg=G``
 
 " Denite{{{
+
 if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -315,6 +336,7 @@ function! s:denite_my_settings() abort
 endfunction
 nnoremap <leader>b <Cmd>Denite buffer -auto-action=preview<CR>
 nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
+
 "}}}
 
 Plug 'jparise/vim-graphql'
@@ -329,6 +351,7 @@ let g:translator_target_lang = 'ja'
 Plug 'makerj/vim-pdf'
 
 " LSP{{{
+
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -381,15 +404,18 @@ au User lsp_setup call lsp#register_server({
       \ 'cmd': {server_info->[&shell, &shellcmdflag, 'efm-langserver 2> /tmp/ok.log']},
       \ 'whitelist': ['sql'],
       \ })
+
 "}}}
 
 Plug 'hashivim/vim-terraform'
 
 " Python fmt{{{
+
 Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
 let g:black_linelength = 120
 Plug 'fisadev/vim-isort', { 'for': ['python', 'vim-plug'] }
 autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <CMD>Black<CR><CMD>Isort<CR>
+
 "}}}
 
 Plug 'itchyny/lightline.vim'"{{{
@@ -461,6 +487,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'thinca/vim-qfreplace'
 
 " fzf{{{
+
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -510,6 +537,7 @@ command! -bang -nargs=* Rg
       \   fzf#vim#with_preview(), <bang>0)
 nnoremap <leader>f :Rg<CR>
 nnoremap <leader>p :Files<CR>
+
 "}}}
 
 Plug 'dansomething/vim-hackernews'
@@ -543,6 +571,7 @@ Plug 'dbinagi/nomodoro'
 call plug#end()"}}}
 
 " Colorscheme, plugin読み込み後に{{{
+
 autocmd ColorScheme * highlight! Visual ctermbg=236 guibg=#363d5c
 autocmd ColorScheme * highlight! VertSplit cterm=NONE
 autocmd ColorScheme * highlight! Pmenu None
@@ -567,14 +596,18 @@ set fillchars=eob:\ ,
 " カーソルの強調
 set cursorcolumn
 set cursorline
+
 "}}}
 
 " netrw{{{
+
 let g:netrw_liststyle=3
 let g:netrw_keepj=""
+
 "}}}
 
 " widler, コマンドライン自動補完{{{
+
 call wilder#enable_cmdline_enter()
 " only / and ? are enabled by default
 set wildcharm=<Tab>
@@ -594,13 +627,17 @@ call wilder#set_option('pipeline', [wilder#branch([
       \     wilder#search_pipeline(),
       \   ),
       \ ])
+
 "}}}
 
 " Create dir if not exists when writing new file.{{{
+
 autocmd MyAutoCmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+
 "}}}
 
 " .vimrc自動読み込み{{{
+
 function! s:OpenVimrc()
   let s:vimrc = glob('~/.vimrc')
   if line('$') == 1 && getline(1) == ''
@@ -622,18 +659,24 @@ autocmd MyAutoCmd VimEnter * call s:LoadPlugins()
 autocmd MyAutoCmd BufWritePost .vimrc ++nested source $MYVIMRC
 command! -nargs=0 LoadPlugins call s:LoadPlugins()
 map <leader>r <Cmd>silent! wa!<CR><Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
+
 "}}}
 
 " Quit all read only buffers with q{{{
+
 nnoremap <expr> q (&modifiable && !&readonly ? 'q' : ':close!<CR>')
+
 "}}}
 
 " Help vertical{{{
+
 autocmd MyAutoCmd BufEnter *.txt,*.jax if &filetype=='help' | wincmd L | endif
+
 "}}}
 
 " ターミナル移動{{{
 " Comment out after " for automatically startinsert
+
 nnoremap ]t <Cmd>call g:NextTerm()<CR> " <Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
 nnoremap [t <Cmd>call g:PrevTerm()<CR> " <Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
 tnoremap ]t <Cmd>call g:NextTerm()<CR>
@@ -662,21 +705,24 @@ function g:PrevTerm()
     endif
   endwhile
 endfunction
+
 "}}}
 
 " ターミナル系コマンド{{{
+
 nnoremap <leader>gg <CMD>silent! wa!<CR><CMD>tabnew<CR><CMD>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
 nmap <leader>k <CMD>tabnew<CR><CMD>terminal k9s<CR><C-W>g<Tab>
 command! -nargs=0 Sqlp tabedit % | terminal sqlp %
 nnoremap <leader>sp <CMD>tabnew<CR><CMD>terminal spt<CR>
 nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
+
 "}}}
 
-autocmd MyAutoCmd FileType qf setlocal wrap"{{{
-"}}}
+autocmd MyAutoCmd FileType qf setlocal wrap
 
 " Vim と Neovim の分岐設定{{{
+
 if has('nvim')
   autocmd MyAutoCmd termopen * startinsert
   autocmd MyAutoCmd termopen * setlocal nonumber norelativenumber
@@ -704,6 +750,7 @@ else
   set wildmode=list:longest
   source $VIMRUNTIME/defaults.vim
 endif
+
 "}}}
 
 " Neovide 設定{{{
