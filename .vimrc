@@ -342,6 +342,7 @@ nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 Plug 'jparise/vim-graphql'
 
 Plug 'jreybert/vimagit'
+nnoremap <leader>gm <Cmd>slient! wa!<CR><Cmd>MagitOnly<CR>
 
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -474,7 +475,7 @@ nnoremap <silent> [gina]a <Cmd>Gina add %<CR>
 nnoremap <silent> [gina]c :Gina commit<CR>
 nnoremap [gina]p <Cmd>Gina pull<CR>
 nnoremap [gina]P <Cmd>Gina push<CR>
-nnoremap [gina]s <Cmd>Gina status<CR>
+nnoremap [gina]s <Cmd>silent! wa<CR><Cmd>Gina status<CR>
 " Enable spell check only in git commit
 set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
