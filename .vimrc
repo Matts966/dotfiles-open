@@ -562,6 +562,8 @@ autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[ fzf#vim#comple
 "}}}
 
 Plug 'airblade/vim-gitgutter'
+nmap [c <Plug>(ahc)<Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(ahc)<Plug>(GitGutterNextHunk)
 
 Plug 'cocopon/iceberg.vim'
 "}}}
