@@ -724,7 +724,9 @@ endfunction
 
 " ターミナル系コマンド{{{
 
-nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
+" nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
+" しばらくMagitを練習してみる
+nnoremap <leader>gg <Cmd>Magit<CR>
 nmap <leader>k <Cmd>tabnew<CR><Cmd>terminal k9s<CR><C-W>g<Tab>
 command! -nargs=0 Sqlp tabedit % | terminal sqlp %
 nnoremap <leader>sp <Cmd>tabnew<CR><Cmd>terminal spt<CR>
