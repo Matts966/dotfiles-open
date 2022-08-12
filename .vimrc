@@ -464,10 +464,18 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'v
 nnoremap [git]  <Nop>
 nmap <leader>g [git]
 
-Plug 'jreybert/vimagit'
-nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
-nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Magit<CR>
-autocmd MyAutoCmd FileType magit map <buffer> <CR> S<C-N>
+if has('nvim')
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'TimUntersberger/neogit'
+  nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
+  nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
+  autocmd MyAutoCmd VimEnter * lua require('neogit').setup {}
+else
+  Plug 'jreybert/vimagit'
+  nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
+  nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Magit<CR>
+  autocmd MyAutoCmd FileType magit map <buffer> <CR> S<C-N>
+endif
 
 Plug 'tpope/vim-fugitive'
 " Git commitの時にcmdheight=0だと<CR>が必要なのでしばらくMagitを使う
