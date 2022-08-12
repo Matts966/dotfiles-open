@@ -413,13 +413,16 @@ autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <Cmd>Black<CR><Cmd>Is
 "}}}
 
 Plug 'itchyny/lightline.vim'"{{{
+function! LightlineGit()
+  return FugitiveStatusline() . gina#component#traffic#preset("fancy")
+endfunction
 let g:lightline = {
       \   'active': {
-      \     'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \     'left': [ [ 'mode', 'paste' ], [ 'git', 'readonly', 'filename', 'modified' ] ],
       \     'right': [ [ 'lineinfo' ],
       \                [ 'percent', 'fileformat', 'fileencoding', 'filetype' ]],
       \    },
-      \   'component_function': { 'gitbranch': 'gina#component#traffic#preset' },
+      \   'component_function': { 'git': 'LightlineGit' },
       \ }
 "}}}
 let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
