@@ -332,7 +332,7 @@ function! s:denite_my_settings() abort
   \ denite#do_map('quit')
   nnoremap <silent><buffer><expr> i
   \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
+  nnoremap <silent><buffer><expr> <Tab>
   \ denite#do_map('toggle_select').'j'
 endfunction
 nnoremap <leader>b <Cmd>Denite buffer -auto-action=preview<CR>
