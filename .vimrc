@@ -345,7 +345,8 @@ nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 Plug 'jparise/vim-graphql'
 
 Plug 'jreybert/vimagit'
-nnoremap <leader>gm <Cmd>silent! wa!<CR><Cmd>MagitOnly<CR>
+nnoremap <leader>gm <Cmd>silent! wa!<CR><Cmd>Magit<CR>
+nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>Magit<CR>
 
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -726,7 +727,6 @@ endfunction
 
 " nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
 " しばらくMagitを練習してみる
-nnoremap <leader>gg <Cmd>Magit<CR>
 nmap <leader>k <Cmd>tabnew<CR><Cmd>terminal k9s<CR><C-W>g<Tab>
 command! -nargs=0 Sqlp tabedit % | terminal sqlp %
 nnoremap <leader>sp <Cmd>tabnew<CR><Cmd>terminal spt<CR>
