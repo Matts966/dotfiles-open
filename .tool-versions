@@ -12,4 +12,4 @@ kubectx 0.9.4
 sops 3.7.1
 python 3.8.10
 perl 5.20.1
-deno 1.24.0
+deno 1.24.3
