@@ -462,24 +462,25 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'v
 
 " Git related settings{{{
 
+nnoremap [git]  <Nop>
+nmap <leader>g [git]
+
 Plug 'jreybert/vimagit'
-nnoremap <leader>gm <Cmd>silent! wa!<CR><Cmd>Magit<CR>
+nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
 
 Plug 'tpope/vim-fugitive'
-nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
+nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
 map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
 map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
+nnoremap [git]c <Cmd>Git commit<CR>
 
 Plug 'lambdalisue/gina.vim'
 set diffopt+=vertical
 let g:gina#action#index#discard_directories = 1
-nnoremap [gina]  <Nop>
-nmap <leader>g [gina]
-nnoremap <silent> [gina]a <Cmd>Gina add %<CR>
-nnoremap <silent> [gina]c <Cmd>Gina commit<CR>
-nnoremap [gina]p <Plug>(ahc)<Cmd>Gina pull<CR>
-nnoremap [gina]P <Plug>(ahc)<Cmd>Gina push<CR>
-nnoremap [gina]s <Cmd>silent! wa<CR><Cmd>Gina status<CR>
+nnoremap <silent> [git]a <Cmd>Gina add %<CR>
+nnoremap [git]p <Plug>(ahc)<Cmd>Gina pull<CR>
+nnoremap [git]P <Plug>(ahc)<Cmd>Gina push<CR>
+nnoremap [git]s <Cmd>silent! wa<CR><Cmd>Gina status<CR>
 autocmd MyAutoCmd VimEnter *
       \ call gina#custom#command#option('patch', '--opener', 'edit')
       \ | call gina#custom#command#option('status', '--opener', 'tabedit')
