@@ -273,15 +273,13 @@ Plug 'tpope/vim-unimpaired'
 
 " Markdown{{{
 
-Plug 'iamcco/markdown-preview.nvim'
+" MarkdownPreivew with scrolling
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
 function g:Open(url)
   silent execute('!open -ga Safari.app ' . a:url)
 endfunction
 let g:mkdp_browserfunc = 'g:Open'
-
-" MarkdownPreivew with scrolling
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 "}}}
 
