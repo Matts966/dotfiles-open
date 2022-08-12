@@ -471,15 +471,19 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'v
 
 Plug 'lambdalisue/gina.vim'
 set diffopt+=vertical
+let g:gina#action#index#discard_directories = 1
 nnoremap [gina]  <Nop>
 nmap <leader>g [gina]
-nnoremap <silent> [gina]s <Cmd>Gina status<CR>
 nnoremap <silent> [gina]a <Cmd>Gina add %<CR>
 nnoremap <silent> [gina]c <Cmd>Gina commit<CR>
 nnoremap [gina]p <Cmd>Gina pull<CR>
 nnoremap [gina]P <Cmd>Gina push<CR>
 nnoremap [gina]s <Cmd>silent! wa<CR><Cmd>Gina status<CR>
-autocmd MyAutoCmd FileType gina-status nnoremap <buffer> p <Cmd>call gina#action#call('patch:oneside')<CR>
+autocmd MyAutoCmd VimEnter *
+      \ call gina#custom#command#option('patch', '--opener', 'edit')
+      \ | call gina#custom#command#option('status', '--opener', 'tabedit')
+autocmd MyAutoCmd BufEnter gina://*:show* nmap <buffer> <CR> dor]c
+autocmd MyAutoCmd BufEnter gina://*:show* nmap <buffer> <C-CR> dol]c
 " Enable spell check only in git commit
 set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
