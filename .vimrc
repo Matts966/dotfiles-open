@@ -477,8 +477,8 @@ nnoremap [gina]  <Nop>
 nmap <leader>g [gina]
 nnoremap <silent> [gina]a <Cmd>Gina add %<CR>
 nnoremap <silent> [gina]c <Cmd>Gina commit<CR>
-nnoremap [gina]p <Cmd>Gina pull<CR>
-nnoremap [gina]P <Cmd>Gina push<CR>
+nnoremap [gina]p <Plug>(ahc)<Cmd>Gina pull<CR>
+nnoremap [gina]P <Plug>(ahc)<Cmd>Gina push<CR>
 nnoremap [gina]s <Cmd>silent! wa<CR><Cmd>Gina status<CR>
 autocmd MyAutoCmd VimEnter *
       \ call gina#custom#command#option('patch', '--opener', 'edit')
