@@ -342,14 +342,6 @@ nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 
 Plug 'jparise/vim-graphql'
 
-Plug 'jreybert/vimagit'
-nnoremap <leader>gm <Cmd>silent! wa!<CR><Cmd>Magit<CR>
-
-Plug 'tpope/vim-fugitive'
-nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
-map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
-map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
-
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'voldikss/vim-translator'
@@ -471,6 +463,14 @@ endif
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'vim-plug'] }
 
 " Git related settings{{{
+
+Plug 'jreybert/vimagit'
+nnoremap <leader>gm <Cmd>silent! wa!<CR><Cmd>Magit<CR>
+
+Plug 'tpope/vim-fugitive'
+nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
+map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
+map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
 
 Plug 'lambdalisue/gina.vim'
 set diffopt+=vertical
