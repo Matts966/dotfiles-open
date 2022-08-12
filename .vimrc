@@ -181,7 +181,7 @@ nnoremap N <Plug>(ahc)N
 " SKK{{{
 
 Plug 'Matts966/skk-vconv.vim'
-Plug 'vim-denops/denops.vim', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-denops/denops.vim'
 Plug 'vim-skk/skkeleton'
 Plug 'delphinus/skkeleton_indicator.nvim'
 Plug 'Shougo/ddc.vim'
