@@ -466,10 +466,12 @@ nmap <leader>g [git]
 
 Plug 'jreybert/vimagit'
 nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
+nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Magit<CR>
 autocmd MyAutoCmd FileType magit map <buffer> <CR> S<C-N>
 
 Plug 'tpope/vim-fugitive'
-nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
+" Git commitの時にcmdheight=0だと<CR>が必要なのでしばらくMagitを使う
+" nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
 map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
 map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
 nnoremap [git]c <Cmd>Git commit<CR>
