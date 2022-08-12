@@ -58,7 +58,6 @@ set wrapscan
 set hlsearch
 "}}}
 
-
 " コマンド履歴1000件に{{{
 
 if &history < 1000
