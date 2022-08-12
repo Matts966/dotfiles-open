@@ -347,6 +347,8 @@ nnoremap <leader>gm <Cmd>silent! wa!<CR><Cmd>Magit<CR>
 
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
+map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
+map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
 
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
