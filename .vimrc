@@ -344,7 +344,9 @@ Plug 'jparise/vim-graphql'
 
 Plug 'jreybert/vimagit'
 nnoremap <leader>gm <Cmd>silent! wa!<CR><Cmd>Magit<CR>
-nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>Magit<CR>
+
+Plug 'tpope/vim-fugitive'
+nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
 
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -428,7 +430,7 @@ let g:lightline = {
       \     'right': [ [ 'lineinfo' ],
       \                [ 'percent', 'fileformat', 'fileencoding', 'filetype' ]],
       \    },
-      \   'component_function': { 'gitbranch': 'gina#component#repo#branch' },
+      \   'component_function': { 'gitbranch': 'fugitive#statusline' },
       \ }
 "}}}
 let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
