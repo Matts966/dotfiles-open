@@ -58,11 +58,6 @@ set wrapscan
 set hlsearch
 "}}}
 
-" Clear search result on <C-l>{{{
-
-nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
-
-"}}}
 
 " コマンド履歴1000件に{{{
 
@@ -492,6 +487,12 @@ set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
 autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
 
+Plug 'airblade/vim-gitgutter'
+nmap [c <Plug>(ahc)<Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(ahc)<Plug>(GitGutterNextHunk)
+" Clear search result on <C-l>
+nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
+
 "}}}
 
 Plug 'psliwka/vim-smoothie'
@@ -571,10 +572,6 @@ autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[ fzf#vim#comple
       \   'reducer': { lines -> '['. fnamemodify(lines[0], ":t:r") . '](' . lines[0] . ')' },
       \ }))
 "}}}
-
-Plug 'airblade/vim-gitgutter'
-nmap [c <Plug>(ahc)<Plug>(GitGutterPrevHunk)
-nmap ]c <Plug>(ahc)<Plug>(GitGutterNextHunk)
 
 Plug 'cocopon/iceberg.vim'
 "}}}
