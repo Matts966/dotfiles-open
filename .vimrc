@@ -218,7 +218,7 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \     'minAutoCompleteLength': 1,
     \   },
     \ })
-autocmd VimEnter * lua require'skkeleton_indicator'.setup{ eijiText = 'AaBb', hiraText = 'Hira' }
+autocmd MyAutoCmd VimEnter * lua require'skkeleton_indicator'.setup{ eijiText = 'AaBb', hiraText = 'Hira' }
 autocmd MyAutoCmd User skkeleton-enable-pre call
     \ ddc#custom#patch_global('sources', ['skkeleton'])
 autocmd MyAutoCmd User skkeleton-disable-post call
@@ -241,8 +241,8 @@ nnoremap <leader><C-CR> <Cmd>call jukit#send#section(1)<CR>
 nnoremap <leader><CR> <Cmd>call jukit#send#section(0)<CR>
 nnoremap <leader>on <Cmd>call jukit#convert#notebook_convert("jupyter-notebook")<CR>
 nnoremap <leader>os <Cmd>tcd %:p:h<CR<Cmd>call jukit#splits#output()<CR><ESC<Cmd>tcd -<CR>
-autocmd ColorScheme * highlight! jukit_textcell_bg_colors guibg=#131628 ctermbg=16
-autocmd ColorScheme * highlight! jukit_cellmarker_colors guifg=#1d615a guibg=#1d615a ctermbg=22 ctermfg=22
+autocmd MyAutoCmd ColorScheme * highlight! jukit_textcell_bg_colors guibg=#131628 ctermbg=16
+autocmd MyAutoCmd ColorScheme * highlight! jukit_cellmarker_colors guifg=#1d615a guibg=#1d615a ctermbg=22 ctermfg=22
 
 "}}}
 
@@ -324,7 +324,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-autocmd FileType denite call s:denite_my_settings()
+autocmd MyAutoCmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
   \ denite#do_map('do_action')
@@ -360,10 +360,10 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-autocmd ColorScheme * highlight! link LspErrorHighlight Error
-autocmd ColorScheme * highlight! link LspWarningHighlight DiagnosticWarn
-autocmd ColorScheme * highlight! link LspInformationHighlight DiagnosticInfo
-autocmd ColorScheme * highlight! link LspHintHighlight DiagnosticHint
+autocmd MyAutoCmd ColorScheme * highlight! link LspErrorHighlight Error
+autocmd MyAutoCmd ColorScheme * highlight! link LspWarningHighlight DiagnosticWarn
+autocmd MyAutoCmd ColorScheme * highlight! link LspInformationHighlight DiagnosticInfo
+autocmd MyAutoCmd ColorScheme * highlight! link LspHintHighlight DiagnosticHint
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
@@ -583,17 +583,17 @@ call plug#end()"}}}
 
 " Colorscheme, plugin読み込み後に{{{
 
-autocmd ColorScheme * highlight! Visual ctermbg=236 guibg=#363d5c
-autocmd ColorScheme * highlight! VertSplit cterm=NONE
-autocmd ColorScheme * highlight! Pmenu None
-autocmd ColorScheme * highlight! PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
-autocmd ColorScheme * highlight! CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
+autocmd MyAutoCmd ColorScheme * highlight! Visual ctermbg=236 guibg=#363d5c
+autocmd MyAutoCmd ColorScheme * highlight! VertSplit cterm=NONE
+autocmd MyAutoCmd ColorScheme * highlight! Pmenu None
+autocmd MyAutoCmd ColorScheme * highlight! PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
+autocmd MyAutoCmd ColorScheme * highlight! CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
 
 if $TERM_PROGRAM == 'Apple_Terminal'
   set notermguicolors
 else
   set termguicolors
-  autocmd ColorScheme * highlight! Normal guibg=NONE ctermbg=NONE
+  autocmd MyAutoCmd ColorScheme * highlight! Normal guibg=NONE ctermbg=NONE
   let g:lightline.colorscheme = 'iceberg'
   " Transparent lightline
   let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
