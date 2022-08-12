@@ -419,7 +419,7 @@ let g:lightline = {
       \     'right': [ [ 'lineinfo' ],
       \                [ 'percent', 'fileformat', 'fileencoding', 'filetype' ]],
       \    },
-      \   'component_function': { 'gitbranch': 'fugitive#statusline' },
+      \   'component_function': { 'gitbranch': 'gina#component#traffic#preset' },
       \ }
 "}}}
 let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
