@@ -466,7 +466,7 @@ nmap <leader>g [git]
 
 Plug 'jreybert/vimagit'
 nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
-autocmd MyAutoCmd BufEnter magit://* map <buffer> <CR> S<C-N>
+autocmd MyAutoCmd FileType magit map <buffer> <CR> S<C-N>
 
 Plug 'tpope/vim-fugitive'
 nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
