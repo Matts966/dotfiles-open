@@ -499,6 +499,8 @@ nmap ]c <Plug>(ahc)<Plug>(GitGutterNextHunk)
 " Clear search result on <C-l>
 nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
 
+nnoremap [git]l <Cmd>FzfPreviewGitLogsRpc<CR>
+
 "}}}
 
 Plug 'psliwka/vim-smoothie'
