@@ -468,6 +468,8 @@ Jetpack 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python']
 
 " Git related settings{{{
 
+" TODO: Revert, Reset, Stash どうする？
+
 nnoremap [git]  <Nop>
 nmap <leader>g [git]
 
