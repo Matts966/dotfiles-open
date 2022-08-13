@@ -39,6 +39,11 @@ set tabstop=2
 set shiftwidth=2
 set fileformats=
 
+" コメントを自動挿入しない
+set formatoptions-=c
+set formatoptions-=r
+set formatoptions-=o
+
 set nobackup
 set noswapfile
 set autoread
