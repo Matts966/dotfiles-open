@@ -75,13 +75,13 @@ noremap! <C-E> <End>
 
 "}}}
 
+" jetpack, Make sure you use single quotes {{{
 if empty(glob('~/.vim/autoload/jetpack.vim'))
   silent !curl -fLo ~/.vim/autoload/jetpack.vim --create-dirs
         \ https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
   autocmd MyAutoCmd VimEnter * call jetpack#sync() | source $MYVIMRC
 endif
 autocmd MyAutoCmd BufEnter JetpackStatus nnoremap <buffer> q <Cmd>quit<CR>
-" jetpack, Make sure you use single quotes {{{
 packadd vim-jetpack
 call jetpack#begin()
 Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
