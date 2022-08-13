@@ -487,6 +487,8 @@ if has('nvim')
   nmap ]c <Plug>(ahc)<Cmd>Gitsigns next_hunk<CR>
   nmap <leader>hs <Cmd>Gitsigns stage_hunk<CR>
   nmap <leader>hu <Cmd>Gitsigns undo_stage_hunk<CR>
+  nmap <leader>hr <Cmd>Gitsigns reset_hunk<CR>
+
   " Clear search result on <C-l>
   nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>Gitsigns refresh<CR><C-l>
 else
