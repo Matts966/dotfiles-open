@@ -480,11 +480,26 @@ if has('nvim')
   nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
   autocmd MyAutoCmd VimEnter * lua require('neogit').setup {}
   autocmd MyAutoCmd FileType NeogitStatus setlocal nofoldenable
+
+  Jetpack 'lewis6991/gitsigns.nvim'
+  autocmd MyAutoCmd VimEnter * lua require('gitsigns').setup {}
+  nmap [c <Plug>(ahc)<Cmd>Gitsigns prev_hunk<CR>
+  nmap ]c <Plug>(ahc)<Cmd>Gitsigns next_hunk<CR>
+  nmap <leader>hs <Cmd>Gitsigns stage_hunk<CR>
+  nmap <leader>hu <Cmd>Gitsigns undo_stage_hunk<CR>
+  " Clear search result on <C-l>
+  nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>Gitsigns refresh<CR><C-l>
 else
   Jetpack 'jreybert/vimagit'
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
   nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Magit<CR>
   autocmd MyAutoCmd FileType magit map <buffer> <CR> S<C-N>
+
+  Jetpack 'airblade/vim-gitgutter'
+  nmap [c <Plug>(ahc)<Plug>(GitGutterPrevHunk)
+  nmap ]c <Plug>(ahc)<Plug>(GitGutterNextHunk)
+  " Clear search result on <C-l>
+  nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
 endif
 
 Jetpack 'tpope/vim-fugitive'
@@ -510,12 +525,6 @@ autocmd MyAutoCmd BufEnter gina://*:show* nmap <buffer> <C-CR> dol]c
 set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
 autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
-
-Jetpack 'airblade/vim-gitgutter'
-nmap [c <Plug>(ahc)<Plug>(GitGutterPrevHunk)
-nmap ]c <Plug>(ahc)<Plug>(GitGutterNextHunk)
-" Clear search result on <C-l>
-nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
 
 nnoremap [git]l <Cmd>FzfPreviewGitLogsRpc<CR>
 
