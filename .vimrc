@@ -75,38 +75,38 @@ noremap! <C-E> <End>
 
 "}}}
 
-" vim-plug, Make sure you use single quotes {{{
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd MyAutoCmd VimEnter * PlugInstall --sync | source $MYVIMRC
+if empty(glob('~/.vim/autoload/jetpack.vim'))
+  silent !curl -fLo ~/.vim/autoload/jetpack.vim --create-dirs
+        \ https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
+  autocmd MyAutoCmd VimEnter * call jetpack#sync() | source $MYVIMRC
 endif
-call plug#begin('~/.vim/plugged')
+autocmd MyAutoCmd BufEnter JetpackStatus nnoremap <buffer> q <Cmd>quit<CR>
+" jetpack, Make sure you use single quotes {{{
+packadd vim-jetpack
+call jetpack#begin()
+Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 
 " VSCodeでも使うもの{{{
 
-Plug 'skanehira/denops-twihi.vim'
+Jetpack 'skanehira/denops-twihi.vim'
 
 " Text Object系{{{
 
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-operator-user'
-Plug 'kana/vim-operator-replace'
+Jetpack 'kana/vim-textobj-user'
+Jetpack 'kana/vim-textobj-entire'
+Jetpack 'kana/vim-operator-user'
+Jetpack 'kana/vim-operator-replace'
 map _ <Plug>(operator-replace)
-Plug 'haya14busa/vim-operator-flashy'
+Jetpack 'haya14busa/vim-operator-flashy'
 map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
 
 "}}}
 
-Plug 'stsewd/gx-extended.vim'
+Jetpack 'stsewd/gx-extended.vim'
 
-Plug 'andymass/vim-matchup'
-Plug 'nvim-treesitter/nvim-treesitter'
+Jetpack 'andymass/vim-matchup'
+Jetpack 'nvim-treesitter/nvim-treesitter'
 function! InitTreesitter()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -121,21 +121,21 @@ endfunction
 autocmd MyAutoCmd VimEnter * call InitTreesitter()
 
 " コメント系
-Plug 'machakann/vim-sandwich'
+Jetpack 'machakann/vim-sandwich'
 " Toggle comment out with gcc and gc with selection.
-Plug 'tpope/vim-commentary'
+Jetpack 'tpope/vim-commentary'
 " Terraform
 autocmd MyAutoCmd FileType tf setlocal commentstring=#\ %s
 " Jupyter on VSCode
 autocmd MyAutoCmd BufEnter *.ipynb#* setlocal commentstring=#\ %s
 
-Plug 'itchyny/vim-highlighturl'
+Jetpack 'itchyny/vim-highlighturl'
 
-Plug 'Yggdroot/indentLine'
+Jetpack 'Yggdroot/indentLine'
 
 " Motion系{{{
 
-Plug 'unblevable/quick-scope'
+Jetpack 'unblevable/quick-scope'
 if exists('g:vscode')
   highlight QuickScopePrimary guifg=#00dfff ctermfg=45 gui=underline cterm=underline
   highlight QuickScopeSecondary gui=underline cterm=underline
@@ -144,12 +144,12 @@ else
   autocmd MyAutoCmd ColorScheme * highlight QuickScopeSecondary gui=underline cterm=underline
 endif
 if has('nvim')
-  Plug 'phaazon/hop.nvim', { 'on': 'HopWord' }
+  Jetpack 'phaazon/hop.nvim', { 'on': 'HopWord' }
   autocmd! MyAutoCmd User hop.nvim lua require'hop'.setup()
   map  <Leader>j <Cmd>HopWord<CR>
   vmap <Leader>j <Cmd>HopWordVisual<CR>
 else
-  Plug 'vim-easymotion/vim-easymotion'
+  Jetpack 'vim-easymotion/vim-easymotion'
   let g:EasyMotion_do_mapping = 0
   map  <Leader>j <Plug>(easymotion-bd-w)
   nmap <Leader>j <Plug>(easymotion-overwin-w)
@@ -161,7 +161,7 @@ endif
 
 if exists('g:vscode')
   "Do not execute rest of init.vim, do not apply any configs
-  call plug#end()
+  call jetpack#end()
   finish
 endif
 
@@ -175,18 +175,18 @@ endif
 set cmdheight=0
 " <CR> 待ち対策
 " 消す時は<Plug>(ahc)も消すこと
-Plug 'utubo/vim-auto-hide-cmdline'
+Jetpack 'utubo/vim-auto-hide-cmdline'
 " 検索時の候補数を表示したい
 nnoremap n <Plug>(ahc)n
 nnoremap N <Plug>(ahc)N
 
 " SKK{{{
 
-Plug 'Matts966/skk-vconv.vim'
-Plug 'vim-denops/denops.vim'
-Plug 'vim-skk/skkeleton'
-Plug 'delphinus/skkeleton_indicator.nvim'
-Plug 'Shougo/ddc.vim'
+Jetpack 'Matts966/skk-vconv.vim'
+Jetpack 'vim-denops/denops.vim'
+Jetpack 'vim-skk/skkeleton'
+Jetpack 'delphinus/skkeleton_indicator.nvim'
+Jetpack 'Shougo/ddc.vim'
 autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
     \ 'useSkkServer': v:true,
@@ -231,7 +231,7 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 
 " Jupyter on Vim{{{
 
-Plug 'luk400/vim-jukit'
+Jetpack 'luk400/vim-jukit'
 let g:jukit_mappings = 0
 nnoremap <leader><C-CR> <Cmd>call jukit#send#section(1)<CR>
 nnoremap <leader><CR> <Cmd>call jukit#send#section(0)<CR>
@@ -259,18 +259,18 @@ imap <C-x><C-e> <C-o><C-x><C-e>
 
 "}}}
 
-Plug 'github/copilot.vim'
+Jetpack 'github/copilot.vim'
 
-Plug 'tyru/open-browser-github.vim'
-Plug 'tyru/open-browser.vim'
+Jetpack 'tyru/open-browser-github.vim'
+Jetpack 'tyru/open-browser.vim'
 
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
+Jetpack 'tpope/vim-repeat'
+Jetpack 'tpope/vim-unimpaired'
 
 " Markdown{{{
 
 " MarkdownPreivew with scrolling
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Jetpack 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
 function g:Open(url)
   silent execute('!open -ga Safari.app ' . a:url)
@@ -279,9 +279,9 @@ let g:mkdp_browserfunc = 'g:Open'
 
 "}}}
 
-Plug 'lambdalisue/fern.vim'"{{{
-Plug 'lambdalisue/fern-hijack.vim'
-Plug 'lambdalisue/fern-git-status.vim'
+Jetpack 'lambdalisue/fern.vim'"{{{
+Jetpack 'lambdalisue/fern-hijack.vim'
+Jetpack 'lambdalisue/fern-git-status.vim'
 let g:fern#default_hidden = 1
 function! s:init_fern() abort
   setlocal wrap
@@ -306,17 +306,17 @@ let g:fern#renderer#default#collapsed_symbol = '▸'
 let g:fern#renderer#default#expanded_symbol = '▾'
 "}}}
 
-Plug 'editorconfig/editorconfig-vim'
+Jetpack 'editorconfig/editorconfig-vim'
 nnoremap <leader>ss gg=G``
 
 " Denite{{{
 
 if has('nvim')
-  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+  Jetpack 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/denite.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+  Jetpack 'Shougo/denite.nvim'
+  Jetpack 'roxma/nvim-yarp'
+  Jetpack 'roxma/vim-hug-neovim-rpc'
 endif
 autocmd MyAutoCmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
@@ -336,21 +336,21 @@ nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 
 "}}}
 
-Plug 'jparise/vim-graphql'
+Jetpack 'jparise/vim-graphql'
 
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+Jetpack 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'voldikss/vim-translator'
+Jetpack 'voldikss/vim-translator'
 let g:translator_target_lang = 'ja'
 
-Plug 'makerj/vim-pdf'
+Jetpack 'makerj/vim-pdf'
 
 " LSP{{{
 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+Jetpack 'prabirshrestha/asyncomplete.vim'
+Jetpack 'prabirshrestha/asyncomplete-lsp.vim'
+Jetpack 'prabirshrestha/vim-lsp'
+Jetpack 'mattn/vim-lsp-settings'
 autocmd MyAutoCmd ColorScheme * highlight! link LspErrorHighlight Error
 autocmd MyAutoCmd ColorScheme * highlight! link LspWarningHighlight DiagnosticWarn
 autocmd MyAutoCmd ColorScheme * highlight! link LspInformationHighlight DiagnosticInfo
@@ -402,18 +402,18 @@ au User lsp_setup call lsp#register_server({
 
 "}}}
 
-Plug 'hashivim/vim-terraform'
+Jetpack 'hashivim/vim-terraform'
 
 " Python fmt{{{
 
-Plug 'psf/black', { 'branch': 'stable', 'for': ['python', 'vim-plug'] }
+Jetpack 'psf/black', { 'branch': 'stable', 'for': ['python'] }
 let g:black_linelength = 120
-Plug 'fisadev/vim-isort', { 'for': ['python', 'vim-plug'] }
+Jetpack 'fisadev/vim-isort', { 'for': ['python'] }
 autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <Cmd>Black<CR><Cmd>Isort<CR>
 
 "}}}
 
-Plug 'itchyny/lightline.vim'"{{{
+Jetpack 'itchyny/lightline.vim'"{{{
 function! LightlineGit()
   return FugitiveStatusline() . gina#component#traffic#preset("fancy")
 endfunction
@@ -429,7 +429,7 @@ let g:lightline = {
 let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
 
 
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }"{{{
+Jetpack 'mbbill/undotree', { 'on': 'UndotreeToggle' }"{{{
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
 if has("persistent_undo")
   if !isdirectory($HOME."/.vim/undo-dir")
@@ -440,9 +440,9 @@ if has("persistent_undo")
 endif
 "}}}
 
-Plug 'vim-jp/vimdoc-ja'
+Jetpack 'vim-jp/vimdoc-ja'
 
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }"{{{
+Jetpack 'junegunn/goyo.vim', { 'on': 'Goyo' }"{{{
 nnoremap <silent> <leader>go <Cmd>Goyo<CR>
 let g:goyo_width = 120
 autocmd MyAutoCmd User GoyoEnter nested call <SID>goyo_enter()
@@ -459,7 +459,7 @@ if get(g:, 'goyo_now', 0) == 0
 endif
 "}}}
 
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python', 'vim-plug'] }
+Jetpack 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python'] }
 
 " Git related settings{{{
 
@@ -467,27 +467,27 @@ nnoremap [git]  <Nop>
 nmap <leader>g [git]
 
 if has('nvim')
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'TimUntersberger/neogit'
+  Jetpack 'nvim-lua/plenary.nvim'
+  Jetpack 'TimUntersberger/neogit'
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
   nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
   autocmd MyAutoCmd VimEnter * lua require('neogit').setup {}
   autocmd MyAutoCmd FileType NeogitStatus setlocal nofoldenable
 else
-  Plug 'jreybert/vimagit'
+  Jetpack 'jreybert/vimagit'
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
   nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Magit<CR>
   autocmd MyAutoCmd FileType magit map <buffer> <CR> S<C-N>
 endif
 
-Plug 'tpope/vim-fugitive'
+Jetpack 'tpope/vim-fugitive'
 " Git commitの時にcmdheight=0だと<CR>が必要なのでしばらくMagitを使う
 " nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
 map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
 map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
 nnoremap [git]c <Cmd>Git commit<CR>
 
-Plug 'lambdalisue/gina.vim'
+Jetpack 'lambdalisue/gina.vim'
 set diffopt+=vertical
 let g:gina#action#index#discard_directories = 1
 nnoremap <silent> [git]a <Cmd>Gina add %<CR>
@@ -504,7 +504,7 @@ set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
 autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
 
-Plug 'airblade/vim-gitgutter'
+Jetpack 'airblade/vim-gitgutter'
 nmap [c <Plug>(ahc)<Plug>(GitGutterPrevHunk)
 nmap ]c <Plug>(ahc)<Plug>(GitGutterNextHunk)
 " Clear search result on <C-l>
@@ -514,14 +514,14 @@ nnoremap [git]l <Cmd>FzfPreviewGitLogsRpc<CR>
 
 "}}}
 
-Plug 'psliwka/vim-smoothie'
+Jetpack 'psliwka/vim-smoothie'
 
-Plug 'thinca/vim-qfreplace'
+Jetpack 'thinca/vim-qfreplace'
 
 " fzf{{{
 
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Jetpack 'junegunn/fzf.vim'
+Jetpack 'junegunn/fzf', { 'do': { -> fzf#install() } }
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 " Relative path
@@ -530,8 +530,8 @@ inoremap <expr> <c-x><c-p> fzf#vim#complete("fd --hidden --exclude '.git' --excl
       \ <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h")) . " <Bar> sort -r")
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
-Plug 'LeafCage/yankround.vim'
+Jetpack 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+Jetpack 'LeafCage/yankround.vim'
 noremap <leader>h <Cmd>History<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
@@ -572,9 +572,9 @@ nnoremap <leader>p <Cmd>Files<CR>
 
 "}}}
 
-Plug 'dansomething/vim-hackernews'
+Jetpack 'dansomething/vim-hackernews'
 
-Plug 'vimwiki/vimwiki'"{{{
+Jetpack 'vimwiki/vimwiki'"{{{
 command! Links execute(':VimwikiGenerateLinks ' . glob(expand('%:h') . '/') . '*.md')
 let g:vimwiki_key_mappings = {
       \   'all_maps': 0,
@@ -592,13 +592,13 @@ autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[ fzf#vim#comple
       \ }))
 "}}}
 
-Plug 'cocopon/iceberg.vim'
+Jetpack 'cocopon/iceberg.vim'
 "}}}
 
-Plug 'dbinagi/nomodoro'
+Jetpack 'dbinagi/nomodoro'
 
 " Initialize plugin system
-call plug#end()"}}}
+call jetpack#end()"}}}
 
 " Colorscheme, plugin読み込み後に{{{
 
@@ -683,9 +683,8 @@ endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
 map <leader>, <Cmd>OpenVimrc<CR>
 function! s:LoadPlugins()
-  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-    PlugInstall --sync
-    quit
+  if len(filter(jetpack#names(), '!jetpack#tap(v:val)'))
+    call jetpack#sync()
   endif
 endfunction
 autocmd MyAutoCmd VimEnter * call s:LoadPlugins()
