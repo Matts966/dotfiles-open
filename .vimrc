@@ -492,7 +492,7 @@ Jetpack 'tpope/vim-fugitive'
 " nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
 map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
 map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
-nnoremap [git]c <Cmd>Git commit<CR>
+nnoremap [git]c <Plug>(ahc)<Cmd>Git commit<CR>
 
 Jetpack 'lambdalisue/gina.vim'
 set diffopt+=vertical
