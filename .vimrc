@@ -88,6 +88,8 @@ call plug#begin('~/.vim/plugged')
 
 " VSCodeでも使うもの{{{
 
+Plug 'skanehira/denops-twihi.vim'
+
 " Text Object系{{{
 
 Plug 'kana/vim-textobj-user'
