@@ -182,7 +182,7 @@ endif
 
 if exists('g:vscode')
   "Do not execute rest of init.vim, do not apply any configs
-  call jetpack#end()
+  call dein#end()
   finish
 endif
 
