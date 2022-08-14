@@ -481,6 +481,7 @@ if has('nvim')
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
   nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
   autocmd MyAutoCmd FileType NeogitStatus setlocal nofoldenable
+        \ | call feedkeys('4') " foldlevel
 
   call dein#add('lewis6991/gitsigns.nvim', {'on_lua': "gitsigns",
         \ 'hook_post_source': 'lua require("gitsigns").setup {}'})
