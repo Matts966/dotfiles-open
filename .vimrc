@@ -694,15 +694,10 @@ function! s:OpenVimrc()
 endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
 map <leader>, <Cmd>OpenVimrc<CR>
-function! s:LoadPlugins()
-  if dein#check_install()
-    call dein#install()
-  endif
-endfunction
-autocmd MyAutoCmd VimEnter * call s:LoadPlugins()
+if dein#check_install()
+  call dein#install()
+endif
 autocmd MyAutoCmd BufWritePost .vimrc ++nested source $MYVIMRC
-command! -nargs=0 LoadPlugins call s:LoadPlugins()
-map <leader>r <Cmd>silent! wa!<CR><Cmd>source $MYVIMRC<CR><Cmd>LoadPlugins<CR>
 
 "}}}
 
