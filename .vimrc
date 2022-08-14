@@ -362,18 +362,18 @@ function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
   if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-  nmap <buffer> gd <Plug>(ahc)<plug>(lsp-definition)
-  nmap <buffer> gs <Plug>(ahc)<plug>(lsp-document-symbol-search)
-  nmap <buffer> gS <Plug>(ahc)<plug>(lsp-workspace-symbol-search)
-  nmap <buffer> gr <Plug>(ahc)<plug>(lsp-references)
-  nmap <buffer> gi <Plug>(ahc)<plug>(lsp-implementation)
-  nmap <buffer> <leader>rn <Plug>(ahc)<plug>(lsp-rename)
-  nmap <buffer> K <Plug>(ahc)<plug>(lsp-hover)
+  nmap <buffer> gd <Plug>(ahc)<Plug>(lsp-definition)
+  nmap <buffer> gs <Plug>(ahc)<Plug>(lsp-document-symbol-search)
+  nmap <buffer> gS <Plug>(ahc)<Plug>(lsp-workspace-symbol-search)
+  nmap <buffer> gr <Plug>(ahc)<Plug>(lsp-references)
+  nmap <buffer> gi <Plug>(ahc)<Plug>(lsp-implementation)
+  nmap <buffer> <leader>rn <Plug>(ahc)<Plug>(lsp-rename)
+  nmap <buffer> K <Plug>(ahc)<Plug>(lsp-hover)
   nmap <buffer> <leader>dd <Plug>(ahc)<Cmd>LspDocumentDiagnostic<CR>
   nmap <buffer> <leader>da <Plug>(ahc)<Cmd>LspDocumentDiagnostic --buffers=*<CR>
   nnoremap <buffer> <expr><c-j> lsp#scroll(+4)
   nnoremap <buffer> <expr><c-k> lsp#scroll(-4)
-  nnoremap <buffer> <leader>A <Plug>(ahc)<plug>(lsp-code-action)
+  nnoremap <buffer> <leader>A <Plug>(ahc)<Plug>(lsp-code-action)
 
   let g:lsp_format_sync_timeout = 1000
   if &ft == 'sql'
@@ -545,8 +545,8 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 " https://github.com/junegunn/fzf.vim/pull/628#issuecomment-766440334
 inoremap <expr> <c-x><c-p> fzf#vim#complete("fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0
       \ <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h")) . " <Bar> sort -r")
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+imap <c-x><c-j> <Plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <Plug>(fzf-complete-line)
 call dein#add('yuki-yano/fzf-preview.vim', { 'rev': 'release/rpc' })
 call dein#add('LeafCage/yankround.vim')
 noremap <leader>h <Cmd>History<CR>
