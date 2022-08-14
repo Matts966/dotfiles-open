@@ -5,7 +5,7 @@ terraform 1.0.4
 direnv system
 cloudsql-proxy 1.23.0
 golang 1.19
-nodejs 14.18.2
+nodejs 16.16.0
 rust nightly
 kustomize 3.8.9
 kubectx 0.9.4
