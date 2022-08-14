@@ -831,8 +831,8 @@ if exists('g:neovide')
     let g:gui_font_size = g:gui_font_size + a:delta
     execute('set guifont=Menlo:h'.g:gui_font_size)
   endfunction
-  noremap <expr><D-=> ResizeFont(1)
-  noremap <expr><D--> ResizeFont(-1)
+  noremap <D-=> <Cmd>call ResizeFont(1)<CR>
+  noremap <D--> <Cmd>call ResizeFont(-1)<CR>
 
   " transparency
   let g:neovide_transparency=0.0
@@ -842,8 +842,8 @@ if exists('g:neovide')
     let g:neovide_transparency_point = g:neovide_transparency_point + a:delta
     let g:neovide_background_color = '#0f1117'.printf('%x', float2nr(255 * g:neovide_transparency_point))
   endfunction
-  noremap <expr><D-]> ChangeTransparency(0.01)
-  noremap <expr><D-[> ChangeTransparency(-0.01)
+  noremap <D-]> <Cmd>call ChangeTransparency(0.01)<CR>
+  noremap <D-[> <Cmd>call ChangeTransparency(-0.01)<CR>
 
   tnoremap <C-CR> <CR>
   tnoremap <S-BS> <BS>
