@@ -694,6 +694,8 @@ if dein#check_install()
   call dein#install()
 endif
 autocmd MyAutoCmd BufWritePost .vimrc ++nested source $MYVIMRC
+nnoremap <leader>l call map(dein#check_clean(), { _, val -> delete(val, 'rf') })
+      \ | call dein#recache_runtimepath()
 
 "}}}
 
