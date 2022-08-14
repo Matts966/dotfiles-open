@@ -106,7 +106,7 @@ call dein#add('vim-denops/denops.vim', {'lazy': 1})
 " Text Object系{{{
 
 call dein#add('kana/vim-textobj-user', {'on_map': '<Plug>(textobj-'})
-call dein#add('kana/vim-textobj-entire', {'on_map': ['ie', 'ae'], 'depends': 'vim-textobj-user'})
+call dein#add('kana/vim-textobj-entire', {'on_event': 'VimEnter', 'depends': 'vim-textobj-user'})
 call dein#add('kana/vim-operator-user', {'on_map': '<Plug>(operator-'})
 call dein#add('kana/vim-operator-replace', {'on_map': '<Plug>(operator-replace', 'depends': 'vim-operator-user'})
 map _ <Plug>(operator-replace)
