@@ -464,8 +464,6 @@ endif
 
 " Git related settings{{{
 
-" TODO: Revert, Reset, Stash どうする？
-
 nnoremap [git]  <Nop>
 nmap <leader>g [git]
 
@@ -516,6 +514,7 @@ nnoremap <silent> [git]a <Cmd>Gina add %<CR>
 nnoremap [git]p <Plug>(ahc)<Cmd>Gina pull<CR>
 nnoremap [git]P <Plug>(ahc)<Cmd>Gina push<CR>
 nnoremap [git]s <Cmd>silent! wa<CR><Cmd>Gina status<CR>
+nnoremap [git]l <Cmd>tabnew<CR><Cmd>Gina log<CR>
 autocmd MyAutoCmd VimEnter *
       \ call gina#custom#command#option('patch', '--opener', 'edit')
       \ | call gina#custom#command#option('status', '--opener', 'tabedit')
@@ -525,8 +524,6 @@ autocmd MyAutoCmd BufEnter gina://*:show* nmap <buffer> <C-CR> dol]c
 set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
 autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
-
-nnoremap [git]l <Cmd>FzfPreviewGitLogsRpc<CR>
 
 "}}}
 
