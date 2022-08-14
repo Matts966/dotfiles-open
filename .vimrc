@@ -40,9 +40,9 @@ set shiftwidth=2
 set fileformats=
 
 " コメントを自動挿入しない
-set formatoptions-=c
-set formatoptions-=r
-set formatoptions-=o
+autocmd MyAutoCmd BufEnter * set formatoptions-=c
+      \ | set formatoptions-=r
+      \ | set formatoptions-=o
 
 set nobackup
 set noswapfile
