@@ -507,17 +507,13 @@ map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
 map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
 nnoremap [git]c <Plug>(ahc)<Cmd>Git commit<CR>
 
-call dein#add('lambdalisue/gina.vim')
+call dein#add('lambdalisue/gina.vim', {'on_cmd': 'Gina',
+      \ 'hook_post_source': 'call gina#custom#command#option("log", "--opener", "tabedit")'})
 set diffopt+=vertical
 let g:gina#action#index#discard_directories = 1
 nnoremap [git]p <Plug>(ahc)<Cmd>Gina pull<CR>
 nnoremap [git]P <Plug>(ahc)<Cmd>Gina push<CR>
-nnoremap [git]l <Cmd>tabnew<CR><Cmd>Gina log<CR>
-autocmd MyAutoCmd VimEnter *
-      \ call gina#custom#command#option('patch', '--opener', 'edit')
-      \ | call gina#custom#command#option('status', '--opener', 'tabedit')
-autocmd MyAutoCmd BufEnter gina://*:show* nmap <buffer> <CR> dor]c
-autocmd MyAutoCmd BufEnter gina://*:show* nmap <buffer> <C-CR> dol]c
+nnoremap [git]l <Cmd>Gina log<CR>
 " Enable spell check only in git commit
 set spelllang+=cjk
 autocmd MyAutoCmd FileType gitcommit setlocal spell
