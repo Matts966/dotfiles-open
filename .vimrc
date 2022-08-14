@@ -278,6 +278,7 @@ imap <C-x><C-e> <C-o><C-x><C-e>
 "}}}
 
 call dein#add('github/copilot.vim', {'on_event': 'InsertEnter'})
+let g:copilot_node_command = '~/.asdf/shims/node'
 
 call dein#add('tyru/open-browser-github.vim', {'on_event': 'CmdlineEnter'})
 call dein#add('tyru/open-browser.vim', {'on_event': 'CmdlineEnter'})
