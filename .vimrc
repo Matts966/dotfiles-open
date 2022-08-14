@@ -80,38 +80,47 @@ noremap! <C-E> <End>
 
 "}}}
 
-" jetpack, Make sure you use single quotes {{{
-if empty(glob('~/.vim/autoload/jetpack.vim'))
-  silent !curl -fLo ~/.vim/autoload/jetpack.vim --create-dirs
-        \ https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
-  autocmd MyAutoCmd VimEnter * call jetpack#sync() | source $MYVIMRC
+" dein, Make sure you use single quotes {{{
+let s:dein_dir = $HOME . '/.cache/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
-autocmd MyAutoCmd BufEnter JetpackStatus nnoremap <buffer> q <Cmd>quit<CR>
-packadd vim-jetpack
-call jetpack#begin()
-Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
+let g:dein#install_progress_type = has('nvim') ? 'title' : 'tabline'
+let g:dein#enable_notification = 1
+filetype plugin indent on
+syntax enable
+call dein#begin(s:dein_dir)
+call dein#add('Shougo/dein.vim')
 
 " VSCodeでも使うもの{{{
 
-Jetpack 'skanehira/denops-twihi.vim'
+call dein#add('vim-denops/denops.vim', {'lazy': 1})
 
 " Text Object系{{{
 
-Jetpack 'kana/vim-textobj-user'
-Jetpack 'kana/vim-textobj-entire'
-Jetpack 'kana/vim-operator-user'
-Jetpack 'kana/vim-operator-replace'
+call dein#add('kana/vim-textobj-user', {'on_map': '<Plug>(textobj-'})
+call dein#add('kana/vim-textobj-entire', {'on_map': ['ie', 'ae'], 'depends': 'vim-textobj-user'})
+call dein#add('kana/vim-operator-user', {'on_map': '<Plug>(operator-'})
+call dein#add('kana/vim-operator-replace', {'on_map': '<Plug>(operator-replace', 'depends': 'vim-operator-user'})
 map _ <Plug>(operator-replace)
-Jetpack 'haya14busa/vim-operator-flashy'
+call dein#add('haya14busa/vim-operator-flashy', {'on_map': '<Plug>(operator-flashy',
+      \ 'depends': 'vim-operator-user'})
 map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
 
 "}}}
 
-Jetpack 'stsewd/gx-extended.vim'
+call dein#add('stsewd/gx-extended.vim', {'on_map': '<Plug>(gx'})
 
-Jetpack 'andymass/vim-matchup'
-Jetpack 'nvim-treesitter/nvim-treesitter'
+call dein#add('andymass/vim-matchup', {'on_event': 'FileType'})
+call dein#add('nvim-treesitter/nvim-treesitter', {
+      \   'on_event': 'FileType',
+      \   'hook_post_source': 'call InitTreesitter()',
+      \ })
 function! InitTreesitter()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -123,24 +132,26 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 endfunction
-autocmd MyAutoCmd VimEnter * call InitTreesitter()
 
-" コメント系
-Jetpack 'machakann/vim-sandwich'
+" 上書きされないようにdependsを指定
+call dein#add('machakann/vim-sandwich', {
+      \   'on_map': 's',
+      \   'depends': ['vim-textobj-user', 'vim-operator-user'],
+      \ })
 " Toggle comment out with gcc and gc with selection.
-Jetpack 'tpope/vim-commentary'
+call dein#add('tpope/vim-commentary', {'on_map': 'gc'})
 " Terraform
 autocmd MyAutoCmd FileType tf setlocal commentstring=#\ %s
 " Jupyter on VSCode
 autocmd MyAutoCmd BufEnter *.ipynb#* setlocal commentstring=#\ %s
 
-Jetpack 'itchyny/vim-highlighturl'
+call dein#add('itchyny/vim-highlighturl')
 
-Jetpack 'Yggdroot/indentLine'
+call dein#add('Yggdroot/indentLine')
 
 " Motion系{{{
 
-Jetpack 'unblevable/quick-scope'
+call dein#add('unblevable/quick-scope')
 if exists('g:vscode')
   highlight QuickScopePrimary guifg=#00dfff ctermfg=45 gui=underline cterm=underline
   highlight QuickScopeSecondary gui=underline cterm=underline
@@ -149,12 +160,14 @@ else
   autocmd MyAutoCmd ColorScheme * highlight QuickScopeSecondary gui=underline cterm=underline
 endif
 if has('nvim')
-  Jetpack 'phaazon/hop.nvim', { 'on': 'HopWord' }
-  autocmd! MyAutoCmd User hop.nvim lua require'hop'.setup()
+  call dein#add('phaazon/hop.nvim', {
+        \   'on_cmd': ['HopWord', 'HopWordVisual'],
+        \   'hook_post_source': 'lua require"hop".setup()',
+        \ })
   map  <Leader>j <Cmd>HopWord<CR>
   vmap <Leader>j <Cmd>HopWordVisual<CR>
 else
-  Jetpack 'vim-easymotion/vim-easymotion'
+  call dein#add('vim-easymotion/vim-easymotion')
   let g:EasyMotion_do_mapping = 0
   map  <Leader>j <Plug>(easymotion-bd-w)
   nmap <Leader>j <Plug>(easymotion-overwin-w)
@@ -180,18 +193,18 @@ endif
 set cmdheight=0
 " <CR> 待ち対策
 " 消す時は<Plug>(ahc)も消すこと
-Jetpack 'utubo/vim-auto-hide-cmdline'
+call dein#add('utubo/vim-auto-hide-cmdline', {'on_map': '<Plug>(ahc'})
 " 検索時の候補数を表示したい
 nnoremap n <Plug>(ahc)n
 nnoremap N <Plug>(ahc)N
 
 " SKK{{{
 
-Jetpack 'Matts966/skk-vconv.vim'
-Jetpack 'vim-denops/denops.vim'
-Jetpack 'vim-skk/skkeleton'
-Jetpack 'delphinus/skkeleton_indicator.nvim'
-Jetpack 'Shougo/ddc.vim'
+call dein#add('Matts966/skk-vconv.vim', {'on_map': '<C-j>'})
+call dein#add('vim-skk/skkeleton', {'on_event': 'InsertEnter', 'depends': 'denops.vim' })
+call dein#add('delphinus/skkeleton_indicator.nvim', {'on_event': 'InsertEnter',
+      \ 'hook_post_source': 'lua require"skkeleton_indicator".setup{ eijiText = "AaBb", hiraText = "Hira" }'})
+call dein#add('Shougo/ddc.vim', {'on_event': 'skkeleton-initialize-pre'})
 autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
     \ 'useSkkServer': v:true,
@@ -219,7 +232,6 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \     'minAutoCompleteLength': 1,
     \   },
     \ })
-autocmd MyAutoCmd VimEnter * lua require'skkeleton_indicator'.setup{ eijiText = 'AaBb', hiraText = 'Hira' }
 autocmd MyAutoCmd User skkeleton-enable-pre call
     \ ddc#custom#patch_global('sources', ['skkeleton'])
 autocmd MyAutoCmd User skkeleton-disable-post call
@@ -236,7 +248,8 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 
 " Jupyter on Vim{{{
 
-Jetpack 'luk400/vim-jukit'
+autocmd MyAutoCmd BufEnter *.ipynb setlocal filetype=notebook
+call dein#add('luk400/vim-jukit', {'on_ft': 'notebook'})
 let g:jukit_mappings = 0
 nnoremap <leader><C-CR> <Cmd>call jukit#send#section(1)<CR>
 nnoremap <leader><CR> <Cmd>call jukit#send#section(0)<CR>
@@ -264,29 +277,17 @@ imap <C-x><C-e> <C-o><C-x><C-e>
 
 "}}}
 
-Jetpack 'github/copilot.vim'
+call dein#add('github/copilot.vim', {'on_event': 'InsertEnter'})
 
-Jetpack 'tyru/open-browser-github.vim'
-Jetpack 'tyru/open-browser.vim'
+call dein#add('tyru/open-browser-github.vim', {'on_event': 'CmdlineEnter'})
+call dein#add('tyru/open-browser.vim', {'on_event': 'CmdlineEnter'})
 
-Jetpack 'tpope/vim-repeat'
-Jetpack 'tpope/vim-unimpaired'
+call dein#add('tpope/vim-repeat')
+call dein#add('tpope/vim-unimpaired')
 
-" Markdown{{{
-
-" MarkdownPreivew with scrolling
-Jetpack 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-nnoremap <C-T> <Cmd>MarkdownPreviewToggle<CR>
-function g:Open(url)
-  silent execute('!open -ga Safari.app ' . a:url)
-endfunction
-let g:mkdp_browserfunc = 'g:Open'
-
-"}}}
-
-Jetpack 'lambdalisue/fern.vim'"{{{
-Jetpack 'lambdalisue/fern-hijack.vim'
-Jetpack 'lambdalisue/fern-git-status.vim'
+call dein#add('lambdalisue/fern.vim')"{{{
+call dein#add('lambdalisue/fern-hijack.vim')
+call dein#add('lambdalisue/fern-git-status.vim')
 let g:fern#default_hidden = 1
 function! s:init_fern() abort
   setlocal wrap
@@ -311,17 +312,18 @@ let g:fern#renderer#default#collapsed_symbol = '▸'
 let g:fern#renderer#default#expanded_symbol = '▾'
 "}}}
 
-Jetpack 'editorconfig/editorconfig-vim'
+call dein#add('editorconfig/editorconfig-vim', {'on_event': 'FileType'})
 nnoremap <leader>ss gg=G``
 
 " Denite{{{
 
 if has('nvim')
-  Jetpack 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+  call dein#add('Shougo/denite.nvim', { 'hook_post_update': 'UpdateRemotePlugins',
+        \ 'on_cmd': 'Denite' })
 else
-  Jetpack 'Shougo/denite.nvim'
-  Jetpack 'roxma/nvim-yarp'
-  Jetpack 'roxma/vim-hug-neovim-rpc'
+  call dein#add('Shougo/denite.nvim', {'on_cmd': 'Denite'})
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
 endif
 autocmd MyAutoCmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
@@ -341,21 +343,17 @@ nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 
 "}}}
 
-Jetpack 'jparise/vim-graphql'
+call dein#add('jparise/vim-graphql', {'on_ft': 'graphql'})
 
-Jetpack 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-
-Jetpack 'voldikss/vim-translator'
-let g:translator_target_lang = 'ja'
-
-Jetpack 'makerj/vim-pdf'
+call dein#add('gelguy/wilder.nvim', {'on_cmd': ['/', '?', ':'],
+      \ 'hook_post_update': 'UpdateRemotePlugins'})
 
 " LSP{{{
 
-Jetpack 'prabirshrestha/asyncomplete.vim'
-Jetpack 'prabirshrestha/asyncomplete-lsp.vim'
-Jetpack 'prabirshrestha/vim-lsp'
-Jetpack 'mattn/vim-lsp-settings'
+call dein#add('prabirshrestha/asyncomplete.vim', {'on_event': 'InsertEnter'})
+call dein#add('prabirshrestha/asyncomplete-lsp.vim', {'on_event': 'InsertEnter'})
+call dein#add('prabirshrestha/vim-lsp')
+call dein#add('mattn/vim-lsp-settings')
 autocmd MyAutoCmd ColorScheme * highlight! link LspErrorHighlight Error
 autocmd MyAutoCmd ColorScheme * highlight! link LspWarningHighlight DiagnosticWarn
 autocmd MyAutoCmd ColorScheme * highlight! link LspInformationHighlight DiagnosticInfo
@@ -407,18 +405,18 @@ au User lsp_setup call lsp#register_server({
 
 "}}}
 
-Jetpack 'hashivim/vim-terraform'
+call dein#add('hashivim/vim-terraform', {'on_ft': 'terraform'})
 
 " Python fmt{{{
 
-Jetpack 'psf/black', { 'branch': 'stable', 'for': ['python'] }
+call dein#add('psf/black', { 'on_ft': ['python'] })
 let g:black_linelength = 120
-Jetpack 'fisadev/vim-isort', { 'for': ['python'] }
+call dein#add('fisadev/vim-isort', { 'on_ft': ['python'] })
 autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <Cmd>Black<CR><Cmd>Isort<CR>
 
 "}}}
 
-Jetpack 'itchyny/lightline.vim'"{{{
+call dein#add('itchyny/lightline.vim')"{{{
 function! LightlineGit()
   return FugitiveStatusline() . gina#component#traffic#preset("fancy")
 endfunction
@@ -430,11 +428,11 @@ let g:lightline = {
       \    },
       \   'component_function': { 'git': 'LightlineGit' },
       \ }
-"}}}
 let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
+"}}}
 
 
-Jetpack 'mbbill/undotree', { 'on': 'UndotreeToggle' }"{{{
+call dein#add('mbbill/undotree', { 'on_cmd': 'UndotreeToggle' })"{{{
 nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
 if has("persistent_undo")
   if !isdirectory($HOME."/.vim/undo-dir")
@@ -445,9 +443,9 @@ if has("persistent_undo")
 endif
 "}}}
 
-Jetpack 'vim-jp/vimdoc-ja'
+call dein#add('vim-jp/vimdoc-ja', {'on_event': 'CmdlineEnter'})
 
-Jetpack 'junegunn/goyo.vim', { 'on': 'Goyo' }"{{{
+call dein#add('junegunn/goyo.vim', { 'on_cmd': 'Goyo' })"{{{
 nnoremap <silent> <leader>go <Cmd>Goyo<CR>
 let g:goyo_width = 120
 autocmd MyAutoCmd User GoyoEnter nested call <SID>goyo_enter()
@@ -464,8 +462,6 @@ if get(g:, 'goyo_now', 0) == 0
 endif
 "}}}
 
-Jetpack 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python'] }
-
 " Git related settings{{{
 
 " TODO: Revert, Reset, Stash どうする？
@@ -473,15 +469,18 @@ Jetpack 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': ['python']
 nnoremap [git]  <Nop>
 nmap <leader>g [git]
 
+" しばらくMagitを練習してみる
+" nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
+
 if has('nvim')
-  Jetpack 'nvim-lua/plenary.nvim'
-  Jetpack 'TimUntersberger/neogit'
+  call dein#add('nvim-lua/plenary.nvim', {'lazy': 1})
+  call dein#add('TimUntersberger/neogit', {'depends': 'plenary.nvim', 'on_cmd': 'Neogit',
+        \ 'hook_post_source': 'lua require("neogit").setup {}'})
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
   nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
-  autocmd MyAutoCmd VimEnter * lua require('neogit').setup {}
   autocmd MyAutoCmd FileType NeogitStatus setlocal nofoldenable
 
-  Jetpack 'lewis6991/gitsigns.nvim'
+  call dein#add('lewis6991/gitsigns.nvim', {'on_lua': "gitsigns", 'hook_post_source': 'lua require("gitsigns").setup {}'})
   autocmd MyAutoCmd VimEnter * lua require('gitsigns').setup {}
   nmap [c <Plug>(ahc)<Cmd>Gitsigns prev_hunk<CR>
   nmap ]c <Plug>(ahc)<Cmd>Gitsigns next_hunk<CR>
@@ -492,26 +491,26 @@ if has('nvim')
   " Clear search result on <C-l>
   nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>Gitsigns refresh<CR><C-l>
 else
-  Jetpack 'jreybert/vimagit'
+  call dein#add('jreybert/vimagit')
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
   nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Magit<CR>
   autocmd MyAutoCmd FileType magit map <buffer> <CR> S<C-N>
 
-  Jetpack 'airblade/vim-gitgutter'
+  call dein#add('airblade/vim-gitgutter')
   nmap [c <Plug>(ahc)<Plug>(GitGutterPrevHunk)
   nmap ]c <Plug>(ahc)<Plug>(GitGutterNextHunk)
   " Clear search result on <C-l>
   nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
 endif
 
-Jetpack 'tpope/vim-fugitive'
+call dein#add('tpope/vim-fugitive')
 " Git commitの時にcmdheight=0だと<CR>が必要なのでしばらくMagitを使う
 " nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
 map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
 map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
 nnoremap [git]c <Plug>(ahc)<Cmd>Git commit<CR>
 
-Jetpack 'lambdalisue/gina.vim'
+call dein#add('lambdalisue/gina.vim')
 set diffopt+=vertical
 let g:gina#action#index#discard_directories = 1
 nnoremap <silent> [git]a <Cmd>Gina add %<CR>
@@ -532,14 +531,14 @@ nnoremap [git]l <Cmd>FzfPreviewGitLogsRpc<CR>
 
 "}}}
 
-Jetpack 'psliwka/vim-smoothie'
+call dein#add('psliwka/vim-smoothie', {'on_map': ['<C-u>', '<C-d>']})
 
-Jetpack 'thinca/vim-qfreplace'
+call dein#add('thinca/vim-qfreplace', {'on_cmd': 'Qfreplace'})
 
 " fzf{{{
 
-Jetpack 'junegunn/fzf.vim'
-Jetpack 'junegunn/fzf', { 'do': { -> fzf#install() } }
+call dein#add('junegunn/fzf.vim')
+call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 " Relative path
@@ -548,8 +547,8 @@ inoremap <expr> <c-x><c-p> fzf#vim#complete("fd --hidden --exclude '.git' --excl
       \ <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h")) . " <Bar> sort -r")
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-Jetpack 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
-Jetpack 'LeafCage/yankround.vim'
+call dein#add('yuki-yano/fzf-preview.vim', { 'rev': 'release/rpc' })
+call dein#add('LeafCage/yankround.vim')
 noremap <leader>h <Cmd>History<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
@@ -590,9 +589,9 @@ nnoremap <leader>p <Cmd>Files<CR>
 
 "}}}
 
-Jetpack 'dansomething/vim-hackernews'
+call dein#add('dansomething/vim-hackernews')
 
-Jetpack 'vimwiki/vimwiki'"{{{
+call dein#add('vimwiki/vimwiki') "{{{
 command! Links execute(':VimwikiGenerateLinks ' . glob(expand('%:h') . '/') . '*.md')
 let g:vimwiki_key_mappings = {
       \   'all_maps': 0,
@@ -610,13 +609,14 @@ autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[ fzf#vim#comple
       \ }))
 "}}}
 
-Jetpack 'cocopon/iceberg.vim'
+call dein#add('cocopon/iceberg.vim')
 "}}}
 
-Jetpack 'dbinagi/nomodoro'
+call dein#add('dbinagi/nomodoro', {'hook_post_source': "lua require('nomodoro').setup({})"})
 
 " Initialize plugin system
-call jetpack#end()"}}}
+call dein#end()
+"}}}
 
 " Colorscheme, plugin読み込み後に{{{
 
@@ -701,8 +701,8 @@ endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
 map <leader>, <Cmd>OpenVimrc<CR>
 function! s:LoadPlugins()
-  if len(filter(jetpack#names(), '!jetpack#tap(v:val)'))
-    call jetpack#sync()
+  if dein#check_install()
+    call dein#install()
   endif
 endfunction
 autocmd MyAutoCmd VimEnter * call s:LoadPlugins()
@@ -760,8 +760,6 @@ endfunction
 
 " ターミナル系コマンド{{{
 
-" nnoremap <leader>gg <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
-" しばらくMagitを練習してみる
 nmap <leader>k <Cmd>tabnew<CR><Cmd>terminal k9s<CR><C-W>g<Tab>
 command! -nargs=0 Sqlp tabedit % | terminal sqlp %
 nnoremap <leader>sp <Cmd>tabnew<CR><Cmd>terminal spt<CR>
