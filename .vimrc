@@ -510,10 +510,8 @@ nnoremap [git]c <Plug>(ahc)<Cmd>Git commit<CR>
 call dein#add('lambdalisue/gina.vim')
 set diffopt+=vertical
 let g:gina#action#index#discard_directories = 1
-nnoremap <silent> [git]a <Cmd>Gina add %<CR>
 nnoremap [git]p <Plug>(ahc)<Cmd>Gina pull<CR>
 nnoremap [git]P <Plug>(ahc)<Cmd>Gina push<CR>
-nnoremap [git]s <Cmd>silent! wa<CR><Cmd>Gina status<CR>
 nnoremap [git]l <Cmd>tabnew<CR><Cmd>Gina log<CR>
 autocmd MyAutoCmd VimEnter *
       \ call gina#custom#command#option('patch', '--opener', 'edit')
