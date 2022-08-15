@@ -378,19 +378,24 @@ if has('nvim')
 
   call dein#add('petertriho/nvim-scrollbar', {'on_event': 'WinScrolled',
         \ 'hook_post_source': 'lua require("scrollbar").setup()'})
-  " autocmd MyAutoCmd Colorscheme * highlight! link ScrollbarHandle StatusLine
   call dein#add('kevinhwang91/nvim-hlslens', {'depends': ['nvim-scrollbar', 'hop.nvim'],
         \ 'on_map': ['/', '?'],
         \ 'on_event': 'CursorMoved',
         \ 'hook_post_source': 'lua require("hlslens").setup {}
         \   require("scrollbar.handlers.search").setup()'})
-  autocmd MyAutoCmd Colorscheme * highlight! default link HlSearchNear HopNextKey
-  autocmd MyAutoCmd Colorscheme * highlight! default link HlSearchLens HopNextKey1
-  autocmd MyAutoCmd Colorscheme * highlight! default link HlSearchLensNear HopNextKey
-  autocmd MyAutoCmd Colorscheme * highlight! default link HlSearchFloat HopNextKey1
-  autocmd MyAutoCmd Colorscheme * highlight! default link Search HopNextKey1
   nnoremap n n<Cmd>lua require('hlslens').start()<CR>
   nnoremap N N<Cmd>lua require('hlslens').start()<CR>
+
+  autocmd MyAutoCmd Colorscheme * highlight! link HlSearchNear HopNextKey
+  autocmd MyAutoCmd Colorscheme * highlight! link HlSearchLens HopNextKey1
+  autocmd MyAutoCmd Colorscheme * highlight! link HlSearchLensNear HopNextKey
+  autocmd MyAutoCmd Colorscheme * highlight! link HlSearchFloat HopNextKey1
+  autocmd MyAutoCmd Colorscheme * highlight! link Search HopNextKey1
+
+  " TODO: 以下のハイライトを起動時に反映したい
+  " autocmd MyAutoCmd Colorscheme * highlight! link ScrollbarHandle StatusLine
+  autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearch HopNextKey1
+  autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearchHandle HopNextKey
 
 endif
 
