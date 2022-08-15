@@ -700,12 +700,20 @@ function! s:OpenVimrc()
 endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
 map <leader>, <Cmd>OpenVimrc<CR>
-if dein#check_install()
-  call dein#install()
-endif
+function! DeinInstall()
+  call map(dein#check_clean(), { _, val -> delete(val, 'rf') })
+  call dein#recache_runtimepath()
+  if dein#check_install()
+    call dein#install()
+  endif
+  call dein#source()
+  if has('nvim')
+    call dein#remote_plugins()
+  endif
+endfunction
 autocmd MyAutoCmd BufWritePost .vimrc ++nested source $MYVIMRC
-nnoremap <leader>l call map(dein#check_clean(), { _, val -> delete(val, 'rf') })
-      \ | call dein#recache_runtimepath()
+nnoremap <expr><leader>r DeinInstall()
+nnoremap <leader>du call dein#update() | call dein#remote_plugins()
 
 "}}}
 
