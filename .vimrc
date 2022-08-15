@@ -473,17 +473,21 @@ endif
 nnoremap [git]  <Nop>
 nmap <leader>g [git]
 
-" しばらくMagitを練習してみる
-" nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
+nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
 
 if has('nvim')
   call dein#add('nvim-lua/plenary.nvim', {'lazy': 1})
   call dein#add('TimUntersberger/neogit', {'depends': 'plenary.nvim', 'on_cmd': 'Neogit',
-        \ 'hook_post_source': 'lua require("neogit").setup {}'})
+        \ 'hook_post_source': 'lua require("neogit").setup {
+        \   auto_refresh = false,
+        \   signs = {
+        \     section = { "▸", "▾" },
+        \     item = { "▸", "▾" },
+        \   },
+        \   disable_commit_confirmation = false,
+        \  }'})
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
-  nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
   autocmd MyAutoCmd FileType NeogitStatus setlocal nofoldenable
-        \ | call feedkeys('4') " foldlevel
 
   call dein#add('lewis6991/gitsigns.nvim', {'on_lua': "gitsigns",
         \ 'hook_post_source': 'lua require("gitsigns").setup {}'})
