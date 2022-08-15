@@ -324,8 +324,7 @@ nnoremap <leader>ss gg=G``
 " Denite{{{
 
 if has('nvim')
-  call dein#add('Shougo/denite.nvim', { 'hook_post_update': 'UpdateRemotePlugins',
-        \ 'on_cmd': 'Denite' })
+  call dein#add('Shougo/denite.nvim', { 'on_cmd': 'Denite' })
 else
   call dein#add('Shougo/denite.nvim', {'on_cmd': 'Denite'})
   call dein#add('roxma/nvim-yarp')
@@ -351,8 +350,7 @@ nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 
 call dein#add('jparise/vim-graphql', {'on_ft': 'graphql'})
 
-call dein#add('gelguy/wilder.nvim', {'on_cmd': ['/', '?', ':'],
-      \ 'hook_post_update': 'UpdateRemotePlugins'})
+call dein#add('gelguy/wilder.nvim', {'on_cmd': ['/', '?', ':']})
 
 " LSP{{{
 
