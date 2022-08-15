@@ -396,14 +396,14 @@ endfunction
 " call s:on_lsp_buffer_enabled only for languages that has the server registered.
 autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 if !executable('texlab')
-  au User lsp_setup call lsp#register_server({
+  autocmd MyAutoCmd User lsp_setup call lsp#register_server({
         \ 'name': 'texlab',
         \ 'cmd': {server_info->['texlab']},
         \ 'whitelist': ['tex', 'bib', 'sty'],
         \ })
 endif
 let g:lsp_debug_servers = 1
-au User lsp_setup call lsp#register_server({
+autocmd MyAutoCmd User lsp_setup call lsp#register_server({
       \ 'name': 'efm-langserver',
       \ 'cmd': {server_info->[&shell, &shellcmdflag, 'efm-langserver 2> /tmp/ok.log']},
       \ 'whitelist': ['sql'],
