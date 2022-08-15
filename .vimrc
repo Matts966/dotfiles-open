@@ -484,7 +484,7 @@ if has('nvim')
         \     section = { "▸", "▾" },
         \     item = { "▸", "▾" },
         \   },
-        \   disable_commit_confirmation = false,
+        \   disable_commit_confirmation = true,
         \  }'})
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
   autocmd MyAutoCmd FileType NeogitStatus setlocal nofoldenable
