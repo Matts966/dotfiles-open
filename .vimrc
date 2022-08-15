@@ -204,8 +204,8 @@ nnoremap N <Plug>(ahc)N
 " SKK{{{
 
 call dein#add('Matts966/skk-vconv.vim', {'on_map': '<C-j>'})
-call dein#add('vim-skk/skkeleton', {'on_event': 'InsertEnter', 'depends': 'denops.vim' })
-call dein#add('delphinus/skkeleton_indicator.nvim', {'on_event': 'InsertEnter',
+call dein#add('vim-skk/skkeleton', {'on_event': ['InsertEnter', 'CursorHold'], 'depends': 'denops.vim' })
+call dein#add('delphinus/skkeleton_indicator.nvim', {'on_event': ['InsertEnter', 'CursorHold'],
       \ 'hook_post_source': 'lua require"skkeleton_indicator".setup{ eijiText = "AaBb", hiraText = "Hira" }'})
 call dein#add('Shougo/ddc.vim', {'on_event': 'skkeleton-initialize-pre'})
 autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
@@ -282,7 +282,7 @@ imap <C-x><C-e> <C-o><C-x><C-e>
 
 " v1.5.3 and newer have performance issue.
 call dein#add('github/copilot.vim', {'rev': 'c2e75a3a7519c126c6fdb35984976df9ae13f564',
-      \ 'on_event': 'InsertEnter'})
+      \ 'on_event': ['InsertEnter', 'CursorHold']})
 let g:copilot_node_command = '~/.asdf/shims/node'
 
 call dein#add('tyru/open-browser-github.vim', {'on_event': 'CmdlineEnter'})
@@ -356,8 +356,8 @@ call dein#add('gelguy/wilder.nvim', {'on_cmd': ['/', '?', ':'],
 
 " LSP{{{
 
-call dein#add('prabirshrestha/asyncomplete.vim', {'on_event': 'InsertEnter'})
-call dein#add('prabirshrestha/asyncomplete-lsp.vim', {'on_event': 'InsertEnter'})
+call dein#add('prabirshrestha/asyncomplete.vim', {'on_event': ['InsertEnter', 'CursorHold']})
+call dein#add('prabirshrestha/asyncomplete-lsp.vim', {'on_event': ['InsertEnter', 'CursorHold']})
 call dein#add('prabirshrestha/vim-lsp')
 call dein#add('mattn/vim-lsp-settings')
 autocmd MyAutoCmd ColorScheme * highlight! link LspErrorHighlight Error
