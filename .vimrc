@@ -376,9 +376,10 @@ if has('nvim')
   call dein#add('gelguy/wilder.nvim', {'on_cmd': ['/', '?', ':'],
         \ 'hook_post_source': 'call SetupWilder()'})
 
-  call dein#add('petertriho/nvim-scrollbar', {'on_event': 'WinScrolled',
+  call dein#add('petertriho/nvim-scrollbar', {'depends': ['hop.nvim'],
+        \ 'on_event': 'WinScrolled',
         \ 'hook_post_source': 'lua require("scrollbar").setup()'})
-  call dein#add('kevinhwang91/nvim-hlslens', {'depends': ['nvim-scrollbar', 'hop.nvim'],
+  call dein#add('kevinhwang91/nvim-hlslens', {'depends': ['nvim-scrollbar'],
         \ 'on_map': ['/', '?'],
         \ 'on_event': 'CursorMoved',
         \ 'hook_post_source': 'lua require("hlslens").setup {}
@@ -392,7 +393,6 @@ if has('nvim')
   autocmd MyAutoCmd Colorscheme * highlight! link HlSearchFloat HopNextKey1
   autocmd MyAutoCmd Colorscheme * highlight! link Search HopNextKey1
 
-  " TODO: 以下のハイライトを起動時に反映したい
   " autocmd MyAutoCmd Colorscheme * highlight! link ScrollbarHandle StatusLine
   autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearch HopNextKey1
   autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearchHandle HopNextKey
