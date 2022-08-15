@@ -713,7 +713,7 @@ function! DeinInstall()
 endfunction
 autocmd MyAutoCmd BufWritePost .vimrc ++nested source $MYVIMRC
 nnoremap <expr><leader>r DeinInstall()
-nnoremap <leader>du call dein#update() | call dein#remote_plugins()
+nnoremap <leader>du <Cmd>call dein#update()<CR><Cmd>call dein#remote_plugins()<CR>
 
 "}}}
 
