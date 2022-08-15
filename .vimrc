@@ -197,9 +197,6 @@ set cmdheight=0
 " <CR> 待ち対策
 " 消す時は<Plug>(ahc)も消すこと
 call dein#add('utubo/vim-auto-hide-cmdline', {'on_map': '<Plug>(ahc'})
-" 検索時の候補数を表示したい
-nnoremap n <Plug>(ahc)n
-nnoremap N <Plug>(ahc)N
 
 " SKK{{{
 
@@ -350,7 +347,54 @@ nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 
 call dein#add('jparise/vim-graphql', {'on_ft': 'graphql'})
 
-call dein#add('gelguy/wilder.nvim', {'on_cmd': ['/', '?', ':']})
+" nvim{{{
+
+function! SetupWilder()
+  call wilder#enable_cmdline_enter()
+  " only / and ? are enabled by default
+  set wildcharm=<Tab>
+  " For :cd ~/<C-n> to complete path
+  cmap <expr> <C-n> wilder#in_context() ? wilder#previous() : "\<C-n>"
+  cmap <expr> <C-p> wilder#in_context() ? wilder#next() : "\<C-p>"
+  " call wilder#set_option('modes', [':'])
+  call wilder#set_option('renderer', wilder#popupmenu_renderer({
+        \ 'highlighter': wilder#basic_highlighter(),
+        \ 'reverse': v:true,
+        \ }))
+  call wilder#set_option('pipeline', [wilder#branch([
+        \       wilder#check({_, x -> empty(x)}),
+        \       wilder#history(),
+        \     ],
+        \     wilder#cmdline_pipeline(),
+        \     wilder#search_pipeline(),
+        \   ),
+        \ ])
+endfunction
+
+if has('nvim')
+
+  call dein#add('gelguy/wilder.nvim', {'on_cmd': ['/', '?', ':'],
+        \ 'hook_post_source': 'call SetupWilder()'})
+
+  call dein#add('petertriho/nvim-scrollbar', {'on_event': 'WinScrolled',
+        \ 'hook_post_source': 'lua require("scrollbar").setup()'})
+  " autocmd MyAutoCmd Colorscheme * highlight! link ScrollbarHandle StatusLine
+  call dein#add('kevinhwang91/nvim-hlslens', {'depends': ['nvim-scrollbar', 'hop.nvim'],
+        \ 'on_map': ['/', '?'],
+        \ 'on_event': 'CursorMoved',
+        \ 'hook_post_source': 'lua require("hlslens").setup {}
+        \   require("scrollbar.handlers.search").setup()'})
+  autocmd MyAutoCmd Colorscheme * highlight! default link HlSearchNear HopNextKey
+  autocmd MyAutoCmd Colorscheme * highlight! default link HlSearchLens HopNextKey1
+  autocmd MyAutoCmd Colorscheme * highlight! default link HlSearchLensNear HopNextKey
+  autocmd MyAutoCmd Colorscheme * highlight! default link HlSearchFloat HopNextKey1
+  autocmd MyAutoCmd Colorscheme * highlight! default link Search HopNextKey1
+  nnoremap n n<Cmd>lua require('hlslens').start()<CR>
+  nnoremap N N<Cmd>lua require('hlslens').start()<CR>
+
+endif
+
+"}}}
 
 " LSP{{{
 
@@ -496,7 +540,8 @@ if has('nvim')
   nmap <leader>hr <Cmd>Gitsigns reset_hunk<CR>
 
   " Clear search result on <C-l>
-  nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>Gitsigns refresh<CR><C-l>
+  " Use : instead of <Cmd> to clear nvim-hlslens
+  nnoremap <silent> <C-l> :nohlsearch<CR><Cmd>Gitsigns refresh<CR><C-l>
 else
   call dein#add('jreybert/vimagit')
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
@@ -651,30 +696,6 @@ set cursorline
 
 let g:netrw_liststyle=3
 let g:netrw_keepj=""
-
-"}}}
-
-" widler, コマンドライン自動補完{{{
-
-call wilder#enable_cmdline_enter()
-" only / and ? are enabled by default
-set wildcharm=<Tab>
-" For :cd ~/<C-n> to complete path
-cmap <expr> <C-n> wilder#in_context() ? wilder#previous() : "\<C-n>"
-cmap <expr> <C-p> wilder#in_context() ? wilder#next() : "\<C-p>"
-call wilder#set_option('modes', [':'])
-call wilder#set_option('renderer', wilder#popupmenu_renderer({
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ 'reverse': v:true,
-      \ }))
-call wilder#set_option('pipeline', [wilder#branch([
-      \       wilder#check({_, x -> empty(x)}),
-      \       wilder#history(),
-      \     ],
-      \     wilder#cmdline_pipeline(),
-      \     wilder#search_pipeline(),
-      \   ),
-      \ ])
 
 "}}}
 
