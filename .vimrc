@@ -117,7 +117,7 @@ nmap Y <Plug>(operator-flashy)$
 
 "}}}
 
-call dein#add('stsewd/gx-extended.vim', {'on_map': '<Plug>(gx'})
+call dein#add('Matts966/gx-extended.vim', {'on_map': 'gx'})
 
 call dein#add('andymass/vim-matchup', {'on_event': 'FileType'})
 call dein#add('nvim-treesitter/nvim-treesitter', {
