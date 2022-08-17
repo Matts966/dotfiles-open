@@ -478,10 +478,10 @@ function! LightlineGit()
 endfunction
 let g:lightline = {
       \   'active': {
-      \     'left': [ [ 'mode', 'paste' ], [ 'git', 'readonly', 'filename', 'modified' ] ],
-      \     'right': [ [ 'lineinfo' ],
-      \                [ 'percent', 'fileformat', 'fileencoding', 'filetype' ]],
+      \     'left': [ [ 'mode', 'paste' ], [ 'git', 'readonly', 'filetype', 'modified' ] ],
+      \     'right': [],
       \    },
+      \   'inactive': { 'right': [] },
       \   'component_function': { 'git': 'LightlineGit' },
       \ }
 let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
