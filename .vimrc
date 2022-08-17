@@ -88,7 +88,7 @@ let s:dein_dir = $HOME . '/.cache/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+    execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
   endif
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
@@ -197,6 +197,9 @@ set cmdheight=0
 " <CR> 待ち対策
 " 消す時は<Plug>(ahc)も消すこと
 call dein#add('utubo/vim-auto-hide-cmdline', {'on_map': '<Plug>(ahc'})
+
+call dein#add('gamoutatsumi/dps-ghosttext.vim', {'depends': 'denops.vim', 'on_cmd': 'GhostStart',
+      \ 'hook_post_source': 'let g:dps_ghosttext#ftmap["localhost:8888"] = "python"'})
 
 " SKK{{{
 
