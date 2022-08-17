@@ -651,13 +651,14 @@ let g:vimwiki_key_mappings = {
       \ }
 let g:vimwiki_menu = '' " To disable No menu Vimwiki error
 autocmd MyAutoCmd filetype vimwiki
-      \  nmap <buffer> <CR> <Plug>VimwikiFollowLink|
-      \  vmap <buffer> <CR> <Plug>VimwikiNormalizeLinkVisualCR|
-      \  nmap <buffer> <C-n> <Plug>VimwikiNextLink|
-      \  nmap <buffer> <C-p> <Plug>VimwikiPrevLink
-autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[ fzf#vim#complete(fzf#wrap({
-      \   'source': "fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0
-      \     <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h")) . " <Bar> sort -r",
+      \  nmap <buffer> <CR> <Plug>(ahc)<Plug>VimwikiFollowLink|
+      \  vmap <buffer> <CR> <Plug>(ahc)<Plug>VimwikiNormalizeLinkVisualCR|
+      \  nmap <buffer> <C-n> <Plug>(ahc)<Plug>VimwikiNextLink|
+      \  nmap <buffer> <C-p> <Plug>(ahc)<Plug>VimwikiPrevLink
+autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[
+      \ fzf#vim#complete(fzf#wrap({
+      \   'source': "fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0 <Bar> xargs -0 realpath --relative-to "
+      \     . shellescape(expand("%:p:h")) . " <Bar> sort -r",
       \   'reducer': { lines -> '['. fnamemodify(lines[0], ":t:r") . '](' . lines[0] . ')' },
       \ }))
 "}}}
