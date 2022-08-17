@@ -359,7 +359,7 @@ function! SetupWilder()
   " For :cd ~/<C-n> to complete path
   cmap <expr> <C-n> wilder#in_context() ? wilder#previous() : "\<C-n>"
   cmap <expr> <C-p> wilder#in_context() ? wilder#next() : "\<C-p>"
-  " call wilder#set_option('modes', [':'])
+  call wilder#set_option('modes', [':', '/', '?'])
   call wilder#set_option('renderer', wilder#popupmenu_renderer({
         \ 'highlighter': wilder#basic_highlighter(),
         \ 'reverse': v:true,
