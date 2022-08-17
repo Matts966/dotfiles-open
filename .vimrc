@@ -376,7 +376,7 @@ endfunction
 
 if has('nvim')
 
-  call dein#add('gelguy/wilder.nvim', {'on_cmd': ['/', '?', ':'],
+  call dein#add('gelguy/wilder.nvim', {'on_map': ['/', '?', ':'],
         \ 'hook_post_source': 'call SetupWilder()'})
 
   call dein#add('petertriho/nvim-scrollbar', {'depends': ['hop.nvim'],
