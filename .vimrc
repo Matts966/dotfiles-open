@@ -396,7 +396,7 @@ if has('nvim')
   autocmd MyAutoCmd Colorscheme * highlight! link HlSearchFloat HopNextKey1
   autocmd MyAutoCmd Colorscheme * highlight! link Search HopNextKey1
 
-  " autocmd MyAutoCmd Colorscheme * highlight! link ScrollbarHandle StatusLine
+  autocmd MyAutoCmd Colorscheme * highlight! link ScrollbarHandle StatusLine
   autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearch HopNextKey1
   autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearchHandle HopNextKey
 
