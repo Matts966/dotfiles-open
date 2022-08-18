@@ -379,9 +379,11 @@ if has('nvim')
   call dein#add('gelguy/wilder.nvim', {'on_map': ['/', '?', ':'],
         \ 'hook_post_source': 'call SetupWilder()'})
 
+  " LSPはネイティブしか対応されていない
+  " また色付けはデフォルトを無効化しているので使う際は再度考える
   call dein#add('petertriho/nvim-scrollbar', {'depends': ['hop.nvim'],
         \ 'on_event': 'WinScrolled',
-        \ 'hook_post_source': 'lua require("scrollbar").setup()'})
+        \ 'hook_post_source': 'lua require("scrollbar").setup{set_highlights = false}'})
   call dein#add('kevinhwang91/nvim-hlslens', {'depends': ['nvim-scrollbar'],
         \ 'on_map': ['/', '?'],
         \ 'on_event': 'CursorMoved',
@@ -396,7 +398,7 @@ if has('nvim')
   autocmd MyAutoCmd Colorscheme * highlight! link HlSearchFloat HopNextKey1
   autocmd MyAutoCmd Colorscheme * highlight! link Search HopNextKey1
 
-  autocmd MyAutoCmd Colorscheme * highlight! link ScrollbarHandle StatusLine
+  autocmd MyAutoCmd Colorscheme * highlight! ScrollbarHandle guibg=Gray
   autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearch HopNextKey1
   autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearchHandle HopNextKey
 
@@ -664,6 +666,9 @@ autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[
 "}}}
 
 call dein#add('cocopon/iceberg.vim')
+
+call dein#add('cocopon/colorswatch.vim', {'on_cmd': 'ColorSwatchGenerate'})
+
 "}}}
 
 call dein#add('dbinagi/nomodoro', {'hook_post_source': "lua require('nomodoro').setup({})"})
