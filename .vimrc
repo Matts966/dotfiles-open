@@ -206,7 +206,7 @@ call dein#add('gamoutatsumi/dps-ghosttext.vim', {'depends': 'denops.vim', 'on_cm
 call dein#add('Matts966/skk-vconv.vim', {'on_map': '<C-j>'})
 call dein#add('vim-skk/skkeleton', {'on_event': ['InsertEnter', 'CursorHold'], 'depends': 'denops.vim' })
 call dein#add('delphinus/skkeleton_indicator.nvim', {'on_event': ['InsertEnter', 'CursorHold'],
-      \ 'hook_post_source': 'lua require"skkeleton_indicator".setup{ eijiText = "AaBb", hiraText = "Hira" }'})
+      \ 'hook_post_source': 'lua require"skkeleton_indicator".setup{ eijiText = "AaBb", hiraText = "Hira", kataText = "Kata" }'})
 call dein#add('Shougo/ddc.vim', {'on_event': 'skkeleton-initialize-pre'})
 autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
@@ -244,6 +244,7 @@ autocmd MyAutoCmd User skkeleton-disable-post call
 " inoremap <silent><expr> <C-n> ddc#map#manual_complete()
 autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 gui=bold
 autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
+autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorKata guifg=Orange gui=bold
 imap <C-j> <Plug>(skkeleton-toggle)
 cmap <C-j> <Plug>(skkeleton-toggle)
 
