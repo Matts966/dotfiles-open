@@ -13,6 +13,7 @@ if (( $+commands[sw_vers] )) && (( $+commands[arch] )); then
   path=(
 	  $path
 	  /opt/homebrew/bin(N-/)
+	  /opt/homebrew/Cellar/jupyterlab/3.4.3/libexec/bin
   )
 else
   path=(
