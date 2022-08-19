@@ -887,6 +887,9 @@ if exists('g:neovide')
   " Cursor animation does work
   set nocursorcolumn
   set nocursorline
+
+  " Redraw on startup to apply transparency
+  autocmd MyAutoCmd VimEnter * call timer_start(50, { id -> feedkeys("\<C-l>")}, { 'repeat': 20 })
 endif
 
 "}}}
