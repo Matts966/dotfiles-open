@@ -666,8 +666,6 @@ call dein#add('cocopon/colorswatch.vim', {'on_cmd': 'ColorSwatchGenerate'})
 
 "}}}
 
-call dein#add('dbinagi/nomodoro', {'hook_post_source': "lua require('nomodoro').setup({})"})
-
 " Initialize plugin system
 call dein#end()
 "}}}
