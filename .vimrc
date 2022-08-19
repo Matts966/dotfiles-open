@@ -39,11 +39,6 @@ set tabstop=2
 set shiftwidth=2
 set fileformats=
 
-" コメントを自動挿入しない
-autocmd MyAutoCmd BufEnter * set formatoptions-=c
-      \ | set formatoptions-=r
-      \ | set formatoptions-=o
-
 set nobackup
 set noswapfile
 set autoread
@@ -897,3 +892,9 @@ if exists('g:neovide')
 endif
 
 "}}}
+
+" プラグインの影響を受け易いので最後に
+" コメントを自動挿入しない
+autocmd MyAutoCmd BufEnter * setlocal formatoptions-=c
+      \ | setlocal formatoptions-=r
+      \ | setlocal formatoptions-=o
