@@ -475,7 +475,7 @@ function! LightlineGit()
 endfunction
 let g:lightline = {
       \   'active': {
-      \     'left': [ [ 'mode', 'paste' ], [ 'git', 'readonly', 'filetype', 'modified' ] ],
+      \     'left': [ [ 'mode', 'paste' ], [ 'git', 'readonly', 'filetype', 'filename', 'modified' ] ],
       \     'right': [],
       \    },
       \   'inactive': { 'right': [] },
