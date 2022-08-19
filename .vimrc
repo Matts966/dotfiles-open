@@ -893,8 +893,12 @@ endif
 
 "}}}
 
+"{{{ 最後に反映したい共通設定
+
 " プラグインの影響を受け易いので最後に
 " コメントを自動挿入しない
 autocmd MyAutoCmd BufEnter * setlocal formatoptions-=c
       \ | setlocal formatoptions-=r
       \ | setlocal formatoptions-=o
+
+"}}}
