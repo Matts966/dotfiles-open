@@ -60,12 +60,16 @@ skk:
 ifeq  ($(shell uname),Darwin)
 neovide:
 	\rm -rf /Applications/Neovide.app
-	(cd $(mktemp -d) && \
+	(cd $(shell mktemp -d) && \
 		git clone https://github.com/neovide/neovide && \
-		cd neovide && cargo install --path . && \
-		cargo install cargo-bundle && \
+		cd neovide && cargo install cargo-bundle && \
 		cargo bundle --release && \
-		cp -r ./target/release/bundle/osx/neovide.app ~/Applications)
+		cp -r ./target/release/bundle/osx/Neovide.app /Applications/Neovide.app && \
+		\rm -rf ./target/release/bundle/osx/Neovide.app)
+	sudo cp dev.neovide.Neovide.plist ~/Library/LaunchAgents/dev.neovide.Neovide.plist
+	sudo chown root:wheel ~/Library/LaunchAgents/dev.neovide.Neovide.plist
+	sudo launchctl load ~/Library/LaunchAgents/dev.neovide.Neovide.plist
+	launchctl start dev.neovide.Neovide
 else
 	cargo install --git https://github.com/neovide/neovide
 endif
