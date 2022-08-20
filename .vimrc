@@ -889,7 +889,7 @@ if exists('g:neovide')
   set nocursorline
 
   " Redraw on startup to apply transparency
-  autocmd MyAutoCmd VimEnter * call timer_start(50, { id -> feedkeys("\<C-l>")}, { 'repeat': 20 })
+  autocmd MyAutoCmd VimEnter * call timer_start(200, { id -> ResizeFont(0)}, { 'repeat': 5 })
 endif
 
 "}}}
