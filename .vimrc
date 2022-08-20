@@ -839,7 +839,7 @@ if exists('g:neovide')
   let g:neovide_input_use_logo=v:true
   let g:neovide_input_macos_alt_is_meta=v:true
 
-  nnoremap <expr> <D-w> tabpagenr('$')-1 ? "<Cmd>tabclose<CR>" : "<Cmd>%bdelete<CR><Cmd>quit<CR>"
+  nnoremap <expr> <D-w> tabpagenr('$')-1 ? "<Cmd>tabclose<CR>" : "<Cmd>silent! wa<CR><Cmd>%bdelete<CR><Cmd>quit<CR>"
 
   " copy
   vnoremap <D-c> "+y
