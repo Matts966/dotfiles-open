@@ -200,7 +200,8 @@ call dein#add('gamoutatsumi/dps-ghosttext.vim', {'depends': 'denops.vim', 'on_cm
 
 call dein#add('Matts966/skk-vconv.vim', {'on_map': '<C-j>'})
 call dein#add('vim-skk/skkeleton', {'on_event': ['InsertEnter', 'CursorHold'], 'depends': 'denops.vim' })
-call dein#add('delphinus/skkeleton_indicator.nvim', {'on_event': ['InsertEnter', 'CursorHold'],
+call dein#add('delphinus/skkeleton_indicator.nvim', { 'rev': '37669aa699258b6dcbec85e3ed866ecc5d4c0713',
+      \ 'on_event': ['InsertEnter', 'CursorHold'],
       \ 'hook_post_source': 'lua require"skkeleton_indicator".setup{ eijiText = "AaBb", hiraText = "Hira", kataText = "Kata" }'})
 call dein#add('Shougo/ddc.vim', {'on_event': 'skkeleton-initialize-pre'})
 autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({

@@ -7,8 +7,7 @@
         <key>ProgramArguments</key>
         <array>
           <string>/Applications/Neovide.app/Contents/MacOS/neovide</string>
-        <string>--nofork</string>
-        <string>--multigrid</string>
+          <string>--nofork</string>
         </array>
         <key>RunAtLoad</key>
         <true/>
