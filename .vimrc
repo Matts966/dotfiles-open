@@ -384,8 +384,8 @@ if has('nvim')
         \ 'on_event': 'CursorMoved',
         \ 'hook_post_source': 'lua require("hlslens").setup {}
         \   require("scrollbar.handlers.search").setup()'})
-  nnoremap n <Plug>(ahc)n<Cmd>lua require('hlslens').start()<CR>
-  nnoremap N <Plug>(ahc)N<Cmd>lua require('hlslens').start()<CR>
+  nnoremap n n<Cmd>lua require('hlslens').start()<CR>
+  nnoremap N N<Cmd>lua require('hlslens').start()<CR>
 
   autocmd MyAutoCmd Colorscheme * highlight! link HlSearchNear HopNextKey
   autocmd MyAutoCmd Colorscheme * highlight! link HlSearchLens HopNextKey1
@@ -396,6 +396,11 @@ if has('nvim')
   autocmd MyAutoCmd Colorscheme * highlight! ScrollbarHandle guibg=Gray
   autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearch HopNextKey1
   autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearchHandle HopNextKey
+
+else
+
+  nnoremap n <Plug>(ahc)n
+  nnoremap N <Plug>(ahc)N
 
 endif
 
