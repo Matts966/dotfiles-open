@@ -805,6 +805,7 @@ command! -nargs=0 Sqlp tabedit % | terminal sqlp %
 nnoremap <leader>sp <Cmd>tabnew<CR><Cmd>terminal spt<CR>
 nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
 command! -nargs=0 Marp tabedit % | terminal marp --preview %
+command! -nargs=* Google tabedit % | terminal w3m 'https://www.google.com/search?q=<f-args>'
 
 "}}}
 
