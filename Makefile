@@ -66,10 +66,14 @@ neovide:
 		cargo bundle --release && \
 		cp -r ./target/release/bundle/osx/Neovide.app /Applications/Neovide.app && \
 		\rm -rf ./target/release/bundle/osx/Neovide.app)
+
+ifndef CI # Skip on github actions
 	sudo cp dev.neovide.Neovide.plist ~/Library/LaunchAgents/dev.neovide.Neovide.plist
 	sudo chown root:wheel ~/Library/LaunchAgents/dev.neovide.Neovide.plist
 	sudo launchctl load ~/Library/LaunchAgents/dev.neovide.Neovide.plist
 	launchctl start dev.neovide.Neovide
+endif
+
 else
 	cargo install --git https://github.com/neovide/neovide
 endif
