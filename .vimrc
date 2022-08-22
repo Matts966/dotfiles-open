@@ -316,12 +316,16 @@ let g:fern#renderer#default#expanded_symbol = '▾'
 call dein#add('editorconfig/editorconfig-vim', {'on_event': 'FileType'})
 nnoremap <leader>ss gg=G``
 
-" Denite{{{
+" With yarp{{{
 
 if has('nvim')
   call dein#add('Shougo/denite.nvim', { 'on_cmd': 'Denite' })
+  call dein#add('gelguy/wilder.nvim', {'on_map': ['/', '?', ':'],
+        \ 'hook_post_source': 'call SetupWilder()'})
 else
   call dein#add('Shougo/denite.nvim', {'on_cmd': 'Denite'})
+  call dein#add('gelguy/wilder.nvim', {'on_map': ['/', '?', ':'],
+        \ 'hook_post_source': 'call SetupWilder()'})
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
 endif
@@ -355,10 +359,6 @@ function! SetupWilder()
   cmap <expr> <C-n> wilder#in_context() ? wilder#previous() : "\<C-n>"
   cmap <expr> <C-p> wilder#in_context() ? wilder#next() : "\<C-p>"
   call wilder#set_option('modes', [':', '/', '?'])
-  call wilder#set_option('renderer', wilder#popupmenu_renderer({
-        \ 'highlighter': wilder#basic_highlighter(),
-        \ 'reverse': v:true,
-        \ }))
   call wilder#set_option('pipeline', [wilder#branch([
         \       wilder#check({_, x -> empty(x)}),
         \       wilder#history(),
@@ -367,12 +367,19 @@ function! SetupWilder()
         \     wilder#search_pipeline(),
         \   ),
         \ ])
+  let l:hl = wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#f4468f'}])
+  call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
+      \ 'highlighter': wilder#basic_highlighter(),
+      \ 'highlights': {
+      \   'border': 'Normal',
+      \   'accent': l:hl,
+      \ },
+      \ 'border': 'rounded',
+      \ 'reverse': v:true,
+      \ })))
 endfunction
 
 if has('nvim')
-
-  call dein#add('gelguy/wilder.nvim', {'on_map': ['/', '?', ':'],
-        \ 'hook_post_source': 'call SetupWilder()'})
 
   " LSPはネイティブしか対応されていない
   " また色付けはデフォルトを無効化しているので使う際は再度考える
