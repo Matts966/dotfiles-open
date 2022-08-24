@@ -353,9 +353,7 @@ call dein#add('jparise/vim-graphql', {'on_ft': 'graphql'})
 
 function! SetupWilder()
   call wilder#enable_cmdline_enter()
-  " only / and ? are enabled by default
-  set wildcharm=<Tab>
-  " For :cd ~/<C-n> to complete path
+  set nowildmenu
   cmap <expr> <C-n> wilder#in_context() ? wilder#previous() : "\<C-n>"
   cmap <expr> <C-p> wilder#in_context() ? wilder#next() : "\<C-p>"
   call wilder#set_option('modes', [':', '/', '?'])
