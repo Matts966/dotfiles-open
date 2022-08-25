@@ -379,8 +379,6 @@ endfunction
 
 if has('nvim')
 
-  " LSPはネイティブしか対応されていない
-  " また色付けはデフォルトを無効化しているので使う際は再度考える
   call dein#add('petertriho/nvim-scrollbar', {'depends': ['hop.nvim'],
         \ 'on_event': 'WinScrolled',
         \ 'hook_post_source': 'lua require("scrollbar").setup{}'})
