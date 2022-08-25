@@ -562,14 +562,14 @@ autocmd MyAutoCmd User lsp_setup call lsp#register_server({
       \ })
 
 
-call dein#add('hashivim/vim-terraform', {'on_ft': 'terraform'})
-
 call dein#add('psf/black', { 'on_ft': ['python'] })
 let g:black_linelength = 120
 call dein#add('fisadev/vim-isort', { 'on_ft': ['python'] })
 autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <Cmd>Black<CR><Cmd>Isort<CR>
 
 endif
+
+call dein#add('hashivim/vim-terraform', {'on_ft': 'terraform'})
 
 "}}}
 
