@@ -383,7 +383,7 @@ if has('nvim')
   " また色付けはデフォルトを無効化しているので使う際は再度考える
   call dein#add('petertriho/nvim-scrollbar', {'depends': ['hop.nvim'],
         \ 'on_event': 'WinScrolled',
-        \ 'hook_post_source': 'lua require("scrollbar").setup{set_highlights = false}'})
+        \ 'hook_post_source': 'lua require("scrollbar").setup{}'})
   call dein#add('kevinhwang91/nvim-hlslens', {'depends': ['nvim-scrollbar'],
         \ 'on_map': ['/', '?'],
         \ 'on_event': 'CursorMoved',
