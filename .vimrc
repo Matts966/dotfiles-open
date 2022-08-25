@@ -501,10 +501,24 @@ call dein#add('hrsh7th/cmp-nvim-lsp')
 call dein#add('hrsh7th/vim-vsnip')
 autocmd MyAutoCmd VimEnter * call dein#call_hook('post_source')
 
-sign define DiagnosticSignError text=🚨 linehl= texthl=DiagnosticSignError numhl=
-sign define DiagnosticSignWarn text=🚧 linehl= texthl=DiagnosticSignWarn numhl=
-sign define DiagnosticSignInfo text=ℹ️ linehl= texthl=DiagnosticSignInfo numhl=
-sign define DiagnosticSignHint text=💡 linehl= texthl=DiagnosticSignHint numhl=
+lua <<EOF
+vim.fn.sign_define(
+  'DiagnosticSignError',
+  { texthl = 'DiagnosticSignError', text = ' ●', numhl = 'DiagnosticSignError' }
+)
+vim.fn.sign_define(
+  'DiagnosticSignWarning',
+  { texthl = 'DiagnosticSignWarning', text = ' ●', numhl = 'DiagnosticSignWarning' }
+)
+vim.fn.sign_define(
+  'DiagnosticSignHint',
+  { texthl = 'DiagnosticSignHint', text = ' ●', numhl = 'DiagnosticSignHint' }
+)
+vim.fn.sign_define(
+  'DiagnosticSignInformation',
+  { texthl = 'DiagnosticSignInformation', text = ' ●', numhl = 'DiagnosticSignInformation' }
+)
+EOF
 
 else
 
