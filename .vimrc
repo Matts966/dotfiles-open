@@ -219,6 +219,7 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ })
     \ | call skkeleton#register_keymap('henkan', "\<BS>", 'henkanBackward')
     \ | call skkeleton#register_keymap('henkan', "\<C-h>", 'henkanBackward')
+    \ | if has('nvim') | finish | endif
     \ | call ddc#enable()
     \ | call ddc#custom#patch_global('backspaceCompletion', v:true)
     \ | call ddc#custom#patch_global('sourceOptions', {
