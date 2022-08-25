@@ -202,6 +202,9 @@ call dein#add('Matts966/skk-vconv.vim', {'on_map': '<C-j>'})
 call dein#add('vim-skk/skkeleton', {'on_event': ['InsertEnter', 'CursorHold'], 'depends': 'denops.vim' })
 call dein#add('delphinus/skkeleton_indicator.nvim', {'on_event': ['InsertEnter', 'CursorHold'],
       \ 'hook_post_source': 'lua require"skkeleton_indicator".setup{ eijiText = "AaBb", hiraText = "Hira", kataText = "Kata" }'})
+
+" cmp
+if !has('nvim')
 call dein#add('Shougo/ddc.vim', {'on_event': 'skkeleton-initialize-pre'})
 autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
@@ -237,6 +240,8 @@ autocmd MyAutoCmd User skkeleton-disable-post call
 " SKKは文字数が増えるとなぜか補完が起動しなくなる
 " Google IMEでの補完が実装されたら使う
 " inoremap <silent><expr> <C-n> ddc#map#manual_complete()
+endif
+
 autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 gui=bold
 autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
 autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorKata guifg=Orange gui=bold
@@ -411,6 +416,102 @@ endif
 
 " LSP{{{
 
+if has('nvim')
+
+function! SetupMasonLspConfig()
+lua <<EOF
+require('mason-lspconfig').setup_handlers({ function(server)
+  local opt = {
+    -- Function executed when the LSP server startup
+    on_attach = function(client, bufnr)
+      -- Mappings.
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      local bufopts = { noremap=true, silent=true, buffer=bufnr }
+      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
+      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
+      vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
+      vim.keymap.set('n', '<leader>dd', vim.diagnostic.setloclist, bufopts)
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+      vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+      vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+      vim.keymap.set('n', '<space>wl', function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end, bufopts)
+      vim.keymap.set('n', '<space>gt', vim.lsp.buf.type_definition, bufopts)
+      vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+      vim.keymap.set('n', '<space>A', vim.lsp.buf.code_action, bufopts)
+      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+      vim.keymap.set('n', '<space>ss', vim.lsp.buf.formatting, bufopts)
+      vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
+    end,
+    capabilities = require('cmp_nvim_lsp').update_capabilities(
+      vim.lsp.protocol.make_client_capabilities()
+    )
+  }
+  require('lspconfig')[server].setup(opt)
+end })
+EOF
+endfunction
+
+function! SetupNvimCmp()
+lua <<EOF
+-- 3. completion (hrsh7th/nvim-cmp)
+local cmp = require("cmp")
+local lspkind = require('lspkind')
+cmp.setup({
+  formatting = {
+    format = lspkind.cmp_format {
+      mode = 'symbol_text',
+      maxwidth = 50,
+    },
+  },
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "skkeleton" },
+  },
+  mapping = cmp.mapping.preset.insert({
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
+    ['<C-l>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm { select = true },
+    ['<C-j>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-k>'] = cmp.mapping.scroll_docs(4),
+  }),
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+})
+EOF
+endfunction
+
+call dein#add('neovim/nvim-lspconfig')
+call dein#add('williamboman/mason.nvim', {'hook_post_source': 'lua require("mason").setup()'})
+call dein#add('williamboman/mason-lspconfig.nvim', {'hook_post_source': 'call SetupMasonLspConfig()'})
+call dein#add('onsails/lspkind.nvim')
+call dein#add('hrsh7th/nvim-cmp', {'hook_post_source': 'call SetupNvimCmp()'})
+call dein#add('rinx/cmp-skkeleton')
+call dein#add('hrsh7th/cmp-nvim-lsp')
+call dein#add('hrsh7th/vim-vsnip')
+autocmd MyAutoCmd VimEnter * call dein#call_hook('post_source')
+
+sign define DiagnosticSignError text=🚨 linehl= texthl=DiagnosticSignError numhl=
+sign define DiagnosticSignWarn text=🚧 linehl= texthl=DiagnosticSignWarn numhl=
+sign define DiagnosticSignInfo text=ℹ️ linehl= texthl=DiagnosticSignInfo numhl=
+sign define DiagnosticSignHint text=💡 linehl= texthl=DiagnosticSignHint numhl=
+
+else
+
 call dein#add('prabirshrestha/asyncomplete.vim', {'on_event': ['InsertEnter', 'CursorHold']})
 call dein#add('prabirshrestha/asyncomplete-lsp.vim', {'on_event': ['InsertEnter', 'CursorHold']})
 call dein#add('prabirshrestha/vim-lsp')
@@ -464,16 +565,15 @@ autocmd MyAutoCmd User lsp_setup call lsp#register_server({
       \ 'whitelist': ['sql'],
       \ })
 
-"}}}
 
 call dein#add('hashivim/vim-terraform', {'on_ft': 'terraform'})
-
-" Python fmt{{{
 
 call dein#add('psf/black', { 'on_ft': ['python'] })
 let g:black_linelength = 120
 call dein#add('fisadev/vim-isort', { 'on_ft': ['python'] })
 autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <Cmd>Black<CR><Cmd>Isort<CR>
+
+endif
 
 "}}}
 
