@@ -353,8 +353,6 @@ nnoremap <leader>t <Cmd>Denite buffer -input=term:// -auto-action=preview<CR>
 
 "}}}
 
-call dein#add('jparise/vim-graphql', {'on_ft': 'graphql'})
-
 " nvim{{{
 
 function! SetupWilder()
@@ -587,6 +585,7 @@ autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <Cmd>Black<CR><Cmd>Is
 endif
 
 call dein#add('hashivim/vim-terraform', {'on_ft': 'terraform'})
+call dein#add('jparise/vim-graphql', {'on_ft': 'graphql'})
 
 "}}}
 
