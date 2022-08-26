@@ -39,6 +39,9 @@ set tabstop=2
 set shiftwidth=2
 set fileformats=
 
+" sign表示時にカクつかないように
+set signcolumn=yes
+
 set nobackup
 set noswapfile
 set autoread
