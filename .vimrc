@@ -357,7 +357,7 @@ require'bufferline'.setup{
     buffer_selected = {
       italic = false,
     },
-    -- 初回起動時、再度rcを▼読み込まないと反映されない
+    -- 初回起動時、再度rcを読み込まないと反映されない
     -- tab_selected = {},
   },
   options = {
