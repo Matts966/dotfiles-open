@@ -983,8 +983,7 @@ if exists('g:neovide')
   let g:neovide_input_macos_alt_is_meta=v:true
 
   " 複数タブがあれば、タブを消し、タブが一つであれば終了する
-  nnoremap <expr> <D-w> feedkeys("i\<D-w>")
-  inoremap <expr> <D-w> tabpagenr('$')-1 ? "<Cmd>tabclose<CR>" : "<Cmd>silent! wa<CR><Cmd>%bdelete<CR><Cmd>quit<CR>"
+  nnoremap <expr> <D-w> tabpagenr('$')-1 ? "<Cmd>tabclose<CR>" : "<Cmd>silent! wa<CR><Cmd>%bdelete<CR><Cmd>quit<CR>"
   tnoremap <D-w> <C-u>exit<CR>
   nnoremap <D-d> <Cmd>silent! wa<CR><Cmd>bdelete!<CR>
 
