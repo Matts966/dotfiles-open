@@ -378,6 +378,8 @@ if has('nvim')
   call dein#add('gelguy/wilder.nvim', {'on_map': ['/', '?', ':'],
         \ 'hook_post_source': 'call SetupWilder()'})
 
+  call dein#add('norcalli/nvim-colorizer.lua', {'hook_post_source': 'lua require("colorizer").setup()'})
+
   call dein#add('petertriho/nvim-scrollbar', {'depends': ['hop.nvim'],
         \ 'on_event': 'WinScrolled',
         \ 'hook_post_source': 'lua require("scrollbar").setup{}'})
