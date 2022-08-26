@@ -595,11 +595,13 @@ function! LightlineGit()
 endfunction
 let g:lightline = {
       \   'active': {
-      \     'left': [ [ 'mode', 'paste' ], [ 'git', 'readonly', 'filetype', 'filename', 'modified' ] ],
+      \     'left': [ [ 'mode', 'paste' ], [ 'git', 'readonly', 'modified' ] ],
       \     'right': [],
       \    },
       \   'inactive': { 'right': [] },
       \   'component_function': { 'git': 'LightlineGit' },
+      \   'separator': { 'left': '', 'right': '' },
+      \   'subseparator': { 'left': '', 'right': '' },
       \ }
 let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
 "}}}
