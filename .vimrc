@@ -350,29 +350,7 @@ function! SetupWilder()
       \ })))
 endfunction
 
-function! SetupBufferline()
-lua <<EOF
-require'bufferline'.setup{
-  highlights = {
-    buffer_selected = {
-      italic = false,
-    },
-    -- 初回起動時、再度rcを読み込まないと反映されない
-    -- tab_selected = {},
-  },
-  options = {
-    show_buffer_close_icons = false,
-    show_close_icon = false,
-  },
-}
-EOF
-endfunction
-
 if has('nvim')
-
-  call dein#add('kyazdani42/nvim-web-devicons')
-  call dein#add('akinsho/bufferline.nvim', {'hook_post_source': 'call SetupBufferline()'})
-  call dein#add('tiagovla/scope.nvim', {'hook_post_source': 'lua require("scope").setup()'})
 
   call dein#add('Shougo/denite.nvim', { 'on_cmd': 'Denite' })
   call dein#add('gelguy/wilder.nvim', {'on_map': ['/', '?', ':'],
