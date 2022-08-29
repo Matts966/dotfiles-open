@@ -605,8 +605,9 @@ let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
 "}}}
 
 
-call dein#add('mbbill/undotree', { 'on_cmd': 'UndotreeToggle' })"{{{
-nnoremap <leader>u <Cmd>UndotreeToggle<CR><Cmd>UndotreeFocus<CR>
+call dein#add('sjl/gundo.vim', { 'on_cmd': 'Gundo' })"{{{
+let g:gundo_prefer_python3 = 1
+nnoremap <leader>u <Cmd>GundoToggle<CR>
 if has("persistent_undo")
   if !isdirectory($HOME."/.vim/undo-dir")
     call mkdir($HOME."/.vim/undo-dir", "p", 0700)
