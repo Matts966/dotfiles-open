@@ -217,6 +217,7 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ })
     \ | call skkeleton#register_kanatable('rom', {
     \   "/": ["・", ""],
+    \   "~": ["〜", ""],
     \ })
     \ | call skkeleton#register_keymap('henkan', "\<BS>", 'henkanBackward')
     \ | call skkeleton#register_keymap('henkan', "\<C-h>", 'henkanBackward')
