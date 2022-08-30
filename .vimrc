@@ -531,7 +531,6 @@ autocmd MyAutoCmd ColorScheme * highlight! link LspInformationHighlight Diagnost
 autocmd MyAutoCmd ColorScheme * highlight! link LspHintHighlight DiagnosticHint
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
-  setlocal signcolumn=yes
   if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
   nmap <buffer> gd <Plug>(ahc)<Plug>(lsp-definition)
   nmap <buffer> gs <Plug>(ahc)<Plug>(lsp-document-symbol-search)
@@ -799,6 +798,8 @@ autocmd MyAutoCmd ColorScheme * highlight! VertSplit cterm=NONE
 autocmd MyAutoCmd ColorScheme * highlight! Pmenu None
 autocmd MyAutoCmd ColorScheme * highlight! PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
 autocmd MyAutoCmd ColorScheme * highlight! CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
+autocmd MyAutoCmd ColorScheme * highlight! LineNr guibg=None ctermbg=None
+autocmd MyAutoCmd ColorScheme * highlight! SignColumn guibg=None ctermbg=None
 
 if $TERM_PROGRAM == 'Apple_Terminal'
   set notermguicolors
