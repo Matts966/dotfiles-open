@@ -631,7 +631,7 @@ function! s:goyo_leave()
 endfunction
 if get(g:, 'goyo_now', 0) == 0
   set number
-  set relativenumber
+  " set relativenumber
 endif
 "}}}
 
