@@ -965,6 +965,7 @@ if exists('g:neovide')
 
   " 複数タブがあれば、タブを消し、タブが一つであれば終了する
   nnoremap <expr> <D-w> tabpagenr('$')-1 ? "<Cmd>tabclose<CR>" : "<Cmd>silent! wa<CR><Cmd>%bdelete<CR><Cmd>quit<CR>"
+  autocmd MyAutoCmd termopen * nnoremap <buffer> <D-w> i<C-u>exit<CR>
   tnoremap <D-w> <C-u>exit<CR>
   nnoremap <D-d> <Cmd>silent! wa<CR><Cmd>bdelete!<CR>
 
