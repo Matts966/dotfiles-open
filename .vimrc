@@ -443,7 +443,7 @@ require('mason-lspconfig').setup_handlers({ function(server)
       vim.keymap.set('n', '<space>A', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
       vim.keymap.set('n', '<space>ss', vim.lsp.buf.formatting, bufopts)
-      vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.format(nil, 1000)'
+      -- vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.format(nil, 1000)'
     end,
     capabilities = require('cmp_nvim_lsp').update_capabilities(
       vim.lsp.protocol.make_client_capabilities()
