@@ -929,7 +929,7 @@ command! -nargs=* Google tabedit % | terminal w3m 'https://www.google.com/search
 
 if has('nvim')
   autocmd MyAutoCmd termopen * startinsert
-  autocmd MyAutoCmd termopen * setlocal nonumber norelativenumber
+  autocmd MyAutoCmd termopen * setlocal nonumber norelativenumber signcolumn=no
   autocmd MyAutoCmd TermClose term://*
         \ if (expand('<afile>') !~ "fzf") &&
         \ (expand('<afile>') !~ "ranger") &&
