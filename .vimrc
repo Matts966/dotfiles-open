@@ -506,16 +506,16 @@ vim.fn.sign_define(
   { texthl = 'DiagnosticSignError', text = ' ●', numhl = 'DiagnosticSignError' }
 )
 vim.fn.sign_define(
-  'DiagnosticSignWarning',
-  { texthl = 'DiagnosticSignWarning', text = ' ●', numhl = 'DiagnosticSignWarning' }
+  'DiagnosticSignWarn',
+  { texthl = 'DiagnosticSignWarn', text = ' ●', numhl = 'DiagnosticSignWarn' }
 )
 vim.fn.sign_define(
   'DiagnosticSignHint',
   { texthl = 'DiagnosticSignHint', text = ' ●', numhl = 'DiagnosticSignHint' }
 )
 vim.fn.sign_define(
-  'DiagnosticSignInformation',
-  { texthl = 'DiagnosticSignInformation', text = ' ●', numhl = 'DiagnosticSignInformation' }
+  'DiagnosticSignInfo',
+  { texthl = 'DiagnosticSignInfo', text = ' ●', numhl = 'DiagnosticSignInfo' }
 )
 EOF
 
