@@ -723,6 +723,7 @@ call dein#add('yuki-yano/fzf-preview.vim', { 'rev': 'release/rpc' })
 call dein#add('LeafCage/yankround.vim')
 noremap <leader>h <Cmd>History<CR>
 noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
+noremap <leader>m <Cmd>FzfPreviewProjectMruFilesRpc<CR>
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
 function! s:cd_repo(repo) abort
