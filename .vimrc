@@ -118,6 +118,7 @@ nmap Y <Plug>(operator-flashy)$
 call dein#add('Matts966/gx-extended.vim', {'on_map': 'gx'})
 
 call dein#add('andymass/vim-matchup', {'on_event': 'FileType'})
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
 call dein#add('nvim-treesitter/nvim-treesitter', {
       \   'on_event': 'FileType',
       \   'hook_post_source': 'call InitTreesitter()',
