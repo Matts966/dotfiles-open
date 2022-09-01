@@ -122,6 +122,14 @@ let g:matchup_matchparen_offscreen = {'method': 'popup'}
 call dein#add('nvim-treesitter/nvim-treesitter', {
       \   'on_event': 'FileType',
       \   'build': 'TSUpdate',
+      \ })
+call dein#add('nvim-treesitter/nvim-treesitter-refactor', {
+      \   'on_event': 'FileType',
+      \   'depends': 'nvim-treesitter',
+      \ })
+call dein#add('nvim-treesitter/nvim-treesitter-textobjects', {
+      \   'on_event': 'FileType',
+      \   'depends': 'nvim-treesitter-refactor',
       \   'hook_post_source': 'call InitTreesitter()',
       \ })
 function! InitTreesitter()
@@ -132,6 +140,42 @@ require'nvim-treesitter.configs'.setup {
     enable = true, -- mandatory, false will disable the whole extension
     disable = {},  -- optional, list of language that will be disabled
     -- [options]
+  },
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+      -- Set to false if you have an `updatetime` of ~100.
+      clear_on_cursor_move = true,
+    },
+    highlight_current_scope = { enable = true },
+  },
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        -- you can optionally set descriptions to the mappings (used in the desc parameter of nvim_buf_set_keymap
+        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+      },
+      -- You can choose the select mode (default is charwise 'v')
+      selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V', -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
+      },
+      -- If you set this to `true` (default is `false`) then any textobject is
+      -- extended to include preceding xor succeeding whitespace. Succeeding
+      -- whitespace has priority in order to act similarly to eg the built-in
+      -- `ap`.
+      include_surrounding_whitespace = true,
+    },
   },
 }
 EOF
