@@ -127,6 +127,7 @@ call dein#add('nvim-treesitter/nvim-treesitter', {
 function! InitTreesitter()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "python", "typescript", "rust" },
   matchup = {
     enable = true, -- mandatory, false will disable the whole extension
     disable = {},  -- optional, list of language that will be disabled
