@@ -121,6 +121,7 @@ call dein#add('andymass/vim-matchup', {'on_event': 'FileType'})
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
 call dein#add('nvim-treesitter/nvim-treesitter', {
       \   'on_event': 'FileType',
+      \   'build': 'TSUpdate',
       \   'hook_post_source': 'call InitTreesitter()',
       \ })
 function! InitTreesitter()
