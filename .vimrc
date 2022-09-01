@@ -663,8 +663,11 @@ if has('nvim')
   nmap [c <Plug>(ahc)<Cmd>Gitsigns prev_hunk<CR>
   nmap ]c <Plug>(ahc)<Cmd>Gitsigns next_hunk<CR>
   nmap <leader>hs <Cmd>Gitsigns stage_hunk<CR>
+  vmap <leader>hs <Cmd>Gitsigns stage_hunk<CR>
   nmap <leader>hu <Cmd>Gitsigns undo_stage_hunk<CR>
+  vmap <leader>hu <Cmd>Gitsigns undo_stage_hunk<CR>
   nmap <leader>hr <Cmd>Gitsigns reset_hunk<CR>
+  vmap <leader>hr <Cmd>Gitsigns reset_hunk<CR>
 
   " Clear search result on <C-l>
   " Use : instead of <Cmd> to clear nvim-hlslens
