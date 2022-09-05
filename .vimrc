@@ -132,6 +132,11 @@ call dein#add('nvim-treesitter/nvim-treesitter-textobjects', {
       \   'depends': 'nvim-treesitter-refactor',
       \   'hook_post_source': 'call InitTreesitter()',
       \ })
+call dein#add('nvim-treesitter/nvim-treesitter-context', {
+      \   'depends': 'nvim-treesitter',
+      \   'on_event': 'WinScrolled',
+      \   'hook_post_source': 'lua require"treesitter-context".setup{}',
+      \ })
 function! InitTreesitter()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
