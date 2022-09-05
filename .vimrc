@@ -489,8 +489,10 @@ require('mason-lspconfig').setup_handlers({ function(server)
       vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<space>A', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<space>ss', vim.lsp.buf.formatting, bufopts)
-      -- vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.format(nil, 1000)'
+      local non_lsp_fmt = { python=true, typescript=true }
+      if not non_lsp_fmt[vim.bo.filetype] then
+        vim.keymap.set('n', '<space>ss', vim.lsp.buf.formatting, bufopts)
+      end
     end,
     capabilities = require('cmp_nvim_lsp').update_capabilities(
       vim.lsp.protocol.make_client_capabilities()
@@ -620,14 +622,9 @@ autocmd MyAutoCmd User lsp_setup call lsp#register_server({
       \ 'whitelist': ['sql'],
       \ })
 
-
-call dein#add('psf/black', { 'on_ft': ['python'] })
-let g:black_linelength = 120
-call dein#add('fisadev/vim-isort', { 'on_ft': ['python'] })
-autocmd MyAutoCmd FileType python nmap <buffer> <leader>ss <Cmd>Black<CR><Cmd>Isort<CR>
-
 endif
 
+autocmd MyAutoCmd FileType python nnoremap <buffer> <leader>ss <Cmd>%!black -q -<CR><Plug>(ahc)<Cmd>%!isort -<CR>
 call dein#add('hashivim/vim-terraform', {'on_ft': 'terraform'})
 call dein#add('jparise/vim-graphql', {'on_ft': 'graphql'})
 
