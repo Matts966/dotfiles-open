@@ -137,6 +137,11 @@ call dein#add('nvim-treesitter/nvim-treesitter-context', {
       \   'on_event': 'WinScrolled',
       \   'hook_post_source': 'lua require"treesitter-context".setup{}',
       \ })
+call dein#add('haringsrob/nvim_context_vt', {
+      \   'depends': 'nvim-treesitter',
+      \   'on_event': 'FileType',
+      \   'hook_post_source': 'lua require"nvim_context_vt".setup{}',
+      \ })
 function! InitTreesitter()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
