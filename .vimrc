@@ -539,6 +539,7 @@ cmp.setup({
 EOF
 endfunction
 
+call dein#add('j-hui/fidget.nvim', {'hook_post_source': 'lua require("fidget").setup()'})
 call dein#add('neovim/nvim-lspconfig')
 call dein#add('williamboman/mason.nvim', {'hook_post_source': 'lua require("mason").setup()'})
 call dein#add('williamboman/mason-lspconfig.nvim', {'hook_post_source': 'call SetupMasonLspConfig()'})
