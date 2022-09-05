@@ -1028,7 +1028,7 @@ if exists('g:neovide')
   nnoremap <expr> <D-w> tabpagenr('$')-1 ? "<Cmd>tabclose<CR>" : "<Cmd>silent! wa<CR><Cmd>%bdelete<CR><Cmd>quit<CR>"
   autocmd MyAutoCmd termopen * nnoremap <buffer> <D-w> i<C-u>exit<CR>
   tnoremap <D-w> <C-u>exit<CR>
-  nnoremap <D-d> <Cmd>silent! wa<CR><Cmd>bdelete!<CR>
+  nmap <D-d> <Cmd>silent! wa<CR><Cmd>bdelete!<CR><D-w>
 
   " copy
   vnoremap <D-c> "+y
