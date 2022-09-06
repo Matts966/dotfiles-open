@@ -410,6 +410,10 @@ endfunction
 
 if has('nvim')
 
+  call dein#add('ldelossa/buffertag', {'hook_post_source': 'lua require("buffertag").setup({border = "rounded"})'})
+  set laststatus=3
+  autocmd MyAutoCmd Colorscheme * highlight! VertSplit guibg=bg guifg=#444b71
+
   call dein#add('Shougo/denite.nvim', { 'on_cmd': 'Denite' })
   call dein#add('gelguy/wilder.nvim', {'on_map': ['/', '?', ':'],
         \ 'hook_post_source': 'call SetupWilder()'})
@@ -855,7 +859,6 @@ call dein#end()
 " Colorscheme, plugin読み込み後に{{{
 
 autocmd MyAutoCmd ColorScheme * highlight! Visual ctermbg=236 guibg=#363d5c
-autocmd MyAutoCmd ColorScheme * highlight! VertSplit cterm=NONE
 autocmd MyAutoCmd ColorScheme * highlight! Pmenu None
 autocmd MyAutoCmd ColorScheme * highlight! PmenuSel guifg=black guibg=gray ctermfg=black ctermbg=gray
 autocmd MyAutoCmd ColorScheme * highlight! CursorLIne cterm=None ctermbg=241 ctermfg=None guibg=None guifg=None
