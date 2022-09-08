@@ -1052,8 +1052,7 @@ if exists('g:neovide')
   let g:neovide_cursor_vfx_mode = "railgun"
 
   " font size
-  let g:gui_font_size = 12
-  silent! execute('set guifont=Menlo:h'.g:gui_font_size)
+  let g:gui_font_size = 14
   function! ResizeFont(delta)
     let g:gui_font_size = g:gui_font_size + a:delta
     execute('set guifont=Menlo:h'.g:gui_font_size)
