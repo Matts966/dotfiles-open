@@ -198,8 +198,6 @@ call dein#add('machakann/vim-sandwich', {
       \ })
 " Toggle comment out with gcc and gc with selection.
 call dein#add('tpope/vim-commentary', {'on_map': 'gc'})
-" Terraform
-autocmd MyAutoCmd FileType tf setlocal commentstring=#\ %s
 " Jupyter on VSCode
 autocmd MyAutoCmd BufEnter *.ipynb#* setlocal commentstring=#\ %s
 
