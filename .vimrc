@@ -504,15 +504,45 @@ require('mason-lspconfig').setup_handlers({ function(server)
       if not non_lsp_fmt[vim.bo.filetype] then
         vim.keymap.set('n', '<space>ss', vim.lsp.buf.formatting, bufopts)
       end
+
+      -- trouble.nvim
+      vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
+        {silent = true, noremap = true}
+      )
+      vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
+        {silent = true, noremap = true}
+      )
+      vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
+        {silent = true, noremap = true}
+      )
+      vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
+        {silent = true, noremap = true}
+      )
+      vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+        {silent = true, noremap = true}
+      )
+      vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
+        {silent = true, noremap = true}
+      )
     end,
     capabilities = require('cmp_nvim_lsp').update_capabilities(
       vim.lsp.protocol.make_client_capabilities()
     )
   }
   require('lspconfig')[server].setup(opt)
+
+  vim.diagnostic.config({
+    virtual_text = false,
+    float = {
+      border = "single",
+      scope = "cursor",
+    },
+  })
 end })
 EOF
 endfunction
+
+autocmd MyAutoCmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 
 function! SetupNvimCmp()
 lua <<EOF
@@ -550,6 +580,13 @@ cmp.setup({
 EOF
 endfunction
 
+" For LSP line float diagnostics, this fixes the problem of untriggered CursorHold event
+call dein#add('antoinemadec/FixCursorHold.nvim')
+let g:cursorhold_updatetime = 250
+call dein#add('https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+      \ {'hook_post_source': 'lua require("lsp_lines").setup()'})
+call dein#add('kyazdani42/nvim-web-devicons')
+call dein#add('folke/trouble.nvim', {'hook_post_source': 'lua require("trouble").setup()'})
 call dein#add('j-hui/fidget.nvim', {'hook_post_source': 'lua require("fidget").setup()'})
 call dein#add('neovim/nvim-lspconfig')
 call dein#add('williamboman/mason.nvim', {'hook_post_source': 'lua require("mason").setup()'})
