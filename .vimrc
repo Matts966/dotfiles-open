@@ -713,7 +713,7 @@ if has('nvim')
         \   disable_commit_confirmation = true,
         \  }'})
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
-  autocmd MyAutoCmd FileType NeogitStatus setlocal nofoldenable
+  autocmd MyAutoCmd FileType NeogitStatus,gitcommit setlocal nofoldenable
 
   call dein#add('lewis6991/gitsigns.nvim', {'on_event': 'VimEnter', 'on_lua': "gitsigns",
         \ 'hook_post_source': 'lua require("gitsigns").setup {}'})
