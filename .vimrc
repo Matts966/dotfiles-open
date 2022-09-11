@@ -771,8 +771,8 @@ call dein#add('thinca/vim-qfreplace', {'on_cmd': 'Qfreplace'})
 " fzf{{{
 
 call dein#add('junegunn/fzf.vim')
-autocmd! FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+autocmd! FileType fzf set laststatus=0
+  \| autocmd BufLeave <buffer> set laststatus=3
 call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
