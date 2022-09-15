@@ -409,7 +409,7 @@ endfunction
 if has('nvim')
 
   call dein#add('ldelossa/buffertag', {'hook_post_source': 'lua require("buffertag").setup({border = "rounded"})'})
-  set laststatus=3
+  set laststatus=0
   autocmd MyAutoCmd Colorscheme * highlight! VertSplit guibg=bg guifg=#444b71
 
   call dein#add('Shougo/denite.nvim', { 'on_cmd': 'Denite' })
@@ -688,7 +688,7 @@ function! LightlineGit()
 endfunction
 let g:lightline = {
       \   'active': {
-      \     'left': [ [ 'mode', 'paste' ], [ 'git', 'readonly', 'modified' ] ],
+      \     'left': [],
       \     'right': [],
       \    },
       \   'inactive': { 'right': [] },
@@ -696,7 +696,23 @@ let g:lightline = {
       \   'separator': { 'left': '', 'right': '' },
       \   'subseparator': { 'left': '', 'right': '' },
       \ }
-let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], 'right': [] }
+let g:lightline.tabline = { 'left': [ [ 'tabs', 'git' ] ], 'right': [] }
+let g:lightline.tab = {
+      \ 'active': [ 'modified', 'filename' ],
+      \ 'inactive': [  'modified', 'filename' ] }
+function! LightlineModified(n)
+  let winnr = tabpagewinnr(a:n)
+  if gettabwinvar(a:n, winnr, '&modified')
+    return '+'
+  endif
+  if gettabwinvar(a:n, winnr, '&modifiable')
+    return ''
+  endif
+	return '-'
+endfunction
+let g:lightline.tab_component_function = {
+      \ 'modified': 'LightlineModified',
+      \ }
 "}}}
 
 
@@ -808,8 +824,6 @@ call dein#add('thinca/vim-qfreplace', {'on_cmd': 'Qfreplace'})
 " fzf{{{
 
 call dein#add('junegunn/fzf.vim')
-autocmd! FileType fzf set laststatus=0
-  \| autocmd BufLeave <buffer> set laststatus=3
 call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
