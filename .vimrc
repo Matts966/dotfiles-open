@@ -365,6 +365,7 @@ function! s:init_fern() abort
   nmap <buffer> . <Plug>(fern-action-hidden:toggle)
   nmap <buffer> H <Plug>(fern-action-leave)
   nmap <buffer> L <Plug>(fern-action-enter)
+  nmap <buffer> <Tab> <Plug>(fern-action-mark:toggle)j
   nnoremap <buffer> N N
   call fern#action#call('tcd:root')
 endfunction
