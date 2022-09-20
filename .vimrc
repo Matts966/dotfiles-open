@@ -419,14 +419,10 @@ if has('nvim')
 
   call dein#add('norcalli/nvim-colorizer.lua', {'hook_post_source': 'lua require("colorizer").setup()'})
 
-  call dein#add('petertriho/nvim-scrollbar', {'depends': ['hop.nvim'],
-        \ 'on_event': 'WinScrolled',
-        \ 'hook_post_source': 'lua require("scrollbar").setup{}'})
-  call dein#add('kevinhwang91/nvim-hlslens', {'depends': ['nvim-scrollbar'],
+  call dein#add('kevinhwang91/nvim-hlslens', {'depends': ['hop.nvim'],
         \ 'on_map': ['/', '?'],
         \ 'on_event': 'CursorMoved',
-        \ 'hook_post_source': 'lua require("hlslens").setup {}
-        \   require("scrollbar.handlers.search").setup()'})
+        \ 'hook_post_source': 'lua require("hlslens").setup {}'})
   nnoremap n n<Cmd>lua require('hlslens').start()<CR>
   nnoremap N N<Cmd>lua require('hlslens').start()<CR>
 
@@ -435,9 +431,6 @@ if has('nvim')
   autocmd MyAutoCmd Colorscheme * highlight! link HlSearchLensNear HopNextKey
   autocmd MyAutoCmd Colorscheme * highlight! link HlSearchFloat HopNextKey1
   autocmd MyAutoCmd Colorscheme * highlight! link Search HopNextKey1
-
-  autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearch HopNextKey1
-  autocmd MyAutoCmd Colorscheme * highlight! link ScrollBarSearchHandle HopNextKey
 
 else
 
