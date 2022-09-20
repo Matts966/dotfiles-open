@@ -31,7 +31,6 @@ deploy: ## Create symlink to home directory
 	@$(foreach val, $(DOTFILES), ln -sfFnv $(abspath $(val)) $(HOME);)
 	mkdir -p ~/.config/karabiner && ln -sfFnv $(abspath karabiner.json) ~/.config/karabiner
 	mkdir -p ~/.config/spotify-tui && ln -sfFnv $(abspath spotify-tui)/* ~/.config/spotify-tui
-	mkdir -p ~/.config/gitui && ln -sfFnv $(abspath gitui)/* ~/.config/gitui
 	mkdir -p ~/.config/nvim && ln -sfFnv $(abspath init.vim) ~/.config/nvim
 	mkdir -p ~/.config/direnv && ln -sfFnv $(abspath direnvrc) ~/.config/direnv
 	ln -sfFnv $(abspath pycodestyle) ~/.config
