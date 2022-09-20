@@ -56,9 +56,19 @@ skk:
 	docker start google-ime-skk || docker run --name google-ime-skk \
      -d --restart=always -d -p 55100:55100 matts966/google-ime-skk-docker || true
 
+.PHONY: neovide-daemon
+neovide-daemon:
+ifndef CI # Skip on github actions
+	sudo cp dev.neovide.Neovide.plist ~/Library/LaunchAgents/dev.neovide.Neovide.plist
+	sudo chown root:wheel ~/Library/LaunchAgents/dev.neovide.Neovide.plist
+	sudo launchctl load ~/Library/LaunchAgents/dev.neovide.Neovide.plist
+	launchctl start dev.neovide.Neovide
+endif
+
+
 .PHONY: neovide
 ifeq  ($(shell uname),Darwin)
-neovide:
+neovide: neovide-daemon
 	\rm -rf /Applications/Neovide.app
 	(cd $(shell mktemp -d) && \
 		git clone https://github.com/neovide/neovide && \
@@ -66,13 +76,6 @@ neovide:
 		cargo bundle --release && \
 		cp -r ./target/release/bundle/osx/Neovide.app /Applications/Neovide.app && \
 		\rm -rf ./target/release/bundle/osx/Neovide.app)
-
-ifndef CI # Skip on github actions
-	sudo cp dev.neovide.Neovide.plist ~/Library/LaunchAgents/dev.neovide.Neovide.plist
-	sudo chown root:wheel ~/Library/LaunchAgents/dev.neovide.Neovide.plist
-	sudo launchctl load ~/Library/LaunchAgents/dev.neovide.Neovide.plist
-	launchctl start dev.neovide.Neovide
-endif
 
 else
 	cargo install --git https://github.com/neovide/neovide
