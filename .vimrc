@@ -417,7 +417,7 @@ if has('nvim')
   call dein#add('gelguy/wilder.nvim', {'on_map': ['/', '?', ':'],
         \ 'hook_post_source': 'call SetupWilder()'})
 
-  call dein#add('norcalli/nvim-colorizer.lua', {'hook_post_source': 'lua require("colorizer").setup()'})
+  call dein#add('NvChad/nvim-colorizer.lua', {'hook_post_source': 'lua require("colorizer").setup()'})
 
   call dein#add('kevinhwang91/nvim-hlslens', {'depends': ['hop.nvim'],
         \ 'on_map': ['/', '?'],
