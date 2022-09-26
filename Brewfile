@@ -58,6 +58,8 @@ brew "watch"
 brew "wget"
 # General-purpose lossless data-compression library
 brew "zlib"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Kubectl Argo Rollouts Plugin.
 brew "argoproj/tap/kubectl-argo-rollouts"
 # Enable Windows-like alt-tab

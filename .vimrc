@@ -867,6 +867,24 @@ command! -bang -nargs=* Rg
       \   fzf#vim#with_preview(), <bang>0)
 nnoremap <leader>f <Cmd>Rg<CR>
 nnoremap <leader>p <Cmd>Files<CR>
+call dein#add('voldikss/vim-floaterm')
+" skk使えない → ローマ字で書けば補完される
+" Floaterm 依存 → fzf の s:execute が非公開なので。。
+nnoremap <leader>G <Cmd>FloatermNew google<CR>
+
+" " skkが使えそうに見えたが、gsearchは独自なのか使えず
+" call dein#add('nvim-lua/plenary.nvim')
+" call dein#add('nvim-telescope/telescope.nvim')
+" call dein#add('dzfrias/gsearch.nvim')
+" nnoremap <leader>G <Cmd>lua require("gsearch").search()<CR>
+
+" WIP fzf#wrap 版
+" nnoremap <expr> <leader>G fzf#run(
+"       \   fzf#wrap({
+"       \     'source': 'echo -n',
+"       \     'reducer': { lines -> !open 'https://www.google.com/search?q=' . join(lines, ' ') },
+"       \   })
+"       \ )
 
 "}}}
 

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# open, jq, fzf 依存
+
+echo -n |
+  fzf --multi --disabled \
+    --bind 'change:reload:echo {q} && curl \
+      --get \
+      --data-urlencode "output=chrome" \
+      --data-urlencode "q=$(echo {q})" \
+      https://suggestqueries.google.com/complete/search |
+      jq -r ".[1][]"' |
+  xargs -I{} open "https://google.com/search?q={}"
