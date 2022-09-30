@@ -38,7 +38,7 @@ deploy: ## Create symlink to home directory
 
 
 .PHONY: init
-init: mac bundle brew ~/.asdf skk neovide ## Initialize installation
+init: mac bundle ~/.asdf skk neovide ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
@@ -134,7 +134,7 @@ ifeq  ($(shell uname),Linux)
 	sudo apt-get update; sudo apt-get install -y zsh; sudo chsh -s /usr/bin/zsh
 endif
 
-~/.asdf:
+~/.asdf: brew
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 	cut -d' ' -f1 .tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
