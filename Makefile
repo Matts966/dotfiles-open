@@ -61,8 +61,8 @@ neovide-daemon:
 ifndef CI # Skip on github actions
 	sudo cp dev.neovide.Neovide.plist ~/Library/LaunchAgents/dev.neovide.Neovide.plist
 	sudo chown root:wheel ~/Library/LaunchAgents/dev.neovide.Neovide.plist
-	sudo launchctl load ~/Library/LaunchAgents/dev.neovide.Neovide.plist
-	launchctl start dev.neovide.Neovide
+	sudo launchctl load ~/Library/LaunchAgents/dev.neovide.Neovide.plist || true
+	launchctl start dev.neovide.Neovide || true
 endif
 
 
