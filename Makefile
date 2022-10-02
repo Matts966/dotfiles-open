@@ -3,7 +3,7 @@ EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .ssh .github
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help
-SHELL := $(shell which zsh)
+SHELL := $(shell which bash)
 
 .PHONY: list
 list: ## Show dot files in this repo
