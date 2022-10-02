@@ -1,4 +1,4 @@
-java adoptopenjdk-8.0.282+8
+java adoptopenjdk-19.0.0+36
 kubectl 1.21.1
 neovim nightly
 terraform 1.0.4
