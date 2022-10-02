@@ -112,7 +112,7 @@ brew:
 
 .PHONY: bundle
 .ONESHELL: bundle
-bundle:
+bundle: brew
 ifeq  ($(shell uname),Linux)
 	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
 endif
