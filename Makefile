@@ -68,7 +68,7 @@ endif
 
 .PHONY: neovide
 ifeq  ($(shell uname),Darwin)
-neovide: neovide-daemon
+neovide: neovide-daemon ~/.asdf
 	\rm -rf /Applications/Neovide.app
 	(cd $(shell mktemp -d) && \
 		git clone https://github.com/neovide/neovide && \
@@ -140,6 +140,7 @@ endif
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 	cut -d' ' -f1 .tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
 	~/.asdf/bin/asdf direnv setup --shell zsh --version system
+	asdf install
 
 .PHONY: help
 help: ## Self-documented Makefile
