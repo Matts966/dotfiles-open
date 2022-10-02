@@ -109,16 +109,14 @@ update-iterm-plist:
 .PHONY: brew
 brew:
 	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+.PHONY: bundle
+.ONESHELL: bundle
+bundle:
 ifeq  ($(shell uname),Linux)
 	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
 endif
-
-.PHONY: parallel
-parallel: brew
 	brew install parallel
-
-.PHONY: bundle
-bundle: parallel
 	cat Brewfile | grep ^tap | cut -d' ' -f2 | xargs echo \
 		| xargs parallel brew tap ::: || true
 	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
