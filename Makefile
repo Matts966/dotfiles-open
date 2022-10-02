@@ -136,13 +136,13 @@ ifeq  ($(shell uname),Linux)
 endif
 
 .ONESHELL: ~/.asdf
-export PATH := ~/.asdf/bin:$(PATH)
 ~/.asdf: bundle
 ifeq  ($(shell uname),Linux)
 	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
 endif
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+	export PATH=~/.asdf/bin:$$PATH
 	cut -d' ' -f1 .tool-versions | xargs -L1 asdf plugin add
 	asdf direnv setup --shell zsh --version system
 	asdf install
