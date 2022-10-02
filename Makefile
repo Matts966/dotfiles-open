@@ -109,7 +109,9 @@ update-iterm-plist:
 .PHONY: brew
 brew:
 	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	test -d /home/linuxbrew/.linuxbrew && eval "$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+ifeq  ($(shell uname),Linux)
+	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
+endif
 
 .PHONY: parallel
 parallel: brew
