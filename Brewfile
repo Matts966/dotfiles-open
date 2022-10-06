@@ -84,5 +84,7 @@ cask "spotify"
 cask "typora"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Open-source code editor
+cask "visual-studio-code"
 # Load/unload environment variables based on $PWD
 brew "direnv"
