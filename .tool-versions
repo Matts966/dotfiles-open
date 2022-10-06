@@ -1,4 +1,4 @@
-java adoptopenjdk-19.0.0+36
+java adoptopenjdk-11.0.16+8
 neovim nightly
 terraform 1.0.4
 direnv system
@@ -9,3 +9,4 @@ kubectx 0.9.4
 python 3.8.10
 deno 1.24.3
 ruby 2.6.6
+gradle 6.9.2
