@@ -749,6 +749,8 @@ nmap <leader>g [git]
 nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
 
 if has('nvim')
+  call dein#add('melkster/modicator.nvim', {'hook_post_source': 'lua require("modicator").setup()'})
+
   call dein#add('nvim-lua/plenary.nvim', {'lazy': 1})
   call dein#add('TimUntersberger/neogit', {'depends': 'plenary.nvim', 'on_cmd': 'Neogit',
         \ 'hook_post_source': 'lua require("neogit").setup {
