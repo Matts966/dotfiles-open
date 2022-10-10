@@ -495,7 +495,7 @@ require('mason-lspconfig').setup_handlers({ function(server)
       vim.keymap.set('n', '<space>A', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
       local non_lsp_fmt = { python=true, typescript=true }
-      if not non_lsp_fmt[vim.bo.filetype] then
+      if vim.lsp.buf.formatting and not non_lsp_fmt[vim.bo.filetype] then
         vim.keymap.set('n', '<space>ss', vim.lsp.buf.formatting, bufopts)
       end
 
