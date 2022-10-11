@@ -142,10 +142,9 @@ ifeq  ($(shell uname),Linux)
 endif
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-	export PATH=~/.asdf/bin:$$PATH
-	cut -d' ' -f1 .tool-versions | xargs -L1 asdf plugin add
-	asdf direnv setup --shell zsh --version system
-	asdf install
+	cut -d' ' -f1 .tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
+	~/.asdf/bin/asdf direnv setup --shell zsh --version system
+	~/.asdf/bin/asdf install
 
 .PHONY: help
 help: ## Self-documented Makefile
