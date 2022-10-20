@@ -20,6 +20,14 @@
             "manipulators": [
               {
                 "description": "alt+f to alt→",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.iCal$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
                 "from": {
                   "key_code": "f",
                   "modifiers": {
@@ -43,6 +51,14 @@
               },
               {
                 "description": "alt+b to alt←",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.iCal$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
                 "from": {
                   "key_code": "b",
                   "modifiers": {
@@ -66,6 +82,14 @@
               },
               {
                 "description": "alt+p to alt↑",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.iCal$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
                 "from": {
                   "key_code": "p",
                   "modifiers": {
@@ -89,6 +113,14 @@
               },
               {
                 "description": "alt+n to alt↓",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.iCal$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
                 "from": {
                   "key_code": "n",
                   "modifiers": {
