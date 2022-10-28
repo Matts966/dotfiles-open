@@ -410,7 +410,7 @@ endfunction
 if has('nvim')
 
   call dein#add('ldelossa/buffertag', {'hook_post_source': 'lua require("buffertag").setup({border = "rounded"})'})
-  set laststatus=0
+  set laststatus=3
   autocmd MyAutoCmd Colorscheme * highlight! VertSplit guibg=bg guifg=#444b71
 
   call dein#add('Shougo/denite.nvim', { 'on_cmd': 'Denite' })
