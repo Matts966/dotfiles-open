@@ -341,6 +341,8 @@ imap <C-x><C-e> <C-o><C-x><C-e>
 " v1.5.3 and newer have performance issue.
 call dein#add('github/copilot.vim', {'on_event': ['InsertEnter', 'CursorHold']})
 let g:copilot_node_command = '~/.asdf/shims/node'
+imap <silent><script><expr> <C-N> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 call dein#add('tyru/open-browser-github.vim', {'on_event': 'CmdlineEnter'})
 call dein#add('tyru/open-browser.vim', {'on_event': 'CmdlineEnter'})
