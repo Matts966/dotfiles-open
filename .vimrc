@@ -899,7 +899,8 @@ call dein#add('dansomething/vim-hackernews')
 call dein#add('vimwiki/vimwiki') "{{{
 command! Links execute(':VimwikiGenerateLinks ' . glob(expand('%:h') . '/') . '*.md')
 let g:vimwiki_key_mappings = {
-      \   'all_maps': 0,
+      \   'table_mappings': 1,
+      \   'links': 1,
       \ }
 let g:vimwiki_menu = '' " To disable No menu Vimwiki error
 autocmd MyAutoCmd filetype vimwiki
