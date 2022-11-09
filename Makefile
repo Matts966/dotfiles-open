@@ -38,7 +38,7 @@ deploy: ## Create symlink to home directory
 
 
 .PHONY: init
-init: mac bundle ~/.asdf skk neovide ## Initialize installation
+init: mac bundle ~/.asdf skk neovide starbucks-daemon ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
@@ -65,6 +65,14 @@ ifndef CI # Skip on github actions
 	launchctl start dev.neovide.Neovide || true
 endif
 
+.PHONY: starbucks-daemon
+starbucks-daemon:
+ifndef CI # Skip on github actions
+	sudo cp StarbucksWifi.plist ~/Library/LaunchAgents/StarbucksWifi.plist
+	sudo chown root:wheel ~/Library/LaunchAgents/StarbucksWifi.plist
+	sudo launchctl load ~/Library/LaunchAgents/StarbucksWifi.plist
+	launchctl start StarbucksWiFi || true
+endif
 
 .PHONY: neovide
 ifeq  ($(shell uname),Darwin)
