@@ -62,6 +62,9 @@ set hlsearch
 
 " 読み込み遅いので
 let g:loaded_node_provider = 0
+
+" insert モードで dts で時刻を挿入
+iab <expr> dts strftime("%c")
 "}}}
 
 " コマンド履歴1000件に{{{
