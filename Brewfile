@@ -4,6 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
+tap "microsoft/git"
 # User-friendly launcher for Bazel
 brew "bazelisk"
 # Connect and disconnect Bluetooth devices
@@ -74,6 +75,7 @@ cask "clipy"
 cask "cloudytabs"
 # Web browser
 cask "google-chrome"
+cask "git-credential-manager-core"
 # Keyboard customizer
 cask "karabiner-elements"
 # Neovim Client
