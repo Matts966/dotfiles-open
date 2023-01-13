@@ -27,3 +27,7 @@
 	prompt = false
 [merge]
 	conflictStyle = diff3
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
