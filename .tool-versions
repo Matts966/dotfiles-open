@@ -5,6 +5,7 @@ direnv system
 golang 1.19
 nodejs 16.16.0
 rust nightly
-deno 1.24.3
+deno 1.29.2
 ruby 2.7.6
 gradle 6.9.2
+python 3.8.15
