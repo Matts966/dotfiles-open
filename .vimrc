@@ -430,7 +430,7 @@ require('mason-lspconfig').setup_handlers({ function(server)
         {silent = true, noremap = true}
       )
     end,
-    capabilities = require('cmp_nvim_lsp').update_capabilities(
+    capabilities = require('cmp_nvim_lsp').default_capabilities(
       vim.lsp.protocol.make_client_capabilities()
     )
   }
