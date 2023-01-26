@@ -76,3 +76,6 @@ fi
 if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
