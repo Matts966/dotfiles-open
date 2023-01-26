@@ -1045,10 +1045,6 @@ if exists('g:neovide')
   tnoremap <C-BS> <BS>
   tnoremap <C-Tab> <Tab>
 
-  " Cursor animation does work
-  set nocursorcolumn
-  set nocursorline
-
   " Redraw on startup to apply transparency
   autocmd MyAutoCmd VimEnter * call timer_start(200, { id -> ResizeFont(0)}, { 'repeat': 5 })
 endif
