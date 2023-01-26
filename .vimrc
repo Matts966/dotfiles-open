@@ -191,7 +191,6 @@ call dein#add('vim-skk/skkeleton', {'on_event': ['InsertEnter', 'CursorHold'], '
 call dein#add('delphinus/skkeleton_indicator.nvim', {'on_event': ['InsertEnter', 'CursorHold'],
       \ 'hook_post_source': 'lua require"skkeleton_indicator".setup{ eijiText = "AaBb", hiraText = "Hira", kataText = "Kata" }'})
 
-call dein#add('Shougo/ddc.vim', {'on_event': 'skkeleton-initialize-pre'})
 autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
     \ 'useSkkServer': v:true,
@@ -206,28 +205,6 @@ autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
     \ })
     \ | call skkeleton#register_keymap('henkan', "\<BS>", 'henkanBackward')
     \ | call skkeleton#register_keymap('henkan', "\<C-h>", 'henkanBackward')
-    \ | if has('nvim') | finish | endif " Use cmp instead of ddc
-    \ | call ddc#enable()
-    \ | call ddc#custom#patch_global('backspaceCompletion', v:true)
-    \ | call ddc#custom#patch_global('sourceOptions', {
-    \   '_': {
-    \     'matchers': ['matcher_head'],
-    \     'sorters': ['sorter_rank']
-    \   },
-    \   'skkeleton': {
-    \     'mark': 'skkeleton',
-    \     'matchers': ['skkeleton'],
-    \     'sorters': [],
-    \     'minAutoCompleteLength': 1,
-    \   },
-    \ })
-autocmd MyAutoCmd User skkeleton-enable-pre call
-    \ ddc#custom#patch_global('sources', ['skkeleton'])
-autocmd MyAutoCmd User skkeleton-disable-post call
-    \ ddc#custom#patch_global('sources', [])
-" SKKは文字数が増えるとなぜか補完が起動しなくなる
-" Google IMEでの補完が実装されたら使う
-" inoremap <silent><expr> <C-n> ddc#map#manual_complete()
 
 autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorEiji guifg=#88c0d0 gui=bold
 autocmd MyAutoCmd ColorScheme * highlight! SkkeletonIndicatorHira guifg=#a3be8c gui=bold
