@@ -700,8 +700,7 @@ if has('nvim')
   nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
   autocmd MyAutoCmd FileType NeogitStatus,gitcommit setlocal nofoldenable
 
-  call dein#add('lewis6991/gitsigns.nvim', {'on_event': 'VimEnter', 'on_lua': "gitsigns",
-        \ 'hook_post_source': 'lua require("gitsigns").setup {}'})
+  call dein#add('lewis6991/gitsigns.nvim', {'on_event': 'VimEnter', 'hook_post_source': 'lua require("gitsigns").setup {}'})
   nmap [c <Plug>(ahc)<Cmd>Gitsigns prev_hunk<CR>
   nmap ]c <Plug>(ahc)<Cmd>Gitsigns next_hunk<CR>
   nmap <leader>hs <Cmd>Gitsigns stage_hunk<CR>
