@@ -1047,6 +1047,9 @@ if exists('g:neovide')
 
   " Redraw on startup to apply transparency
   autocmd MyAutoCmd VimEnter * call timer_start(200, { id -> ResizeFont(0)}, { 'repeat': 5 })
+
+  " New window
+  noremap <D-n> <Cmd>!neovide --maximized<CR><CR>
 endif
 
 "}}}
