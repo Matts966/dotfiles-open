@@ -135,8 +135,6 @@ autocmd MyAutoCmd BufEnter *.ipynb#* setlocal commentstring=#\ %s
 
 call dein#add('itchyny/vim-highlighturl')
 
-call dein#add('Yggdroot/indentLine')
-
 " Motion系{{{
 
 call dein#add('unblevable/quick-scope')
