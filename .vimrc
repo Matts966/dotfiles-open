@@ -137,11 +137,11 @@ call dein#add('itchyny/vim-highlighturl')
 
 " Motion系{{{
 
-call dein#add('unblevable/quick-scope')
 if exists('g:vscode')
-  highlight QuickScopePrimary guifg=#00dfff ctermfg=45 gui=underline cterm=underline
-  highlight QuickScopeSecondary gui=underline cterm=underline
+  " 表示が崩れて見づらくなってしまうので使わない
+  "
 else
+  call dein#add('unblevable/quick-scope')
   autocmd MyAutoCmd ColorScheme * highlight QuickScopePrimary guifg=#00dfff ctermfg=45 gui=underline cterm=underline
   autocmd MyAutoCmd ColorScheme * highlight QuickScopeSecondary gui=underline cterm=underline
 endif
