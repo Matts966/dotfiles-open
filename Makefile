@@ -72,7 +72,8 @@ ifndef CI # Skip on github actions
 	sudo cp StarbucksWifi.plist ~/Library/LaunchAgents/StarbucksWifi.plist
 	sudo chown root:wheel ~/Library/LaunchAgents/StarbucksWifi.plist
 	sudo launchctl load ~/Library/LaunchAgents/StarbucksWifi.plist
-	launchctl start StarbucksWiFi || true
+	# Disable...
+	# launchctl start StarbucksWiFi || true
 endif
 
 .PHONY: neovide
