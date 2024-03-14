@@ -33,6 +33,7 @@ deploy: ## Create symlink to home directory
 	mkdir -p ~/.config/spotify-tui && ln -sfFnv $(abspath spotify-tui)/* ~/.config/spotify-tui
 	mkdir -p ~/.config/nvim && ln -sfFnv $(abspath init.vim) ~/.config/nvim
 	mkdir -p ~/.config/direnv && ln -sfFnv $(abspath direnvrc) ~/.config/direnv
+	mkdir -p ~/.config/neovide && ln -sfFnv $(abspath neovide/config.toml) ~/.config/neovide
 	ln -sfFnv $(abspath pycodestyle) ~/.config
 	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin
 
