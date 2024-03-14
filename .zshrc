@@ -1,3 +1,8 @@
+if [ "$TERM_PROGRAM" = "vscode" ]
+then
+  tmux new-session -A -s $(PWD)
+fi
+
 export LANG=ja_JP.UTF-8
 
 # zinit
