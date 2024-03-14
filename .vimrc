@@ -963,7 +963,6 @@ endfunction
 
 " ターミナル系コマンド{{{
 
-nmap <leader>k <Cmd>tabnew<CR><Cmd>terminal k9s<CR><C-W>g<Tab>
 command! -nargs=0 Sqlp tabedit % | terminal sqlp %
 nnoremap <leader>sp <Cmd>tabnew<CR><Cmd>terminal spt<CR>
 nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
