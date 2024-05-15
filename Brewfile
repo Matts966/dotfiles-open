@@ -90,3 +90,5 @@ cask "iterm2"
 cask "visual-studio-code"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# Simple application that will prevent iTunes or Apple Music from launching
+cask "notunes"
