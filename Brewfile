@@ -92,3 +92,5 @@ cask "visual-studio-code"
 brew "direnv"
 # Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
+# macOS CLI for AirDrop
+brew "vldmrkl/formulae/airdrop-cli", link: false
