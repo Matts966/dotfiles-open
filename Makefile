@@ -67,16 +67,6 @@ ifndef CI # Skip on github actions
 	# launchctl start dev.neovide.Neovide || true
 endif
 
-.PHONY: starbucks-daemon
-starbucks-daemon:
-ifndef CI # Skip on github actions
-	sudo cp StarbucksWifi.plist ~/Library/LaunchAgents/StarbucksWifi.plist
-	sudo chown root:wheel ~/Library/LaunchAgents/StarbucksWifi.plist
-	sudo launchctl load ~/Library/LaunchAgents/StarbucksWifi.plist
-	# Disable...
-	# launchctl start StarbucksWiFi || true
-endif
-
 .PHONY: neovide
 ifeq  ($(shell uname),Darwin)
 neovide: neovide-daemon ~/.asdf
