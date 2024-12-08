@@ -113,6 +113,7 @@ nmap Y <Plug>(operator-flashy)$
 
 "}}}
 
+" TODO: Fix broken gx
 call dein#add('Matts966/gx-extended.vim', {'on_map': 'gx'})
 
 call dein#add('andymass/vim-matchup', {'on_event': 'FileType'})
