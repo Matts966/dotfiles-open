@@ -38,7 +38,7 @@ deploy: ## Create symlink to home directory
 
 
 .PHONY: init
-init: mac bundle ~/.asdf skk neovide starbucks-daemon ## Initialize installation
+init: mac bundle ~/.asdf skk neovide ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
