@@ -38,7 +38,7 @@ deploy: ## Create symlink to home directory
 
 
 .PHONY: init
-init: mac bundle ~/.asdf skk neovide ## Initialize installation
+init: mac bundle ~/.asdf skk nvim ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
@@ -54,14 +54,9 @@ skk:
     mkdir -p ~/.skk && \
     mv SKK-JISYO.L ~/.skk/SKK-JISYO.L
 
-.PHONY: neovide
-ifeq  ($(shell uname),Darwin)
-neovide:
-	sudo \rm -rf /Applications/Neovide.app
-	sudo cp /opt/homebrew/Cellar/neovide/0.12.2/bin/neovide /usr/local/bin/neovide
-else
-	cargo install --git https://github.com/neovide/neovide
-endif
+.PHONY: nvim
+nvim:
+	nvim -c 'exe "silent! r!curl -sS https://raw.githubusercontent.com/neovim/neovim/v0.7.2/runtime/syntax/lua.vim"' -c 'w! ~/.config/nvim/syntax/lua.vim' -c 'q'
 
 .PHONY: secret
 secret:
