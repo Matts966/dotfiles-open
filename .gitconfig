@@ -4,8 +4,9 @@
 [grep]
   lineNumber = true
 [core]
-  pager = delta
+	pager = LESSCHARSET=utf-8 less
   excludesfile = ~/.gitignore
+	quotepath = false
 [interactive]
   diffFilter = delta --color-only
 [commit]
@@ -27,7 +28,10 @@
 	prompt = false
 [merge]
 	conflictStyle = diff3
-[credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
