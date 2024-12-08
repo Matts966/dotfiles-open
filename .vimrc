@@ -827,10 +827,7 @@ nnoremap <expr> q (&modifiable && !&readonly ? 'q' : ':close!<CR>')
 
 " Help vertical{{{
 
-autocmd MyAutoCmd BufEnter *.txt,*.jax if &filetype=='help' | wincmd L | endif
-lua <<EOF
-vim.opt.splitright = true
-EOF
+autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 
 "}}}
 
