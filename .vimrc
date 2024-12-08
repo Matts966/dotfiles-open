@@ -211,9 +211,6 @@ imap <D-Bslash> <M-\>
 imap <D-]> <M-]>
 imap <D-[> <M-[>
 
-call dein#add('tyru/open-browser-github.vim', {'on_event': 'CmdlineEnter'})
-call dein#add('tyru/open-browser.vim', {'on_event': 'CmdlineEnter'})
-
 call dein#add('tpope/vim-repeat')
 call dein#add('tpope/vim-unimpaired')
 
