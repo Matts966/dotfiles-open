@@ -219,7 +219,7 @@ call dein#add('tyru/open-browser.vim', {'on_event': 'CmdlineEnter'})
 call dein#add('tpope/vim-repeat')
 call dein#add('tpope/vim-unimpaired')
 
-call dein#add('lambdalisue/fern.vim')"{{{
+call dein#add('lambdalisue/fern.vim') "{{{
 call dein#add('lambdalisue/fern-hijack.vim')
 call dein#add('lambdalisue/fern-git-status.vim')
 let g:fern#default_hidden = 1
