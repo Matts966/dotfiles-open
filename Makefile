@@ -100,7 +100,6 @@ ifeq  ($(shell uname),Darwin)
 	defaults write com.apple.screencapture location ~/Documents/Screenshots
 
 	git submodule update --init iTerm2-Color-Schemes
-	./iTerm2-Color-Schemes/tools/import-scheme.sh iTerm2-Color-Schemes/schemes/iceberg-dark.itermcolors
 	cp com.googlecode.iterm2.plist ~/Library/Preferences/
 endif
 
