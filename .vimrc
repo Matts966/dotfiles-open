@@ -157,17 +157,6 @@ else
   nmap <Leader>j <Plug>(easymotion-overwin-w)
 endif
 
-call dein#add('bkad/CamelCaseMotion')
-map <silent> cw <Plug>CamelCaseMotion_w
-map <silent> cb <Plug>CamelCaseMotion_b
-map <silent> ce <Plug>CamelCaseMotion_e
-omap <silent> icw <Plug>CamelCaseMotion_iw
-xmap <silent> icw <Plug>CamelCaseMotion_iw
-omap <silent> icb <Plug>CamelCaseMotion_ib
-xmap <silent> icb <Plug>CamelCaseMotion_ib
-omap <silent> ice <Plug>CamelCaseMotion_ie
-xmap <silent> ice <Plug>CamelCaseMotion_ie
-
 "}}}
 
 " VSCodeの場合終了{{{
