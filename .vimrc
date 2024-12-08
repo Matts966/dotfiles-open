@@ -610,26 +610,13 @@ endif
 
 " Git related settings{{{
 
-nnoremap [git]  <Nop>
+nnoremap [git] <Nop>
 nmap <leader>g [git]
 
 nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab" lazygit<CR>
 
 if has('nvim')
   call dein#add('melkster/modicator.nvim', {'hook_post_source': 'lua require("modicator").setup()'})
-
-  call dein#add('nvim-lua/plenary.nvim', {'lazy': 1})
-  call dein#add('TimUntersberger/neogit', {'depends': 'plenary.nvim', 'on_cmd': 'Neogit',
-        \ 'hook_post_source': 'lua require("neogit").setup {
-        \   auto_refresh = false,
-        \   signs = {
-        \     section = { "▸", "▾" },
-        \     item = { "▸", "▾" },
-        \   },
-        \   disable_commit_confirmation = true,
-        \  }'})
-  nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Neogit<CR>
-  autocmd MyAutoCmd FileType NeogitStatus,gitcommit setlocal nofoldenable
 
   call dein#add('lewis6991/gitsigns.nvim', {'on_event': 'VimEnter', 'hook_post_source': 'lua require("gitsigns").setup {}'})
   nmap [c <Plug>(ahc)<Cmd>Gitsigns prev_hunk<CR>
