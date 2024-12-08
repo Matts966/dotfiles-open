@@ -35,6 +35,7 @@ deploy: ## Create symlink to home directory
 	mkdir -p ~/.config/neovide && ln -sfFnv $(abspath neovide/config.toml) ~/.config/neovide
 	ln -sfFnv $(abspath pycodestyle) ~/.config
 	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin
+	mkdir -p ~/Library/Application\ Support/lazygit && \rm ~/Library/Application\ Support/lazygit/config.yml && ln -sfFnv $(abspath lazygit/config.yml) ~/Library/Application\ Support/lazygit/
 
 
 .PHONY: init
