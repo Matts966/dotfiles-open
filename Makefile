@@ -56,24 +56,11 @@ skk:
 	docker start google-ime-skk || docker run --name google-ime-skk \
 		-d --restart=always --platform=linux/amd64 -p 127.0.0.1:55100:1178 lurdan/yaskkserv2:latest || true
 
-.PHONY: neovide-daemon
-neovide-daemon:
-ifndef CI # Skip on github actions
-	sudo cp dev.neovide.Neovide.plist ~/Library/LaunchAgents/dev.neovide.Neovide.plist
-	sudo chown root:wheel ~/Library/LaunchAgents/dev.neovide.Neovide.plist
-	sudo launchctl load ~/Library/LaunchAgents/dev.neovide.Neovide.plist || true
-	# Skip for now as I use vscode-neovim a lot
-	# launchctl start dev.neovide.Neovide || true
-endif
-
 .PHONY: neovide
 ifeq  ($(shell uname),Darwin)
 neovide:
 	sudo \rm -rf /Applications/Neovide.app
-	sudo ln -sfFnv $(abspath v) /usr/local/bin
 	sudo cp /opt/homebrew/Cellar/neovide/0.12.2/bin/neovide /usr/local/bin/neovide
-
-
 else
 	cargo install --git https://github.com/neovide/neovide
 endif
