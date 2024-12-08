@@ -68,14 +68,11 @@ endif
 
 .PHONY: neovide
 ifeq  ($(shell uname),Darwin)
-neovide: neovide-daemon ~/.asdf
-	\rm -rf /Applications/Neovide.app
-	(cd $(shell mktemp -d) && \
-		git clone https://github.com/neovide/neovide && \
-		cd neovide && cargo install cargo-bundle && \
-		cargo bundle --release && \
-		cp -r ./target/release/bundle/osx/Neovide.app /Applications/Neovide.app && \
-		\rm -rf ./target/release/bundle/osx/Neovide.app)
+neovide:
+	sudo \rm -rf /Applications/Neovide.app
+	sudo ln -sfFnv $(abspath v) /usr/local/bin
+	sudo cp /opt/homebrew/Cellar/neovide/0.12.2/bin/neovide /usr/local/bin/neovide
+
 
 else
 	cargo install --git https://github.com/neovide/neovide
