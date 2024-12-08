@@ -211,20 +211,6 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 
 "}}}
 
-" Jupyter on Vim{{{
-
-autocmd MyAutoCmd BufEnter *.ipynb setlocal filetype=notebook
-call dein#add('luk400/vim-jukit', {'on_ft': 'notebook'})
-let g:jukit_mappings = 0
-nnoremap <leader><C-CR> <Cmd>call jukit#send#section(1)<CR>
-nnoremap <leader><CR> <Cmd>call jukit#send#section(0)<CR>
-nnoremap <leader>on <Cmd>call jukit#convert#notebook_convert("jupyter-notebook")<CR>
-nnoremap <leader>os <Cmd>tcd %:p:h<CR><Cmd>call jukit#splits#output()<CR><ESC<Cmd>tcd -<CR>
-autocmd MyAutoCmd ColorScheme * highlight! jukit_textcell_bg_colors guibg=#131628 ctermbg=16
-autocmd MyAutoCmd ColorScheme * highlight! jukit_cellmarker_colors guifg=#1d615a guibg=#1d615a ctermbg=22 ctermfg=22
-
-"}}}
-
 " Use emoji-fzf and fzf to fuzzy-search for emoji, and insert the result{{{
 
 function! InsertEmoji(emoji)
