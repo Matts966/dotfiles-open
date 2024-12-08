@@ -225,6 +225,11 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 
 " Jupyter on Vim{{{
 
+call dein#add('untitled-ai/jupyter_ascending.vim', {'on_ft': 'python'})
+nmap <leader>jx <Plug>JupyterExecute
+nmap <leader>jX <Plug>JupyterExecuteAll
+nmap <leader>jr <Plug>JupyterRestart
+
 autocmd MyAutoCmd BufEnter *.ipynb setlocal filetype=notebook
 call dein#add('luk400/vim-jukit', {'on_ft': 'notebook'})
 let g:jukit_mappings = 0
