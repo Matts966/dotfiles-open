@@ -632,11 +632,6 @@ if has('nvim')
   " Use : instead of <Cmd> to clear nvim-hlslens
   nnoremap <silent> <C-l> :nohlsearch<CR><Cmd>Gitsigns refresh<CR><C-l>
 else
-  call dein#add('jreybert/vimagit')
-  nnoremap [git]m <Cmd>silent! wa!<CR><Cmd>Magit<CR>
-  nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>Magit<CR>
-  autocmd MyAutoCmd FileType magit map <buffer> <CR> S<C-N>
-
   call dein#add('airblade/vim-gitgutter')
   nmap [c <Plug>(ahc)<Plug>(GitGutterPrevHunk)
   nmap ]c <Plug>(ahc)<Plug>(GitGutterNextHunk)
