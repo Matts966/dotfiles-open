@@ -721,18 +721,20 @@ nnoremap <leader>G <Cmd>FloatermNew google<CR>
 "}}}
 
 call dein#add('vimwiki/vimwiki') "{{{
-command! Links execute(':VimwikiGenerateLinks ' . glob(expand('%:h') . '/') . '*.md')
-let g:vimwiki_key_mappings = {
-      \   'table_mappings': 1,
-      \   'links': 1,
-      \ }
+let g:vimwiki_key_mappings =
+  \ {
+  \   'all_maps': 0,
+  \   'global': 0,
+  \   'headers': 0,
+  \   'text_objs': 0,
+  \   'table_format': 0,
+  \   'table_mappings': 0,
+  \   'lists': 0,
+  \   'links': 1,
+  \   'html': 0,
+  \   'mouse': 0,
+  \ }
 let g:vimwiki_menu = '' " To disable No menu Vimwiki error
-autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[
-      \ fzf#vim#complete(fzf#wrap({
-      \   'source': "fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0 <Bar> xargs -0 realpath --relative-to "
-      \     . shellescape(expand("%:p:h")) . " <Bar> sort -r",
-      \   'reducer': { lines -> '['. fnamemodify(lines[0], ":t:r") . '](' . lines[0] . ')' },
-      \ }))
 "}}}
 
 call dein#add('cocopon/iceberg.vim')
