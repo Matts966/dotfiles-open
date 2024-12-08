@@ -948,7 +948,7 @@ if has('nvim')
 
   set wildmode=longest:full
 
-  set pumblend=30
+  set winblend=30
 else
   " Auto completion on vim command line
   " This prevents popup mode on nvim
@@ -962,7 +962,7 @@ endif
 
 if exists('g:neovide')
   let g:neovide_input_use_logo=v:true
-  let g:neovide_input_macos_alt_is_meta=v:true
+  let g:neovide_input_macos_option_key_is_meta=v:true
 
   " 複数タブがあれば、タブを消し、タブが一つであれば終了する
   nnoremap <expr> <D-w> tabpagenr('$')-1 ? "<Cmd>tabclose<CR>" : "<Cmd>silent! wa<CR><Cmd>bdelete!<CR><Cmd>%bdelete<CR><Cmd>quit<CR>"
@@ -1010,6 +1010,8 @@ if exists('g:neovide')
 
   " Redraw on startup to apply transparency
   autocmd MyAutoCmd VimEnter * call timer_start(200, { id -> ResizeFont(0)}, { 'repeat': 5 })
+  autocmd MyAutoCmd VimEnter * call timer_start(200, { tid -> execute('NeovideFocus') })
+  autocmd MyAutoCmd VimEnter * call timer_start(200, { tid -> execute('source $MYVIMRC') })
 
   " New window
   noremap <D-n> <Cmd>!neovide --maximized<CR><CR>
