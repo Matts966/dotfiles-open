@@ -640,10 +640,6 @@ else
 endif
 
 call dein#add('tpope/vim-fugitive')
-" Git commitの時にcmdheight=0だと<CR>が必要なのでしばらくMagitを使う
-" nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabedit %<CR><Cmd>Gdiff<CR>
-map <expr> <CR> &diff ? '<Cmd>diffget<CR>]c' : '<CR>'
-map <expr> <C-CR> &diff ? '<Cmd>diffput<CR>]c' : '<C-CR>'
 nnoremap [git]c <Plug>(ahc)<Cmd>Git commit<CR>
 
 call dein#add('lambdalisue/gina.vim', {'on_cmd': 'Gina',
