@@ -717,21 +717,6 @@ nnoremap <leader>G <Cmd>FloatermNew google<CR>
 
 "}}}
 
-call dein#add('vimwiki/vimwiki') "{{{
-command! Links execute(':VimwikiGenerateLinks ' . glob(expand('%:h') . '/') . '*.md')
-let g:vimwiki_key_mappings = {
-      \   'table_mappings': 1,
-      \   'links': 1,
-      \ }
-let g:vimwiki_menu = '' " To disable No menu Vimwiki error
-autocmd MyAutoCmd FileType vimwiki imap <buffer><expr><silent> [[
-      \ fzf#vim#complete(fzf#wrap({
-      \   'source': "fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0 <Bar> xargs -0 realpath --relative-to "
-      \     . shellescape(expand("%:p:h")) . " <Bar> sort -r",
-      \   'reducer': { lines -> '['. fnamemodify(lines[0], ":t:r") . '](' . lines[0] . ')' },
-      \ }))
-"}}}
-
 call dein#add('cocopon/iceberg.vim')
 
 call dein#add('cocopon/colorswatch.vim', {'on_cmd': 'ColorSwatchGenerate'})
