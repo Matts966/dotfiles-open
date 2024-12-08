@@ -173,7 +173,6 @@ endif
 
 " VSCodeでは使わないもの{{{
 
-
 set cmdheight=0
 " <CR> 待ち対策
 " 消す時は<Plug>(ahc)も消すこと
@@ -211,7 +210,6 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 
 "}}}
 
-" v1.5.3 and newer have performance issue.
 call dein#add('github/copilot.vim', {'on_event': ['InsertEnter', 'CursorHold']})
 let g:copilot_node_command = '~/.asdf/shims/node'
 imap <D-Bslash> <M-\>
