@@ -80,14 +80,3 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# ROS
-# source ~/ghq/github.com/TakanoTaiga/ros2_m1_native/install/local_setup.zsh
-# source ~/ghq/github.com/TakanoTaiga/ros2_m1_native/install/setup.zsh
-# export ROS_VERSION=2
-# export ROS_PYTHON_VERSION=3
-# export ROS_DISTRO=humble
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-
-export DISPLAY=localhost:0.0
