@@ -72,6 +72,11 @@ test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/bre
 
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
+NVIM_SOCKET=/tmp/neovide.socket
+if [ ! -S $NVIM_SOCKET ]; then
+    nvim --headless --listen $NVIM_SOCKET &
+fi
+
 export JAVA_HOME=$(/usr/libexec/java_home -v “21”)
 
 source ~/.private_zshenv
