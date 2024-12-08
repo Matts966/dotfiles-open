@@ -751,20 +751,6 @@ call dein#add('voldikss/vim-floaterm')
 " Floaterm 依存 → fzf の s:execute が非公開なので。。
 nnoremap <leader>G <Cmd>FloatermNew google<CR>
 
-" " skkが使えそうに見えたが、gsearchは独自なのか使えず
-" call dein#add('nvim-lua/plenary.nvim')
-" call dein#add('nvim-telescope/telescope.nvim')
-" call dein#add('dzfrias/gsearch.nvim')
-" nnoremap <leader>G <Cmd>lua require("gsearch").search()<CR>
-
-" WIP fzf#wrap 版
-" nnoremap <expr> <leader>G fzf#run(
-"       \   fzf#wrap({
-"       \     'source': 'echo -n',
-"       \     'reducer': { lines -> !open 'https://www.google.com/search?q=' . join(lines, ' ') },
-"       \   })
-"       \ )
-
 "}}}
 
 call dein#add('dansomething/vim-hackernews')
