@@ -210,6 +210,7 @@ let g:copilot_filetypes = #{
   \   gitcommit: v:true,
   \   markdown: v:true,
   \   text: v:true,
+  \   yaml: v:true,
   \ }
 let g:copilot_node_command = '~/.asdf/shims/node'
 imap <D-Bslash> <M-\>
