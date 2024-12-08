@@ -60,9 +60,6 @@ set smartcase " Case Sensitive only with upper case
 set wrapscan
 set hlsearch
 
-" 読み込み遅いので
-let g:loaded_node_provider = 0
-
 "}}}
 
 " コマンド履歴1000件に{{{
