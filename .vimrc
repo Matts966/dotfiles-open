@@ -158,16 +158,15 @@ else
 endif
 
 call dein#add('bkad/CamelCaseMotion')
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-omap <silent> iw <Plug>CamelCaseMotion_iw
-xmap <silent> iw <Plug>CamelCaseMotion_iw
-omap <silent> ib <Plug>CamelCaseMotion_ib
-xmap <silent> ib <Plug>CamelCaseMotion_ib
-omap <silent> ie <Plug>CamelCaseMotion_ie
-xmap <silent> ie <Plug>CamelCaseMotion_ie
+map <silent> cw <Plug>CamelCaseMotion_w
+map <silent> cb <Plug>CamelCaseMotion_b
+map <silent> ce <Plug>CamelCaseMotion_e
+omap <silent> icw <Plug>CamelCaseMotion_iw
+xmap <silent> icw <Plug>CamelCaseMotion_iw
+omap <silent> icb <Plug>CamelCaseMotion_ib
+xmap <silent> icb <Plug>CamelCaseMotion_ib
+omap <silent> ice <Plug>CamelCaseMotion_ie
+xmap <silent> ice <Plug>CamelCaseMotion_ie
 
 "}}}
 
