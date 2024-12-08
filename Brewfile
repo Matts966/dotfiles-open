@@ -2,21 +2,22 @@ tap "argoproj/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
 tap "microsoft/git"
+tap "treasure-data/tap"
 # User-friendly launcher for Bazel
 brew "bazelisk"
-# Connect and disconnect Bluetooth devices
-brew "bluetoothconnector"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# General purpose Language Server
+brew "efm-langserver"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # GNU awk utility
 brew "gawk"
-# Interpreter for PostScript and PDF
-brew "ghostscript"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Remote repository management made easy
 brew "ghq"
 # GNU Pretty Good Privacy (PGP) package
@@ -25,32 +26,26 @@ brew "gnupg"
 brew "graphviz"
 # Kubernetes package manager
 brew "helm"
-# Improved top (interactive process viewer)
-brew "htop"
+# Java language specific implementation of the Language Server Protocol
+brew "jdtls"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Emulator for x86 and PowerPC
+brew "qemu"
 # Linux virtual machines
 brew "lima"
 # Next-gen compiler infrastructure
 brew "llvm"
-# Tiny, lightning fast, feature-packed file manager
-brew "nnn"
-# Shell command parallelization utility
-brew "parallel"
-# PDF rendering library (based on the xpdf-3.0 code base)
-brew "poppler"
-# Editor of encrypted files
-brew "sops"
-# Version control system designed to be a better CVS
-brew "subversion"
-# Change macOS audio source from the command-line
-brew "switchaudio-osx"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
 # Implementation of the Language Server Protocol for LaTeX
 brew "texlab"
+# Free software distribution for the TeX typesetting system
+brew "texlive"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Executes a program periodically, showing output fullscreen
@@ -59,10 +54,9 @@ brew "watch"
 brew "wget"
 # General-purpose lossless data-compression library
 brew "zlib"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # Kubectl Argo Rollouts Plugin.
 brew "argoproj/tap/kubectl-argo-rollouts"
+brew "treasure-data/tap/td-security"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
@@ -71,24 +65,11 @@ cask "appcleaner"
 cask "basictex"
 # Clipboard extension app
 cask "clipy"
-# Menu bar application that lists iCloud Tabs
-cask "cloudytabs"
-# Web browser
-cask "google-chrome"
-cask "git-credential-manager-core"
 # Keyboard customizer
 cask "karabiner-elements"
 # Neovim Client
 cask "neovide"
-# Music streaming service
-cask "typora"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # Open-source code editor
 cask "visual-studio-code"
-# Load/unload environment variables based on $PWD
-brew "direnv"
 # Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
-# macOS CLI for AirDrop
-brew "vldmrkl/formulae/airdrop-cli", link: false, args: ["HEAD"]
