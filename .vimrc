@@ -616,6 +616,17 @@ endif
 
 " Git related settings{{{
 
+function! GetTicket()
+    let l:branch = system('git branch --show-current 2>/dev/null')
+    let l:branch = substitute(l:branch, '\n', '', 'g') " 改行を削除
+    if l:branch =~# '^[A-Z]\+-[0-9]\+$'
+        return l:branch . ': '
+    else
+        return 'NO-ISSUE: '
+    endif
+endfunction
+inoremap <C-t> <C-r>=GetTicket()<CR>
+
 nnoremap [git] <Nop>
 nmap <leader>g [git]
 
