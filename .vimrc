@@ -548,7 +548,7 @@ call dein#add('jparise/vim-graphql', {'on_ft': 'graphql'})
 
 call dein#add('farmergreg/vim-lastplace')
 
-call dein#add('itchyny/lightline.vim')"{{{
+call dein#add('itchyny/lightline.vim') "{{{
 set showtabline=2
 function! LightlineGit()
   return FugitiveStatusline() . gina#component#traffic#preset("fancy")
