@@ -537,7 +537,6 @@ endif
 
 autocmd MyAutoCmd FileType python nnoremap <buffer> <leader>ss <Cmd>%!black -q -<CR><Plug>(ahc)<Cmd>%!isort -<CR>
 call dein#add('hashivim/vim-terraform', {'on_ft': 'terraform'})
-call dein#add('jparise/vim-graphql', {'on_ft': 'graphql'})
 
 "}}}
 
