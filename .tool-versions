@@ -3,9 +3,9 @@ neovim nightly
 terraform 1.0.4
 direnv system
 golang 1.19
-nodejs 16.16.0
+nodejs 18.17.0
 rust nightly
 deno 1.29.2
 ruby 2.7.6
-gradle 6.9.2
-python 3.8.15
+gradle 7.2
+python system
