@@ -176,9 +176,6 @@ set cmdheight=0
 " 消す時は<Plug>(ahc)も消すこと
 call dein#add('utubo/vim-auto-hide-cmdline', {'on_map': '<Plug>(ahc'})
 
-call dein#add('gamoutatsumi/dps-ghosttext.vim', {'depends': 'denops.vim', 'on_cmd': 'GhostStart',
-      \ 'hook_post_source': 'let g:dps_ghosttext#ftmap["localhost:8888"] = "python"'})
-
 " SKK{{{
 
 call dein#add('Matts966/skk-vconv.vim', {'on_map': '<C-j>'})
