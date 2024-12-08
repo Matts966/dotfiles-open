@@ -69,4 +69,6 @@ export FZF_DEFAULT_COMMAND='fd --type=file --hidden --exclude ".git" --exclude "
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
 export JAVA_HOME=$(/usr/libexec/java_home -v “21”)
