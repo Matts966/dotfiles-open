@@ -204,12 +204,11 @@ call dein#add('delphinus/skkeleton_indicator.nvim', {'on_event': ['InsertEnter',
       \ 'hook_post_source': 'lua require"skkeleton_indicator".setup{ eijiText = "AaBb", hiraText = "Hira", kataText = "Kata" }'})
 
 autocmd MyAutoCmd User skkeleton-initialize-pre call skkeleton#config({
-    \ 'globalJisyo': '~/.skk/SKK-JISYO.L',
-    \ 'useSkkServer': v:true,
-    \ 'skkServerPort': 55100,
+    \ 'globalDictionaries': ['~/.skk/SKK-JISYO.L'],
     \ 'keepState': v:true,
     \ 'eggLikeNewline': v:true,
     \ 'immediatelyCancel': v:false,
+    \ 'sources': ['skk_dictionary', 'google_japanese_input'],
     \ })
     \ | call skkeleton#register_kanatable('rom', {
     \   "/": ["・", ""],

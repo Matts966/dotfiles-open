@@ -53,8 +53,6 @@ skk:
     gzip -d SKK-JISYO.L.gz && \
     mkdir -p ~/.skk && \
     mv SKK-JISYO.L ~/.skk/SKK-JISYO.L
-	docker start google-ime-skk || docker run --name google-ime-skk \
-		-d --restart=always --platform=linux/amd64 -p 127.0.0.1:55100:1178 lurdan/yaskkserv2:latest || true
 
 .PHONY: neovide
 ifeq  ($(shell uname),Darwin)
