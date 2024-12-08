@@ -717,8 +717,6 @@ nnoremap <leader>G <Cmd>FloatermNew google<CR>
 
 "}}}
 
-call dein#add('dansomething/vim-hackernews')
-
 call dein#add('vimwiki/vimwiki') "{{{
 command! Links execute(':VimwikiGenerateLinks ' . glob(expand('%:h') . '/') . '*.md')
 let g:vimwiki_key_mappings = {
