@@ -206,6 +206,11 @@ cmap <C-j> <Plug>(skkeleton-toggle)
 "}}}
 
 call dein#add('github/copilot.vim', {'on_event': ['InsertEnter', 'CursorHold']})
+let g:copilot_filetypes = #{
+  \   gitcommit: v:true,
+  \   markdown: v:true,
+  \   text: v:true,
+  \ }
 let g:copilot_node_command = '~/.asdf/shims/node'
 imap <D-Bslash> <M-\>
 imap <D-]> <M-]>
