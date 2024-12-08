@@ -722,8 +722,6 @@ nnoremap <leader>G <Cmd>FloatermNew google<CR>
 
 call dein#add('cocopon/iceberg.vim')
 
-call dein#add('cocopon/colorswatch.vim', {'on_cmd': 'ColorSwatchGenerate'})
-
 "}}}
 
 " Initialize plugin system
