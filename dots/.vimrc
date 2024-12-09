@@ -471,7 +471,6 @@ EOF
 endfunction
 
 " For LSP line float diagnostics, this fixes the problem of untriggered CursorHold event
-call dein#add('antoinemadec/FixCursorHold.nvim')
 let g:cursorhold_updatetime = 250
 call dein#add('https://git.sr.ht/~whynothugo/lsp_lines.nvim',
       \ {'hook_post_source': 'lua require("lsp_lines").setup()'})
