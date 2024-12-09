@@ -963,6 +963,7 @@ if exists('g:neovide')
   " The same as <Leader>d
   nnoremap <D-d> <Cmd>write<CR><Cmd>bdelete<CR>
   imap <D-d> <Esc><D-d>
+  imap <D-w> <Esc><D-d>
 
   " copy
   vnoremap <D-c> "+y
