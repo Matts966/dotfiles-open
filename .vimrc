@@ -768,7 +768,7 @@ nnoremap <leader>G <Cmd>FloatermNew google<CR>
 call dein#add('vimwiki/vimwiki') "{{{
 let g:vimwiki_key_mappings =
   \ {
-  \   'all_maps': 0,
+  \   'all_maps': 1,
   \   'global': 0,
   \   'headers': 0,
   \   'text_objs': 0,
