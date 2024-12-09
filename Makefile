@@ -74,9 +74,6 @@ ifeq  ($(shell uname),Darwin)
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
 	defaults write com.apple.screencapture location ~/Documents/Screenshots
-
-	git submodule update --init iTerm2-Color-Schemes
-	cp com.googlecode.iterm2.plist ~/Library/Preferences/
 endif
 
 .PHONY: update-iterm-plist
