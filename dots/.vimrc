@@ -853,7 +853,9 @@ autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 autocmd BufWinEnter,WinEnter term://* startinsert
 
 tnoremap ]t <Cmd>call g:NextTerm()<CR>
+nnoremap ]t <Cmd>call g:NextTerm()<CR>
 tnoremap [t <Cmd>call g:PrevTerm()<CR>
+nnoremap [t <Cmd>call g:PrevTerm()<CR>
 function g:NextTerm()
   let current = bufnr('%')
   while v:true
