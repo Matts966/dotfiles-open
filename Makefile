@@ -115,7 +115,7 @@ endif
 	~/.asdf/bin/asdf direnv setup --shell zsh --version system
 
 .PHONY: asdf
-asdf: ~/.asdf ## Initialization for asdf and dependencies
+asdf: ## Initialization for asdf and dependencies
 	mkdir -p $(HOME)/.config/bat/themes && \
 		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
 		~/.asdf/bin/asdf install rust && \
