@@ -674,6 +674,9 @@ else
   nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
 endif
 
+call dein#add('tpope/vim-fugitive')
+nnoremap [git]c <Plug>(ahc)<Cmd>Git commit<CR>
+
 call dein#add('lambdalisue/gina.vim', {'on_cmd': 'Gina',
       \ 'hook_post_source': 'call gina#custom#command#option("log", "--opener", "tabedit")'})
 set diffopt+=vertical
