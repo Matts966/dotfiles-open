@@ -55,6 +55,9 @@ skk:
 
 .PHONY: nvim
 nvim: bundle
+ifeq  ($(shell uname),Linux)
+	sudo apt install -y neovim
+endif
 	nvim -c 'exe "silent! r!curl -sS https://raw.githubusercontent.com/neovim/neovim/v0.7.2/runtime/syntax/lua.vim"' -c 'w! ~/.config/nvim/syntax/lua.vim' -c 'q'
 
 .PHONY: secret
@@ -101,6 +104,9 @@ endif
 
 .PHONY: lazygit
 lazygit: bundle
+ifeq  ($(shell uname),Linux)
+	sudo apt install -y lazygit
+endif
 	\rm -rf "$(shell lazygit --print-config-dir)/config.yml" && mkdir -p "$(shell lazygit --print-config-dir)/config.yml" && ln -sfFnv $(abspath lazygit/config.yml) "$(shell lazygit --print-config-dir)/"
 
 .PHONY: zsh
