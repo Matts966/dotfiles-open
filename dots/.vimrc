@@ -881,7 +881,7 @@ function g:PrevTerm()
   endwhile
 endfunction
 
-nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
+nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR><Cmd>startinsert<CR>
 
 "}}}
 
