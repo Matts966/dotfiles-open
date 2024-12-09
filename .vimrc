@@ -118,7 +118,7 @@ nmap Y <Plug>(operator-flashy)$
 lua <<EOF
 function open_url_under_cursor()
   local url = vim.fn.expand("<cWORD>")
-  local valid_url_chars = "[a-zA-Z0-9%-%._~:/%?#%[%]@!$&'()*+,;=]+"
+  local valid_url_chars = "[a-zA-Z0-9%-%._~:/%?#%[%]@!$&'*+,;=]+"
   local plugin_name = url:match("dein#add%('([^']+)'")
   if plugin_name then
     vim.ui.open("https://github.com/" .. plugin_name)
