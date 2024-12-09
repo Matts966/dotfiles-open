@@ -701,9 +701,6 @@ autocmd MyAutoCmd FileType gitcommit setlocal bufhidden=delete
 
 "}}}
 
-" For neovide
-" call dein#add('psliwka/vim-smoothie', {'on_map': ['<C-u>', '<C-d>']})
-
 call dein#add('thinca/vim-qfreplace', {'on_cmd': 'Qfreplace'})
 
 " fzf{{{
