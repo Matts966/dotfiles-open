@@ -54,7 +54,7 @@ skk:
     mv SKK-JISYO.L ~/.skk/SKK-JISYO.L
 
 .PHONY: nvim
-nvim: bundle ~/.asdf
+nvim: bundle
 	nvim -c 'exe "silent! r!curl -sS https://raw.githubusercontent.com/neovim/neovim/v0.7.2/runtime/syntax/lua.vim"' -c 'w! ~/.config/nvim/syntax/lua.vim' -c 'q'
 
 .PHONY: secret
