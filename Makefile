@@ -48,7 +48,8 @@ init: mac bundle ~/.asdf skk nvim lazygit ## Initialize installation
 			totpages xstring environ hyperxmp ifmtarg || true
 	mkdir -p $(HOME)/.config/bat/themes && \
 		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
-		bat cache --build || true
+		~/.asdf/bin/asdf install rust && \
+		~/.asdf/bin/asdf exec bat cache --build
 
 .PHONY: skk
 skk:
