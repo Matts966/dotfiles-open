@@ -64,6 +64,8 @@ cask "basictex"
 cask "clipy"
 # Keyboard customizer
 cask "karabiner-elements"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Neovim Client
 cask "neovide"
 # Open-source code editor

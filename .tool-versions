@@ -1,5 +1,4 @@
 java adoptopenjdk-11.0.16+8
-neovim nightly
 terraform 1.0.4
 direnv system
 golang 1.19
