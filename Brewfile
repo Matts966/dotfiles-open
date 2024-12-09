@@ -1,5 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
 # User-friendly launcher for Bazel
 brew "bazelisk"
 # GNU File, Shell, and Text utilities
