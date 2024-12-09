@@ -633,6 +633,7 @@ autocmd MyAutoCmd BufReadPost *
        \  if &filetype == 'gitcommit'
        \|     execute 'normal! gg'
        \|     call feedkeys("I", 'n')
+       \|     call feedkeys("\<C-t>", 'm')
        \| endif
 
 function! GetTicket()
