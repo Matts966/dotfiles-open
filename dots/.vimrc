@@ -901,13 +901,6 @@ if has('nvim')
         \   call nvim_input('<CR>')  |
         \ endif
   tnoremap <C-W> <C-\><C-N><C-W>
-  tnoremap <C-W>N <C-\><C-N>
-  tnoremap <C-W>. <C-W>
-
-  " To prevent unintended wincmd only
-  tnoremap <C-W><C-O> <C-\><C-N><C-O>
-  tnoremap <C-W>o <C-\><C-N><C-O>
-  tnoremap <C-O> <C-\><C-N><C-O>
 
   set wildmode=longest:full
 
@@ -937,19 +930,10 @@ if exists('g:neovide')
   imap <D-d> <Esc><D-d>
   imap <D-w> <Esc><D-d>
 
-  " copy
-  vnoremap <D-c> "+y
-
-  " paste
-  nnoremap <D-v> p
   set pastetoggle=<F3>
   inoremap <D-v> <C-r><F3><C-r>+<C-r><F3>
   cnoremap <D-v> <C-r>+
   tnoremap <D-v> <C-\><C-n>pi
-
-  " undo
-  nnoremap <D-z> u
-  inoremap <D-z> <Esc>ua
 
   let g:neovide_remember_window_size = v:true
   let g:neovide_cursor_vfx_mode = "railgun"
