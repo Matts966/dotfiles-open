@@ -653,8 +653,6 @@ nmap <leader>g [git]
 nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal lazygit<CR>
 
 if has('nvim')
-  call dein#add('melkster/modicator.nvim', {'hook_post_source': 'lua require("modicator").setup()'})
-
   call dein#add('lewis6991/gitsigns.nvim', {'on_event': 'VimEnter', 'hook_post_source': 'lua require("gitsigns").setup {}'})
   nmap [c <Plug>(ahc)<Cmd>Gitsigns prev_hunk<CR>
   nmap ]c <Plug>(ahc)<Cmd>Gitsigns next_hunk<CR>
