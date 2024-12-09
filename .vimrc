@@ -9,6 +9,7 @@ set shm+=I
 let mapleader = "\<Space>" " Remap <leader> key to space
 
 map <leader>w <Cmd>write<CR>
+map <leader>d <Cmd>bdelete<CR>
 
 augroup MyAutoCmd
   autocmd!
