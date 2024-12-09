@@ -113,8 +113,29 @@ nmap Y <Plug>(operator-flashy)$
 
 "}}}
 
-" TODO: Fix broken gx
-call dein#add('Matts966/gx-extended.vim', {'on_map': 'gx'})
+" gx-extended
+lua <<EOF
+function open_url_under_cursor()
+  local url = vim.fn.expand("<cWORD>")
+  local valid_url_chars = "[a-zA-Z0-9%-%._~:/%?#%[%]@!$&'()*+,;=]+"
+  local plugin_name = url:match("dein#add%('([^']+)'")
+  if plugin_name then
+    vim.ui.open("https://github.com/" .. plugin_name)
+    return
+  end
+  local with_schema = url:match("([a-zA-Z][a-zA-Z0-9+.-]*://"  .. valid_url_chars .. ")")
+  if with_schema then
+    vim.ui.open(with_schema)
+    return
+  end
+  local without_schema = url:match("(" .. valid_url_chars .. ")")
+  if without_schema then
+    vim.ui.open("https://" .. without_schema)
+    return
+  end
+end
+vim.api.nvim_set_keymap("n", "gx", "<cmd>lua open_url_under_cursor()<CR>", { noremap = true, silent = true })
+EOF
 
 call dein#add('andymass/vim-matchup', {'on_event': 'FileType'})
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
