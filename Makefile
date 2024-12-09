@@ -115,6 +115,9 @@ endif
 
 .ONESHELL: ~/.asdf
 ~/.asdf: bundle
+ifeq  ($(shell uname),Linux)
+	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
+endif
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 	cut -d' ' -f1 .tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
