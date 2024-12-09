@@ -3,7 +3,6 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "microsoft/git"
-tap "treasure-data/tap"
 # User-friendly launcher for Bazel
 brew "bazelisk"
 # GNU File, Shell, and Text utilities
@@ -56,7 +55,6 @@ brew "wget"
 brew "zlib"
 # Kubectl Argo Rollouts Plugin.
 brew "argoproj/tap/kubectl-argo-rollouts"
-brew "treasure-data/tap/td-security"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
