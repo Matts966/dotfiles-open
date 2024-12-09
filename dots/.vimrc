@@ -545,13 +545,6 @@ function! s:on_lsp_buffer_enabled() abort
 endfunction
 " call s:on_lsp_buffer_enabled only for languages that has the server registered.
 autocmd MyAutoCmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-if !executable('texlab')
-  autocmd MyAutoCmd User lsp_setup call lsp#register_server({
-        \ 'name': 'texlab',
-        \ 'cmd': {server_info->['texlab']},
-        \ 'whitelist': ['tex', 'bib', 'sty'],
-        \ })
-endif
 let g:lsp_debug_servers = 1
 autocmd MyAutoCmd User lsp_setup call lsp#register_server({
       \ 'name': 'efm-langserver',
