@@ -640,7 +640,8 @@ endif
 
 autocmd MyAutoCmd BufReadPost *
        \  if &filetype == 'gitcommit'
-       \|     execute 'normal gg'
+       \|     execute 'normal! gg'
+       \|     call feedkeys("I", 'n')
        \| endif
 
 function! GetTicket()
