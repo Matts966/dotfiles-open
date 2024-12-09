@@ -854,8 +854,6 @@ autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 " Comment out after " for automatically startinsert
 autocmd BufWinEnter,WinEnter term://* startinsert
 
-nnoremap ]t <Cmd>call g:NextTerm()<CR> " <Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
-nnoremap [t <Cmd>call g:PrevTerm()<CR> " <Cmd>if &buftype ==# 'terminal' <Bar> startinsert <Bar> endif<CR>
 tnoremap ]t <Cmd>call g:NextTerm()<CR>
 tnoremap [t <Cmd>call g:PrevTerm()<CR>
 function g:NextTerm()
