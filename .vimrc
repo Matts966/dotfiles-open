@@ -637,6 +637,11 @@ endif
 
 " Git related settings{{{
 
+autocmd MyAutoCmd BufReadPost *
+       \  if &filetype == 'gitcommit'
+       \|     execute 'normal gg'
+       \| endif
+
 function! GetTicket()
     let l:branch = system('git branch --show-current 2>/dev/null')
     let l:branch = substitute(l:branch, '\n', '', 'g') " 改行を削除
