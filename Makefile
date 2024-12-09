@@ -5,6 +5,10 @@ DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 .DEFAULT_GOAL := help
 SHELL := $(shell which bash)
 
+ifeq ($(shell uname),Linux)
+export PATH := /home/linuxbrew/.linuxbrew/bin:$(PATH)
+endif
+
 .PHONY: list
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
@@ -55,10 +59,6 @@ skk:
 
 .PHONY: nvim
 nvim: bundle
-ifeq ($(shell uname),Linux)
-	test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
-endif
 	nvim -c 'call DeinInstall()' -c 'q'
 	nvim -c 'exe "silent! r!curl -sS https://raw.githubusercontent.com/neovim/neovim/v0.7.2/runtime/syntax/lua.vim"' -c 'w! ~/.config/nvim/syntax/lua.vim' -c 'q'
 
@@ -106,10 +106,6 @@ endif
 
 .PHONY: lazygit
 lazygit: bundle
-ifeq ($(shell uname),Linux)
-	test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
-endif
 	\rm -rf "$(shell lazygit --print-config-dir)/config.yml" && mkdir -p "$(shell lazygit --print-config-dir)/config.yml" && ln -sfFnv $(abspath lazygit/config.yml) "$(shell lazygit --print-config-dir)/"
 
 .PHONY: zsh
@@ -120,9 +116,6 @@ endif
 
 .ONESHELL: ~/.asdf
 ~/.asdf: bundle
-ifeq  ($(shell uname),Linux)
-	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
-endif
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 	cut -d' ' -f1 .tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
