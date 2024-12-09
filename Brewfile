@@ -1,7 +1,6 @@
 tap "argoproj/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/core"
 tap "microsoft/git"
 # User-friendly launcher for Bazel
 brew "bazelisk"
