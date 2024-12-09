@@ -105,7 +105,7 @@ endif
 
 .PHONY: lazygit
 lazygit: bundle
-	\rm -rf "$(shell lazygit --print-config-dir)/config.yml" && ln -sfFnv $(abspath lazygit/config.yml) "$(shell lazygit --print-config-dir)/"
+	\rm -rf "$(shell lazygit --print-config-dir)/config.yml" && mkdir -p "$(shell lazygit --print-config-dir)/config.yml" && ln -sfFnv $(abspath lazygit/config.yml) "$(shell lazygit --print-config-dir)/"
 
 .PHONY: zsh
 zsh:
