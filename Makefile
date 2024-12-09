@@ -37,7 +37,7 @@ deploy: ## Create symlink to home directory
 	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin
 
 .PHONY: init
-init: mac bundle ~/.asdf skk nvim ## Initialize installation
+init: mac bundle ~/.asdf skk nvim lazygit ## Initialize installation
 	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
 		sudo tlmgr update --self --all && \
 		sudo tlmgr install cm-super preprint comment ncctools latexmk \
@@ -105,6 +105,9 @@ ifeq  ($(shell uname),Linux)
 	brew install --build-from-source texlive || true
 endif
 	brew bundle || true
+
+.PHONY: lazygit
+lazygit: bundle
 	\rm -rf "$(shell lazygit --print-config-dir)/config.yml" && ln -sfFnv $(abspath lazygit/config.yml) "$(shell lazygit --print-config-dir)/"
 
 .PHONY: zsh
