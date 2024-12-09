@@ -105,7 +105,7 @@ ifeq  ($(shell uname),Linux)
 	brew install --build-from-source texlive || true
 endif
 	brew bundle || true
-	\rm -rf $(shell lazygit --print-config-dir)/config.yml && ln -sfFnv $(abspath lazygit/config.yml) $(shell lazygit --print-config-dir)/
+	\rm -rf "$(shell lazygit --print-config-dir)/config.yml" && ln -sfFnv $(abspath lazygit/config.yml) "$(shell lazygit --print-config-dir)/"
 
 .PHONY: zsh
 zsh:
