@@ -656,7 +656,7 @@ inoremap <C-t> <C-r>=GetTicket()<CR>
 nnoremap [git] <Nop>
 nmap <leader>g [git]
 
-nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab-wait +'setlocal bufhidden=wipe'" lazygit<CR>
+nnoremap [git]g <Cmd>silent! wa!<CR><Cmd>tabnew<CR><Cmd>terminal GIT_EDITOR="nvr --remote-tab-wait +'setlocal bufhidden=delete'" lazygit<CR>
 
 if has('nvim')
   call dein#add('melkster/modicator.nvim', {'hook_post_source': 'lua require("modicator").setup()'})
