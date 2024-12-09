@@ -674,6 +674,7 @@ else
   nnoremap <silent> <C-l> <Cmd>nohlsearch<CR><Cmd>GitGutter<CR><C-l>
 endif
 
+" Required for statusline
 call dein#add('tpope/vim-fugitive')
 nnoremap [git]c <Plug>(ahc)<Cmd>Git commit<CR>
 
