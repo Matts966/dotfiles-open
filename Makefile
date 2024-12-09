@@ -1,4 +1,4 @@
-CANDIDATES := $(wildcard .??*)
+CANDIDATES := $(wildcard .??*) $(wildcard dots/.??*)
 EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .ssh .github
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
@@ -118,7 +118,7 @@ endif
 ~/.asdf: bundle
 	# Install asdf
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-	cut -d' ' -f1 .tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
+	cut -d' ' -f1 dots/.tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
 	~/.asdf/bin/asdf direnv setup --shell zsh --version system
 
 .PHONY: help
