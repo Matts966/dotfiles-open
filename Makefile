@@ -35,8 +35,6 @@ deploy: ## Create symlink to home directory
 	mkdir -p ~/.config/neovide && ln -sfFnv $(abspath neovide/config.toml) ~/.config/neovide
 	ln -sfFnv $(abspath pycodestyle) ~/.config
 	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin
-	mkdir -p ~/Library/Application\ Support/lazygit && \rm ~/Library/Application\ Support/lazygit/config.yml && ln -sfFnv $(abspath lazygit/config.yml) ~/Library/Application\ Support/lazygit/
-
 
 .PHONY: init
 init: mac bundle ~/.asdf skk nvim ## Initialize installation
@@ -107,6 +105,8 @@ ifeq  ($(shell uname),Linux)
 	brew install --build-from-source texlive || true
 endif
 	brew bundle || true
+	\rm $(lazygit --print-config-dir)/config.yml && ln -sfFnv $(abspath lazygit/config.yml) $(lazygit --print-config-dir)/
+
 
 .PHONY: zsh
 zsh:
