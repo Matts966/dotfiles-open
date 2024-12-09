@@ -484,7 +484,6 @@ call dein#add('onsails/lspkind.nvim')
 call dein#add('hrsh7th/nvim-cmp', {'hook_post_source': 'call SetupNvimCmp()'})
 call dein#add('rinx/cmp-skkeleton')
 call dein#add('hrsh7th/cmp-nvim-lsp')
-call dein#add('hrsh7th/vim-vsnip')
 autocmd MyAutoCmd VimEnter * call dein#call_hook('post_source')
 
 lua <<EOF
