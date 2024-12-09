@@ -959,6 +959,10 @@ if exists('g:neovide')
   autocmd MyAutoCmd termopen * nnoremap <buffer> <D-w> i<C-u>exit<CR>
   tnoremap <D-w> <C-u>exit<CR>
 
+  " The same as <Leader>d
+  nnoremap <D-d> <Cmd>write<CR><Cmd>bdelete<CR>
+  imap <D-d> <Esc><D-d>
+
   " copy
   vnoremap <D-c> "+y
 
