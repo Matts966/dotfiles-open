@@ -848,8 +848,8 @@ autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 
 "}}}
 
-" ターミナル移動{{{
-" Comment out after " for automatically startinsert
+" ターミナル系コマンド{{{
+
 autocmd BufWinEnter,WinEnter term://* startinsert
 
 tnoremap ]t <Cmd>call g:NextTerm()<CR>
@@ -878,10 +878,6 @@ function g:PrevTerm()
     endif
   endwhile
 endfunction
-
-"}}}
-
-" ターミナル系コマンド{{{
 
 nnoremap <leader>T <Cmd>botright vsplit<CR><Cmd>terminal<CR>
 
