@@ -694,20 +694,6 @@ call dein#add('thinca/vim-qfreplace', {'on_cmd': 'Qfreplace'})
 
 call dein#add('junegunn/fzf.vim')
 call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-" Relative path
-" https://github.com/junegunn/fzf.vim/pull/628#issuecomment-766440334
-inoremap <expr> <c-x><c-p> fzf#vim#complete("fd --hidden --exclude '.git' --exclude 'node_modules' --absolute-path --print0
-      \ <Bar> xargs -0 realpath --relative-to " . shellescape(expand("%:p:h")) . " <Bar> sort -r")
-imap <c-x><c-j> <Plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <Plug>(fzf-complete-line)
-call dein#add('yuki-yano/fzf-preview.vim', { 'rev': 'release/rpc' })
-call dein#add('LeafCage/yankround.vim')
-noremap <leader>h <Cmd>History<CR>
-noremap <leader><leader> <Cmd>FzfPreviewCommandPaletteRpc<CR>
-noremap <leader>m <Cmd>FzfPreviewProjectMruFilesRpc<CR>
-let $FZF_PREVIEW_PREVIEW_BAT_THEME = $BAT_THEME
 
 function! s:cd_repo(repo) abort
   let l:repo = trim(system('ghq root')) . '/' . a:repo
