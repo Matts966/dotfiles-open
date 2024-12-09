@@ -66,7 +66,7 @@ endif
 
 .PHONY: mac
 mac:
-ifeq  ($(shell uname),Darwin)
+ifeq ($(shell uname),Darwin)
 	open Iceberg.terminal
 	defaults write com.apple.terminal "Startup Window Settings" "Iceberg"
 	defaults write com.apple.terminal "Default Window Settings" "Iceberg"
@@ -87,7 +87,7 @@ brew:
 .PHONY: bundle
 .ONESHELL: bundle
 bundle: brew
-ifeq  ($(shell uname),Linux)
+ifeq ($(shell uname),Linux)
 	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
 endif
 	brew install parallel
@@ -101,14 +101,15 @@ endif
 
 .PHONY: lazygit
 lazygit: bundle
-ifeq  ($(shell uname),Linux)
+ifeq ($(shell uname),Linux)
+	test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
 endif
 	\rm -rf "$(shell lazygit --print-config-dir)/config.yml" && mkdir -p "$(shell lazygit --print-config-dir)/config.yml" && ln -sfFnv $(abspath lazygit/config.yml) "$(shell lazygit --print-config-dir)/"
 
 .PHONY: zsh
 zsh:
-ifeq  ($(shell uname),Linux)
+ifeq ($(shell uname),Linux)
 	sudo apt-get update; sudo apt-get install -y zsh; sudo chsh -s /usr/bin/zsh
 endif
 
