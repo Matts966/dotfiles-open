@@ -42,14 +42,6 @@ deploy: ## Create symlink to home directory
 
 .PHONY: init
 init: mac bundle ~/.asdf skk nvim lazygit ## Initialize installation
-	sudo $(shell brew --prefix)/texlive/*/bin/*/tlmgr path add && \
-		sudo tlmgr update --self --all && \
-		sudo tlmgr install cm-super preprint comment ncctools latexmk \
-			totpages xstring environ hyperxmp ifmtarg || true
-	mkdir -p $(HOME)/.config/bat/themes && \
-		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
-		~/.asdf/bin/asdf install rust && \
-		~/.asdf/bin/asdf exec bat cache --build
 
 .PHONY: skk
 skk:
@@ -121,6 +113,14 @@ endif
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 	cut -d' ' -f1 dots/.tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
 	~/.asdf/bin/asdf direnv setup --shell zsh --version system
+
+.PHONY: asdf
+asdf: ~/.asdf ## Initialization for asdf and dependencies
+	mkdir -p $(HOME)/.config/bat/themes && \
+		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
+		~/.asdf/bin/asdf install rust && \
+		~/.asdf/bin/asdf exec bat cache --build
+	asdf install
 
 .PHONY: help
 help: ## Self-documented Makefile
