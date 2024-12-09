@@ -20,15 +20,11 @@ make help
 
 ## 📦 Included Tools
 
-- 🌈 **[Iceberg](https://github.com/cocopon/iceberg.vim)**
-  A sleek theme for Vim, [bat](https://github.com/sharkdp/bat), and macOS Terminal.
-- 🚀 **[asdf](https://asdf-vm.com/)** & **[direnv](https://direnv.net/)**
-  For smooth version management and environment isolation.
-- ⚡ **[fzf](https://github.com/junegunn/fzf)**
-  A blazing-fast fuzzy finder for the command line.
-- 🎁 **And more!**
-  Small tweaks and tools that make my workflow easier.
+- 🌈 **[Iceberg](https://github.com/cocopon/iceberg.vim)**: A sleek theme originally for Vim, with ports available for [bat](https://github.com/sharkdp/bat) and macOS Terminal.  
+- 🚀 **[asdf](https://asdf-vm.com/)** & **[direnv](https://direnv.net/)**: Seamless integration for version management and environment isolation.  
+- ⚡ **[fzf](https://github.com/junegunn/fzf)**: A blazing-fast fuzzy finder for the command line, along with its utility functions.  
+- 🎁 **And more!** Small tweaks and tools that enhance my workflow.  
 
 ---
 
-This setup is tailored for my personal use, but you're welcome to borrow ideas or adapt it to your own needs. 😊
+This setup is tailored for my personal use, but you're welcome to borrow ideas or adapt them to your own needs. 😊
