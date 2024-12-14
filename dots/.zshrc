@@ -53,11 +53,6 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 
 PROMPT="%F{cyan}%~%f%F{yellow}@%m%f
 "
-zinit light jonmosco/kube-ps1
-KUBE_PS1_SYMBOL_ENABLE=false
-KUBE_PS1_CTX_COLOR=yellow
-PROMPT=$PROMPT'$(kube_ps1)
-'
 PROMPT=$PROMPT"%F{yellow}❯❯❯%f""%(?.%F{cyan}.%F{red})❯❯%f "
 
 HISTSIZE=50000              # How many lines of history to keep in memory
