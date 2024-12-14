@@ -275,6 +275,7 @@ let g:fern#renderer#default#expanded_symbol = '▾'
 
 call dein#add('editorconfig/editorconfig-vim', {'on_event': 'FileType'})
 nnoremap <leader>ss gg=G``
+autocmd FileType json nnoremap <buffer> <leader>ss <Cmd>%!jq .<CR>
 
 " Switch nvim/vim {{{
 
