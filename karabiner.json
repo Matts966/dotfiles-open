@@ -1,1135 +1,1135 @@
 {
-    "global": {
-        "check_for_updates_on_startup": true,
-        "show_in_menu_bar": true,
-        "show_profile_name_in_menu_bar": false
-    },
-    "profiles": [
-        {
-            "complex_modifications": {
-                "parameters": {
-                    "basic.simultaneous_threshold_milliseconds": 50,
-                    "basic.to_delayed_action_delay_milliseconds": 500,
-                    "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500,
-                    "mouse_motion_to_scroll.speed": 100
+  "global": {
+    "check_for_updates_on_startup": true,
+    "show_in_menu_bar": true,
+    "show_profile_name_in_menu_bar": false
+  },
+  "profiles": [
+    {
+      "complex_modifications": {
+        "parameters": {
+          "basic.simultaneous_threshold_milliseconds": 50,
+          "basic.to_delayed_action_delay_milliseconds": 500,
+          "basic.to_if_alone_timeout_milliseconds": 1000,
+          "basic.to_if_held_down_threshold_milliseconds": 500,
+          "mouse_motion_to_scroll.speed": 100
+        },
+        "rules": [
+          {
+            "description": "Use Command+T as Alt+T in Google Chrome to open a new tab in current group",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
                 },
-                "rules": [
-                    {
-                        "description": "Use Command+T as Alt+T in Google Chrome to open a new tab in current group",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "t",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "t",
-                                        "modifiers": [
-                                            "option"
-                                        ]
-                                    }
-                                ],
-                                "conditions": [
-                                    {
-                                        "type": "frontmost_application_if",
-                                        "bundle_identifiers": [
-                                            "^com\\.google\\.Chrome$"
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "description": "alt+fbpn to alt arrow",
-                        "manipulators": [
-                            {
-                                "description": "alt+f to alt\u2192",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.iCal$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "alt+b to alt\u2190",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.iCal$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "b",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_arrow",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "alt+p to alt\u2191",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.iCal$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "p",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "up_arrow",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "alt+n to alt\u2193",
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.iCal$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "down_arrow",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Swap Cmd+Tab and Alt+Tab",
-                        "manipulators": [
-                            {
-                                "description": "Alt+Tab to Cmt+Tab",
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "Cmd+Tab to Alt+Tab",
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "\u30b3\u30de\u30f3\u30c9\u30ad\u30fc\u3092\u5358\u4f53\u3067\u62bc\u3057\u305f\u3068\u304d\u306b\u3001\u82f1\u6570\u30fb\u304b\u306a\u30ad\u30fc\u3092\u9001\u4fe1\u3059\u308b\u3002\uff08\u5de6\u30b3\u30de\u30f3\u30c9\u30ad\u30fc\u306f\u82f1\u6570\u3001\u53f3\u30b3\u30de\u30f3\u30c9\u30ad\u30fc\u306f\u304b\u306a\uff09 (rev 3)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "left_command",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "parameters": {
-                                    "basic.to_if_held_down_threshold_milliseconds": 100
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_command",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "japanese_eisuu"
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "left_command"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "right_command",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "parameters": {
-                                    "basic.to_if_held_down_threshold_milliseconds": 100
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_command",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "japanese_kana"
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "right_command"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "esc\u30ad\u30fc\u3092\u62bc\u3057\u305f\u3068\u304d\u306b\u3001\u82f1\u6570\u30ad\u30fc\u3082\u9001\u4fe1\u3059\u308b\uff08vim\u7528\uff09",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "escape"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "escape"
-                                    },
-                                    {
-                                        "key_code": "japanese_eisuu"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Ctrl+[\u3092\u62bc\u3057\u305f\u3068\u304d\u306b\u3001esc\u30ad\u30fc\u3068\u82f1\u6570\u30ad\u30fc\u3092\u9001\u4fe1\u3059\u308b",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": [
-                                            "ansi",
-                                            "iso"
-                                        ],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "open_bracket",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "escape"
-                                    },
-                                    {
-                                        "key_code": "japanese_eisuu"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": [
-                                            "jis"
-                                        ],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "close_bracket",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "escape"
-                                    },
-                                    {
-                                        "key_code": "japanese_eisuu"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Emacs key bindings [control+keys] (rev 10)",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.gnu\\.Emacs$",
-                                            "^org\\.gnu\\.AquamacsEmacs$",
-                                            "^org\\.gnu\\.Aquamacs$",
-                                            "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.microsoft\\.rdc$",
-                                            "^com\\.microsoft\\.rdc\\.",
-                                            "^net\\.sf\\.cord$",
-                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                                            "^com\\.itap-mobile\\.qmote$",
-                                            "^com\\.nulana\\.remotixmac$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                                            "^com\\.teamviewer\\.TeamViewer$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.2X\\.Client\\.Mac$",
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^com\\.neovide\\.neovide$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$",
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.vim\\.",
-                                            "^com\\.qvacua\\.VimR$",
-                                            "^com\\.vmware\\.fusion$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.vmware\\.view$",
-                                            "^com\\.parallels\\.desktop$",
-                                            "^com\\.parallels\\.vm$",
-                                            "^com\\.parallels\\.desktop\\.console$",
-                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                                            "^com\\.citrix\\.XenAppViewer$",
-                                            "^com\\.vmware\\.proxyApp\\.",
-                                            "^com\\.parallels\\.winapp\\.",
-                                            "^org\\.x\\.X11$",
-                                            "^com\\.apple\\.x11$",
-                                            "^org\\.macosforge\\.xquartz\\.X11$",
-                                            "^org\\.macports\\.X11$",
-                                            "^com\\.sublimetext\\.",
-                                            "^com\\.microsoft\\.VSCode$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": [
-                                            "ansi",
-                                            "iso"
-                                        ],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "open_bracket",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "escape"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": [
-                                            "jis"
-                                        ],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "close_bracket",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "escape"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift",
-                                            "option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "return_or_enter"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.gnu\\.Emacs$",
-                                            "^org\\.gnu\\.AquamacsEmacs$",
-                                            "^org\\.gnu\\.Aquamacs$",
-                                            "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.microsoft\\.rdc$",
-                                            "^com\\.microsoft\\.rdc\\.",
-                                            "^net\\.sf\\.cord$",
-                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                                            "^com\\.itap-mobile\\.qmote$",
-                                            "^com\\.nulana\\.remotixmac$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                                            "^com\\.teamviewer\\.TeamViewer$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.2X\\.Client\\.Mac$",
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^com\\.neovide\\.neovide$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$",
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.vim\\.",
-                                            "^com\\.qvacua\\.VimR$",
-                                            "^com\\.vmware\\.fusion$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.vmware\\.view$",
-                                            "^com\\.parallels\\.desktop$",
-                                            "^com\\.parallels\\.vm$",
-                                            "^com\\.parallels\\.desktop\\.console$",
-                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                                            "^com\\.citrix\\.XenAppViewer$",
-                                            "^com\\.vmware\\.proxyApp\\.",
-                                            "^com\\.parallels\\.winapp\\.",
-                                            "^org\\.x\\.X11$",
-                                            "^com\\.apple\\.x11$",
-                                            "^org\\.macosforge\\.xquartz\\.X11$",
-                                            "^org\\.macports\\.X11$",
-                                            "^com\\.sublimetext\\.",
-                                            "^com\\.microsoft\\.VSCode$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "b",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift",
-                                            "option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_arrow"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.gnu\\.Emacs$",
-                                            "^org\\.gnu\\.AquamacsEmacs$",
-                                            "^org\\.gnu\\.Aquamacs$",
-                                            "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.microsoft\\.rdc$",
-                                            "^com\\.microsoft\\.rdc\\.",
-                                            "^net\\.sf\\.cord$",
-                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                                            "^com\\.itap-mobile\\.qmote$",
-                                            "^com\\.nulana\\.remotixmac$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                                            "^com\\.teamviewer\\.TeamViewer$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.2X\\.Client\\.Mac$",
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^com\\.neovide\\.neovide$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$",
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.vim\\.",
-                                            "^com\\.qvacua\\.VimR$",
-                                            "^com\\.vmware\\.fusion$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.vmware\\.view$",
-                                            "^com\\.parallels\\.desktop$",
-                                            "^com\\.parallels\\.vm$",
-                                            "^com\\.parallels\\.desktop\\.console$",
-                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                                            "^com\\.citrix\\.XenAppViewer$",
-                                            "^com\\.vmware\\.proxyApp\\.",
-                                            "^com\\.parallels\\.winapp\\.",
-                                            "^org\\.x\\.X11$",
-                                            "^com\\.apple\\.x11$",
-                                            "^org\\.macosforge\\.xquartz\\.X11$",
-                                            "^org\\.macports\\.X11$",
-                                            "^com\\.sublimetext\\.",
-                                            "^com\\.microsoft\\.VSCode$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift",
-                                            "option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.gnu\\.Emacs$",
-                                            "^org\\.gnu\\.AquamacsEmacs$",
-                                            "^org\\.gnu\\.Aquamacs$",
-                                            "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.microsoft\\.rdc$",
-                                            "^com\\.microsoft\\.rdc\\.",
-                                            "^net\\.sf\\.cord$",
-                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                                            "^com\\.itap-mobile\\.qmote$",
-                                            "^com\\.nulana\\.remotixmac$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                                            "^com\\.teamviewer\\.TeamViewer$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.2X\\.Client\\.Mac$",
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^com\\.neovide\\.neovide$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$",
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.vim\\.",
-                                            "^com\\.qvacua\\.VimR$",
-                                            "^com\\.vmware\\.fusion$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.vmware\\.view$",
-                                            "^com\\.parallels\\.desktop$",
-                                            "^com\\.parallels\\.vm$",
-                                            "^com\\.parallels\\.desktop\\.console$",
-                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                                            "^com\\.citrix\\.XenAppViewer$",
-                                            "^com\\.vmware\\.proxyApp\\.",
-                                            "^com\\.parallels\\.winapp\\.",
-                                            "^org\\.x\\.X11$",
-                                            "^com\\.apple\\.x11$",
-                                            "^org\\.macosforge\\.xquartz\\.X11$",
-                                            "^org\\.macports\\.X11$",
-                                            "^com\\.sublimetext\\.",
-                                            "^com\\.microsoft\\.VSCode$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift",
-                                            "option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "down_arrow"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.gnu\\.Emacs$",
-                                            "^org\\.gnu\\.AquamacsEmacs$",
-                                            "^org\\.gnu\\.Aquamacs$",
-                                            "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.microsoft\\.rdc$",
-                                            "^com\\.microsoft\\.rdc\\.",
-                                            "^net\\.sf\\.cord$",
-                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                                            "^com\\.itap-mobile\\.qmote$",
-                                            "^com\\.nulana\\.remotixmac$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                                            "^com\\.teamviewer\\.TeamViewer$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.2X\\.Client\\.Mac$",
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^com\\.neovide\\.neovide$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$",
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.vim\\.",
-                                            "^com\\.qvacua\\.VimR$",
-                                            "^com\\.vmware\\.fusion$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.vmware\\.view$",
-                                            "^com\\.parallels\\.desktop$",
-                                            "^com\\.parallels\\.vm$",
-                                            "^com\\.parallels\\.desktop\\.console$",
-                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                                            "^com\\.citrix\\.XenAppViewer$",
-                                            "^com\\.vmware\\.proxyApp\\.",
-                                            "^com\\.parallels\\.winapp\\.",
-                                            "^org\\.x\\.X11$",
-                                            "^com\\.apple\\.x11$",
-                                            "^org\\.macosforge\\.xquartz\\.X11$",
-                                            "^org\\.macports\\.X11$",
-                                            "^com\\.sublimetext\\.",
-                                            "^com\\.microsoft\\.VSCode$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "p",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift",
-                                            "option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "up_arrow"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.gnu\\.Emacs$",
-                                            "^org\\.gnu\\.AquamacsEmacs$",
-                                            "^org\\.gnu\\.Aquamacs$",
-                                            "^org\\.pqrs\\.unknownapp.conkeror$",
-                                            "^com\\.microsoft\\.rdc$",
-                                            "^com\\.microsoft\\.rdc\\.",
-                                            "^net\\.sf\\.cord$",
-                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                                            "^com\\.itap-mobile\\.qmote$",
-                                            "^com\\.nulana\\.remotixmac$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                                            "^com\\.teamviewer\\.TeamViewer$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.2X\\.Client\\.Mac$",
-                                            "^com\\.apple\\.Terminal$",
-                                            "^com\\.googlecode\\.iterm2$",
-                                            "^com\\.neovide\\.neovide$",
-                                            "^co\\.zeit\\.hyperterm$",
-                                            "^co\\.zeit\\.hyper$",
-                                            "^io\\.alacritty$",
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.vim\\.",
-                                            "^com\\.qvacua\\.VimR$",
-                                            "^com\\.vmware\\.fusion$",
-                                            "^com\\.vmware\\.horizon$",
-                                            "^com\\.vmware\\.view$",
-                                            "^com\\.parallels\\.desktop$",
-                                            "^com\\.parallels\\.vm$",
-                                            "^com\\.parallels\\.desktop\\.console$",
-                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                                            "^com\\.citrix\\.XenAppViewer$",
-                                            "^com\\.vmware\\.proxyApp\\.",
-                                            "^com\\.parallels\\.winapp\\.",
-                                            "^org\\.x\\.X11$",
-                                            "^com\\.apple\\.x11$",
-                                            "^org\\.macosforge\\.xquartz\\.X11$",
-                                            "^org\\.macports\\.X11$",
-                                            "^com\\.sublimetext\\.",
-                                            "^com\\.microsoft\\.VSCode$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "v",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "page_down"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.microsoft\\.Excel$",
-                                            "^com\\.microsoft\\.Powerpoint$",
-                                            "^com\\.microsoft\\.Word$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "a",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "home"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.microsoft\\.Excel$",
-                                            "^com\\.microsoft\\.Powerpoint$",
-                                            "^com\\.microsoft\\.Word$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "end"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.eclipse\\.platform\\.ide$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "a",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_arrow",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.eclipse\\.platform\\.ide$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    }
+                "to": [
+                  {
+                    "key_code": "t",
+                    "modifiers": [
+                      "option"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$"
+                    ]
+                  }
                 ]
-            },
-            "devices": [],
-            "fn_function_keys": [
-                {
-                    "from": {
-                        "key_code": "f1"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "display_brightness_decrement"
-                        }
+              }
+            ]
+          },
+          {
+            "description": "alt+fbpn to alt arrow",
+            "manipulators": [
+              {
+                "description": "alt+f to alt→",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.iCal$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_option"
+                    ],
+                    "optional": [
+                      "any"
                     ]
+                  }
                 },
-                {
-                    "from": {
-                        "key_code": "f2"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "display_brightness_increment"
-                        }
+                "to": [
+                  {
+                    "key_code": "right_arrow",
+                    "modifiers": [
+                      "left_option"
                     ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "alt+b to alt←",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.iCal$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "b",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
                 },
-                {
-                    "from": {
-                        "key_code": "f3"
-                    },
-                    "to": [
-                        {
-                            "key_code": "mission_control"
-                        }
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": [
+                      "left_option"
                     ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "alt+p to alt↑",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.iCal$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
                 },
-                {
-                    "from": {
-                        "key_code": "f4"
-                    },
-                    "to": [
-                        {
-                            "key_code": "launchpad"
-                        }
+                "to": [
+                  {
+                    "key_code": "up_arrow",
+                    "modifiers": [
+                      "left_option"
                     ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "alt+n to alt↓",
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.iCal$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
                 },
-                {
-                    "from": {
-                        "key_code": "f5"
-                    },
-                    "to": [
-                        {
-                            "key_code": "illumination_decrement"
-                        }
+                "to": [
+                  {
+                    "key_code": "down_arrow",
+                    "modifiers": [
+                      "left_option"
                     ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Swap Cmd+Tab and Alt+Tab",
+            "manipulators": [
+              {
+                "description": "Alt+Tab to Cmt+Tab",
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
                 },
-                {
-                    "from": {
-                        "key_code": "f6"
-                    },
-                    "to": [
-                        {
-                            "key_code": "illumination_increment"
-                        }
+                "to": [
+                  {
+                    "key_code": "tab",
+                    "modifiers": [
+                      "left_command"
                     ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "Cmd+Tab to Alt+Tab",
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
                 },
-                {
-                    "from": {
-                        "key_code": "f7"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "rewind"
-                        }
+                "to": [
+                  {
+                    "key_code": "tab",
+                    "modifiers": [
+                      "left_option"
                     ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな） (rev 3)",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_command",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
                 },
-                {
-                    "from": {
-                        "key_code": "f8"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "play_or_pause"
-                        }
-                    ]
+                "parameters": {
+                  "basic.to_if_held_down_threshold_milliseconds": 100
                 },
-                {
-                    "from": {
-                        "key_code": "f9"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "fast_forward"
-                        }
+                "to": [
+                  {
+                    "key_code": "left_command",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "japanese_eisuu"
+                  }
+                ],
+                "to_if_held_down": [
+                  {
+                    "key_code": "left_command"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "right_command",
+                  "modifiers": {
+                    "optional": [
+                      "any"
                     ]
+                  }
                 },
-                {
-                    "from": {
-                        "key_code": "f10"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "mute"
-                        }
-                    ]
+                "parameters": {
+                  "basic.to_if_held_down_threshold_milliseconds": 100
                 },
-                {
-                    "from": {
-                        "key_code": "f11"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "volume_decrement"
-                        }
-                    ]
+                "to": [
+                  {
+                    "key_code": "right_command",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "japanese_kana"
+                  }
+                ],
+                "to_if_held_down": [
+                  {
+                    "key_code": "right_command"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "escキーを押したときに、英数キーも送信する（vim用）",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "escape"
                 },
-                {
-                    "from": {
-                        "key_code": "f12"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "volume_increment"
-                        }
+                "to": [
+                  {
+                    "key_code": "escape"
+                  },
+                  {
+                    "key_code": "japanese_eisuu"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Ctrl+[を押したときに、escキーと英数キーを送信する",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "keyboard_types": [
+                      "ansi",
+                      "iso"
+                    ],
+                    "type": "keyboard_type_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "open_bracket",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
                     ]
-                }
-            ],
-            "name": "Default profile",
-            "parameters": {
-                "delay_milliseconds_before_open_device": 1000
-            },
-            "selected": true,
-            "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": [
-                        {
-                            "key_code": "left_control"
-                        }
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "escape"
+                  },
+                  {
+                    "key_code": "japanese_eisuu"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "keyboard_types": [
+                      "jis"
+                    ],
+                    "type": "keyboard_type_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "close_bracket",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
                     ]
-                }
-            ],
-            "virtual_hid_keyboard": {
-                "country_code": 0,
-                "indicate_sticky_modifier_keys_state": true,
-                "mouse_key_xy_scale": 100
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "escape"
+                  },
+                  {
+                    "key_code": "japanese_eisuu"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Emacs key bindings [control+keys] (rev 10)",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^org\\.gnu\\.Emacs$",
+                      "^org\\.gnu\\.AquamacsEmacs$",
+                      "^org\\.gnu\\.Aquamacs$",
+                      "^org\\.pqrs\\.unknownapp.conkeror$",
+                      "^com\\.microsoft\\.rdc$",
+                      "^com\\.microsoft\\.rdc\\.",
+                      "^net\\.sf\\.cord$",
+                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                      "^com\\.itap-mobile\\.qmote$",
+                      "^com\\.nulana\\.remotixmac$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                      "^com\\.teamviewer\\.TeamViewer$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.2X\\.Client\\.Mac$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.neovide\\.neovide$",
+                      "^co\\.zeit\\.hyperterm$",
+                      "^co\\.zeit\\.hyper$",
+                      "^io\\.alacritty$",
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^org\\.vim\\.",
+                      "^com\\.qvacua\\.VimR$",
+                      "^com\\.vmware\\.fusion$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.vmware\\.view$",
+                      "^com\\.parallels\\.desktop$",
+                      "^com\\.parallels\\.vm$",
+                      "^com\\.parallels\\.desktop\\.console$",
+                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                      "^com\\.citrix\\.XenAppViewer$",
+                      "^com\\.vmware\\.proxyApp\\.",
+                      "^com\\.parallels\\.winapp\\.",
+                      "^org\\.x\\.X11$",
+                      "^com\\.apple\\.x11$",
+                      "^org\\.macosforge\\.xquartz\\.X11$",
+                      "^org\\.macports\\.X11$",
+                      "^com\\.sublimetext\\.",
+                      "^com\\.microsoft\\.VSCode$"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_or_backspace"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "keyboard_types": [
+                      "ansi",
+                      "iso"
+                    ],
+                    "type": "keyboard_type_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "open_bracket",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "keyboard_types": [
+                      "jis"
+                    ],
+                    "type": "keyboard_type_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "close_bracket",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift",
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "return_or_enter"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^org\\.gnu\\.Emacs$",
+                      "^org\\.gnu\\.AquamacsEmacs$",
+                      "^org\\.gnu\\.Aquamacs$",
+                      "^org\\.pqrs\\.unknownapp.conkeror$",
+                      "^com\\.microsoft\\.rdc$",
+                      "^com\\.microsoft\\.rdc\\.",
+                      "^net\\.sf\\.cord$",
+                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                      "^com\\.itap-mobile\\.qmote$",
+                      "^com\\.nulana\\.remotixmac$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                      "^com\\.teamviewer\\.TeamViewer$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.2X\\.Client\\.Mac$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.neovide\\.neovide$",
+                      "^co\\.zeit\\.hyperterm$",
+                      "^co\\.zeit\\.hyper$",
+                      "^io\\.alacritty$",
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^org\\.vim\\.",
+                      "^com\\.qvacua\\.VimR$",
+                      "^com\\.vmware\\.fusion$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.vmware\\.view$",
+                      "^com\\.parallels\\.desktop$",
+                      "^com\\.parallels\\.vm$",
+                      "^com\\.parallels\\.desktop\\.console$",
+                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                      "^com\\.citrix\\.XenAppViewer$",
+                      "^com\\.vmware\\.proxyApp\\.",
+                      "^com\\.parallels\\.winapp\\.",
+                      "^org\\.x\\.X11$",
+                      "^com\\.apple\\.x11$",
+                      "^org\\.macosforge\\.xquartz\\.X11$",
+                      "^org\\.macports\\.X11$",
+                      "^com\\.sublimetext\\.",
+                      "^com\\.microsoft\\.VSCode$"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "b",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift",
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^org\\.gnu\\.Emacs$",
+                      "^org\\.gnu\\.AquamacsEmacs$",
+                      "^org\\.gnu\\.Aquamacs$",
+                      "^org\\.pqrs\\.unknownapp.conkeror$",
+                      "^com\\.microsoft\\.rdc$",
+                      "^com\\.microsoft\\.rdc\\.",
+                      "^net\\.sf\\.cord$",
+                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                      "^com\\.itap-mobile\\.qmote$",
+                      "^com\\.nulana\\.remotixmac$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                      "^com\\.teamviewer\\.TeamViewer$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.2X\\.Client\\.Mac$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.neovide\\.neovide$",
+                      "^co\\.zeit\\.hyperterm$",
+                      "^co\\.zeit\\.hyper$",
+                      "^io\\.alacritty$",
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^org\\.vim\\.",
+                      "^com\\.qvacua\\.VimR$",
+                      "^com\\.vmware\\.fusion$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.vmware\\.view$",
+                      "^com\\.parallels\\.desktop$",
+                      "^com\\.parallels\\.vm$",
+                      "^com\\.parallels\\.desktop\\.console$",
+                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                      "^com\\.citrix\\.XenAppViewer$",
+                      "^com\\.vmware\\.proxyApp\\.",
+                      "^com\\.parallels\\.winapp\\.",
+                      "^org\\.x\\.X11$",
+                      "^com\\.apple\\.x11$",
+                      "^org\\.macosforge\\.xquartz\\.X11$",
+                      "^org\\.macports\\.X11$",
+                      "^com\\.sublimetext\\.",
+                      "^com\\.microsoft\\.VSCode$"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift",
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^org\\.gnu\\.Emacs$",
+                      "^org\\.gnu\\.AquamacsEmacs$",
+                      "^org\\.gnu\\.Aquamacs$",
+                      "^org\\.pqrs\\.unknownapp.conkeror$",
+                      "^com\\.microsoft\\.rdc$",
+                      "^com\\.microsoft\\.rdc\\.",
+                      "^net\\.sf\\.cord$",
+                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                      "^com\\.itap-mobile\\.qmote$",
+                      "^com\\.nulana\\.remotixmac$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                      "^com\\.teamviewer\\.TeamViewer$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.2X\\.Client\\.Mac$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.neovide\\.neovide$",
+                      "^co\\.zeit\\.hyperterm$",
+                      "^co\\.zeit\\.hyper$",
+                      "^io\\.alacritty$",
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^org\\.vim\\.",
+                      "^com\\.qvacua\\.VimR$",
+                      "^com\\.vmware\\.fusion$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.vmware\\.view$",
+                      "^com\\.parallels\\.desktop$",
+                      "^com\\.parallels\\.vm$",
+                      "^com\\.parallels\\.desktop\\.console$",
+                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                      "^com\\.citrix\\.XenAppViewer$",
+                      "^com\\.vmware\\.proxyApp\\.",
+                      "^com\\.parallels\\.winapp\\.",
+                      "^org\\.x\\.X11$",
+                      "^com\\.apple\\.x11$",
+                      "^org\\.macosforge\\.xquartz\\.X11$",
+                      "^org\\.macports\\.X11$",
+                      "^com\\.sublimetext\\.",
+                      "^com\\.microsoft\\.VSCode$"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift",
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "down_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^org\\.gnu\\.Emacs$",
+                      "^org\\.gnu\\.AquamacsEmacs$",
+                      "^org\\.gnu\\.Aquamacs$",
+                      "^org\\.pqrs\\.unknownapp.conkeror$",
+                      "^com\\.microsoft\\.rdc$",
+                      "^com\\.microsoft\\.rdc\\.",
+                      "^net\\.sf\\.cord$",
+                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                      "^com\\.itap-mobile\\.qmote$",
+                      "^com\\.nulana\\.remotixmac$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                      "^com\\.teamviewer\\.TeamViewer$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.2X\\.Client\\.Mac$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.neovide\\.neovide$",
+                      "^co\\.zeit\\.hyperterm$",
+                      "^co\\.zeit\\.hyper$",
+                      "^io\\.alacritty$",
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^org\\.vim\\.",
+                      "^com\\.qvacua\\.VimR$",
+                      "^com\\.vmware\\.fusion$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.vmware\\.view$",
+                      "^com\\.parallels\\.desktop$",
+                      "^com\\.parallels\\.vm$",
+                      "^com\\.parallels\\.desktop\\.console$",
+                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                      "^com\\.citrix\\.XenAppViewer$",
+                      "^com\\.vmware\\.proxyApp\\.",
+                      "^com\\.parallels\\.winapp\\.",
+                      "^org\\.x\\.X11$",
+                      "^com\\.apple\\.x11$",
+                      "^org\\.macosforge\\.xquartz\\.X11$",
+                      "^org\\.macports\\.X11$",
+                      "^com\\.sublimetext\\.",
+                      "^com\\.microsoft\\.VSCode$"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift",
+                      "option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "up_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^org\\.gnu\\.Emacs$",
+                      "^org\\.gnu\\.AquamacsEmacs$",
+                      "^org\\.gnu\\.Aquamacs$",
+                      "^org\\.pqrs\\.unknownapp.conkeror$",
+                      "^com\\.microsoft\\.rdc$",
+                      "^com\\.microsoft\\.rdc\\.",
+                      "^net\\.sf\\.cord$",
+                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                      "^com\\.itap-mobile\\.qmote$",
+                      "^com\\.nulana\\.remotixmac$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                      "^com\\.teamviewer\\.TeamViewer$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.2X\\.Client\\.Mac$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.neovide\\.neovide$",
+                      "^co\\.zeit\\.hyperterm$",
+                      "^co\\.zeit\\.hyper$",
+                      "^io\\.alacritty$",
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^org\\.vim\\.",
+                      "^com\\.qvacua\\.VimR$",
+                      "^com\\.vmware\\.fusion$",
+                      "^com\\.vmware\\.horizon$",
+                      "^com\\.vmware\\.view$",
+                      "^com\\.parallels\\.desktop$",
+                      "^com\\.parallels\\.vm$",
+                      "^com\\.parallels\\.desktop\\.console$",
+                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                      "^com\\.citrix\\.XenAppViewer$",
+                      "^com\\.vmware\\.proxyApp\\.",
+                      "^com\\.parallels\\.winapp\\.",
+                      "^org\\.x\\.X11$",
+                      "^com\\.apple\\.x11$",
+                      "^org\\.macosforge\\.xquartz\\.X11$",
+                      "^org\\.macports\\.X11$",
+                      "^com\\.sublimetext\\.",
+                      "^com\\.microsoft\\.VSCode$"
+                    ],
+                    "type": "frontmost_application_unless"
+                  }
+                ],
+                "from": {
+                  "key_code": "v",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "page_down"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.microsoft\\.Excel$",
+                      "^com\\.microsoft\\.Powerpoint$",
+                      "^com\\.microsoft\\.Word$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "a",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "home"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.microsoft\\.Excel$",
+                      "^com\\.microsoft\\.Powerpoint$",
+                      "^com\\.microsoft\\.Word$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "end"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^org\\.eclipse\\.platform\\.ide$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "a",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^org\\.eclipse\\.platform\\.ide$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "caps_lock",
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "devices": [],
+      "fn_function_keys": [
+        {
+          "from": {
+            "key_code": "f1"
+          },
+          "to": [
+            {
+              "consumer_key_code": "display_brightness_decrement"
             }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f2"
+          },
+          "to": [
+            {
+              "consumer_key_code": "display_brightness_increment"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f3"
+          },
+          "to": [
+            {
+              "key_code": "mission_control"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f4"
+          },
+          "to": [
+            {
+              "key_code": "launchpad"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f5"
+          },
+          "to": [
+            {
+              "key_code": "illumination_decrement"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f6"
+          },
+          "to": [
+            {
+              "key_code": "illumination_increment"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f7"
+          },
+          "to": [
+            {
+              "consumer_key_code": "rewind"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f8"
+          },
+          "to": [
+            {
+              "consumer_key_code": "play_or_pause"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f9"
+          },
+          "to": [
+            {
+              "consumer_key_code": "fast_forward"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f10"
+          },
+          "to": [
+            {
+              "consumer_key_code": "mute"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f11"
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_decrement"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "f12"
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_increment"
+            }
+          ]
         }
-    ]
+      ],
+      "name": "Default profile",
+      "parameters": {
+        "delay_milliseconds_before_open_device": 1000
+      },
+      "selected": true,
+      "simple_modifications": [
+        {
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ]
+        }
+      ],
+      "virtual_hid_keyboard": {
+        "country_code": 0,
+        "indicate_sticky_modifier_keys_state": true,
+        "mouse_key_xy_scale": 100
+      }
+    }
+  ]
 }
