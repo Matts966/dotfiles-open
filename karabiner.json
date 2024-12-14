@@ -16,6 +16,35 @@
         },
         "rules": [
           {
+            "description": "Use Command+T as Alt+T in Google Chrome to open a new tab in current group",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": ["command"],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "t",
+                    "modifiers": ["option"]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "alt+fbpn to alt arrow",
             "manipulators": [
               {
