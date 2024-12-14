@@ -819,7 +819,7 @@ function! s:OpenVimrc()
   else
     exe 'tabedit ' . resolve(s:vimrc)
   endif
-  exe 'tcd %:h'
+  exe 'tcd %:p:h:h'
 endfunction
 command! -nargs=0 OpenVimrc call s:OpenVimrc()
 map <leader>, <Cmd>OpenVimrc<CR>
