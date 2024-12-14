@@ -35,6 +35,7 @@ zinit lucid has'docker' for \
 
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
 zstyle ':fzf-tab:*' fzf-flags --height 100%
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 zinit light MichaelAquilina/zsh-auto-notify
 export AUTO_NOTIFY_THRESHOLD=5
