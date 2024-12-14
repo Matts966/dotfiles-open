@@ -858,7 +858,8 @@ autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 " ターミナル系コマンド{{{
 
 autocmd BufWinEnter,WinEnter term://* startinsert
-
+tnoremap <C-W> <C-\><C-N><C-W>
+tnoremap <C-W>. <C-W>
 tnoremap ]t <Cmd>call g:NextTerm()<CR>
 nnoremap ]t <Cmd>call g:NextTerm()<CR>
 tnoremap [t <Cmd>call g:PrevTerm()<CR>
