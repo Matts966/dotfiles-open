@@ -16,7 +16,7 @@
         },
         "rules": [
           {
-            "description": "Use Command+T as Alt+T in Google Chrome to open a new tab in current group",
+            "description": "Use Command+T as Alt+T in Google Chrome to open a new tab in current group, this needs mac app shortcut setting command+E to New Tab to the Right",
             "manipulators": [
               {
                 "type": "basic",
@@ -30,15 +30,9 @@
                 },
                 "to": [
                   {
-                    "key_code": "escape"
-                  },
-                  {
-                    "key_code": "escape"
-                  },
-                  {
-                    "key_code": "t",
+                    "key_code": "e",
                     "modifiers": [
-                      "option"
+                      "command"
                     ]
                   }
                 ],
