@@ -31,6 +31,8 @@ brew "tree"
 brew "watch"
 # Internet file retriever
 brew "wget"
+# Git extension for versioning large files
+brew "git-lfs"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
