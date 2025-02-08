@@ -43,6 +43,8 @@ cask "alt-tab"
 cask "appcleaner"
 # Clipboard extension app
 cask "clipy"
+# Menu bar manager
+cask "jordanbaird-ice"
 # Keyboard customiser
 cask "karabiner-elements"
 # Neovim Client
