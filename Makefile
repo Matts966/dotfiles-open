@@ -76,7 +76,7 @@ ifeq ($(shell uname),Darwin)
 	defaults write -g InitialKeyRepeat -int 15
 	defaults write com.apple.screencapture location ~/Documents/Screenshots
 
-	defaults write com.apple.dock "autohide" -bool "true" && killall Dock
+	defaults write com.apple.dock persistent-apps -array && defaults write com.apple.dock "autohide" -bool "true" && killall Dock
 	# sudo reboot
 endif
 
