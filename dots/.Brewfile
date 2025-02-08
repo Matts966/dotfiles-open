@@ -49,7 +49,5 @@ cask "karabiner-elements"
 cask "neovide"
 # Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
-# Unicode keyboard layout editor
-cask "ukelele"
 # Open-source code editor
 cask "visual-studio-code"
