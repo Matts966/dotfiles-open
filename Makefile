@@ -38,7 +38,7 @@ deploy: ## Create symlink to home directory
 	mkdir -p ~/.config/direnv && ln -sfFnv $(abspath direnvrc) ~/.config/direnv
 	mkdir -p ~/.config/neovide && ln -sfFnv $(abspath neovide/config.toml) ~/.config/neovide
 	ln -sfFnv $(abspath pycodestyle) ~/.config
-	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin/
+	sudo ln -sfFnv $(abspath scripts/google) /usr/local/bin/google
 
 .PHONY: init
 init: mac bundle ~/.asdf skk nvim lazygit ## Initialize installation
