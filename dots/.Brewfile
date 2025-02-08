@@ -47,6 +47,8 @@ cask "clipy"
 cask "jordanbaird-ice"
 # Keyboard customiser
 cask "karabiner-elements"
+# Tool to control external monitor brightness & volume
+cask "monitorcontrol"
 # Neovim Client
 cask "neovide"
 # Simple application that will prevent iTunes or Apple Music from launching
