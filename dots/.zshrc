@@ -44,9 +44,6 @@ AUTO_NOTIFY_IGNORE+=("spt" "docker run" "poetry shell" "lazygit" "nnn" "k9s" "ku
 # kind
 zinit ice from"gh-r" as"program" mv"kind* -> kind"
 zinit light kubernetes-sigs/kind
-# j2p2j
-zinit ice from"gh-r" as"program" mv"j2p2j* -> j2p2j"
-zinit light tamuhey/j2p2j
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
   zsh-users/zsh-completions \
@@ -76,3 +73,5 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export ASDF_DATA_DIR="/Users/masahiro.matsui/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
