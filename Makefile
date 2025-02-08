@@ -38,7 +38,7 @@ deploy: ## Create symlink to home directory
 	mkdir -p ~/.config/direnv && ln -sfFnv $(abspath direnvrc) ~/.config/direnv
 	mkdir -p ~/.config/neovide && ln -sfFnv $(abspath neovide/config.toml) ~/.config/neovide
 	ln -sfFnv $(abspath pycodestyle) ~/.config
-	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin
+	sudo ln -sfFnv $(abspath scripts/*) /usr/local/bin/
 
 .PHONY: init
 init: mac bundle ~/.asdf skk nvim lazygit ## Initialize installation
@@ -71,7 +71,14 @@ ifeq ($(shell uname),Darwin)
 
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 
+	defaults write -g com.apple.trackpad.scaling 3
+	defaults write -g KeyRepeat -int 2
+	defaults write -g InitialKeyRepeat -int 15
 	defaults write com.apple.screencapture location ~/Documents/Screenshots
+
+	defaults write com.apple.dock "autohide" -bool "true" && killall Dock
+	defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add "com.googlecode.iterm2"
+	# sudo reboot
 endif
 
 .PHONY: update-iterm-plist
