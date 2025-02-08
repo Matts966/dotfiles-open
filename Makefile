@@ -77,7 +77,6 @@ ifeq ($(shell uname),Darwin)
 	defaults write com.apple.screencapture location ~/Documents/Screenshots
 
 	defaults write com.apple.dock "autohide" -bool "true" && killall Dock
-	defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add "com.googlecode.iterm2"
 	# sudo reboot
 endif
 
