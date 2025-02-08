@@ -96,13 +96,13 @@ ifeq ($(shell uname),Linux)
 	test -d /home/linuxbrew/.linuxbrew && eval '$(shell /home/linuxbrew/.linuxbrew/bin/brew shellenv)'
 endif
 	brew install parallel
-	cat Brewfile | grep ^tap | cut -d' ' -f2 | xargs echo \
+	cat dots/.Brewfile | grep ^tap | cut -d' ' -f2 | xargs echo \
 		| xargs parallel brew tap ::: || true
-	cat Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
+	cat dots/.Brewfile | grep ^brew | cut -d' ' -f2 | xargs echo \
 		| xargs parallel brew install ::: || true
-	cat Brewfile | grep ^cask | cut -d' ' -f2 | xargs echo \
+	cat dots/.Brewfile | grep ^cask | cut -d' ' -f2 | xargs echo \
 		| xargs parallel brew install --cask ::: || true
-	brew bundle || true
+	brew bundle --global || true
 
 .PHONY: lazygit
 lazygit: bundle
