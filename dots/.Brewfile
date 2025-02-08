@@ -13,6 +13,8 @@ brew "fzf"
 brew "gawk"
 # Remote repository management made easy
 brew "ghq"
+# Git extension for versioning large files
+brew "git-lfs"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Java language specific implementation of the Language Server Protocol
@@ -25,27 +27,29 @@ brew "k9s"
 brew "lazygit"
 # Next-gen compiler infrastructure
 brew "llvm"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Shell command parallelization utility
+brew "parallel"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
 brew "wget"
-# Git extension for versioning large files
-brew "git-lfs"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Application uninstaller
 cask "appcleaner"
 # Clipboard extension app
 cask "clipy"
-# Keyboard customizer
+# Keyboard customiser
 cask "karabiner-elements"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Neovim Client
 cask "neovide"
-# Open-source code editor
-cask "visual-studio-code"
 # Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
+# Unicode keyboard layout editor
+cask "ukelele"
+# Open-source code editor
+cask "visual-studio-code"
