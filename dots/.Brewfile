@@ -1,4 +1,6 @@
 tap "homebrew/bundle"
+# Automatically restart SSH sessions and tunnels
+brew "autossh"
 # User-friendly launcher for Bazel
 brew "bazelisk"
 # GNU File, Shell, and Text utilities
@@ -43,6 +45,8 @@ cask "alt-tab"
 cask "appcleaner"
 # Clipboard extension app
 cask "clipy"
+# Web browser
+cask "google-chrome"
 # Menu bar manager
 cask "jordanbaird-ice"
 # Keyboard customiser
@@ -55,3 +59,5 @@ cask "neovide"
 cask "notunes"
 # Open-source code editor
 cask "visual-studio-code"
+# Video communication and virtual meeting platform
+cask "zoom"
