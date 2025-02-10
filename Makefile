@@ -74,7 +74,17 @@ ifeq ($(shell uname),Darwin)
 	defaults write -g com.apple.trackpad.scaling 3
 	defaults write -g KeyRepeat -int 2
 	defaults write -g InitialKeyRepeat -int 15
+	defaults write -g ApplePressAndHoldEnabled -bool false
+
 	defaults write com.apple.screencapture location ~/Documents/Screenshots
+	defaults write com.apple.screencapture name ""
+
+	defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+	defaults write com.apple.finder ShowPathbar -bool true
+	defaults write com.apple.finder ShowStatusBar -bool true
+
+	osascript -e 'tell application "System Events" to make new login item at end with properties {name:"MonitorControl", path:"/Applications/MonitorControl.app", hidden:true}'
+	osascript -e 'tell application "System Events" to make new login item at end with properties {name:"noTunes", path:"/Applications/noTunes.app", hidden:true}'
 
 	defaults write com.apple.dock persistent-apps -array && defaults write com.apple.dock "autohide" -bool "true" && killall Dock
 	# sudo reboot
