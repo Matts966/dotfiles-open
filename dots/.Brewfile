@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 # Automatically restart SSH sessions and tunnels
 brew "autossh"
 # User-friendly launcher for Bazel
