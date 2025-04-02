@@ -50,6 +50,8 @@ cask "google-chrome"
 cask "jordanbaird-ice"
 # Keyboard customiser
 cask "karabiner-elements"
+# Utility to set up global mouse gestures
+cask "macgesture"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # Neovim Client

@@ -16,6 +16,30 @@
         },
         "rules": [
           {
+            "description": "Swipe horizontally on calendar in combination with macgesture",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "^com\\.apple\\.iCal$"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "spacebar"
+                },
+                "to": [
+                  {
+                    "pointing_button": "button2"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "alt+fbpn to alt arrow",
             "manipulators": [
               {
