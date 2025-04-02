@@ -76,15 +76,20 @@ ifeq ($(shell uname),Darwin)
 	defaults write -g InitialKeyRepeat -int 15
 	defaults write -g ApplePressAndHoldEnabled -bool false
 
-	defaults write com.apple.screencapture location ~/Documents/Screenshots
+	mkdir -p ~/Documents/Screenshots
+	defaults write com.apple.screencapture target clipboard
 	defaults write com.apple.screencapture name ""
+	defaults write com.apple.screencapture show-thumbnail -bool false
 
 	defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 	defaults write com.apple.finder ShowPathbar -bool true
 	defaults write com.apple.finder ShowStatusBar -bool true
 
+	sudo nvram StartupMute=%01
+
 	osascript -e 'tell application "System Events" to make new login item at end with properties {name:"MonitorControl", path:"/Applications/MonitorControl.app", hidden:true}'
 	osascript -e 'tell application "System Events" to make new login item at end with properties {name:"noTunes", path:"/Applications/noTunes.app", hidden:true}'
+	osascript -e 'tell application "System Events" to make new login item at end with properties {name:"MonitorControl", path:"/Applications/MacGesture.app", hidden:true}'
 
 	defaults write com.apple.dock persistent-apps -array && defaults write com.apple.dock "autohide" -bool "true" && killall Dock
 	# sudo reboot
@@ -123,19 +128,21 @@ ifeq ($(shell uname),Linux)
 	sudo apt-get update; sudo apt-get install -y zsh; sudo chsh -s /usr/bin/zsh
 endif
 
-.ONESHELL: ~/.asdf
-~/.asdf: bundle
-	# Install asdf
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-	cut -d' ' -f1 dots/.tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
-	~/.asdf/bin/asdf direnv setup --shell zsh --version system
+# .ONESHELL: ~/.asdf
+# ~/.asdf: bundle
+# 	# Install asdf
+# 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+# 	cut -d' ' -f1 dots/.tool-versions | xargs -L1 ~/.asdf/bin/asdf plugin add
+# 	~/.asdf/bin/asdf direnv setup --shell zsh --version system
 
 .PHONY: asdf
 asdf: ## Initialization for asdf and dependencies
+	cut -d' ' -f1 dots/.tool-versions | xargs -L1 asdf plugin add
+	asdf direnv setup --shell zsh --version system
 	mkdir -p $(HOME)/.config/bat/themes && \
 		ln -sfFnv $(abspath iceberg.tmTheme) $(HOME)/.config/bat/themes && \
-		~/.asdf/bin/asdf install rust && \
-		~/.asdf/bin/asdf exec bat cache --build
+		asdf install rust && \
+		asdf exec bat cache --build
 	asdf install
 
 .PHONY: help
