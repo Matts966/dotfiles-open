@@ -75,3 +75,4 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
 export JAVA_HOME=$(/usr/libexec/java_home -v “21”)
 
 source ~/.private_zshenv
+export GPG_TTY=$(tty)
