@@ -953,9 +953,9 @@ if exists('g:neovide')
   noremap <D--> <Cmd>call ResizeFont(-1)<CR>
 
   " transparency
-  let g:neovide_transparency=0.8
+  let g:neovide_opacity=0.8
   function! ChangeTransparency(delta)
-    let g:neovide_transparency = g:neovide_transparency + a:delta
+    let g:neovide_opacity = g:neovide_opacity + a:delta
   endfunction
   noremap <D-]> <Cmd>call ChangeTransparency(0.01)<CR>
   noremap <D-[> <Cmd>call ChangeTransparency(-0.01)<CR>
