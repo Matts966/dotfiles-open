@@ -27,12 +27,6 @@ export FZF_CTRL_T_OPTS='--bind "ctrl-v:execute(vim $(printf %q {}) < /dev/tty > 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 
-zinit lucid has'docker' for \
-  as'completion' is-snippet \
-  'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker' \
-  as'completion' is-snippet \
-  'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
-
 zstyle ':fzf-tab:*' fzf-bindings 'tab:toggle+down'
 zstyle ':fzf-tab:*' fzf-flags --height 100%
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
