@@ -55,8 +55,6 @@ test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/bre
 
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
-export JAVA_HOME=$(/usr/libexec/java_home -v “21”)
-
 source ~/.private_zshenv
 export GPG_TTY=$(tty)
 eval "$(~/.local/bin/mise activate zsh)"
