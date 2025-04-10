@@ -41,23 +41,6 @@ else
   export VISUAL="nvim"
 fi
 
-# source $HOME/.asdf/asdf.sh
-# 2回使うと急にハングするようになった
-which asdf > /dev/null
-if (( $? )) ; then
-  # なぜか direnv のドキュメントだと使うなとあるが
-  # shims がないとシェルを経由しないコマンド起動が失敗するので使う
-  source $HOME/.asdf/asdf.sh
-fi
-# 以下だと動作しない
-# export PATH=$HOME/.asdf/bin:$PATH
-
-fpath=($HOME/.asdf/completions $fpath)
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-# This is too slow
-# https://github.com/halcyon/asdf-java
-# . ~/.asdf/plugins/java/set-java-home.zsh
-
 export BAT_THEME="iceberg"
 export FZF_DEFAULT_OPTS='--height 100% --reverse --border --ansi'
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind ctrl-d:page-down,ctrl-u:page-up"
@@ -76,3 +59,4 @@ export JAVA_HOME=$(/usr/libexec/java_home -v “21”)
 
 source ~/.private_zshenv
 export GPG_TTY=$(tty)
+eval "$(~/.local/bin/mise activate zsh)"
