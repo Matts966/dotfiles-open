@@ -935,7 +935,6 @@ if exists('g:neovide')
   imap <D-d> <Esc><D-d>
   imap <D-w> <Esc><D-d>
 
-  set pastetoggle=<F3>
   inoremap <D-v> <C-r><F3><C-r>+<C-r><F3>
   cnoremap <D-v> <C-r>+
   tnoremap <D-v> <C-\><C-n>pi
