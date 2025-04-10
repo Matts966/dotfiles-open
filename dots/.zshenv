@@ -58,3 +58,5 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
 source ~/.private_zshenv
 export GPG_TTY=$(tty)
 eval "$(~/.local/bin/mise activate zsh)"
+autoload -U +X compinit && compinit
+source <(~/.local/bin/mise completion zsh)

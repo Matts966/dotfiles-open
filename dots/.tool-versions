@@ -12,3 +12,4 @@ cargo:bat latest
 cargo:fd-find latest
 cargo:git-delta latest
 cargo:tokei latest
+cargo:usage-cli latest
