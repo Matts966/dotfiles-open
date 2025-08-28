@@ -16,7 +16,7 @@
   "base_keymap": "VSCode",
   "theme": {
     "mode": "system",
-    "light": "Gruvbox Dark Hard",
-    "dark": "One Dark"
+    "light": "Tokyo Night",
+    "dark": "Gruvbox Light"
   }
 }
