@@ -60,3 +60,4 @@ export GPG_TTY=$(tty)
 eval "$(~/.local/bin/mise activate zsh)"
 autoload -U +X compinit && compinit
 source <(~/.local/bin/mise completion zsh)
+export GOFLAGS="-tags=e2e" # For vald
