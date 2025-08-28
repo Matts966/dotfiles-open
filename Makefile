@@ -32,12 +32,13 @@ all: deploy init secret
 .PHONY: deploy
 deploy: ## Create symlink to home directory
 	@echo 'Symlink dot files in your home directory...'
-	@$(foreach val, $(DOTFILES), ln -sfFnv $(abspath $(val)) $(HOME);)
-	mkdir -p ~/.config/karabiner && ln -sfFnv $(abspath karabiner.json) ~/.config/karabiner
-	mkdir -p ~/.config/nvim && ln -sfFnv $(abspath init.vim) ~/.config/nvim
-	mkdir -p ~/.config/direnv && ln -sfFnv $(abspath direnvrc) ~/.config/direnv
-	mkdir -p ~/.config/neovide && ln -sfFnv $(abspath neovide/config.toml) ~/.config/neovide
-	ln -sfFnv $(abspath pycodestyle) ~/.config
+	@$(foreach val, $(DOTFILES), ln -sfFnv $(abspath $(val)) $(HOME)/$(notdir $(val));)
+	mkdir -p ~/.config/karabiner && ln -sfFnv $(abspath karabiner.json) ~/.config/karabiner/karabiner.json
+	mkdir -p ~/.config/nvim && ln -sfFnv $(abspath init.vim) ~/.config/nvim/init.vim
+	mkdir -p ~/.config/direnv && ln -sfFnv $(abspath direnvrc) ~/.config/direnv/direnvrc
+	mkdir -p ~/.config/neovide && ln -sfFnv $(abspath neovide/config.toml) ~/.config/neovide/config.toml
+	mkdir -p ~/.config/zed && ln -sfFnv $(abspath zed/*) ~/.config/zed/
+	ln -sfFnv $(abspath pycodestyle) ~/.config/pycodestyle
 	sudo ln -sfFnv $(abspath scripts/google) /usr/local/bin/google
 
 .PHONY: init
