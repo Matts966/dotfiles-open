@@ -924,6 +924,7 @@ endif
 if exists('g:neovide')
   let g:neovide_input_use_logo=v:true
   let g:neovide_input_macos_option_key_is_meta=v:true
+  let g:neovide_input_ime=v:false
 
   " 複数タブがあれば、タブを消し、タブが一つであれば終了する
   nnoremap <expr> <D-w> tabpagenr('$')-1 ? "<Cmd>tabclose<CR>" : "<Cmd>silent! wa<CR><Cmd>bdelete!<CR><Cmd>%bdelete<CR><Cmd>quit<CR>"
