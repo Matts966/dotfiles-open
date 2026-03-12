@@ -42,8 +42,7 @@ brew "wget"
 cask "alt-tab"
 # Application uninstaller
 cask "appcleaner"
-# Clipboard extension app
-cask "clipy"
+cask "raycast"
 # Web browser
 cask "google-chrome"
 # Menu bar manager
